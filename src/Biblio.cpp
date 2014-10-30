@@ -28,12 +28,28 @@ void Biblioteca::set_funcionarios(vector<Funcionario*> func) {
 	funcionarios = func;
 }
 
-vector<Supervisor*>Biblioteca::get_supervisores() {
+vector<Funcionario*>Biblioteca::get_supervisores() {
+	vector<Funcionario*> supervisores{};
+	Supervisor* sp{};
+	for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
+		sp = dynamic_cast<Supervisor*>(*it);
+		if (sp!=0){
+			supervisores.push_back(*it);
+		}
+	}
 	return supervisores;
 }
 
-void Biblioteca::set_supervisores(vector<Supervisor*> sup) {
-	supervisores = sup;
+vector<Funcionario*>Biblioteca::get_funcionarios_n_sup() {
+	vector<Funcionario*> funcionarios_n_sup{};
+	Supervisor* sp{};
+	for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
+		sp = dynamic_cast<Supervisor*>(*it);
+		if (sp==0){
+			funcionarios_n_sup.push_back(*it);
+		}
+	}
+	return funcionarios_n_sup;
 }
 
 vector<Leitor*> Biblioteca::get_leitores() {
@@ -81,12 +97,14 @@ bool Biblioteca::remove_livro(long id){
 // distribuir funcionarios por supervisores
 void Biblioteca::distribui_funcionarios(){
 	vector<Funcionario*> func_sup{};
+	vector<Funcionario*> supervisores{get_supervisores()};
+	vector<Funcionario*> funcionarios_n_sup{get_funcionarios_n_sup()};
 	unsigned long num_sup{supervisores.size()};
-	for (vector<Supervisor*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
+	for (vector<Funcionario*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
 		(*it)->set_func_sup(func_sup);
 	}
-	for (unsigned int i{0}; i<funcionarios.size(); i++){
-		(supervisores[i%num_sup]->adiciona_func_sup(funcionarios[i]));
+	for (unsigned int i{0}; i<funcionarios_n_sup.size(); i++){
+		(supervisores[i%num_sup]->adiciona_func_sup(funcionarios_n_sup[i]));
 	}
 }
 
@@ -132,11 +150,13 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep){
 	Livro* lv=ep->get_livro();
 	Leitor* lt=ep->get_leitor();
 	vector<Emprestimo*> ep_lt=lt->get_emp_leit();
-	int di=lv->get_dias_indisponivel();
+	time_t dt=lv->get_data_emp();
+	time_t hj = std::time(NULL);
+	double tempo_dias{floor(difftime(hj,dt)/86400)};
 	if (lv->get_emprestado()==false){
 		if (ep_lt.size()<3){
 			lv->set_emprestado(true);
-			lv->set_dias_indisponivel(7);
+			lv->set_data_emp(ep->get_data());
 			lt->adiciona_emp_leit(ep);
 			emprestimos.push_back(ep);
 		}
@@ -144,8 +164,11 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep){
 			cout << "Leitor ja tem 3 emprestimos feitos.";
 		}
 	}
+	else if (tempo_dias<=7){
+		cout << "Este livro nao esta disponivel para emprestar. Deve regresssar dentro de " << 7-tempo_dias << " dia(s).";
+	}
 	else {
-		cout << "Este livro nao esta disponivel para emprestar. Regressa dentro de " << di << "dias.";
+		cout << "Este livro nao esta disponivel para emprestar. Devia ter sido devolvido ha " << tempo_dias-7 << " dia(s).";
 	}
 }
 
@@ -159,7 +182,7 @@ bool Biblioteca::remove_emprestimo(long id){
 						<< (*it)->get_multa() << "euros.";
 			}
 			((*it)->get_livro())->set_emprestado(false);
-			((*it)->get_livro())->set_dias_indisponivel(0);
+			((*it)->get_livro())->set_data_emp({});
 			((*it)->get_leitor())->remove_emp_leit(id);
 			emprestimos.erase(it);
 			return true;
@@ -184,23 +207,12 @@ vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados(){
 // promover funcionario a supervisor
 bool Biblioteca::promove_funcionario_supervisor(long id){
 	vector<Funcionario*> func_sup{};
+	vector<Funcionario*> supervisores{get_supervisores()};
 	for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
 		if ((*it)->get_ID()==id){
 			Supervisor* sp=new Supervisor{id, (*it)->get_nome(), func_sup};
-			supervisores.push_back(sp);
 			funcionarios.erase(it);
-			distribui_funcionarios();
-			return true;
-		}
-	}
-	return false;
-}
-
-// remover supervisor
-bool Biblioteca::remove_supervisor(long id){
-	for (vector<Supervisor*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
-		if ((*it)->get_ID()==id){
-			supervisores.erase(it);
+			funcionarios.push_back(sp);
 			distribui_funcionarios();
 			return true;
 		}
@@ -210,11 +222,12 @@ bool Biblioteca::remove_supervisor(long id){
 
 // despromover supervisor a funcionario
 bool Biblioteca::despromove_supervisor_funcionorario(long id){
-	for (vector<Supervisor*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
+	vector<Funcionario*> supervisores{get_supervisores()};
+	for (vector<Funcionario*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
 		if ((*it)->get_ID()==id){
 			Funcionario* fc=new Funcionario{id, (*it)->get_nome()};
+			funcionarios.erase(it);
 			funcionarios.push_back(fc);
-			supervisores.erase(it);
 			distribui_funcionarios();
 			return true;
 		}
@@ -231,10 +244,6 @@ string Biblioteca::imprime(){
 	}
 	out << endl << "FUNCIONARIOS" << endl;
 	for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
-		out << (*it)->imprime();
-	}
-	out << endl << "SUPERVISORES" << endl;
-	for (vector<Supervisor*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
 		out << (*it)->imprime();
 	}
 	out << endl << "LEITORES" << endl;
@@ -260,20 +269,13 @@ void Biblioteca::escreve_livros(){
 
 // escrever funcionarios de Biblioteca
 void Biblioteca::escreve_funcionarios(){
-	ofstream myfile ("Funcionario.txt");
-	myfile << "";
-	myfile.close();
+	ofstream file_f ("Funcionario.txt");
+	file_f << "";
+	file_f.close();
+	ofstream file_s ("Supervisor.txt");
+	file_s << "";
+	file_s.close();
 	for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
-		(*it)->escreve();
-	}
-}
-
-// escrever supervisores de Biblioteca
-void Biblioteca::escreve_supervisores(){
-	ofstream myfile ("Supervisor.txt");
-	myfile << "";
-	myfile.close();
-	for (vector<Supervisor*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
 		(*it)->escreve();
 	}
 }
@@ -302,7 +304,6 @@ void Biblioteca::escreve_emprestimos(){
 void Biblioteca::escreve(){
 	escreve_livros();
 	escreve_funcionarios();
-	escreve_supervisores();
 	escreve_leitores();
 	escreve_emprestimos();
 }

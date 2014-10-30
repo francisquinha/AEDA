@@ -13,8 +13,8 @@ long Leitor::num_leitores{0};
 
 // construtor Leitor
 Leitor::Leitor(long id, string nom, long tel, string eml, vector<Emprestimo*> ep_lt):
-		 tem_id{id}, nome{nom}, telefone{tel}, email{eml}, emprestimos_leitor{ep_lt} {}
-Leitor::Leitor(string nom, long tel, string eml, vector<Emprestimo*> ep_lt): tem_id{num_leitores+1},
+		 Object{id}, nome{nom}, telefone{tel}, email{eml}, emprestimos_leitor{ep_lt} {}
+Leitor::Leitor(string nom, long tel, string eml, vector<Emprestimo*> ep_lt): Object{num_leitores+1},
 		nome{nom}, telefone{tel}, email{eml}, emprestimos_leitor{ep_lt} {num_leitores++;}
 
 // adicionar Emprestimo a Leitor

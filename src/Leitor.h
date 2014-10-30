@@ -3,12 +3,12 @@
 #define SRC_LEITOR_H_
 
 #include "Emprestimo.h"
-#include "tem_id.h"
+#include "Object.h"
 
 class Emprestimo;
-class tem_id;
+class Object;
 
-class Leitor: public tem_id {
+class Leitor: public Object {
 	std::string nome;
 	long telefone;
 	std::string email;

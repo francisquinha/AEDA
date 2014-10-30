@@ -15,9 +15,9 @@ using namespace std;
 long Emprestimo::num_emprestimos{0};
 
 // construtor Emprestimo
-Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): tem_id{id},
+Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): Object{id},
 		livro{lv}, funcionario{fc}, leitor{lt}, data{std::time(NULL)}{}
-Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt): tem_id{num_emprestimos+1},
+Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt): Object{num_emprestimos+1},
 		livro{lv}, funcionario{fc}, leitor{lt}, data{std::time(NULL)}{num_emprestimos++;}
 
 // obter Livro de Emprestimo

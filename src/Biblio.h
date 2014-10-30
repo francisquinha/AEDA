@@ -14,10 +14,11 @@ class Emprestimo;
 class Biblioteca {
 	std::vector<Livro*> livros;
 	std::vector<Funcionario*> funcionarios;
-	std::vector<Supervisor*> supervisores; // os supervisores nao estao no vector de funcionarios
+//	std::vector<Supervisor*> supervisores; // supervisores passam a estar no vector de funcionarios - polimorfismo
 	std::vector<Leitor*> leitores;
 	std::vector<Emprestimo*> emprestimos;
 public:
+	Biblioteca() {};
 	void adiciona_livro(Livro* lv1);
 	void adiciona_funcionario(Funcionario* fc);
 	void adiciona_leitor(Leitor* lt);
@@ -28,7 +29,7 @@ public:
 	bool remove_emprestimo(long id);
 	void distribui_funcionarios();
 	bool promove_funcionario_supervisor(long ID);
-	bool remove_supervisor(long ID);
+//	bool remove_supervisor(long ID); // deixa de fazer sentido com os supervisores no vector dos funcionarios
 	bool despromove_supervisor_funcionorario(long id);
 	std::string imprime();
 	std::vector<Emprestimo*> get_emprestimos_atrasados();
@@ -37,14 +38,13 @@ public:
 	void set_emprestimos(std::vector<Emprestimo*> emp);
 	std::vector<Funcionario*> get_funcionarios();
 	void set_funcionarios(std::vector<Funcionario*> func);
-	std::vector<Supervisor*> get_supervisores();
-	void set_supervisores(std::vector<Supervisor*> sup);
+	std::vector<Funcionario*> get_supervisores();
+	std::vector<Funcionario*> get_funcionarios_n_sup();
 	std::vector<Leitor*> get_leitores();
 	void set_leitores(std::vector<Leitor*> leit);
 	void set_livros(std::vector<Livro*> livr);
 	void escreve_livros();
 	void escreve_funcionarios();
-	void escreve_supervisores();
 	void escreve_leitores();
 	void escreve_emprestimos();
 	void escreve();

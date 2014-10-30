@@ -5,15 +5,15 @@
 #include "Livro.h"
 #include "Funcionario.h"
 #include "Leitor.h"
-#include "tem_id.h"
+#include "Object.h"
 #include <ctime>
 
 class Livro;
 class Funcionario;
 class Leitor;
-class tem_id;
+class Object;
 
-class Emprestimo: public tem_id{
+class Emprestimo: public Object{
 	Livro* livro;
 	Funcionario* funcionario;
 	Leitor* leitor;

@@ -2,11 +2,12 @@
 #ifndef SRC_LIVRO_H_
 #define SRC_LIVRO_H_
 
-#include "tem_id.h"
+#include <ctime>
+#include "Object.h"
 
-class tem_id;
+class Object;
 
-class Livro: public tem_id{
+class Livro: public Object{
 	std::string titulo;
 	std::vector<std::string> autores;
 	long ISBN;
@@ -14,13 +15,13 @@ class Livro: public tem_id{
 	int num_paginas;
 	int edicao;
 	bool emprestado;
-	int dias_indisponivel;
+	std::time_t data_emp;
 	static long num_livros;
 public:
 	Livro(long id, std::string tit, std::vector<std::string> aut, long isbn, std::string cot, int np, int ed,
-			bool ept, int di);
+			bool ept, std::time_t dt);
 	Livro(std::string tit, std::vector<std::string> aut, long isbn, std::string cot, int np, int ed,
-			bool ept, int di);
+			bool ept, std::time_t dt);
 	std::string imprime();
 	std::string get_titulo();
 	void set_titulo(std::string tit);
@@ -36,8 +37,8 @@ public:
 	void set_edicao(int ed);
 	bool get_emprestado();
 	void set_emprestado(bool ept);
-	int get_dias_indisponivel();
-	void set_dias_indisponivel(int di);
+	std::time_t get_data_emp();
+	void set_data_emp(std::time_t dt);
 	void escreve();
 };
 

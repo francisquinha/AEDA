@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <ctime>
 
 #include "Livro.h"
 
@@ -12,12 +13,12 @@ using namespace std;
 long Livro::num_livros{0};
 
 // construtor Livro
-Livro::Livro(long id, string tit, vector<string> aut, long isbn, string cot, int np, int ed, bool ept, int di):
-		tem_id{id}, titulo{tit}, autores{aut}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
-		emprestado{ept}, dias_indisponivel{di} {}
-Livro::Livro(string tit, vector<string> aut, long isbn, string cot, int np, int ed, bool ept, int di):
-		tem_id{num_livros+1}, titulo{tit}, autores{aut}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
-		emprestado{ept}, dias_indisponivel{di} {num_livros++;}
+Livro::Livro(long id, string tit, vector<string> aut, long isbn, string cot, int np, int ed, bool ept, time_t dt):
+		Object{id}, titulo{tit}, autores{aut}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
+		emprestado{ept}, data_emp{dt} {}
+Livro::Livro(string tit, vector<string> aut, long isbn, string cot, int np, int ed, bool ept, time_t dt):
+		Object{num_livros+1}, titulo{tit}, autores{aut}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
+		emprestado{ept}, data_emp{dt} {num_livros++;}
 
 // modificar estado emprestado de Livro
 void Livro::set_emprestado(bool ept){
@@ -25,8 +26,8 @@ void Livro::set_emprestado(bool ept){
 }
 
 // modificar dias de indisponibilidade de Livro
-void Livro::set_dias_indisponivel(int di){
-	dias_indisponivel=di;
+void Livro::set_data_emp(time_t dt){
+	data_emp=dt;
 }
 
 // obter emprestado de Livro
@@ -35,8 +36,8 @@ bool Livro::get_emprestado(){
 }
 
 // obter indisponibilidade de Livro
-int Livro::get_dias_indisponivel(){
-	return dias_indisponivel;
+time_t Livro::get_data_emp(){
+	return data_emp;
 }
 
 // obter titulo de Livro
@@ -83,7 +84,7 @@ string Livro::imprime(){
 			<< "Num. Paginas: " << num_paginas << endl
 			<< "Edicao: " << edicao << endl
 			<< "Emprestado: " << emprestado << endl
-			<< "Dias Indisponibilidade: " << dias_indisponivel << endl;
+			<< "Data Emprestado: " << data_emp << endl;
 	return out.str();
 }
 
@@ -100,7 +101,7 @@ void Livro::escreve(){
 			<< num_paginas << endl
 			<< edicao << endl
 			<< emprestado << endl
-			<< dias_indisponivel << endl;
+			<< data_emp << endl;
 	ofstream myfile ("Livro.txt",ios::app);
 	if (myfile.is_open()){
 		myfile << out.str();

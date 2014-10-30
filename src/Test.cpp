@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <fstream>
+#include "time.h"
 #include "Biblio.h"
 
 using namespace std;
@@ -13,13 +14,13 @@ void test_a_criar_livros() {
 	//ID, titulo, autores, ISBN, cota, num_paginas, edicao, emprestado, dias_indisponivel
 	vector<string> a1{"Saramago, Jose"};
 	Livro* l1=new Livro{1,"O Evangelho Segundo Jesus Cristo",a1,9722105248,
-		"821.134.3 SARj/EVA 13", 445, 13, false, 0};
+		"821.134.3 SARj/EVA 13", 445, 13, false, {}};
 	vector<string> a2{"Couto, Mia"};
 	Livro* l2=new Livro{2,"A chuva pasmada",a2,9722116541,
-		"821.134.3(679) /COUm/CHU", 74, 1, false, 0};
+		"821.134.3(679) /COUm/CHU", 74, 1, false, {}};
 	vector<string> a3{"Hopcroft, John E.", "Motwani, Rajeev", "Ullman, Jeffrey D."};
 	Livro* l3=new Livro{3,"Introduction to automata theory, languages, and computation",a3,201441241,
-		"519.6 /HOPj/INT 2", 521, 2, false, 0};
+		"519.6 /HOPj/INT 2", 521, 2, false, {}};
 	ASSERT_EQUAL("O Evangelho Segundo Jesus Cristo", l1->get_titulo());
 	ASSERT_EQUAL(2, l2->get_ID());
 	ASSERT_EQUAL(201441241,l3->get_ISBN());
@@ -28,23 +29,23 @@ void test_a_criar_livros() {
 	ASSERT_EQUAL(13, l1->get_edicao());
 	ASSERT_EQUAL("Motwani, Rajeev", l3->get_autores()[1]);
 	ASSERT_EQUAL(false, l2->get_emprestado());
-	ASSERT_EQUAL(0,l1->get_dias_indisponivel());
+	ASSERT_EQUAL(0,l1->get_data_emp());
 }
 
 void test_b_adicionar_livros() {
 	Biblioteca b1{};
 	vector<string> a1{"Pacheco, Helder"};
 	Livro* l1=new Livro{1,"Porto em Azul e Branco",a1,9789723611199,
-		"29.90", 192, 1, false, 0};
+		"29.90", 192, 1, false, {}};
 	vector<string> a2{"Saramago, Jose"};
 	Livro* l2=new Livro{2,"O Evangelho Segundo Jesus Cristo",a2,9722105248,
-		"821.134.3 SARj/EVA 13", 445, 13, false, 0};
+		"821.134.3 SARj/EVA 13", 445, 13, false, {}};
 	vector<string> a3{"Couto, Mia"};
 	Livro* l3=new Livro{3,"A chuva pasmada",a3,9722116541,
-		"821.134.3(679) /COUm/CHU", 74, 1, false, 0};
+		"821.134.3(679) /COUm/CHU", 74, 1, false, {}};
 	vector<string> a4{"Hopcroft, John E.", "Motwani, Rajeev", "Ullman, Jeffrey D."};
 	Livro* l4=new Livro{4,"Introduction to automata theory, languages, and computation",a4,201441241,
-		"519.6 /HOPj/INT 2", 521, 2, false, 0};
+		"519.6 /HOPj/INT 2", 521, 2, false, {}};
 	b1.adiciona_livro(l1);
 	b1.adiciona_livro(l2);
 	b1.adiciona_livro(l3);
@@ -55,7 +56,7 @@ void test_b_adicionar_livros() {
 void test_c_imprimir_livros(){
 	vector<string> a3{"Hopcroft, John E.", "Motwani, Rajeev", "Ullman, Jeffrey D."};
 	Livro* l3=new Livro{3,"Introduction to automata theory, languages, and computation",a3,201441241,
-		"519.6 /HOPj/INT 2", 521, 2, false, 0};
+		"519.6 /HOPj/INT 2", 521, 2, false, {}};
 	stringstream ss{};
 	ss << "ID: 3\n"
 			<< "Titulo: Introduction to automata theory, languages, and computation\n"
@@ -65,7 +66,7 @@ void test_c_imprimir_livros(){
 			<< "Num. Paginas: 521\n"
 			<< "Edicao: 2\n"
 			<< "Emprestado: 0\n"
-			<< "Dias Indisponibilidade: 0\n";
+			<< "Data Emprestado: 0\n";
 	cout << l3->imprime();
 	ASSERT_EQUAL(ss.str(), l3->imprime());
 }
@@ -150,13 +151,10 @@ void test_g_promover_funcionarios() {
 	b4.adiciona_funcionario(f15);
 	b4.adiciona_funcionario(f16);
 	b4.adiciona_funcionario(f17);
-	b4.escreve_funcionarios();
 	ASSERT_EQUAL(b4.promove_funcionario_supervisor(3), true);
 	ASSERT_EQUAL(b4.promove_funcionario_supervisor(5), true);
 	ASSERT_EQUAL(b4.promove_funcionario_supervisor(10), true);
 	ASSERT_EQUAL(b4.promove_funcionario_supervisor(20), false);
-	ASSERT_EQUAL(14, b4.get_funcionarios().size());
-	ASSERT_EQUAL(3, b4.get_supervisores().size());
 	ASSERT_EQUAL(5, (b4.get_supervisores()[0])->get_func_sup().size());
 	ASSERT_EQUAL(5, (b4.get_supervisores()[1])->get_func_sup().size());
 	ASSERT_EQUAL(4, (b4.get_supervisores()[2])->get_func_sup().size());
@@ -165,8 +163,6 @@ void test_g_promover_funcionarios() {
 			<< "Nome: Margarida Soares\n"
 			<< "ID Funcionarios: 2; 7; 11; 14; 17; \n";
 	ASSERT_EQUAL(ss.str(), b4.get_supervisores()[1]->imprime());
-	b4.escreve_funcionarios();
-	b4.escreve_supervisores();
 }
 
 void test_h_criar_adicionar_imprimir_escrever_leitor() {
@@ -205,7 +201,6 @@ void test_h_criar_adicionar_imprimir_escrever_leitor() {
 	b5.adiciona_funcionario(f15);
 	b5.adiciona_funcionario(f16);
 	b5.adiciona_funcionario(f17);
-	b5.escreve_funcionarios();
 	b5.promove_funcionario_supervisor(3);
 	b5.promove_funcionario_supervisor(5);
 	b5.promove_funcionario_supervisor(10);
@@ -345,7 +340,6 @@ void test_i_remover() {
 	b2.adiciona_funcionario(f15);
 	b2.adiciona_funcionario(f16);
 	b2.adiciona_funcionario(f17);
-	b2.escreve_funcionarios();
 	b2.promove_funcionario_supervisor(3);
 	b2.promove_funcionario_supervisor(5);
 	b2.promove_funcionario_supervisor(10);
@@ -444,6 +438,7 @@ void test_i_remover() {
 	b2.adiciona_leitor(l37);
 	b2.adiciona_leitor(l38);
 	b2.adiciona_leitor(l39);
+	b2.escreve();
 	ASSERT_EQUAL(3,lv3->get_ID());
 	ASSERT_EQUAL(7,f7->get_ID());
 	ASSERT_EQUAL(5,l5->get_ID());
@@ -455,7 +450,13 @@ void test_i_remover() {
 	ASSERT_EQUAL(false, b2.remove_funcionario(24));
 	ASSERT_EQUAL(3, b2.get_livros().size());
 	ASSERT_EQUAL(38, b2.get_leitores().size());
-	ASSERT_EQUAL(13, b2.get_funcionarios().size());
+	ASSERT_EQUAL(16, b2.get_funcionarios().size());
+	#ifdef __APPLE__
+
+	#elif __MING32__ __WIN32__
+	blabla
+	#endif
+
 }
 
 void runSuite(){

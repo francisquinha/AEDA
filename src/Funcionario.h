@@ -2,11 +2,11 @@
 #ifndef SRC_FUNCIONARIO_H_
 #define SRC_FUNCIONARIO_H_
 
-#include "tem_id.h"
+#include "Object.h"
 
-class tem_id;
+class Object;
 
-class Funcionario: public tem_id {
+class Funcionario: public Object {
 	std::string nome;
 	static long num_funcionarios;
 public:
@@ -16,7 +16,12 @@ public:
 	virtual std::string imprime();
 	std::string get_nome();
 	void set_nome(std::string nom);
-	void escreve();
+	virtual void escreve();
+	virtual void set_func_sup(std::vector<Funcionario*> func_sup){};
+	virtual std::vector<Funcionario*> get_func_sup(){
+		std::vector<Funcionario*> v{};
+		return v;};
+	virtual void adiciona_func_sup(Funcionario* fc){};
 };
 
 #endif /* SRC_FUNCIONARIO_H_ */
