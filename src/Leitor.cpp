@@ -9,9 +9,13 @@
 
 using namespace std;
 
+long Leitor::num_leitores{0};
+
 // construtor Leitor
 Leitor::Leitor(long id, string nom, long tel, string eml, vector<Emprestimo*> ep_lt):
 		 tem_id{id}, nome{nom}, telefone{tel}, email{eml}, emprestimos_leitor{ep_lt} {}
+Leitor::Leitor(string nom, long tel, string eml, vector<Emprestimo*> ep_lt): tem_id{num_leitores+1},
+		nome{nom}, telefone{tel}, email{eml}, emprestimos_leitor{ep_lt} {num_leitores++;}
 
 // adicionar Emprestimo a Leitor
 void Leitor::adiciona_emp_leit(Emprestimo* ep){
@@ -19,21 +23,14 @@ void Leitor::adiciona_emp_leit(Emprestimo* ep){
 }
 
 // remover Emprestimo de Leitor
-void Leitor::remove_emp_leit(Emprestimo* ep){
-	vector<Emprestimo*> emprestimos_manter{};
-	long id_emp=ep->get_ID();
-	bool encontrado{false};
-	for (unsigned int i{0}; i<emprestimos_leitor.size();i++){
-		if (emprestimos_leitor[i]->get_ID()==id_emp){
-			encontrado=true;
-		}
-		else{
-			emprestimos_manter.push_back(emprestimos_leitor[i]);
+bool Leitor::remove_emp_leit(long id){
+	for (vector<Emprestimo*>::const_iterator it=emprestimos_leitor.begin(); it!=emprestimos_leitor.end();it++){
+		if ((*it)->get_ID()==id){
+			emprestimos_leitor.erase(it);
+			return true;
 		}
 	}
-	if (encontrado) {
-		emprestimos_leitor=emprestimos_manter;
-	}
+	return false;
 }
 
 // obter Emprestimos de Leitor

@@ -6,6 +6,7 @@
 #include "Funcionario.h"
 #include "Leitor.h"
 #include "tem_id.h"
+#include <ctime>
 
 class Livro;
 class Funcionario;
@@ -17,8 +18,10 @@ class Emprestimo: public tem_id{
 	Funcionario* funcionario;
 	Leitor* leitor;
 	std::time_t data; // data em que e feito o emprestimo
+	static long num_emprestimos;
 public:
 	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt);
+	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt);
 	Livro* get_livro();
 	void set_livro(Livro* lv);
 	Funcionario* get_funcionario();

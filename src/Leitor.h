@@ -13,8 +13,10 @@ class Leitor: public tem_id {
 	long telefone;
 	std::string email;
 	std::vector<Emprestimo*> emprestimos_leitor;
+	static long num_leitores;
 public:
 	Leitor(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt);
+	Leitor(std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt);
 	std::string imprime();
 	std::string get_nome();
 	void set_nome(std::string nom);
@@ -23,7 +25,7 @@ public:
 	std::string get_email();
 	void set_email(std::string eml);
 	void adiciona_emp_leit(Emprestimo* ep);
-	void remove_emp_leit(Emprestimo* ep);
+	bool remove_emp_leit(long id);
 	std::vector<Emprestimo*> get_emp_leit();
 	void escreve();
 };

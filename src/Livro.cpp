@@ -9,10 +9,15 @@
 
 using namespace std;
 
+long Livro::num_livros{0};
+
 // construtor Livro
 Livro::Livro(long id, string tit, vector<string> aut, long isbn, string cot, int np, int ed, bool ept, int di):
 		tem_id{id}, titulo{tit}, autores{aut}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
 		emprestado{ept}, dias_indisponivel{di} {}
+Livro::Livro(string tit, vector<string> aut, long isbn, string cot, int np, int ed, bool ept, int di):
+		tem_id{num_livros+1}, titulo{tit}, autores{aut}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
+		emprestado{ept}, dias_indisponivel{di} {num_livros++;}
 
 // modificar estado emprestado de Livro
 void Livro::set_emprestado(bool ept){

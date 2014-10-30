@@ -15,8 +15,11 @@ class Livro: public tem_id{
 	int edicao;
 	bool emprestado;
 	int dias_indisponivel;
+	static long num_livros;
 public:
 	Livro(long id, std::string tit, std::vector<std::string> aut, long isbn, std::string cot, int np, int ed,
+			bool ept, int di);
+	Livro(std::string tit, std::vector<std::string> aut, long isbn, std::string cot, int np, int ed,
 			bool ept, int di);
 	std::string imprime();
 	std::string get_titulo();
