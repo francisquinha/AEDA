@@ -22,16 +22,14 @@ void Leitor::adiciona_emp_leit(Emprestimo* ep){
 void Leitor::remove_emp_leit(Emprestimo* ep){
 	vector<Emprestimo*> emprestimos_manter{};
 	long id_emp=ep->get_ID();
-	unsigned int i{0};
 	bool encontrado{false};
-	while (i<emprestimos_leitor.size()){
+	for (unsigned int i{0}; i<emprestimos_leitor.size();i++){
 		if (emprestimos_leitor[i]->get_ID()==id_emp){
 			encontrado=true;
 		}
 		else{
 			emprestimos_manter.push_back(emprestimos_leitor[i]);
 		}
-		i++;
 	}
 	if (encontrado) {
 		emprestimos_leitor=emprestimos_manter;

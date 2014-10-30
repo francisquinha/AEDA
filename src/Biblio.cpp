@@ -70,16 +70,14 @@ void Biblioteca::adiciona_leitor(Leitor* lt){
 // remover Livro da Biblioteca
 bool Biblioteca::remove_livro(long id){
 	vector<Livro*> livros_manter{};
-	unsigned int i{0};
 	bool encontrado{false};
-	while (i<livros.size()){
+	for (unsigned int i{0}; i<livros.size(); i++){
 		if (livros[i]->get_ID()==id){
 			encontrado=true;
 		}
 		else{
 			livros_manter.push_back(livros[i]);
 		}
-		i++;
 	}
 	if (encontrado) {
 		livros=livros_manter;
@@ -91,16 +89,14 @@ bool Biblioteca::remove_livro(long id){
 // remover Funcionario da Biblioteca
 bool Biblioteca::remove_funcionario(long id){
 	vector<Funcionario*> funcionarios_manter{};
-	unsigned int i{0};
 	bool encontrado{false};
-	while (i<funcionarios.size()){
+	for (unsigned int i{0}; i<funcionarios.size(); i++){
 		if (funcionarios[i]->get_ID()==id){
 			encontrado=true;
 		}
 		else{
 			funcionarios_manter.push_back(funcionarios[i]);
 		}
-		i++;
 	}
 	if (encontrado) {
 		funcionarios=funcionarios_manter;
@@ -112,16 +108,14 @@ bool Biblioteca::remove_funcionario(long id){
 // remover Leitor da Biblioteca
 bool Biblioteca::remove_leitor(long id){
 	vector<Leitor*> leitores_manter{};
-	unsigned int i{0};
 	bool encontrado{false};
-	while (i<leitores.size()){
+	for (unsigned int i{0}; i<leitores.size(); i++){
 		if (leitores[i]->get_ID()==id){
 			encontrado=true;
 		}
 		else{
 			leitores_manter.push_back(leitores[i]);
 		}
-		i++;
 	}
 	if (encontrado) {
 		leitores=leitores_manter;
@@ -157,10 +151,9 @@ bool Biblioteca::remove_emprestimo(long id){
 	vector<Emprestimo*> emprestimos_manter{};
 	Livro* lv{};
 	Leitor* lt{};
-	unsigned int i{0};
 	bool encontrado{false};
 	Emprestimo* ep{};
-	while (i<emprestimos.size()){
+	for (unsigned int i{0}; i<emprestimos.size(); i++){
 		if (emprestimos[i]->get_ID()==id){
 			encontrado=true;
 			ep=emprestimos[i];
@@ -170,7 +163,6 @@ bool Biblioteca::remove_emprestimo(long id){
 		else{
 			emprestimos_manter.push_back(emprestimos[i]);
 		}
-		i++;
 	}
 	if (encontrado) {
 		lv->set_emprestado(false);
@@ -190,12 +182,10 @@ bool Biblioteca::remove_emprestimo(long id){
 // obter Emprestimos atrasados de Biblioteca
 vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados(){
 	vector<Emprestimo*> atrasados{};
-	vector<Emprestimo*>::const_iterator it=emprestimos.begin();
-	while (it!=emprestimos.end()){
+	for (vector<Emprestimo*>::const_iterator it=emprestimos.begin(); it!=emprestimos.end(); it++){
 		if ((*it)->get_atraso()>0){
 			atrasados.push_back(*it);
 		}
-		it++;
 	}
 	return atrasados;
 }
@@ -205,27 +195,22 @@ vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados(){
 
 // distribuir funcionarios por supervisores
 void Biblioteca::distribui_funcionarios(){
-	vector<Supervisor*>::const_iterator it=supervisores.begin();
 	vector<Funcionario*> func_sup{};
 	unsigned long num_sup{supervisores.size()};
-	while (it!=supervisores.end()){
+	for (vector<Supervisor*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
 		(*it)->set_func_sup(func_sup);
-		it++;
 	}
-	unsigned int i{0};
-	while (i<funcionarios.size()){
+	for (unsigned int i{0}; i<funcionarios.size(); i++){
 		(supervisores[i%num_sup]->adiciona_func_sup(funcionarios[i]));
-		i++;
 	}
 }
 
 // promover funcionario a supervisor
 bool Biblioteca::promove_funcionario_supervisor(long id){
 	vector<Funcionario*> funcionarios_restantes{};
-	vector<Funcionario*>::const_iterator it=funcionarios.begin();
 	Funcionario* fc{};
 	bool existe{false};
-	while (it!=funcionarios.end()){
+	for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
 		if ((*it)->get_ID()==id){
 			fc=(*it);
 			existe=true;
@@ -233,7 +218,6 @@ bool Biblioteca::promove_funcionario_supervisor(long id){
 		else{
 			funcionarios_restantes.push_back(*it);
 		}
-		it++;
 	}
 	if (existe){
 		vector<Funcionario*> func_sup{};
@@ -250,9 +234,8 @@ bool Biblioteca::promove_funcionario_supervisor(long id){
 bool Biblioteca::remove_supervisor(long id){
 	bool existe{false};
 	vector<Supervisor*> supervisores_restantes{};
-	vector<Supervisor*>::const_iterator it=supervisores.begin();
 	Supervisor* sp{};
-	while (it!=supervisores.end()){
+	for (vector<Supervisor*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
 		if ((*it)->get_ID()==id){
 			sp=(*it);
 			existe=true;
@@ -260,7 +243,6 @@ bool Biblioteca::remove_supervisor(long id){
 		else{
 			supervisores_restantes.push_back(*it);
 		}
-		it++;
 	}
 	if (existe){
 		supervisores=supervisores_restantes;
@@ -272,10 +254,9 @@ bool Biblioteca::remove_supervisor(long id){
 // despromover supervisor a funcionario
 bool Biblioteca::despromove_supervisor_funcionorario(long id){
 	vector<Supervisor*> supervisores_restantes{};
-	vector<Supervisor*>::const_iterator it=supervisores.begin();
 	Supervisor* sp{};
 	bool existe{false};
-	while (it!=supervisores.end()){
+	for (vector<Supervisor*>::const_iterator it=supervisores.begin(); it!=supervisores.end(); it++){
 		if ((*it)->get_ID()==id){
 			sp=(*it);
 			existe=true;
@@ -283,7 +264,6 @@ bool Biblioteca::despromove_supervisor_funcionorario(long id){
 		else{
 			supervisores_restantes.push_back(*it);
 		}
-		it++;
 	}
 	if (existe){
 		supervisores=supervisores_restantes;
