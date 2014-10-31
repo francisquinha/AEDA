@@ -91,7 +91,7 @@ bool Biblioteca::remove_livro(long id){
 			return true;
 		}
 	}
-	return false;
+	throw Object_nao_existe(id);
 }
 
 // distribuir funcionarios por supervisores
@@ -121,7 +121,7 @@ bool Biblioteca::remove_funcionario(long id){
 		distribui_funcionarios();
 		return true;
 	}
-	return false;
+	throw Object_nao_existe(id);
 }
 
 // remover Leitor da Biblioteca
@@ -133,16 +133,11 @@ bool Biblioteca::remove_leitor(long id){
 				return true;
 			}
 			else{
-				vector<Emprestimo*> emp_leit{(*it)->get_emp_leit()};
-				cout << "Tem que devolver emprestimo(s) com ID: ";
-				for (vector<Emprestimo*>::const_iterator ite=emp_leit.begin(); ite!=emp_leit.end(); ite++){
-					cout << (*ite)->get_ID() << "; ";
-				}
-				return false;
+				throw Emprestimos_por_devolver(id, (*it)->get_nome(),(*it)->get_telefone(),(*it)->get_email(), (*it)->get_emp_leit());
 			}
 		}
 	}
-	return false;
+	throw Object_nao_existe(id);
 }
 
 // adicionar Emprestimo a Biblioteca
@@ -150,9 +145,6 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep){
 	Livro* lv=ep->get_livro();
 	Leitor* lt=ep->get_leitor();
 	vector<Emprestimo*> ep_lt=lt->get_emp_leit();
-	time_t dt=lv->get_data_emp();
-	time_t hj = std::time(NULL);
-	double tempo_dias{floor(difftime(hj,dt)/86400)};
 	if (lv->get_emprestado()==false){
 		if (ep_lt.size()<3){
 			lv->set_emprestado(true);
@@ -161,14 +153,12 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep){
 			emprestimos.push_back(ep);
 		}
 		else {
-			cout << "Leitor ja tem 3 emprestimos feitos.";
+			throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(),lt->get_telefone(),lt->get_email(), lt->get_emp_leit());
 		}
 	}
-	else if (tempo_dias<=7){
-		cout << "Este livro nao esta disponivel para emprestar. Deve regresssar dentro de " << 7-tempo_dias << " dia(s).";
-	}
-	else {
-		cout << "Este livro nao esta disponivel para emprestar. Devia ter sido devolvido ha " << tempo_dias-7 << " dia(s).";
+	else{
+		throw Livro_indisponivel(lv->get_ID(),lv->get_titulo(),lv->get_autores(),lv->get_ISBN(),
+				lv->get_cota(),lv->get_num_paginas(),lv->get_edicao(),lv->get_emprestado(),lv->get_data_emp());
 	}
 }
 
@@ -201,8 +191,6 @@ vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados(){
 	}
 	return atrasados;
 }
-
-// notificar leitor por telefone ou email do atraso???
 
 // promover funcionario a supervisor
 bool Biblioteca::promove_funcionario_supervisor(long id){

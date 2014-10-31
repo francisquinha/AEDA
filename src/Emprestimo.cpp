@@ -9,6 +9,7 @@
 #include <fstream>
 
 #include "Emprestimo.h"
+#include "Excecao.h"
 
 using namespace std;
 
@@ -73,5 +74,5 @@ void Emprestimo::escreve(){
 		myfile << out.str();
 		myfile.close();
 	}
-	else cout << "Unable to open file";
+	else throw Ficheiro_indisponivel("Emprestimo.txt");
 }

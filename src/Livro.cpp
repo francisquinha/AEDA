@@ -5,8 +5,11 @@
 #include <sstream>
 #include <fstream>
 #include <ctime>
+#include <algorithm>
+#include <cmath>
 
 #include "Livro.h"
+#include "Excecao.h"
 
 using namespace std;
 
@@ -107,7 +110,6 @@ void Livro::escreve(){
 		myfile << out.str();
 		myfile.close();
 	}
-	else cout << "Unable to open file";
+	else throw Ficheiro_indisponivel("Livro.txt");
 }
-
 

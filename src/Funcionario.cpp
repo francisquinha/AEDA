@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include "Funcionario.h"
+#include "Excecao.h"
 
 using namespace std;
 
@@ -43,5 +44,5 @@ void Funcionario::escreve(){
 		myfile << out.str();
 		myfile.close();
 	}
-	else cout << "Unable to open file";
+	else throw Ficheiro_indisponivel("Funcionario.txt");
 }

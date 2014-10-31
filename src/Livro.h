@@ -42,4 +42,11 @@ public:
 	void escreve();
 };
 
+class Livro_indisponivel: public Livro{
+public:
+	Livro_indisponivel(long id, std::string tit, std::vector<std::string> aut, long isbn, std::string cot,
+			int np, int ed, bool ept, std::time_t dt): Livro{id, tit, aut, isbn, cot, np, ed, ept, dt}{};
+};
+
+
 #endif /* SRC_LIVRO_H_ */

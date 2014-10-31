@@ -17,6 +17,8 @@ class Leitor: public Object {
 public:
 	Leitor(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt);
 	Leitor(std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt);
+	Leitor(long id, std::string nom, long tel, std::string eml);
+	Leitor(std::string nom, long tel, std::string eml);
 	std::string imprime();
 	std::string get_nome();
 	void set_nome(std::string nom);
@@ -28,6 +30,16 @@ public:
 	bool remove_emp_leit(long id);
 	std::vector<Emprestimo*> get_emp_leit();
 	void escreve();
+};
+
+class Emprestimos_por_devolver: public Leitor{
+public:
+	Emprestimos_por_devolver(long id, std::string nom, int tel, std::string eml, std::vector<Emprestimo*> ep_lt): Leitor{id, nom, tel, eml, ep_lt}{};
+};
+
+class Maximo_emprestimos: public Leitor{
+public:
+	Maximo_emprestimos(long id, std::string nom, int tel, std::string eml, std::vector<Emprestimo*> ep_lt): Leitor{id, nom, tel, eml, ep_lt}{};
 };
 
 #endif /* SRC_LEITOR_H_ */
