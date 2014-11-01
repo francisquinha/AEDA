@@ -9,6 +9,7 @@
 #include <fstream>
 
 #include "Biblio.h"
+#include "Excecao.h"
 
 using namespace std;
 
@@ -81,6 +82,26 @@ void Biblioteca::adiciona_funcionario(Funcionario* fc){
 // adicionar Leitor a Biblioteca
 void Biblioteca::adiciona_leitor(Leitor* lt){
 	leitores.push_back(lt);
+}
+
+// obter temas de livros de Biblioteca
+vector<string> Biblioteca::get_temas(){
+	vector<string> tem{};
+	for (vector<Livro*>::const_iterator it=livros.begin(); it!= livros.end(); it++){
+		tem.push_back((*it)->get_tema());
+	}
+	return tem;
+}
+
+// obter livros com tema xpto
+vector<Livro*> Biblioteca::get_livros_tema(string xpto){
+	vector<Livro*> lv{};
+	for (vector<Livro*>::const_iterator it=livros.begin(); it!= livros.end(); it++){
+		if ((*it)->get_tema()==xpto){
+			lv.push_back(*it);
+		}
+	}
+	return lv;
 }
 
 // remover Livro da Biblioteca
@@ -157,7 +178,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep){
 		}
 	}
 	else{
-		throw Livro_indisponivel(lv->get_ID(),lv->get_titulo(),lv->get_autores(),lv->get_ISBN(),
+		throw Livro_indisponivel(lv->get_ID(),lv->get_titulo(),lv->get_autores(),lv->get_tema(), lv->get_ISBN(),
 				lv->get_cota(),lv->get_num_paginas(),lv->get_edicao(),lv->get_emprestado(),lv->get_data_emp());
 	}
 }
@@ -294,4 +315,196 @@ void Biblioteca::escreve(){
 	escreve_funcionarios();
 	escreve_leitores();
 	escreve_emprestimos();
+}
+
+// ler livros de Biblioteca
+void Biblioteca::le_livros(string ficheiro){
+	set_livros({});
+	ifstream islv(ficheiro);
+	if (!islv) throw Ficheiro_indisponivel(ficheiro);
+	string ids{}, tit{},auts{},tem{},isbns{},cot{},num_pags{},edis{},epts{},dts{};
+	istringstream autss{};
+	while (!islv.eof()){
+		getline(islv,ids);
+		getline(islv,tit);
+		getline(islv,auts);
+		getline(islv,tem);
+		getline(islv,isbns);
+		getline(islv,cot);
+		getline(islv,num_pags);
+		getline(islv,edis);
+		getline(islv,epts);
+		getline(islv,dts);
+		long id = atol(ids.c_str());
+		vector<string>aut{};
+		string autor{};
+		stringstream autss(auts);
+		while(getline(autss,autor,';')){
+			aut.push_back(autor);
+		}
+		long isbn = atol(isbns.c_str());
+		int num_pag = atoi(num_pags.c_str());
+		int edi = atoi(edis.c_str());
+		bool ept = atoi(epts.c_str());
+		time_t dt = atol(dts.c_str());
+		if (ids!=""){
+			Livro* lv = new Livro{id,tit,aut,tem,isbn,cot,num_pag,edi,ept,dt};
+			livros.push_back(lv);
+		}
+	}
+	islv.close();
+}
+
+// ler funcionarios de Biblioteca
+void Biblioteca::le_funcionarios(string ficheiro_fc, string ficheiro_sp){
+	set_funcionarios({});
+	ifstream isfc(ficheiro_fc);
+	ifstream issp(ficheiro_sp);
+	if (!isfc) throw Ficheiro_indisponivel(ficheiro_fc);
+	if (!issp) throw Ficheiro_indisponivel(ficheiro_sp);
+	string ids{}, nom{}, fsids{};
+	istringstream fsidss{};
+	long id{}, fsid{};
+	bool encontrado{false};
+	vector<Funcionario*> func_sup{};
+	string funsid{};
+	while (!isfc.eof()){
+		getline(isfc,ids);
+		getline(isfc,nom);
+		id = atol(ids.c_str());
+		if (ids!=""){
+			Funcionario* fc = new Funcionario{id,nom};
+			funcionarios.push_back(fc);
+		}
+	}
+	isfc.close();
+	while (!issp.eof()){
+		getline(issp,ids);
+		getline(issp,nom);
+		getline(issp,fsids);
+		id = atol(ids.c_str());
+		stringstream fsidss(fsids);
+		func_sup={};
+		while(getline(fsidss,funsid,';')){
+			encontrado=false;
+			fsid = atol(funsid.c_str());
+			for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
+				if ((*it)->get_ID()==fsid){
+					func_sup.push_back(*it);
+					encontrado=true;
+				}
+			}
+			if (!encontrado) throw Object_nao_existe(id);
+		}
+		if (ids!=""){
+			Supervisor* sp = new Supervisor{id,nom,func_sup};
+			funcionarios.push_back(sp);
+		}
+	}
+	issp.close();
+}
+
+// ler leitores de Biblioteca
+void Biblioteca::le_leitores(string ficheiro){
+	set_leitores({});
+	ifstream islt(ficheiro);
+	if (!islt) throw Ficheiro_indisponivel(ficheiro);
+	string ids{}, nom{}, tels{}, eml{}, epids{};
+	long id{}, tel{}, epid{};
+	istringstream epidss{};
+	bool encontrado{false};
+	vector<Emprestimo*> emp_leit{};
+	string empids{};
+	while (!islt.eof()){
+		getline(islt,ids);
+		getline(islt,nom);
+		getline(islt,tels);
+		getline(islt,eml);
+		getline(islt,epids);
+		id = atol(ids.c_str());
+		tel = atol(tels.c_str());
+		emp_leit={};
+		if (epids!="" and emprestimos.size()>0){
+			stringstream epidss(epids);
+			while(getline(epidss,empids,';')){
+				encontrado=false;
+				epid = atol(empids.c_str());
+				for (vector<Emprestimo*>::const_iterator it=emprestimos.begin(); it!=emprestimos.end(); it++){
+					if ((*it)->get_ID()==epid){
+						emp_leit.push_back(*it);
+						encontrado=true;
+					}
+				}
+				if (!encontrado) throw Object_nao_existe(id);
+			}
+		}
+		if (ids!=""){
+			Leitor* lt = new Leitor{id,nom,tel,eml,emp_leit};
+			leitores.push_back(lt);
+		}
+	}
+	islt.close();
+}
+
+// ler emprestimos de Biblioteca
+void Biblioteca::le_emprestimos(string ficheiro){
+	set_emprestimos({});
+	ifstream isep(ficheiro);
+	if (!isep) throw Ficheiro_indisponivel(ficheiro);
+	string ids{}, lvids{}, fcids{}, ltids{}, dts{};
+	long id{}, lvid{}, fcid{}, ltid{};
+	time_t dt{};
+	Livro* lv{};
+	Funcionario* fc{};
+	Leitor* lt{};
+	bool encontrado{false};
+	while (!isep.eof()){
+		getline(isep,ids);
+		getline(isep,lvids);
+		getline(isep,fcids);
+		getline(isep,ltids);
+		getline(isep,dts);
+		id = atol(ids.c_str());
+		lvid = atol(lvids.c_str());
+		fcid = atol(fcids.c_str());
+		ltid = atol(ltids.c_str());
+		if (ids!=""){
+			encontrado=false;
+			for (vector<Livro*>::const_iterator it=livros.begin(); it!=livros.end(); it++){
+				if ((*it)->get_ID()==lvid){
+					lv=(*it);
+					encontrado=true;
+				}
+			}
+			if (!encontrado) throw Object_nao_existe(lvid);
+			encontrado=false;
+			for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
+				if ((*it)->get_ID()==fcid){
+					fc=(*it);
+					encontrado=true;
+				}
+			}
+			if (!encontrado) throw Object_nao_existe(fcid);
+			encontrado=false;
+			for (vector<Leitor*>::const_iterator it=leitores.begin(); it!=leitores.end(); it++){
+				if ((*it)->get_ID()==ltid){
+					lt=(*it);
+					encontrado=true;
+				}
+			}
+			if (!encontrado) throw Object_nao_existe(ltid);
+			Emprestimo* ep = new Emprestimo{id,lv,fc,lt,dt};
+			emprestimos.push_back(ep);
+		}
+	}
+	isep.close();
+}
+
+// ler todos os ficheiros de Biblioteca
+void Biblioteca::le(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt, string ficheiro_ep){
+	le_livros(ficheiro_lv);
+	le_funcionarios(ficheiro_fc, ficheiro_sp);
+	le_leitores(ficheiro_lt);
+	le_emprestimos(ficheiro_ep);
+	le_leitores(ficheiro_lt);
 }

@@ -48,7 +48,7 @@ void Supervisor::escreve(){
 	out << get_ID() << endl
 			<< get_nome() << endl;
 	for (vector<Funcionario*>::const_iterator it=funcionarios_sup.begin(); it!=funcionarios_sup.end(); it++){
-		out << (*it)->get_ID() << "; ";
+		out << (*it)->get_ID() << ";";
 	}
 	out << endl;
 	ofstream myfile ("Supervisor.txt",ios::app);

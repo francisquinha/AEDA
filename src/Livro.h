@@ -10,6 +10,7 @@ class Object;
 class Livro: public Object{
 	std::string titulo;
 	std::vector<std::string> autores;
+	std::string tema;
 	long ISBN;
 	std::string cota;
 	int num_paginas;
@@ -18,15 +19,17 @@ class Livro: public Object{
 	std::time_t data_emp;
 	static long num_livros;
 public:
-	Livro(long id, std::string tit, std::vector<std::string> aut, long isbn, std::string cot, int np, int ed,
-			bool ept, std::time_t dt);
-	Livro(std::string tit, std::vector<std::string> aut, long isbn, std::string cot, int np, int ed,
-			bool ept, std::time_t dt);
+	Livro(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn, std::string cot,
+			int np, int ed, bool ept, std::time_t dt);
+	Livro(std::string tit, std::vector<std::string> aut, std::string tem, long isbn, std::string cot,
+			int np, int ed, bool ept, std::time_t dt);
 	std::string imprime();
 	std::string get_titulo();
 	void set_titulo(std::string tit);
 	std::vector<std::string> get_autores();
 	void set_autores(std::vector<std::string> aut);
+	std::string get_tema();
+	void set_tema();
 	long get_ISBN();
 	void set_ISBN(long isbn);
 	std::string get_cota();
@@ -44,8 +47,9 @@ public:
 
 class Livro_indisponivel: public Livro{
 public:
-	Livro_indisponivel(long id, std::string tit, std::vector<std::string> aut, long isbn, std::string cot,
-			int np, int ed, bool ept, std::time_t dt): Livro{id, tit, aut, isbn, cot, np, ed, ept, dt}{};
+	Livro_indisponivel(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
+			std::string cot, int np, int ed, bool ept, std::time_t dt):
+				Livro{id, tit, aut, tem, isbn, cot, np, ed, ept, dt}{};
 };
 
 

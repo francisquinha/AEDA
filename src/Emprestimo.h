@@ -20,6 +20,7 @@ class Emprestimo: public Object{
 	std::time_t data; // data em que e feito o emprestimo
 	static long num_emprestimos;
 public:
+	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt);
 	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt);
 	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt);
 	Livro* get_livro();

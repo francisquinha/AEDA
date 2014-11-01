@@ -16,11 +16,11 @@ using namespace std;
 long Livro::num_livros{0};
 
 // construtor Livro
-Livro::Livro(long id, string tit, vector<string> aut, long isbn, string cot, int np, int ed, bool ept, time_t dt):
-		Object{id}, titulo{tit}, autores{aut}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
+Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, time_t dt):
+		Object{id}, titulo{tit}, autores{aut}, tema{tem}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
 		emprestado{ept}, data_emp{dt} {}
-Livro::Livro(string tit, vector<string> aut, long isbn, string cot, int np, int ed, bool ept, time_t dt):
-		Object{num_livros+1}, titulo{tit}, autores{aut}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
+Livro::Livro(string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, time_t dt):
+		Object{num_livros+1}, titulo{tit}, autores{aut}, tema{tem}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
 		emprestado{ept}, data_emp{dt} {num_livros++;}
 
 // modificar estado emprestado de Livro
@@ -58,6 +58,11 @@ vector<string> Livro::get_autores(){
 	return autores;
 }
 
+// obter tema de Livro
+string Livro::get_tema(){
+	return tema;
+}
+
 // obter numero de paginas de Livro
 int Livro::get_num_paginas(){
 	return num_paginas;
@@ -82,7 +87,8 @@ string Livro::imprime(){
 	for (vector<string>::const_iterator it=autores.begin(); it!=autores.end(); it++){
 		out << *it << "; ";
 	}
-	out << endl << "ISBN: " << ISBN << endl
+	out << endl << "Tema: " << tema << endl
+			<< "ISBN: " << ISBN << endl
 			<< "Cota: " << cota << endl
 			<< "Num. Paginas: " << num_paginas << endl
 			<< "Edicao: " << edicao << endl
@@ -97,9 +103,10 @@ void Livro::escreve(){
 	out << get_ID() << endl
 			<< titulo << endl;
 	for (vector<string>::const_iterator it=autores.begin(); it!=autores.end(); it++){
-		out << *it << "; ";
+		out << *it << ";";
 	}
-	out << endl << ISBN << endl
+	out << endl << tema << endl
+			<< ISBN << endl
 			<< cota << endl
 			<< num_paginas << endl
 			<< edicao << endl

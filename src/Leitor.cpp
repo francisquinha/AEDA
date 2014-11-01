@@ -62,7 +62,8 @@ string Leitor::get_email(){
 // imprimir Leitor
 string Leitor::imprime(){
 	stringstream out{};
-	out << "ID: "<< get_ID() << endl<< "Nome: " << nome << endl << "ID Emprestimos: ";
+	out << "ID: "<< get_ID() << endl<< "Nome: " << nome << endl << "Telefone: "<< telefone << endl
+			<< "Email: " << email << endl << "ID Emprestimos: ";
 	for (vector<Emprestimo*>::const_iterator it=emprestimos_leitor.begin(); it!=emprestimos_leitor.end(); it++){
 		out << (*it)->get_ID() << "; ";
 	}
@@ -74,9 +75,11 @@ string Leitor::imprime(){
 void Leitor::escreve(){
 	stringstream out{};
 	out << get_ID() << endl
-			<< nome << endl;
+			<< nome << endl
+			<< telefone << endl
+			<< email << endl;
 	for (vector<Emprestimo*>::const_iterator it=emprestimos_leitor.begin(); it!=emprestimos_leitor.end(); it++){
-		out << (*it)->get_ID() << "; ";
+		out << (*it)->get_ID() << ";";
 	}
 	out << endl;
 	ofstream myfile ("Leitor.txt",ios::app);

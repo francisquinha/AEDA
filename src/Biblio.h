@@ -43,11 +43,18 @@ public:
 	std::vector<Leitor*> get_leitores();
 	void set_leitores(std::vector<Leitor*> leit);
 	void set_livros(std::vector<Livro*> livr);
+	std::vector<std::string> get_temas();
+	std::vector<Livro*> get_livros_tema(std::string xpto);
 	void escreve_livros();
 	void escreve_funcionarios();
 	void escreve_leitores();
 	void escreve_emprestimos();
 	void escreve();
+	void le_livros(std::string ficheiro);
+	void le_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
+	void le_leitores(std::string ficheiro);
+	void le_emprestimos(std::string ficheiro);
+	void le(std::string ficheiro_lv,std::string ficheiro_fc,std::string ficheiro_sp,std::string ficheiro_lt,std::string ficheiro_ep);
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */

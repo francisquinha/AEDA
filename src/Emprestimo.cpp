@@ -16,6 +16,8 @@ using namespace std;
 long Emprestimo::num_emprestimos{0};
 
 // construtor Emprestimo
+Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object{id},
+		livro{lv}, funcionario{fc}, leitor{lt}, data{dt}{}
 Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): Object{id},
 		livro{lv}, funcionario{fc}, leitor{lt}, data{std::time(NULL)}{}
 Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt): Object{num_emprestimos+1},
@@ -34,6 +36,11 @@ Leitor* Emprestimo::get_leitor(){
 // obter data de Emprestimo
 time_t Emprestimo::get_data(){
 	return data;
+}
+
+// obter Funcionario de Emprestimo
+Funcionario* Emprestimo::get_funcionario(){
+	return funcionario;
 }
 
 // obter atraso na entrega de Emprestimo
@@ -58,7 +65,8 @@ string Emprestimo::imprime(){
 	out << "ID: "<< get_ID() << endl
 			<< "ID Livro: " << livro->get_ID() << endl
 			<< "ID Funcionario: " << funcionario->get_ID() << endl
-			<<"Data: " << data << endl;
+			<< "ID Leitor: " << leitor->get_ID() << endl
+			<< "Data: " << data << endl;
 	return out.str();
 }
 
@@ -68,6 +76,7 @@ void Emprestimo::escreve(){
 	out << get_ID() << endl
 	<< livro->get_ID() << endl
 	<< funcionario->get_ID() << endl
+	<< leitor->get_ID() << endl
 	<< data << endl;
 	ofstream myfile ("Emprestimo.txt",ios::app);
 	if (myfile.is_open()){
