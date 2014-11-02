@@ -14,7 +14,7 @@ public:
 	void set_func_sup(std::vector<Funcionario*> func_sup);
 	std::vector<Funcionario*> get_func_sup();
 	std::string imprime();
-	void escreve();
+	void escreve(std::string ficheiro_fc, std::string ficheiro_sp);
 };
 
 #endif /* SRC_SUPERVISOR_H_ */

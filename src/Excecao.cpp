@@ -39,10 +39,7 @@ ostream& operator<<(ostream &out, Object_nao_existe &object){
 
 // excecao para quando o livro nao esta disponivel
 ostream& operator<<(ostream &out, Livro_indisponivel &livro){
-	time_t dt=livro.get_data_emp();
-	time_t hj = std::time(NULL);
-	double tempo_dias{floor(difftime(hj,dt)/86400)};
-	out << "Excecao. Livro nao esta disponivel para emprestar. Foi emprestado ha " << tempo_dias << " dia(s)." << endl;
+	out << "Excecao. Livro nao esta disponivel para emprestar. Foi emprestado ha " << livro.get_dias_emp() << " dia(s)." << endl;
 	return out;
 }
 

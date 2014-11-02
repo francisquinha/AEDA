@@ -34,7 +34,7 @@ public:
 	int get_atraso();
 	double get_multa();
 	std::string imprime();
-	void escreve();
+	void escreve(std::string ficheiro);
 };
 
 #endif /* SRC_EMPRESTIMO_H_ */

@@ -38,9 +38,17 @@ bool Livro::get_emprestado(){
 	return emprestado;
 }
 
-// obter indisponibilidade de Livro
+// obter data de emprestimo de Livro
 time_t Livro::get_data_emp(){
 	return data_emp;
+}
+
+// obter numero de dias de emprestimo de Livro
+double Livro::get_dias_emp(){
+	time_t dt=get_data_emp();
+	time_t hj = std::time(NULL);
+	double tempo_dias{floor(difftime(hj,dt)/86400)};
+	return tempo_dias;
 }
 
 // obter titulo de Livro
@@ -98,7 +106,7 @@ string Livro::imprime(){
 }
 
 // escrever Livro
-void Livro::escreve(){
+void Livro::escreve(string ficheiro){
 	stringstream out{};
 	out << get_ID() << endl
 			<< titulo << endl;
@@ -112,11 +120,11 @@ void Livro::escreve(){
 			<< edicao << endl
 			<< emprestado << endl
 			<< data_emp << endl;
-	ofstream myfile ("Livro.txt",ios::app);
+	ofstream myfile (ficheiro,ios::app);
 	if (myfile.is_open()){
 		myfile << out.str();
 		myfile.close();
 	}
-	else throw Ficheiro_indisponivel("Livro.txt");
+	else throw Ficheiro_indisponivel(ficheiro);
 }
 

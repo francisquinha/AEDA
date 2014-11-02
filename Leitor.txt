@@ -1,0 +1,195 @@
+1
+Ines Cunha
+912233444
+inescunha@fe.up.pt
+
+2
+Maria Fonseca
+962345444
+mariafonseca@fe.up.pt
+
+3
+Ana Moura
+912231234
+anamoura@fe.up.pt
+
+4
+Davide Azevedo
+962234244
+davideazevedo@fe.up.pt
+
+5
+Pedro Nunes
+912212324
+pedronunes@fe.up.pt
+
+6
+Joao Meireles
+962232354
+joaomeireles@fe.up.pt
+
+7
+Alexandre Cunha
+963453442
+alexandrecunha@fe.up.pt
+
+8
+Andreia Teixeira
+913563455
+andreiateixeira@fe.up.pt
+3;
+9
+Margarida Carvalho
+912234242
+margaridacarvalho@fe.up.pt
+
+10
+Daniel Pereira
+932233244
+danielpereira@fe.up.pt
+
+11
+Susana Costa
+912932342
+susanacosta@fe.up.pt
+2;
+12
+Jose Leal
+918475657
+joseleal@fe.up.pt
+
+13
+Roberto Silva
+928374644
+robertosilva@fe.up.pt
+
+14
+Patricia Ribeiro
+932345994
+patriciaribeiro@fe.up.pt
+
+15
+Diana Goncalves
+922989898
+dianagoncalves@fe.up.pt
+
+16
+Vanessa Oliveira
+962233434
+vanessaoliveira@fe.up.pt
+
+17
+Pedro Almeida
+962253574
+pedroalmeida@fe.up.pt
+
+18
+Lino Amorim
+912865432
+linoamorim@fe.up.pt
+
+19
+Jorge Almeida
+912678990
+jorgealmeida@fe.up.pt
+
+20
+Antonio Vieira
+962256989
+antoniovieira@fe.up.pt
+
+21
+Sandra Vieira
+962254354
+sandravieira@fe.up.pt
+
+22
+Bruno Rocha
+937654324
+brunorocha@fe.up.pt
+
+23
+Viriato Sousa
+928534982
+viriatosousa@fe.up.pt
+
+24
+Alzira Pinto
+910934899
+alzirapinto@fe.up.pt
+
+25
+Edmundo Santos
+910998768
+edmundosantos@fe.up.pt
+1;4;5;
+26
+Maria Mendes
+968748347
+mariamendes@fe.up.pt
+
+27
+Catarina Pereira
+939838488
+catarinapereira@fe.up.pt
+
+28
+Luisa Pereira
+928787879
+luisapereira@fe.up.pt
+
+29
+Nuno Cardoso
+969898239
+nunocardoso@fe.up.pt
+
+30
+Rita Rio
+919888388
+ritario@fe.up.pt
+
+31
+Mario Almeida
+932309922
+marioalmeida@fe.up.pt
+
+32
+Rogerio Cunha
+939999982
+rogeriocunha@fe.up.pt
+
+33
+Leonor Moreira
+932233444
+leonormoreira@fe.up.pt
+
+34
+Barbara Furtado
+962233444
+barbarafurtado@fe.up.pt
+
+35
+Gil Sousa
+962237744
+gilsousa@fe.up.pt
+
+36
+Manuela Azevedo
+912987689
+manuelaazevedo@fe.up.pt
+
+37
+Joana Franco
+912382999
+joanafranco@fe.up.pt
+
+38
+Marco Marques
+968264009
+marcomarques@fe.up.pt
+
+39
+Filipe Pedro
+938899989
+filipepedro@fe.up.pt
+

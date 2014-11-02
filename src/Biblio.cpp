@@ -174,10 +174,12 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep){
 			emprestimos.push_back(ep);
 		}
 		else {
+			cout << "Maximo emprestimos ID: " << lt->get_ID() << endl;
 			throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(),lt->get_telefone(),lt->get_email(), lt->get_emp_leit());
 		}
 	}
 	else{
+		cout << "Livro Indisponivel ID: " << lv->get_ID() << endl;
 		throw Livro_indisponivel(lv->get_ID(),lv->get_titulo(),lv->get_autores(),lv->get_tema(), lv->get_ISBN(),
 				lv->get_cota(),lv->get_num_paginas(),lv->get_edicao(),lv->get_emprestado(),lv->get_data_emp());
 	}
@@ -267,59 +269,58 @@ string Biblioteca::imprime(){
 }
 
 // escrever livros de Biblioteca
-void Biblioteca::escreve_livros(){
-	ofstream myfile ("Livro.txt");
+void Biblioteca::escreve_livros(string ficheiro){
+	ofstream myfile (ficheiro);
 	myfile << "";
 	myfile.close();
 	for (vector<Livro*>::const_iterator it=livros.begin(); it!=livros.end(); it++){
-		(*it)->escreve();
+		(*it)->escreve(ficheiro);
 	}
 }
 
 // escrever funcionarios de Biblioteca
-void Biblioteca::escreve_funcionarios(){
-	ofstream file_f ("Funcionario.txt");
+void Biblioteca::escreve_funcionarios(string ficheiro_fc, string ficheiro_sp){
+	ofstream file_f (ficheiro_fc);
 	file_f << "";
 	file_f.close();
-	ofstream file_s ("Supervisor.txt");
+	ofstream file_s (ficheiro_sp);
 	file_s << "";
 	file_s.close();
 	for (vector<Funcionario*>::const_iterator it=funcionarios.begin(); it!=funcionarios.end(); it++){
-		(*it)->escreve();
+		(*it)->escreve(ficheiro_fc, ficheiro_sp);
 	}
 }
 
 // escrever leitor de Biblioteca
-void Biblioteca::escreve_leitores(){
-	ofstream myfile ("Leitor.txt");
+void Biblioteca::escreve_leitores(string ficheiro){
+	ofstream myfile (ficheiro);
 	myfile << "";
 	myfile.close();
 	for (vector<Leitor*>::const_iterator it=leitores.begin(); it!=leitores.end(); it++){
-		(*it)->escreve();
+		(*it)->escreve(ficheiro);
 	}
 }
 
 // escrever emprestimos de Biblioteca
-void Biblioteca::escreve_emprestimos(){
-	ofstream myfile ("Emprestimo.txt");
+void Biblioteca::escreve_emprestimos(string ficheiro){
+	ofstream myfile (ficheiro);
 	myfile << "";
 	myfile.close();
 	for (vector<Emprestimo*>::const_iterator it=emprestimos.begin(); it!=emprestimos.end(); it++){
-		(*it)->escreve();
+		(*it)->escreve(ficheiro);
 	}
 }
 
 // escrever todos os ficheiros de Biblioteca
-void Biblioteca::escreve(){
-	escreve_livros();
-	escreve_funcionarios();
-	escreve_leitores();
-	escreve_emprestimos();
+void Biblioteca::escreve(string ficheiro_lv,string ficheiro_fc,string ficheiro_sp,string ficheiro_lt,string ficheiro_ep){
+	escreve_livros(ficheiro_lv);
+	escreve_funcionarios(ficheiro_fc, ficheiro_sp);
+	escreve_leitores(ficheiro_lt);
+	escreve_emprestimos(ficheiro_ep);
 }
 
 // ler livros de Biblioteca
 void Biblioteca::le_livros(string ficheiro){
-	set_livros({});
 	ifstream islv(ficheiro);
 	if (!islv) throw Ficheiro_indisponivel(ficheiro);
 	string ids{}, tit{},auts{},tem{},isbns{},cot{},num_pags{},edis{},epts{},dts{};
@@ -357,7 +358,6 @@ void Biblioteca::le_livros(string ficheiro){
 
 // ler funcionarios de Biblioteca
 void Biblioteca::le_funcionarios(string ficheiro_fc, string ficheiro_sp){
-	set_funcionarios({});
 	ifstream isfc(ficheiro_fc);
 	ifstream issp(ficheiro_sp);
 	if (!isfc) throw Ficheiro_indisponivel(ficheiro_fc);
@@ -394,7 +394,7 @@ void Biblioteca::le_funcionarios(string ficheiro_fc, string ficheiro_sp){
 					encontrado=true;
 				}
 			}
-			if (!encontrado) throw Object_nao_existe(id);
+			if (!encontrado) throw Object_nao_existe(fsid);
 		}
 		if (ids!=""){
 			Supervisor* sp = new Supervisor{id,nom,func_sup};
@@ -406,7 +406,6 @@ void Biblioteca::le_funcionarios(string ficheiro_fc, string ficheiro_sp){
 
 // ler leitores de Biblioteca
 void Biblioteca::le_leitores(string ficheiro){
-	set_leitores({});
 	ifstream islt(ficheiro);
 	if (!islt) throw Ficheiro_indisponivel(ficheiro);
 	string ids{}, nom{}, tels{}, eml{}, epids{};
@@ -435,7 +434,7 @@ void Biblioteca::le_leitores(string ficheiro){
 						encontrado=true;
 					}
 				}
-				if (!encontrado) throw Object_nao_existe(id);
+				if (!encontrado) throw Object_nao_existe(epid);
 			}
 		}
 		if (ids!=""){
@@ -446,9 +445,54 @@ void Biblioteca::le_leitores(string ficheiro){
 	islt.close();
 }
 
+// acrescentar emprestimos a leitores de Biblioteca
+void Biblioteca::le_leitores_emprestimos(string ficheiro){
+	ifstream islt(ficheiro);
+	if (!islt) throw Ficheiro_indisponivel(ficheiro);
+	string ids{}, nom{}, tels{}, eml{}, epids{};
+	long id{}, epid{};
+	istringstream epidss{};
+	bool encontrado_ep{false}, encontrado_lt{false};
+	string empids{};
+	Leitor* lt{};
+	while (!islt.eof()){
+		getline(islt,ids);
+		getline(islt,nom);
+		getline(islt,tels);
+		getline(islt,eml);
+		getline(islt,epids);
+		id = atol(ids.c_str());
+		encontrado_lt=false;
+		if (ids!=""){
+			for (vector<Leitor*>::const_iterator it=leitores.begin(); it!=leitores.end(); it++){
+				if ((*it)->get_ID()==id){
+					encontrado_lt=true;
+					lt=(*it);
+				}
+			}
+			if (!encontrado_lt) throw Object_nao_existe(id);
+			if (epids!="" and emprestimos.size()>0){
+				stringstream epidss(epids);
+				while(getline(epidss,empids,';')){
+					encontrado_ep=false;
+					epid = atol(empids.c_str());
+					for (vector<Emprestimo*>::const_iterator it=emprestimos.begin(); it!=emprestimos.end(); it++){
+						if ((*it)->get_ID()==epid){
+							lt->adiciona_emp_leit((*it));
+							encontrado_ep=true;
+						}
+					}
+					if (!encontrado_ep) throw Object_nao_existe(id);
+				}
+			}
+			encontrado_ep=false;
+		}
+	}
+	islt.close();
+}
+
 // ler emprestimos de Biblioteca
 void Biblioteca::le_emprestimos(string ficheiro){
-	set_emprestimos({});
 	ifstream isep(ficheiro);
 	if (!isep) throw Ficheiro_indisponivel(ficheiro);
 	string ids{}, lvids{}, fcids{}, ltids{}, dts{};
@@ -506,5 +550,5 @@ void Biblioteca::le(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, 
 	le_funcionarios(ficheiro_fc, ficheiro_sp);
 	le_leitores(ficheiro_lt);
 	le_emprestimos(ficheiro_ep);
-	le_leitores(ficheiro_lt);
+	le_leitores_emprestimos(ficheiro_lt);
 }

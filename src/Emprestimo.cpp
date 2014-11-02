@@ -71,17 +71,17 @@ string Emprestimo::imprime(){
 }
 
 // escrever Livro
-void Emprestimo::escreve(){
+void Emprestimo::escreve(string ficheiro){
 	stringstream out{};
 	out << get_ID() << endl
 	<< livro->get_ID() << endl
 	<< funcionario->get_ID() << endl
 	<< leitor->get_ID() << endl
 	<< data << endl;
-	ofstream myfile ("Emprestimo.txt",ios::app);
+	ofstream myfile (ficheiro,ios::app);
 	if (myfile.is_open()){
 		myfile << out.str();
 		myfile.close();
 	}
-	else throw Ficheiro_indisponivel("Emprestimo.txt");
+	else throw Ficheiro_indisponivel(ficheiro);
 }

@@ -301,7 +301,7 @@ void test_h_criar_adicionar_imprimir_escrever_leitor() {
 	b5.adiciona_leitor(l39);
 	ASSERT_EQUAL(39, b5.get_leitores().size());
 	//cout << b5.imprime();
-	b5.escreve();
+	b5.escreve("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
 }
 
 void test_i_remover() {
@@ -387,7 +387,6 @@ void test_i_remover() {
 	b2.adiciona_livro(lv9);
 	b2.adiciona_livro(lv10);
 	b2.adiciona_livro(lv11);
-	vector<Emprestimo*> emp{};
 	Leitor* l1=new Leitor{"Ines Cunha", 912233444, "inescunha@fe.up.pt"};
 	Leitor* l2=new Leitor{"Maria Fonseca", 962345444, "mariafonseca@fe.up.pt"};
 	Leitor* l3=new Leitor{"Ana Moura", 912231234, "anamoura@fe.up.pt"};
@@ -466,7 +465,7 @@ void test_i_remover() {
 	b2.adiciona_leitor(l37);
 	b2.adiciona_leitor(l38);
 	b2.adiciona_leitor(l39);
-	b2.escreve();
+	b2.escreve("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
 	ASSERT_EQUAL(3,lv3->get_ID());
 	ASSERT_EQUAL(7,f7->get_ID());
 	ASSERT_EQUAL(5,l5->get_ID());
@@ -526,19 +525,39 @@ void test_k_emprestar() {
 	Emprestimo* e1 = new Emprestimo{b7.get_livros()[1], b7.get_funcionarios()[2], b7.get_leitores()[24]};
 	Emprestimo* e2 = new Emprestimo{b7.get_livros()[0], b7.get_funcionarios()[5], b7.get_leitores()[10]};
 	Emprestimo* e3 = new Emprestimo{b7.get_livros()[4], b7.get_funcionarios()[9], b7.get_leitores()[7]};
-	Emprestimo* e4 = new Emprestimo{b7.get_livros()[8], b7.get_funcionarios()[11], b7.get_leitores()[8]};
+	Emprestimo* e4 = new Emprestimo{b7.get_livros()[8], b7.get_funcionarios()[11], b7.get_leitores()[24]};
+	Emprestimo* e5 = new Emprestimo{b7.get_livros()[6], b7.get_funcionarios()[16], b7.get_leitores()[24]};
 	b7.adiciona_emprestimo(e1);
 	b7.adiciona_emprestimo(e2);
 	b7.adiciona_emprestimo(e3);
 	b7.adiciona_emprestimo(e4);
-	ASSERT_EQUAL(4,b7.get_emprestimos().size());
+	b7.adiciona_emprestimo(e5);
+	ASSERT_EQUAL(5,b7.get_emprestimos().size());
 	ASSERT_EQUAL(2,e1->get_livro()->get_ID());
 	ASSERT_EQUAL("Luis Barros",e2->get_funcionario()->get_nome());
 	ASSERT_EQUAL(3,e3->get_ID());
-	ASSERT_EQUAL(912234242,e4->get_leitor()->get_telefone());
+	ASSERT_EQUAL(910998768,e4->get_leitor()->get_telefone());
 	time_t hoje=time(NULL);
 	ASSERT_EQUAL(hoje,e4->get_data());
-	b7.escreve();
+	ASSERT_EQUAL(3,b7.get_leitores()[24]->get_emp_leit().size());
+	Emprestimo* e6 = new Emprestimo{b7.get_livros()[1], b7.get_funcionarios()[3], b7.get_leitores()[5]};
+	Emprestimo* e7 = new Emprestimo{b7.get_livros()[2], b7.get_funcionarios()[15], b7.get_leitores()[24]};
+	ASSERT_THROWS(b7.adiciona_emprestimo(e6);, Livro_indisponivel);
+		try {
+			b7.adiciona_emprestimo(e6);
+		}
+		catch (Livro_indisponivel &lv) {
+			std::cout <<  "Excecao. Livro nao esta disponivel para emprestar. Foi emprestado ha " << lv.get_dias_emp() << " dia(s)." << std::endl;
+			ASSERT_EQUAL(0, lv.get_dias_emp());
+		}
+	ASSERT_THROWS(b7.adiciona_emprestimo(e7);, Maximo_emprestimos);
+		try {
+			b7.adiciona_emprestimo(e7);
+		}
+		catch (Maximo_emprestimos &lt) {
+			std::cout <<  "Excecao. Leitor ja tem 3 emprestimos feitos." << std::endl;
+		}
+	b7.escreve("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
 }
 
 void test_l_ler_emprestimos() {
@@ -547,7 +566,7 @@ void test_l_ler_emprestimos() {
 	ASSERT_EQUAL(11, b8.get_livros().size());
 	ASSERT_EQUAL(17, b8.get_funcionarios().size());
 	ASSERT_EQUAL(39, b8.get_leitores().size());
-	ASSERT_EQUAL(4,b8.get_emprestimos().size());
+	ASSERT_EQUAL(5,b8.get_emprestimos().size());
 	ASSERT_EQUAL(1,b8.get_leitores()[7]->get_emp_leit().size());
 	cout << b8.imprime();
 }

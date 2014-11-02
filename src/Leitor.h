@@ -29,7 +29,7 @@ public:
 	void adiciona_emp_leit(Emprestimo* ep);
 	bool remove_emp_leit(long id);
 	std::vector<Emprestimo*> get_emp_leit();
-	void escreve();
+	void escreve(std::string ficheiro);
 };
 
 class Emprestimos_por_devolver: public Leitor{

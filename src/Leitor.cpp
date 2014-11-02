@@ -72,7 +72,7 @@ string Leitor::imprime(){
 }
 
 // escrever Leitor
-void Leitor::escreve(){
+void Leitor::escreve(string ficheiro){
 	stringstream out{};
 	out << get_ID() << endl
 			<< nome << endl
@@ -82,10 +82,10 @@ void Leitor::escreve(){
 		out << (*it)->get_ID() << ";";
 	}
 	out << endl;
-	ofstream myfile ("Leitor.txt",ios::app);
+	ofstream myfile (ficheiro,ios::app);
 	if (myfile.is_open()){
 		myfile << out.str();
 		myfile.close();
 	}
-	else throw Ficheiro_indisponivel("Leitor.txt");
+	else throw Ficheiro_indisponivel(ficheiro);
 }

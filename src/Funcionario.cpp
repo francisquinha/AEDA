@@ -35,14 +35,14 @@ string Funcionario::imprime(){
 }
 
 // escrever Funcionario
-void Funcionario::escreve(){
+void Funcionario::escreve(string ficheiro_fc, string ficheiro_sp){
 	stringstream out{};
 	out << get_ID() << endl
 			<< nome << endl;
-	ofstream myfile ("Funcionario.txt",ios::app);
+	ofstream myfile (ficheiro_fc,ios::app);
 	if (myfile.is_open()){
 		myfile << out.str();
 		myfile.close();
 	}
-	else throw Ficheiro_indisponivel("Funcionario.txt");
+	else throw Ficheiro_indisponivel(ficheiro_fc);
 }

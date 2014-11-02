@@ -43,7 +43,7 @@ string Supervisor::imprime(){
 }
 
 // escrever Supervisor
-void Supervisor::escreve(){
+void Supervisor::escreve(string ficheiro_fc, string ficheiro_sp){
 	stringstream out{};
 	out << get_ID() << endl
 			<< get_nome() << endl;
@@ -51,10 +51,10 @@ void Supervisor::escreve(){
 		out << (*it)->get_ID() << ";";
 	}
 	out << endl;
-	ofstream myfile ("Supervisor.txt",ios::app);
+	ofstream myfile (ficheiro_sp,ios::app);
 	if (myfile.is_open()){
 		myfile << out.str();
 		myfile.close();
 	}
-	else throw Ficheiro_indisponivel("Supervisor.txt");
+	else throw Ficheiro_indisponivel(ficheiro_sp);
 }

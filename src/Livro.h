@@ -42,7 +42,8 @@ public:
 	void set_emprestado(bool ept);
 	std::time_t get_data_emp();
 	void set_data_emp(std::time_t dt);
-	void escreve();
+	double get_dias_emp();
+	void escreve(std::string ficheiro);
 };
 
 class Livro_indisponivel: public Livro{

@@ -1,0 +1,9 @@
+3
+Carlos Alvim
+1;6;9;13;16;
+5
+Margarida Soares
+2;7;11;14;17;
+10
+Andre Martins
+4;8;12;15;

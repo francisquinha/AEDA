@@ -1,0 +1,110 @@
+1
+Porto em Azul e Branco
+Pacheco, Helder;
+Futebol
+9789723611199
+29.90
+192
+1
+1
+1414944372
+2
+O Evangelho Segundo Jesus Cristo
+Saramago, Jose;
+Romance
+9722105248
+821.134.3 SARj/EVA 13
+445
+13
+1
+1414944372
+3
+A chuva pasmada
+Couto, Mia;
+Romance
+9722116541
+821.134.3(679) /COUm/CHU
+74
+1
+0
+0
+4
+Introduction to automata theory, languages, and computation
+Hopcroft, John E.;Motwani, Rajeev;Ullman, Jeffrey D.;
+Matematica
+201441241
+519.6 /HOPj/INT 2
+521
+2
+0
+0
+5
+Big C++
+Horstmann, Cay;Budd, Timothy A.;
+Programacao
+9780470383285
+004.43 C++ /HORc/BIG 2
+1056
+2
+1
+1414944372
+6
+A Sul da fronteira, a Oeste do Sol
+Murakami, Haruki;
+Romance
+9789724618623
+82 /MURh/SUL
+241
+1
+0
+0
+7
+A rapariga que roubava livros
+Zusak, Markus;
+Romance
+9789722339070
+82 /ZUZm/RAP
+463
+4
+1
+1414944372
+8
+Como mentir com a estatistica
+Huff, Darrell;
+Matematica
+9789896165369
+5 /CA 201
+175
+1
+0
+0
+9
+Casamentos e outros desencontros
+Buescu, Jorge;
+Matematica
+9789896164515
+5 CA 191
+169
+1
+1
+1414944372
+10
+Think Python
+Downey, Allen B.;
+Programacao
+9781449330729
+004.43 PYT /DOWa/THI
+277
+1
+0
+0
+11
+Antologia de Pablo Neruda
+Neruda, Pablo;
+Poesia
+9727085148
+82/NERp/ANT
+457
+1
+0
+0
