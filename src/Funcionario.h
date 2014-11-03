@@ -17,11 +17,12 @@ public:
 	std::string get_nome();
 	void set_nome(std::string nom);
 	virtual void escreve(std::string ficheiro_fc, std::string ficheiro_sp);
-	virtual void set_func_sup(std::vector<Funcionario*> func_sup){};
-	virtual std::vector<Funcionario*> get_func_sup(){
+	virtual void set_func_sup(std::vector<Funcionario*> func_sup) {};
+	virtual std::vector<Funcionario*> get_func_sup() {
 		std::vector<Funcionario*> v{};
-		return v;};
-	virtual void adiciona_func_sup(Funcionario* fc){};
+		return v;
+	};
+	virtual void adiciona_func_sup(Funcionario* fc) {};
 };
 
 #endif /* SRC_FUNCIONARIO_H_ */

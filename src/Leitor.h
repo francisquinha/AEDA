@@ -32,14 +32,14 @@ public:
 	void escreve(std::string ficheiro);
 };
 
-class Emprestimos_por_devolver: public Leitor{
+class Emprestimos_por_devolver: public Leitor {
 public:
-	Emprestimos_por_devolver(long id, std::string nom, int tel, std::string eml, std::vector<Emprestimo*> ep_lt): Leitor{id, nom, tel, eml, ep_lt}{};
+	Emprestimos_por_devolver(long id, std::string nom, int tel, std::string eml, std::vector<Emprestimo*> ep_lt): Leitor{id, nom, tel, eml, ep_lt} {};
 };
 
-class Maximo_emprestimos: public Leitor{
+class Maximo_emprestimos: public Leitor {
 public:
-	Maximo_emprestimos(long id, std::string nom, int tel, std::string eml, std::vector<Emprestimo*> ep_lt): Leitor{id, nom, tel, eml, ep_lt}{};
+	Maximo_emprestimos(long id, std::string nom, int tel, std::string eml, std::vector<Emprestimo*> ep_lt): Leitor{id, nom, tel, eml, ep_lt} {};
 };
 
 #endif /* SRC_LEITOR_H_ */

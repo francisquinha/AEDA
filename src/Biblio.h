@@ -4,12 +4,15 @@
 
 #include "Supervisor.h"
 #include "Emprestimo.h"
+//#include "Login.h"
 
 class Livro;
 class Funcionario;
 class Supervisor;
 class Leitor;
 class Emprestimo;
+class Utilizadores;
+class Login;
 
 class Biblioteca {
 	std::vector<Livro*> livros;
@@ -17,16 +20,19 @@ class Biblioteca {
 //	std::vector<Supervisor*> supervisores; // supervisores passam a estar no vector de funcionarios - polimorfismo
 	std::vector<Leitor*> leitores;
 	std::vector<Emprestimo*> emprestimos;
+//	std::vector<Utilizador*> utilizadores;
 public:
 	Biblioteca() {};
 	void adiciona_livro(Livro* lv1);
 	void adiciona_funcionario(Funcionario* fc);
 	void adiciona_leitor(Leitor* lt);
 	void adiciona_emprestimo(Emprestimo* ep);
+//	void adiciona_utilizador(Utilizador* ut);
 	bool remove_livro(long id);
 	bool remove_funcionario(long id);
 	bool remove_leitor(long id);
 	bool remove_emprestimo(long id);
+//	bool remove_utilizador(long id);
 	void distribui_funcionarios();
 	bool promove_funcionario_supervisor(long ID);
 //	bool remove_supervisor(long ID); // deixa de fazer sentido com os supervisores no vector dos funcionarios
@@ -49,13 +55,13 @@ public:
 	void escreve_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
 	void escreve_leitores(std::string ficheiro);
 	void escreve_emprestimos(std::string ficheiro);
-	void escreve(std::string ficheiro_lv,std::string ficheiro_fc,std::string ficheiro_sp,std::string ficheiro_lt,std::string ficheiro_ep);
+	void escreve(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp, std::string ficheiro_lt, std::string ficheiro_ep);
 	void le_livros(std::string ficheiro);
 	void le_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
 	void le_leitores(std::string ficheiro);
 	void le_leitores_emprestimos(std::string ficheiro);
 	void le_emprestimos(std::string ficheiro);
-	void le(std::string ficheiro_lv,std::string ficheiro_fc,std::string ficheiro_sp,std::string ficheiro_lt,std::string ficheiro_ep);
+	void le(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp, std::string ficheiro_lt, std::string ficheiro_ep);
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */

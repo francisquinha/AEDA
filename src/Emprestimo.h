@@ -13,7 +13,7 @@ class Funcionario;
 class Leitor;
 class Object;
 
-class Emprestimo: public Object{
+class Emprestimo: public Object {
 	Livro* livro;
 	Funcionario* funcionario;
 	Leitor* leitor;

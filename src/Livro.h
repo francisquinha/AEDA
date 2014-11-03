@@ -7,7 +7,7 @@
 
 class Object;
 
-class Livro: public Object{
+class Livro: public Object {
 	std::string titulo;
 	std::vector<std::string> autores;
 	std::string tema;

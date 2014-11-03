@@ -14,13 +14,13 @@ void test_a_criar_livros() {
 	//ID, titulo, autores, ISBN, cota, num_paginas, edicao, emprestado, dias_indisponivel
 	vector<string> a1{"Saramago, Jose"};
 	Livro* l1=new Livro{1,"O Evangelho Segundo Jesus Cristo",a1,"Romance",9722105248,
-		"821.134.3 SARj/EVA 13", 445, 13, false, {}};
+		"821.134.3 SARj/EVA 13", 445, 13, false, 0};
 	vector<string> a2{"Couto, Mia"};
 	Livro* l2=new Livro{2,"A chuva pasmada",a2,"Romance",9722116541,
-		"821.134.3(679) /COUm/CHU", 74, 1, false, {}};
+		"821.134.3(679) /COUm/CHU", 74, 1, false, 0};
 	vector<string> a3{"Hopcroft, John E.", "Motwani, Rajeev", "Ullman, Jeffrey D."};
 	Livro* l3=new Livro{3,"Introduction to automata theory, languages, and computation",a3,"Matematica",201441241,
-		"519.6 /HOPj/INT 2", 521, 2, false, {}};
+		"519.6 /HOPj/INT 2", 521, 2, false, 0};
 	ASSERT_EQUAL("O Evangelho Segundo Jesus Cristo", l1->get_titulo());
 	ASSERT_EQUAL(2, l2->get_ID());
 	ASSERT_EQUAL(201441241,l3->get_ISBN());
@@ -36,16 +36,16 @@ void test_b_adicionar_livros() {
 	Biblioteca b1{};
 	vector<string> a1{"Pacheco, Helder"};
 	Livro* l1=new Livro{1,"Porto em Azul e Branco",a1,"Futebol",9789723611199,
-		"29.90", 192, 1, false, {}};
+		"29.90", 192, 1, false, 0};
 	vector<string> a2{"Saramago, Jose"};
 	Livro* l2=new Livro{2,"O Evangelho Segundo Jesus Cristo",a2,"Romance",9722105248,
-		"821.134.3 SARj/EVA 13", 445, 13, false, {}};
+		"821.134.3 SARj/EVA 13", 445, 13, false, 0};
 	vector<string> a3{"Couto, Mia"};
 	Livro* l3=new Livro{3,"A chuva pasmada",a3,"Romance",9722116541,
-		"821.134.3(679) /COUm/CHU", 74, 1, false, {}};
+		"821.134.3(679) /COUm/CHU", 74, 1, false, 0};
 	vector<string> a4{"Hopcroft, John E.", "Motwani, Rajeev", "Ullman, Jeffrey D."};
 	Livro* l4=new Livro{4,"Introduction to automata theory, languages, and computation",a4,"Matematica",201441241,
-		"519.6 /HOPj/INT 2", 521, 2, false, {}};
+		"519.6 /HOPj/INT 2", 521, 2, false, 0};
 	b1.adiciona_livro(l1);
 	b1.adiciona_livro(l2);
 	b1.adiciona_livro(l3);
@@ -53,10 +53,10 @@ void test_b_adicionar_livros() {
 	ASSERT_EQUAL(4, b1.get_livros().size());
 }
 
-void test_c_imprimir_livros(){
+void test_c_imprimir_livros() {
 	vector<string> a3{"Hopcroft, John E.", "Motwani, Rajeev", "Ullman, Jeffrey D."};
 	Livro* l3=new Livro{3,"Introduction to automata theory, languages, and computation",a3,"Matematica",201441241,
-		"519.6 /HOPj/INT 2", 521, 2, false, {}};
+		"519.6 /HOPj/INT 2", 521, 2, false, 0};
 	stringstream ss{};
 	ss << "ID: 3\n"
 			<< "Titulo: Introduction to automata theory, languages, and computation\n"
@@ -107,7 +107,7 @@ void test_e_adicionar_funcionarios() {
 	ASSERT_EQUAL(9, b3.get_funcionarios().size());
 }
 
-void test_f_imprimir_funcionarios(){
+void test_f_imprimir_funcionarios() {
 	Funcionario* f8=new Funcionario{8,"Luis Barros"};
 	stringstream ss{};
 	ss << "ID: 8\n"
@@ -207,16 +207,16 @@ void test_h_criar_adicionar_imprimir_escrever_leitor() {
 	b5.promove_funcionario_supervisor(10);
 	vector<string> a1{"Pacheco, Helder"};
 	Livro* lv1=new Livro{1,"Porto em Azul e Branco",a1,"Futebol",9789723611199,
-		"29.90", 192, 1, false, {}};
+		"29.90", 192, 1, false, 0};
 	vector<string> a2{"Saramago, Jose"};
 	Livro* lv2=new Livro{2,"O Evangelho Segundo Jesus Cristo",a2,"Romance",9722105248,
-		"821.134.3 SARj/EVA 13", 445, 13, false, {}};
+		"821.134.3 SARj/EVA 13", 445, 13, false, 0};
 	vector<string> a3{"Couto, Mia"};
 	Livro* lv3=new Livro{3,"A chuva pasmada",a3,"Romance",9722116541,
-		"821.134.3(679) /COUm/CHU", 74, 1, false, {}};
+		"821.134.3(679) /COUm/CHU", 74, 1, false, 0};
 	vector<string> a4{"Hopcroft, John E.", "Motwani, Rajeev", "Ullman, Jeffrey D."};
 	Livro* lv4=new Livro{4,"Introduction to automata theory, languages, and computation",a4,"Matematica",201441241,
-		"519.6 /HOPj/INT 2", 521, 2, false, {}};
+		"519.6 /HOPj/INT 2", 521, 2, false, 0};
 	b5.adiciona_livro(lv1);
 	b5.adiciona_livro(lv2);
 	b5.adiciona_livro(lv3);
@@ -345,37 +345,37 @@ void test_i_remover() {
 	b2.promove_funcionario_supervisor(10);
 	vector<string> a1{"Pacheco, Helder"};
 	Livro* lv1=new Livro{"Porto em Azul e Branco",a1,"Futebol",9789723611199,
-		"29.90", 192, 1, false, {}};
+		"29.90", 192, 1, false, 0};
 	vector<string> a2{"Saramago, Jose"};
 	Livro* lv2=new Livro{"O Evangelho Segundo Jesus Cristo",a2,"Romance",9722105248,
-		"821.134.3 SARj/EVA 13", 445, 13, false, {}};
+		"821.134.3 SARj/EVA 13", 445, 13, false, 0};
 	vector<string> a3{"Couto, Mia"};
 	Livro* lv3=new Livro{"A chuva pasmada",a3,"Romance",9722116541,
-		"821.134.3(679) /COUm/CHU", 74, 1, false, {}};
+		"821.134.3(679) /COUm/CHU", 74, 1, false, 0};
 	vector<string> a4{"Hopcroft, John E.", "Motwani, Rajeev", "Ullman, Jeffrey D."};
 	Livro* lv4=new Livro{"Introduction to automata theory, languages, and computation",a4,"Matematica",201441241,
-		"519.6 /HOPj/INT 2", 521, 2, false, {}};
+		"519.6 /HOPj/INT 2", 521, 2, false, 0};
 	vector<string> a5{"Horstmann, Cay", "Budd, Timothy A."};
 	Livro* lv5=new Livro{"Big C++",a5,"Programacao",9780470383285,
-		"004.43 C++ /HORc/BIG 2", 1056, 2, false, {}};
+		"004.43 C++ /HORc/BIG 2", 1056, 2, false, 0};
 	vector<string> a6{"Murakami, Haruki"};
 	Livro* lv6=new Livro{"A Sul da fronteira, a Oeste do Sol",a6,"Romance",9789724618623,
-		"82 /MURh/SUL", 241, 1, false, {}};
+		"82 /MURh/SUL", 241, 1, false, 0};
 	vector<string> a7{"Zusak, Markus"};
 	Livro* lv7=new Livro{"A rapariga que roubava livros",a7,"Romance",9789722339070,
-		"82 /ZUZm/RAP", 463, 4, false, {}};
+		"82 /ZUZm/RAP", 463, 4, false, 0};
 	vector<string> a8{"Huff, Darrell"};
 	Livro* lv8=new Livro{"Como mentir com a estatistica",a8,"Matematica",9789896165369,
-		"5 /CA 201", 175, 1, false, {}};
+		"5 /CA 201", 175, 1, false, 0};
 	vector<string> a9{"Buescu, Jorge"};
 	Livro* lv9=new Livro{"Casamentos e outros desencontros",a9,"Matematica",9789896164515,
-		"5 CA 191", 169, 1, false, {}};
+		"5 CA 191", 169, 1, false, 0};
 	vector<string> a10{"Downey, Allen B."};
 	Livro* lv10=new Livro{"Think Python",a10,"Programacao",9781449330729,
-		"004.43 PYT /DOWa/THI", 277, 1, false, {}};
+		"004.43 PYT /DOWa/THI", 277, 1, false, 0};
 	vector<string> a11{"Neruda, Pablo"};
 	Livro* lv11=new Livro{"Antologia de Pablo Neruda",a11,"Poesia",9727085148,
-		"82/NERp/ANT", 457, 1, false, {}};
+		"82/NERp/ANT", 457, 1, false, 0};
 	b2.adiciona_livro(lv1);
 	b2.adiciona_livro(lv2);
 	b2.adiciona_livro(lv3);
@@ -537,7 +537,7 @@ void test_k_emprestar() {
 	ASSERT_EQUAL("Luis Barros",e2->get_funcionario()->get_nome());
 	ASSERT_EQUAL(3,e3->get_ID());
 	ASSERT_EQUAL(910998768,e4->get_leitor()->get_telefone());
-	time_t hoje=time(NULL);
+	time_t hoje=time(0);
 	ASSERT_EQUAL(hoje,e4->get_data());
 	ASSERT_EQUAL(3,b7.get_leitores()[24]->get_emp_leit().size());
 	Emprestimo* e6 = new Emprestimo{b7.get_livros()[1], b7.get_funcionarios()[3], b7.get_leitores()[5]};
@@ -571,7 +571,7 @@ void test_l_ler_emprestimos() {
 	cout << b8.imprime();
 }
 
-void runSuite(){
+void runSuite() {
 	cute::suite s{};
 	//TODO add your test here
 	s.push_back(CUTE(test_a_criar_livros));
@@ -590,7 +590,7 @@ void runSuite(){
 	cute::makeRunner(lis)(s, "AEDA 2014/2015 - Biblioteca");
 }
 
-int main(){
+int main() {
     runSuite();
     return 0;
 }

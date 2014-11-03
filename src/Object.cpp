@@ -8,7 +8,7 @@ using namespace std;
 Object::Object(long id): ID{id} {}
 
 // obter ID
-long Object::get_ID(){
+long Object::get_ID() {
 	return ID;
 }
 
