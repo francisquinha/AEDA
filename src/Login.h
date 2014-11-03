@@ -1,5 +1,5 @@
-#ifndef _LOGIN_H_
-#define _LOGIN_H_
+#ifndef SRC_LOGIN_H_
+#define SRC_LOGIN_H_
 
 #include <string>
 #include <vector>
@@ -20,4 +20,4 @@ public:
     void escreve(std::string ficheiro); // escreve utilizador num ficheiro; parametros: string com nome do ficheiro
 };
 
-#endif // _LOGIN_H_
+#endif // SRC_LOGIN_H_

@@ -35,6 +35,11 @@ public:
 	void distribui_funcionarios();
 	bool promove_funcionario_supervisor(long ID);
 	bool despromove_supervisor_funcionorario(long id);
+	std::string imprime_livros();
+	std::string imprime_funcionarios();
+	std::string imprime_supervisores();
+	std::string imprime_leitores();
+	std::string imprime_emprestimos();
 	std::string imprime();
 	std::vector<Emprestimo*> get_emprestimos_atrasados();
 	std::string imprime_emprestimos_atrasados();

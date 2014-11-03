@@ -301,25 +301,68 @@ bool Biblioteca::despromove_supervisor_funcionorario(long id) {
 	return false;
 }
 
-// imprimir Biblioteca
-string Biblioteca::imprime() {
+// imprimir livros de Biblioteca
+string Biblioteca::imprime_livros() {
 	stringstream out{};
 	out << "LIVROS" << endl;
 	for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++) {
 		out << (*it)->imprime();
 	}
-	out << endl << "FUNCIONARIOS" << endl;
+	return out.str();
+}
+
+// imprimir funcionarios de Biblioteca
+string Biblioteca::imprime_funcionarios() {
+	stringstream out{};
+	out << "FUNCIONARIOS" << endl;
+	Supervisor* sp{};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
-		out << (*it)->imprime();
+		sp = dynamic_cast<Supervisor*>(*it);
+		if (sp == 0) out << (*it)->imprime();
 	}
-	out << endl << "LEITORES" << endl;
+	return out.str();
+}
+
+// imprimir supervisores de Biblioteca
+string Biblioteca::imprime_supervisores() {
+	stringstream out{};
+	out << "SUPERVISORES" << endl;
+	Supervisor* sp{};
+	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
+		sp = dynamic_cast<Supervisor*>(*it);
+		if (sp != 0) out << (*it)->imprime();
+	}
+	return out.str();
+}
+
+// imprimir leitores de Biblioteca
+string Biblioteca::imprime_leitores() {
+	stringstream out{};
+	out << "LEITORES" << endl;
 	for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
 		out << (*it)->imprime();
 	}
-	out << endl << "EMPRESTIMOS" << endl;
+	return out.str();
+}
+
+// imprimir emprestimos de Biblioteca
+string Biblioteca::imprime_emprestimos() {
+	stringstream out{};
+	out << "EMPRESTIMOS" << endl;
 	for (vector<Emprestimo*>::const_iterator it = emprestimos.begin(); it != emprestimos.end(); it++) {
 		out << (*it)->imprime();
 	}
+	return out.str();
+}
+
+// imprimir Biblioteca
+string Biblioteca::imprime() {
+	stringstream out{};
+	out << imprime_livros() << endl
+			<< imprime_funcionarios() << endl
+			<< imprime_supervisores() << endl
+			<< imprime_leitores() << endl
+			<< imprime_emprestimos();
 	return out.str();
 }
 
