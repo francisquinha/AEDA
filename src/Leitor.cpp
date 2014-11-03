@@ -44,6 +44,11 @@ vector<Emprestimo*> Leitor::get_emp_leit() {
 	return emprestimos_leitor;
 }
 
+// determinar Emprestimos de Leitor
+void Leitor::set_emp_leit(vector<Emprestimo*> emp_leit) {
+	emprestimos_leitor=emp_leit;
+}
+
 // obter nome de Leitor
 string Leitor::get_nome() {
 	return nome;
@@ -89,3 +94,24 @@ void Leitor::escreve(string ficheiro) {
 	}
 	else throw Ficheiro_indisponivel(ficheiro);
 }
+
+// imprimir emprestimos de Leitor
+string Leitor::imprime_emp_leit(){
+	stringstream out{};
+	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
+		out << (*it)->imprime();
+	}
+	return out.str();
+}
+
+// obter Emprestimos atrasados de Leitor
+vector<Emprestimo*> Leitor::get_emprestimos_atrasados() {
+	vector<Emprestimo*> atrasados{};
+	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
+		if ((*it)->get_atraso() > 0) {
+			atrasados.push_back(*it);
+		}
+	}
+	return atrasados;
+}
+

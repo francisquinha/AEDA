@@ -301,7 +301,7 @@ void test_h_criar_adicionar_imprimir_escrever_leitor() {
 	b5.adiciona_leitor(l39);
 	ASSERT_EQUAL(39, b5.get_leitores().size());
 	//cout << b5.imprime();
-	b5.escreve("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
+	//b5.escreve("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
 }
 
 void test_i_remover() {
@@ -465,7 +465,7 @@ void test_i_remover() {
 	b2.adiciona_leitor(l37);
 	b2.adiciona_leitor(l38);
 	b2.adiciona_leitor(l39);
-	b2.escreve("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
+//	b2.escreve("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
 	ASSERT_EQUAL(3,lv3->get_ID());
 	ASSERT_EQUAL(7,f7->get_ID());
 	ASSERT_EQUAL(5,l5->get_ID());
@@ -511,7 +511,7 @@ void test_j_ler() {
 	b6.le_livros("Livro.txt");
 	b6.le_funcionarios("Funcionario.txt", "Supervisor.txt");
 	b6.le_leitores("Leitor.txt");
-	ASSERT_EQUAL(11, b6.get_livros().size());
+	ASSERT_EQUAL(17, b6.get_livros().size());
 	ASSERT_EQUAL(17, b6.get_funcionarios().size());
 	ASSERT_EQUAL(39, b6.get_leitores().size());
 //	cout << b6.imprime();
@@ -522,17 +522,21 @@ void test_k_emprestar() {
 	b7.le_livros("Livro.txt");
 	b7.le_funcionarios("Funcionario.txt", "Supervisor.txt");
 	b7.le_leitores("Leitor.txt");
+	vector<Livro*> livrs{b7.get_livros()};
+	vector<Leitor*> leitors{b7.get_leitores()};
+	for (vector<Livro*>::const_iterator it = livrs.begin(); it != livrs.end(); it++){
+		(*it)->set_emprestado(false);
+		(*it)->set_data_emp(0);
+	}
+	for (vector<Leitor*>::const_iterator itl = leitors.begin(); itl != leitors.end(); itl++){
+		(*itl)->set_emp_leit({});
+	}
 	time_t dt{};
-	long ymd {}, year{}, month{}, day{};
-	ldiv_t ydiv{}, mdiv{}, ddiv{};
+	long year{}, month{}, day{};
 	struct tm* dtinfo{};
-	ymd = 20141029;
-	ydiv = ldiv(ymd, 10000);
-	year = ydiv.quot;
-	mdiv =  ldiv(ymd - year * 10000, 100);
-	month = mdiv.quot;
-	ddiv = ldiv(ymd, 100);
-	day = ddiv.rem;
+	year = 2014;
+	month = 10;
+	day = 2;
 	time (&dt);
 	dtinfo = localtime ( &dt );
 	dtinfo->tm_year = year - 1900;
@@ -542,13 +546,9 @@ void test_k_emprestar() {
 	time_t hj = std::time(0);
 	double tempo_dias{floor(difftime(hj,dt)/86400)};
 	Emprestimo* e1 = new Emprestimo{b7.get_livros()[1], b7.get_funcionarios()[2], b7.get_leitores()[24], dt};
-	ymd = 20141016;
-	ydiv = ldiv(ymd, 10000);
-	year = ydiv.quot;
-	mdiv =  ldiv(ymd - year * 10000, 100);
-	month = mdiv.quot;
-	ddiv = ldiv(ymd, 100);
-	day = ddiv.rem;
+	year = 2014;
+	month = 10;
+	day = 16;
 	time (&dt);
 	dtinfo = localtime ( &dt );
 	dtinfo->tm_year = year - 1900;
@@ -556,52 +556,47 @@ void test_k_emprestar() {
 	dtinfo->tm_mday = day;
 	dt = mktime (dtinfo);
 	Emprestimo* e2 = new Emprestimo{b7.get_livros()[0], b7.get_funcionarios()[5], b7.get_leitores()[10], dt};
-	ymd = 20141101;
-	ydiv = ldiv(ymd, 10000);
-	year = ydiv.quot;
-	mdiv =  ldiv(ymd - year * 10000, 100);
-	month = mdiv.quot;
-	ddiv = ldiv(ymd, 100);
-	day = ddiv.rem;
+	year = 2014;
+	month = 10;
+	day = 23;
 	time (&dt);
 	dtinfo = localtime ( &dt );
 	dtinfo->tm_year = year - 1900;
 	dtinfo->tm_mon = month - 1;
 	dtinfo->tm_mday = day;
 	dt = mktime (dtinfo);
-	Emprestimo* e3 = new Emprestimo{b7.get_livros()[4], b7.get_funcionarios()[9], b7.get_leitores()[7], dt};
-	ymd = 20141002;
-	ydiv = ldiv(ymd, 10000);
-	year = ydiv.quot;
-	mdiv =  ldiv(ymd - year * 10000, 100);
-	month = mdiv.quot;
-	ddiv = ldiv(ymd, 100);
-	day = ddiv.rem;
+	Emprestimo* e3 = new Emprestimo{b7.get_livros()[4], b7.get_funcionarios()[9], b7.get_leitores()[24], dt};
+	year = 2014;
+	month = 11;
+	day = 1;
 	time (&dt);
 	dtinfo = localtime ( &dt );
 	dtinfo->tm_year = year - 1900;
 	dtinfo->tm_mon = month - 1;
 	dtinfo->tm_mday = day;
 	dt = mktime (dtinfo);
-	Emprestimo* e4 = new Emprestimo{b7.get_livros()[8], b7.get_funcionarios()[11], b7.get_leitores()[24], dt};
+	Emprestimo* e4 = new Emprestimo{b7.get_livros()[8], b7.get_funcionarios()[11], b7.get_leitores()[7], dt};
 	Emprestimo* e5 = new Emprestimo{b7.get_livros()[6], b7.get_funcionarios()[16], b7.get_leitores()[24]};
+	cout << "cria emprestimos ok\n";
 	b7.adiciona_emprestimo(e1);
 	b7.adiciona_emprestimo(e2);
 	b7.adiciona_emprestimo(e3);
 	b7.adiciona_emprestimo(e4);
 	b7.adiciona_emprestimo(e5);
+	cout << "adiciona emprestimos ok\n";
 	ASSERT_EQUAL(5,b7.get_emprestimos().size());
 	ASSERT_EQUAL(2,e1->get_livro()->get_ID());
 	ASSERT_EQUAL("Luis Barros",e2->get_funcionario()->get_nome());
 	ASSERT_EQUAL(3,e3->get_ID());
-	ASSERT_EQUAL(910998768,e4->get_leitor()->get_telefone());
+	ASSERT_EQUAL(913563455,e4->get_leitor()->get_telefone());
 	long data = e4->get_data();
 	tm *ldata = localtime(&data);
-	ymd = (1900 + ldata->tm_year) * 10000 + (1 + ldata->tm_mon) * 100 + ldata->tm_mday;
-	ASSERT_EQUAL(20141002,ymd);
+	long ymd {(1900 + ldata->tm_year) * 10000 + (1 + ldata->tm_mon) * 100 + ldata->tm_mday};
+	ASSERT_EQUAL(20141101,ymd);
 	ASSERT_EQUAL(3,b7.get_leitores()[24]->get_emp_leit().size());
 	Emprestimo* e6 = new Emprestimo{b7.get_livros()[1], b7.get_funcionarios()[3], b7.get_leitores()[5]};
 	Emprestimo* e7 = new Emprestimo{b7.get_livros()[2], b7.get_funcionarios()[15], b7.get_leitores()[24]};
+	cout << "cria emprestimos ok\n";
 	ASSERT_THROWS(b7.adiciona_emprestimo(e6);, Livro_indisponivel);
 		try {
 			b7.adiciona_emprestimo(e6);
@@ -621,15 +616,17 @@ void test_k_emprestar() {
 	b7.escreve("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt");
 }
 
-void test_l_ler_emprestimos() {
+void test_l_emprestimos_ler_atrasos() {
 	Biblioteca b8{};
 	b8.le("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt");
-	ASSERT_EQUAL(11, b8.get_livros().size());
+	ASSERT_EQUAL(17, b8.get_livros().size());
 	ASSERT_EQUAL(17, b8.get_funcionarios().size());
 	ASSERT_EQUAL(39, b8.get_leitores().size());
 	ASSERT_EQUAL(5, b8.get_emprestimos().size());
 	ASSERT_EQUAL(1, b8.get_leitores()[7]->get_emp_leit().size());
-	cout << b8.imprime();
+	ASSERT_EQUAL(3, b8.get_emprestimos_atrasados().size());
+//	cout << b8.imprime();
+	cout << b8.imprime_emprestimos_atrasados();
 }
 
 void runSuite() {
@@ -646,7 +643,7 @@ void runSuite() {
 	s.push_back(CUTE(test_i_remover));
 	s.push_back(CUTE(test_j_ler));
 	s.push_back(CUTE(test_k_emprestar));
-	s.push_back(CUTE(test_l_ler_emprestimos));
+	s.push_back(CUTE(test_l_emprestimos_ler_atrasos));
 	cute::ide_listener lis{};
 	cute::makeRunner(lis)(s, "AEDA 2014/2015 - Biblioteca");
 }

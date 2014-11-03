@@ -49,14 +49,14 @@ Funcionario* Emprestimo::get_funcionario() {
 int Emprestimo::get_atraso() {
 	time_t hoje = std::time(0);
 	double tempo_dias{floor(difftime(hoje, data)/86400)};
-	double tempo_extra{min(tempo_dias-7, 0.0)};
+	double tempo_extra{max(tempo_dias - 7, 0.0)};
 	return (int) tempo_extra;
 }
 
 // obter multa na entraga de Emprestimo
 double Emprestimo::get_multa() {
 	int tempo_extra=get_atraso();
-	int tempo_extra_extra{min(tempo_extra-7, 0)};
+	int tempo_extra_extra{max(tempo_extra-7, 0)};
 	double divida{tempo_extra * 0.25 + tempo_extra_extra * 0.5};
 	return divida;
 }

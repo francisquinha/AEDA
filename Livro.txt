@@ -17,7 +17,7 @@ Romance
 445
 13
 1
-2014/10/29
+2014/10/2
 3
 A chuva pasmada
 Couto, Mia;
@@ -47,7 +47,7 @@ Programacao
 1056
 2
 1
-2014/11/1
+2014/10/23
 6
 A Sul da fronteira, a Oeste do Sol
 Murakami, Haruki;
@@ -87,7 +87,7 @@ Matematica
 169
 1
 1
-2014/10/2
+2014/11/1
 10
 Think Python
 Downey, Allen B.;
@@ -109,72 +109,62 @@ Poesia
 0
 0
 12
-Felizmente Há Luar!
-Monteiro, Luís de Sttau;
+Felizmente Ha Luar!
+Monteiro, Luis de Sttau;
 Arte
 9789726277446
-
+821.134.3-2/MONL/FEL
 144
 7
 0
 0
 13
-Iniciação ao Desenho
+Iniciacao ao Desenho
 Sanmiguel, David;
 Arte
 9789727709724
-
+810.123.3-2/SAND/DES
 128
 3
 0
 0
-13
-Mecânica dos Fluídos
-Oliveira, Luis Adriano; Lopes, António Gameiro;
+14
+Mecanica dos Fluidos
+Oliveira, Luis Adriano; Lopes, Antonio Gameiro;
 Engenharia
 9789727579389
-
+532 /OLIL/MEC 3
 792
 4
 0
 0
-14
-Ética para Engenheiros
-Braga, Jorge; Rego, Arménio;
+15
+Etica para Engenheiros
+Braga, Jorge; Rego, Armenio;
 Engenharia
 9789897520655
-
+174 /REGa/ETI
 268
 1
 0
 0
-15
-Métodos Numéricos
+16
+Metodos Numericos
 Pina, Heitor; Lemos, Carlos;
 Engenharia
 9789728469542
-
+519.6 /PINh/MET
 312
 1
 0
 0
-16
+17
 Os Desafios da Economia
-M. Solow, Robert 
+M. Solow, Robert ;
 Economia
 9789897241840
-
+330.1/SOLr/ECO
 248
 2
 0
 0
-
-
-
-
-
-
-
-
-
-

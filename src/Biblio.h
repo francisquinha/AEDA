@@ -39,6 +39,7 @@ public:
 	bool despromove_supervisor_funcionorario(long id);
 	std::string imprime();
 	std::vector<Emprestimo*> get_emprestimos_atrasados();
+	std::string imprime_emprestimos_atrasados();
 	std::vector<Livro*> get_livros();
 	std::vector<Emprestimo*> get_emprestimos();
 	void set_emprestimos(std::vector<Emprestimo*> emp);

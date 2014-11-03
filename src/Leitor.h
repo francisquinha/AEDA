@@ -29,6 +29,9 @@ public:
 	void adiciona_emp_leit(Emprestimo* ep);
 	bool remove_emp_leit(long id);
 	std::vector<Emprestimo*> get_emp_leit();
+	void set_emp_leit(std::vector<Emprestimo*> emp_leit);
+	std::string imprime_emp_leit();
+	std::vector<Emprestimo*> get_emprestimos_atrasados();
 	void escreve(std::string ficheiro);
 };
 

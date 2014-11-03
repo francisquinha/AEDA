@@ -215,6 +215,38 @@ vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados() {
 	return atrasados;
 }
 
+// imprimir Emprestimos atrasados de Biblioteca para contacto
+string Biblioteca::imprime_emprestimos_atrasados() {
+	stringstream out{};
+	vector<Emprestimo*> atrasados{get_emprestimos_atrasados()};
+	vector<Leitor*> lt_atrasados{};
+	vector<long> id_lt{};
+	long id{};
+	bool acrescenta{true};
+	for (vector<Emprestimo*>::const_iterator it = atrasados.begin(); it != atrasados.end(); it++) {
+		id = (*it)->get_leitor()->get_ID();
+		acrescenta=true;
+		for (vector<long>::const_iterator itid = id_lt.begin(); itid!= id_lt.end(); itid++){
+			if ((*itid) == id) acrescenta=false;
+		}
+		if (acrescenta) {
+			id_lt.push_back(id);
+			lt_atrasados.push_back((*it)->get_leitor());
+		}
+	}
+	for (vector<Leitor*>::const_iterator itl = lt_atrasados.begin(); itl!= lt_atrasados.end(); itl++){
+		out << "LEITOR" << endl;
+		out << (*itl)->imprime();
+		vector<Emprestimo*> ep_atrasados{(*itl)->get_emprestimos_atrasados()};
+		out << "EMPRESTIMOS" << endl;
+		for (vector<Emprestimo*>::const_iterator ite = ep_atrasados.begin(); ite != ep_atrasados.end(); ite++) {
+			out << (*ite)->imprime();
+		}
+		out << endl;
+	}
+	return out.str();
+}
+
 // promover funcionario a supervisor
 bool Biblioteca::promove_funcionario_supervisor(long id) {
 	vector<Funcionario*> func_sup{};
