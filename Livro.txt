@@ -130,7 +130,7 @@ Arte
 0
 14
 Mecanica dos Fluidos
-Oliveira, Luis Adriano; Lopes, Antonio Gameiro;
+Oliveira, Luis Adriano;Lopes, Antonio Gameiro;
 Engenharia
 9789727579389
 532 /OLIL/MEC 3
@@ -140,7 +140,7 @@ Engenharia
 0
 15
 Etica para Engenheiros
-Braga, Jorge; Rego, Armenio;
+Braga, Jorge;Rego, Armenio;
 Engenharia
 9789897520655
 174 /REGa/ETI
@@ -150,7 +150,7 @@ Engenharia
 0
 16
 Metodos Numericos
-Pina, Heitor; Lemos, Carlos;
+Pina, Heitor;Lemos, Carlos;
 Engenharia
 9789728469542
 519.6 /PINh/MET
@@ -160,7 +160,7 @@ Engenharia
 0
 17
 Os Desafios da Economia
-M. Solow, Robert ;
+M. Solow, Robert;
 Economia
 9789897241840
 330.1/SOLr/ECO

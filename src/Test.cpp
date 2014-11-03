@@ -613,12 +613,12 @@ void test_k_emprestar() {
 		catch (Maximo_emprestimos &lt) {
 			std::cout <<  "Excecao. Leitor ja tem 3 emprestimos feitos." << std::endl;
 		}
-	b7.escreve("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt");
+	b7.escreve("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt", "Utilizador.txt");
 }
 
 void test_l_emprestimos_ler_atrasos() {
 	Biblioteca b8{};
-	b8.le("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt");
+	b8.le("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt", "Utilizador.txt");
 	ASSERT_EQUAL(17, b8.get_livros().size());
 	ASSERT_EQUAL(17, b8.get_funcionarios().size());
 	ASSERT_EQUAL(39, b8.get_leitores().size());
@@ -627,6 +627,30 @@ void test_l_emprestimos_ler_atrasos() {
 	ASSERT_EQUAL(3, b8.get_emprestimos_atrasados().size());
 //	cout << b8.imprime();
 	cout << b8.imprime_emprestimos_atrasados();
+}
+
+void test_m_login() {
+	Biblioteca b9{};
+	b9.le("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt", "Utilizador.txt");
+	vector<Funcionario*> funcios{b9.get_funcionarios()};
+	Utilizador* admin = new Utilizador{0,"0",0};
+	Utilizador* ut{};
+	Supervisor* sp{};
+	b9.adiciona_utilizador(admin);
+	for (vector<Funcionario*>::const_iterator it = funcios.begin(); it != funcios.end(); it++){
+		sp = dynamic_cast<Supervisor*>(*it);
+		if (sp == 0) {
+			ut = new Utilizador{(*it)->get_ID(), to_string((*it)->get_ID()), 2};
+			b9.adiciona_utilizador(ut);
+		}
+		else {
+			ut = new Utilizador{(*it)->get_ID(), to_string((*it)->get_ID()), 1};
+			b9.adiciona_utilizador(ut);
+		}
+	}
+	ASSERT_EQUAL(18, b9.get_utilizadores().size());
+	b9.escreve("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt", "Utilizador.txt");
+//	cout << b9.imprime();
 }
 
 void runSuite() {
@@ -644,6 +668,7 @@ void runSuite() {
 	s.push_back(CUTE(test_j_ler));
 	s.push_back(CUTE(test_k_emprestar));
 	s.push_back(CUTE(test_l_emprestimos_ler_atrasos));
+	s.push_back(CUTE(test_m_login));
 	cute::ide_listener lis{};
 	cute::makeRunner(lis)(s, "AEDA 2014/2015 - Biblioteca");
 }

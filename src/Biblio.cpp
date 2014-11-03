@@ -29,6 +29,14 @@ void Biblioteca::set_funcionarios(vector<Funcionario*> func) {
 	funcionarios = func;
 }
 
+vector<Utilizador*>Biblioteca::get_utilizadores() {
+	return utilizadores;
+}
+
+void Biblioteca::set_utilizadores(vector<Utilizador*> util) {
+	utilizadores = util;
+}
+
 vector<Funcionario*>Biblioteca::get_supervisores() {
 	vector<Funcionario*> supervisores{};
 	Supervisor* sp{};
@@ -82,6 +90,11 @@ void Biblioteca::adiciona_funcionario(Funcionario* fc) {
 // adicionar Leitor a Biblioteca
 void Biblioteca::adiciona_leitor(Leitor* lt) {
 	leitores.push_back(lt);
+}
+
+// adicionar Utilizador a Biblioteca
+void Biblioteca::adiciona_utilizador(Utilizador* ut) {
+	utilizadores.push_back(ut);
 }
 
 // obter temas de livros de Biblioteca
@@ -201,7 +214,17 @@ bool Biblioteca::remove_emprestimo(long id) {
 			return true;
 		}
 	}
-	return false;
+	throw Object_nao_existe(id);
+}
+
+bool Biblioteca::remove_utilizador(long id) {
+	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it != utilizadores.end(); it++) {
+		if ((*it)->get_ID() == id) {
+			utilizadores.erase(it);
+			return true;
+		}
+	}
+	throw Object_nao_existe(id);
 }
 
 // obter Emprestimos atrasados de Biblioteca
@@ -343,12 +366,23 @@ void Biblioteca::escreve_emprestimos(string ficheiro) {
 	}
 }
 
+// escrever utilizadores de Biblioteca
+void Biblioteca::escreve_utilizadores(string ficheiro) {
+	ofstream myfile(ficheiro);
+	myfile << "";
+	myfile.close();
+	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it != utilizadores.end(); it++) {
+		(*it)->escreve(ficheiro);
+	}
+}
+
 // escrever todos os ficheiros de Biblioteca
-void Biblioteca::escreve(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt, string ficheiro_ep) {
+void Biblioteca::escreve(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt, string ficheiro_ep, string ficheiro_ut) {
 	escreve_livros(ficheiro_lv);
 	escreve_funcionarios(ficheiro_fc, ficheiro_sp);
 	escreve_leitores(ficheiro_lt);
 	escreve_emprestimos(ficheiro_ep);
+	escreve_utilizadores(ficheiro_ut);
 }
 
 // ler livros de Biblioteca
@@ -612,11 +646,43 @@ void Biblioteca::le_emprestimos(string ficheiro) {
 	isep.close();
 }
 
+// le utilizadores de Biblioteca de um ficheiro e coloca-os no vector de utilizadores; parametros: string com o nome do ficheiro
+void Biblioteca::le_utilizadores(string ficheiro) {
+	ifstream isut(ficheiro);
+	if (!isut) throw Ficheiro_indisponivel(ficheiro);
+	string ids{}, pass{}, aces{};
+	long id{};
+	int ace{};
+	while (!isut.eof()) {
+		getline(isut, ids);
+		getline(isut, pass);
+		getline(isut, aces);
+		id = atol(ids.c_str());
+		ace = atoi(aces.c_str());
+		if (ids != "") {
+			Utilizador* ut = new Utilizador{id, pass, ace};
+			utilizadores.push_back(ut);
+		}
+	}
+	isut.close();
+}
+
 // ler todos os ficheiros de Biblioteca
-void Biblioteca::le(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt, string ficheiro_ep) {
+void Biblioteca::le(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt, string ficheiro_ep, string ficheiro_ut) {
 	le_livros(ficheiro_lv);
 	le_funcionarios(ficheiro_fc, ficheiro_sp);
 	le_leitores(ficheiro_lt);
 	le_emprestimos(ficheiro_ep);
 	le_leitores_emprestimos(ficheiro_lt);
+	le_utilizadores(ficheiro_ut);
+}
+
+// faz login do utilizador e devolve o nivel de acesso se o login estiver correto ou -1 se estiver errado
+int Biblioteca::efectuar_login(long id, std::string pass) {
+	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it!= utilizadores.end(); it++) {
+		if ((*it)->get_ID() == id and (*it)->get_password() == pass) {
+			return (*it)->get_acesso();
+		}
+	}
+	return -1;
 }
