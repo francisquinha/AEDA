@@ -323,12 +323,10 @@ void Biblioteca::escreve(string ficheiro_lv, string ficheiro_fc, string ficheiro
 void Biblioteca::le_livros(string ficheiro) {
 	ifstream islv(ficheiro);
 	if (!islv) throw Ficheiro_indisponivel(ficheiro);
-	string ids{}, tit{}, auts{}, tem{}, isbns{}, cot{}, num_pags{}, edis{}, epts{}, ymds{};
-	long ymd{};
+	string ids{}, tit{}, auts{}, tem{}, isbns{}, cot{}, num_pags{}, edis{}, epts{}, ymds{}, years{}, months{}, days{};
 	time_t dt{};
 	struct tm* dtinfo{};
 	int year{}, month{}, day{};
-	ldiv_t ydiv{}, mdiv{}, ddiv{};
 	istringstream autss{};
 	while (!islv.eof()) {
 		getline(islv, ids);
@@ -352,20 +350,22 @@ void Biblioteca::le_livros(string ficheiro) {
 		int num_pag = atoi(num_pags.c_str());
 		int edi = atoi(edis.c_str());
 		bool ept = atoi(epts.c_str());
-		ymd = atol(ymds.c_str());
-		ydiv = ldiv(ymd, 10000);
-		mdiv =  ldiv(ymd - year * 10000, 100);
-		ddiv = ldiv(ymd, 100);
-		year = ydiv.quot;
-		month = mdiv.quot;
-		day = ddiv.rem;
-		time (&dt);
-		dtinfo = localtime ( &dt );
-		dtinfo->tm_year = year - 1900;
-		dtinfo->tm_mon = month - 1;
-		dtinfo->tm_mday = day;
-		mktime (dtinfo);
-		if (ymd == 0) dt=0;
+		if (ymds == "0") dt=0;
+		else {
+			stringstream ymdss(ymds);
+			getline(ymdss, years, '/');
+			getline(ymdss, months, '/');
+			getline(ymdss, days);
+			year = atoi(years.c_str());
+			month = atoi(months.c_str());
+			day = atoi(days.c_str());
+			time (&dt);
+			dtinfo = localtime ( &dt );
+			dtinfo->tm_year = year - 1900;
+			dtinfo->tm_mon = month - 1;
+			dtinfo->tm_mday = day;
+			dt = mktime (dtinfo);
+		}
 		if (ids != "") {
 			Livro* lv = new Livro{id, tit, aut, tem, isbn, cot, num_pag, edi, ept, dt};
 			livros.push_back(lv);
@@ -513,12 +513,11 @@ void Biblioteca::le_leitores_emprestimos(string ficheiro) {
 void Biblioteca::le_emprestimos(string ficheiro) {
 	ifstream isep(ficheiro);
 	if (!isep) throw Ficheiro_indisponivel(ficheiro);
-	string ids{}, lvids{}, fcids{}, ltids{}, ymds{};
-	long id{}, lvid{}, fcid{}, ltid{}, ymd{};
+	string ids{}, lvids{}, fcids{}, ltids{}, ymds{}, years{}, months{}, days{};
+	long id{}, lvid{}, fcid{}, ltid{};
 	time_t dt{};
 	struct tm* dtinfo{};
 	int year{}, month{}, day{};
-	ldiv_t ydiv{}, mdiv{}, ddiv{};
 	Livro* lv{};
 	Funcionario* fc{};
 	Leitor* lt{};
@@ -533,20 +532,22 @@ void Biblioteca::le_emprestimos(string ficheiro) {
 		lvid = atol(lvids.c_str());
 		fcid = atol(fcids.c_str());
 		ltid = atol(ltids.c_str());
-		ymd = atol(ymds.c_str());
-		ydiv = ldiv(ymd, 10000);
-		mdiv =  ldiv(ymd - year * 10000, 100);
-		ddiv = ldiv(ymd, 100);
-		year = ydiv.quot;
-		month = mdiv.quot;
-		day = ddiv.rem;
-		time (&dt);
-		dtinfo = localtime ( &dt );
-		dtinfo->tm_year = year - 1900;
-		dtinfo->tm_mon = month - 1;
-		dtinfo->tm_mday = day;
-		mktime (dtinfo);
-		if (ymd == 0) dt=0;
+		if (ymds == "0") dt=0;
+		else {
+			stringstream ymdss(ymds);
+			getline(ymdss, years, '/');
+			getline(ymdss, months, '/');
+			getline(ymdss, days);
+			year = atoi(years.c_str());
+			month = atoi(months.c_str());
+			day = atoi(days.c_str());
+			time (&dt);
+			dtinfo = localtime ( &dt );
+			dtinfo->tm_year = year - 1900;
+			dtinfo->tm_mon = month - 1;
+			dtinfo->tm_mday = day;
+			dt = mktime (dtinfo);
+		}
 		if (ids != "") {
 			encontrado=false;
 			for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++) {

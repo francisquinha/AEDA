@@ -22,6 +22,8 @@ Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): Object{
 		livro{lv}, funcionario{fc}, leitor{lt}, data{std::time(0)} {}
 Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt): Object{num_emprestimos+1},
 		livro{lv}, funcionario{fc}, leitor{lt}, data{std::time(0)} {num_emprestimos++;}
+Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object{num_emprestimos+1},
+		livro{lv}, funcionario{fc}, leitor{lt}, data{dt} {num_emprestimos++;}
 
 // obter Livro de Emprestimo
 Livro* Emprestimo::get_livro() {
@@ -63,13 +65,22 @@ double Emprestimo::get_multa() {
 string Emprestimo::imprime() {
 	stringstream out{};
 	tm *ldata = localtime(&data);
-	long ymd{(1900 + ldata->tm_year) * 10000 + (1 + ldata->tm_mon) * 100 + ldata->tm_mday};
-	if (data == 0) ymd = 0;
+	long year{1900 + ldata->tm_year};
+	long month{1 + ldata->tm_mon};
+	long day {ldata->tm_mday};
+	string dt{}, months{}, days{};
+	string years{to_string(year)};
+	if (month<10) months = "0" + to_string(month);
+	else months = to_string(month);
+	if (day<10) days = "0" + to_string(day);
+	else days = to_string(day);
+	if (data == 0) dt = "0";
+	else dt = years + "/" + months + "/" + days;
 	out << "ID: "<< get_ID() << endl
 			<< "ID Livro: " << livro->get_ID() << endl
 			<< "ID Funcionario: " << funcionario->get_ID() << endl
 			<< "ID Leitor: " << leitor->get_ID() << endl
-			<< "Data: " << ymd << endl;
+			<< "Data: " << dt << endl;
 	return out.str();
 }
 
@@ -77,13 +88,22 @@ string Emprestimo::imprime() {
 void Emprestimo::escreve(string ficheiro) {
 	stringstream out{};
 	tm *ldata = localtime(&data);
-	long ymd{(1900 + ldata->tm_year) * 10000 + (1 + ldata->tm_mon) * 100 + ldata->tm_mday};
-	if (data == 0) ymd = 0;
+	long year{1900 + ldata->tm_year};
+	long month{1 + ldata->tm_mon};
+	long day {ldata->tm_mday};
+	string dt{}, months{}, days{};
+	string years{to_string(year)};
+	if (month<10) months = "0" + to_string(month);
+	else months = to_string(month);
+	if (day<10) days = "0" + to_string(day);
+	else days = to_string(day);
+	if (data == 0) dt = "0";
+	else dt = years + "/" + months + "/" + days;
 	out << get_ID() << endl
 	<< livro->get_ID() << endl
 	<< funcionario->get_ID() << endl
 	<< leitor->get_ID() << endl
-	<< ymd << endl;
+	<< dt << endl;
 	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
 		myfile << out.str();

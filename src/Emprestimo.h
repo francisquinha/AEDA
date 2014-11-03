@@ -23,6 +23,7 @@ public:
 	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt);
 	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt);
 	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt);
+	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt);
 	Livro* get_livro();
 	void set_livro(Livro* lv);
 	Funcionario* get_funcionario();

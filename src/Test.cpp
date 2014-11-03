@@ -522,10 +522,68 @@ void test_k_emprestar() {
 	b7.le_livros("Livro.txt");
 	b7.le_funcionarios("Funcionario.txt", "Supervisor.txt");
 	b7.le_leitores("Leitor.txt");
-	Emprestimo* e1 = new Emprestimo{b7.get_livros()[1], b7.get_funcionarios()[2], b7.get_leitores()[24]};
-	Emprestimo* e2 = new Emprestimo{b7.get_livros()[0], b7.get_funcionarios()[5], b7.get_leitores()[10]};
-	Emprestimo* e3 = new Emprestimo{b7.get_livros()[4], b7.get_funcionarios()[9], b7.get_leitores()[7]};
-	Emprestimo* e4 = new Emprestimo{b7.get_livros()[8], b7.get_funcionarios()[11], b7.get_leitores()[24]};
+	time_t dt{};
+	long ymd {}, year{}, month{}, day{};
+	ldiv_t ydiv{}, mdiv{}, ddiv{};
+	struct tm* dtinfo{};
+	ymd = 20141029;
+	ydiv = ldiv(ymd, 10000);
+	year = ydiv.quot;
+	mdiv =  ldiv(ymd - year * 10000, 100);
+	month = mdiv.quot;
+	ddiv = ldiv(ymd, 100);
+	day = ddiv.rem;
+	time (&dt);
+	dtinfo = localtime ( &dt );
+	dtinfo->tm_year = year - 1900;
+	dtinfo->tm_mon = month - 1;
+	dtinfo->tm_mday = day;
+	dt = mktime (dtinfo);
+	time_t hj = std::time(0);
+	double tempo_dias{floor(difftime(hj,dt)/86400)};
+	Emprestimo* e1 = new Emprestimo{b7.get_livros()[1], b7.get_funcionarios()[2], b7.get_leitores()[24], dt};
+	ymd = 20141016;
+	ydiv = ldiv(ymd, 10000);
+	year = ydiv.quot;
+	mdiv =  ldiv(ymd - year * 10000, 100);
+	month = mdiv.quot;
+	ddiv = ldiv(ymd, 100);
+	day = ddiv.rem;
+	time (&dt);
+	dtinfo = localtime ( &dt );
+	dtinfo->tm_year = year - 1900;
+	dtinfo->tm_mon = month - 1;
+	dtinfo->tm_mday = day;
+	dt = mktime (dtinfo);
+	Emprestimo* e2 = new Emprestimo{b7.get_livros()[0], b7.get_funcionarios()[5], b7.get_leitores()[10], dt};
+	ymd = 20141101;
+	ydiv = ldiv(ymd, 10000);
+	year = ydiv.quot;
+	mdiv =  ldiv(ymd - year * 10000, 100);
+	month = mdiv.quot;
+	ddiv = ldiv(ymd, 100);
+	day = ddiv.rem;
+	time (&dt);
+	dtinfo = localtime ( &dt );
+	dtinfo->tm_year = year - 1900;
+	dtinfo->tm_mon = month - 1;
+	dtinfo->tm_mday = day;
+	dt = mktime (dtinfo);
+	Emprestimo* e3 = new Emprestimo{b7.get_livros()[4], b7.get_funcionarios()[9], b7.get_leitores()[7], dt};
+	ymd = 20141002;
+	ydiv = ldiv(ymd, 10000);
+	year = ydiv.quot;
+	mdiv =  ldiv(ymd - year * 10000, 100);
+	month = mdiv.quot;
+	ddiv = ldiv(ymd, 100);
+	day = ddiv.rem;
+	time (&dt);
+	dtinfo = localtime ( &dt );
+	dtinfo->tm_year = year - 1900;
+	dtinfo->tm_mon = month - 1;
+	dtinfo->tm_mday = day;
+	dt = mktime (dtinfo);
+	Emprestimo* e4 = new Emprestimo{b7.get_livros()[8], b7.get_funcionarios()[11], b7.get_leitores()[24], dt};
 	Emprestimo* e5 = new Emprestimo{b7.get_livros()[6], b7.get_funcionarios()[16], b7.get_leitores()[24]};
 	b7.adiciona_emprestimo(e1);
 	b7.adiciona_emprestimo(e2);
@@ -537,8 +595,10 @@ void test_k_emprestar() {
 	ASSERT_EQUAL("Luis Barros",e2->get_funcionario()->get_nome());
 	ASSERT_EQUAL(3,e3->get_ID());
 	ASSERT_EQUAL(910998768,e4->get_leitor()->get_telefone());
-	time_t hoje=time(0);
-	ASSERT_EQUAL(hoje,e4->get_data());
+	long data = e4->get_data();
+	tm *ldata = localtime(&data);
+	ymd = (1900 + ldata->tm_year) * 10000 + (1 + ldata->tm_mon) * 100 + ldata->tm_mday;
+	ASSERT_EQUAL(20141002,ymd);
 	ASSERT_EQUAL(3,b7.get_leitores()[24]->get_emp_leit().size());
 	Emprestimo* e6 = new Emprestimo{b7.get_livros()[1], b7.get_funcionarios()[3], b7.get_leitores()[5]};
 	Emprestimo* e7 = new Emprestimo{b7.get_livros()[2], b7.get_funcionarios()[15], b7.get_leitores()[24]};
@@ -547,8 +607,9 @@ void test_k_emprestar() {
 			b7.adiciona_emprestimo(e6);
 		}
 		catch (Livro_indisponivel &lv) {
-			std::cout <<  "Excecao. Livro nao esta disponivel para emprestar. Foi emprestado ha " << lv.get_dias_emp() << " dia(s)." << std::endl;
-			ASSERT_EQUAL(0, lv.get_dias_emp());
+			std::cout <<  "Excecao. Livro com ID " << lv.get_ID() << " nao esta disponivel para emprestar. Foi emprestado ha " << lv.get_dias_emp() << " dia(s)." << std::endl;
+			ASSERT_EQUAL(tempo_dias, lv.get_dias_emp());
+			ASSERT_EQUAL(2,lv.get_ID());
 		}
 	ASSERT_THROWS(b7.adiciona_emprestimo(e7);, Maximo_emprestimos);
 		try {
@@ -557,17 +618,17 @@ void test_k_emprestar() {
 		catch (Maximo_emprestimos &lt) {
 			std::cout <<  "Excecao. Leitor ja tem 3 emprestimos feitos." << std::endl;
 		}
-	b7.escreve("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
+	b7.escreve("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt");
 }
 
 void test_l_ler_emprestimos() {
 	Biblioteca b8{};
-	b8.le("Livro.txt","Funcionario.txt","Supervisor.txt","Leitor.txt","Emprestimo.txt");
+	b8.le("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt");
 	ASSERT_EQUAL(11, b8.get_livros().size());
 	ASSERT_EQUAL(17, b8.get_funcionarios().size());
 	ASSERT_EQUAL(39, b8.get_leitores().size());
-	ASSERT_EQUAL(5,b8.get_emprestimos().size());
-	ASSERT_EQUAL(1,b8.get_leitores()[7]->get_emp_leit().size());
+	ASSERT_EQUAL(5, b8.get_emprestimos().size());
+	ASSERT_EQUAL(1, b8.get_leitores()[7]->get_emp_leit().size());
 	cout << b8.imprime();
 }
 

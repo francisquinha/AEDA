@@ -90,8 +90,12 @@ string Livro::get_cota() {
 string Livro::imprime() {
 	stringstream out{};
 	tm *ldata = localtime(&data_emp);
-	long ymd{(1900 + ldata->tm_year) * 10000 + (1 + ldata->tm_mon) * 100 + ldata->tm_mday};
-	if (data_emp == 0) ymd = 0;
+	long year{1900 + ldata->tm_year};
+	long month{1 + ldata->tm_mon};
+	long day {ldata->tm_mday};
+	string dt{};
+	if (data_emp == 0) dt = "0";
+	else dt = to_string(year) + "/" + to_string(month) + "/" + to_string(day);
 	out << "ID: "<< get_ID() << endl
 			<< "Titulo: " << titulo << endl
 			<< "Autores: ";
@@ -104,7 +108,7 @@ string Livro::imprime() {
 			<< "Num. Paginas: " << num_paginas << endl
 			<< "Edicao: " << edicao << endl
 			<< "Emprestado: " << emprestado << endl
-			<< "Data Emprestado: " << ymd << endl;
+			<< "Data Emprestado: " << dt << endl;
 	return out.str();
 }
 
@@ -112,8 +116,12 @@ string Livro::imprime() {
 void Livro::escreve(string ficheiro) {
 	stringstream out{};
 	tm *ldata = localtime(&data_emp);
-	long ymd{(1900 + ldata->tm_year) * 10000 + (1 + ldata->tm_mon) * 100 + ldata->tm_mday};
-	if (data_emp == 0) ymd = 0;
+	long year{1900 + ldata->tm_year};
+	long month{1 + ldata->tm_mon};
+	long day {ldata->tm_mday};
+	string dt{};
+	if (data_emp == 0) dt = "0";
+	else dt = to_string(year) + "/" + to_string(month) + "/" + to_string(day);
 	out << get_ID() << endl
 			<< titulo << endl;
 	for (vector<string>::const_iterator it = autores.begin(); it != autores.end(); it++) {
@@ -125,7 +133,7 @@ void Livro::escreve(string ficheiro) {
 			<< num_paginas << endl
 			<< edicao << endl
 			<< emprestado << endl
-			<< ymd << endl;
+			<< dt << endl;
 	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
 		myfile << out.str();

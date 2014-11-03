@@ -39,7 +39,7 @@ ostream& operator<<(ostream &out, Object_nao_existe &object) {
 
 // excecao para quando o livro nao esta disponivel
 ostream& operator<<(ostream &out, Livro_indisponivel &livro) {
-	out << "Excecao. Livro nao esta disponivel para emprestar. Foi emprestado ha " << livro.get_dias_emp() << " dia(s)." << endl;
+	out << "Excecao. Livro com ID " << livro.get_ID() << " nao esta disponivel para emprestar. Foi emprestado ha " << livro.get_dias_emp() << " dia(s)." << endl;
 	return out;
 }
 

@@ -7,7 +7,7 @@ Futebol
 192
 1
 1
-20141102
+2014/10/16
 2
 O Evangelho Segundo Jesus Cristo
 Saramago, Jose;
@@ -17,7 +17,7 @@ Romance
 445
 13
 1
-20141102
+2014/10/29
 3
 A chuva pasmada
 Couto, Mia;
@@ -47,7 +47,7 @@ Programacao
 1056
 2
 1
-20141102
+2014/11/1
 6
 A Sul da fronteira, a Oeste do Sol
 Murakami, Haruki;
@@ -67,7 +67,7 @@ Romance
 463
 4
 1
-20141102
+2014/11/3
 8
 Como mentir com a estatistica
 Huff, Darrell;
@@ -87,7 +87,7 @@ Matematica
 169
 1
 1
-20141102
+2014/10/2
 10
 Think Python
 Downey, Allen B.;
