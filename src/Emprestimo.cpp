@@ -13,17 +13,17 @@
 
 using namespace std;
 
-long Emprestimo::num_emprestimos{0};
+long Emprestimo::num_emprestimos {0};
 
 // construtor Emprestimo
-Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object{id},
-		livro{lv}, funcionario{fc}, leitor{lt}, data{dt} {}
-Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): Object{id},
-		livro{lv}, funcionario{fc}, leitor{lt}, data{std::time(0)} {}
-Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt): Object{num_emprestimos+1},
-		livro{lv}, funcionario{fc}, leitor{lt}, data{std::time(0)} {num_emprestimos++;}
-Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object{num_emprestimos+1},
-		livro{lv}, funcionario{fc}, leitor{lt}, data{dt} {num_emprestimos++;}
+Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object {id},
+		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {}
+Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): Object {id},
+		livro {lv}, funcionario {fc}, leitor {lt}, data {std::time(0)} {}
+Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt): Object {num_emprestimos+1},
+		livro {lv}, funcionario {fc}, leitor {lt}, data {std::time(0)} {num_emprestimos++;}
+Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object {num_emprestimos+1},
+		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {num_emprestimos++;}
 
 // obter Livro de Emprestimo
 Livro* Emprestimo::get_livro() {
@@ -48,28 +48,28 @@ Funcionario* Emprestimo::get_funcionario() {
 // obter atraso na entrega de Emprestimo
 int Emprestimo::get_atraso() {
 	time_t hoje = std::time(0);
-	double tempo_dias{floor(difftime(hoje, data)/86400)};
-	double tempo_extra{max(tempo_dias - 7, 0.0)};
+	double tempo_dias {floor(difftime(hoje, data)/86400)};
+	double tempo_extra {max(tempo_dias - 7, 0.0)};
 	return (int) tempo_extra;
 }
 
 // obter multa na entraga de Emprestimo
 double Emprestimo::get_multa() {
 	int tempo_extra=get_atraso();
-	int tempo_extra_extra{max(tempo_extra-7, 0)};
-	double divida{tempo_extra * 0.25 + tempo_extra_extra * 0.5};
+	int tempo_extra_extra {max(tempo_extra-7, 0)};
+	double divida {tempo_extra * 0.25 + tempo_extra_extra * 0.5};
 	return divida;
 }
 
 // imprimir Emprestimo
 string Emprestimo::imprime() {
-	stringstream out{};
+	stringstream out {};
 	tm *ldata = localtime(&data);
-	long year{1900 + ldata->tm_year};
-	long month{1 + ldata->tm_mon};
+	long year {1900 + ldata->tm_year};
+	long month {1 + ldata->tm_mon};
 	long day {ldata->tm_mday};
-	string dt{}, months{}, days{};
-	string years{to_string(year)};
+	string dt {}, months {}, days {};
+	string years {to_string(year)};
 	if (month<10) months = "0" + to_string(month);
 	else months = to_string(month);
 	if (day<10) days = "0" + to_string(day);
@@ -86,13 +86,13 @@ string Emprestimo::imprime() {
 
 // escrever Emprestimo
 void Emprestimo::escreve(string ficheiro) {
-	stringstream out{};
+	stringstream out {};
 	tm *ldata = localtime(&data);
-	long year{1900 + ldata->tm_year};
-	long month{1 + ldata->tm_mon};
+	long year {1900 + ldata->tm_year};
+	long month {1 + ldata->tm_mon};
 	long day {ldata->tm_mday};
-	string dt{}, months{}, days{};
-	string years{to_string(year)};
+	string dt {}, months {}, days {};
+	string years {to_string(year)};
 	if (month<10) months = "0" + to_string(month);
 	else months = to_string(month);
 	if (day<10) days = "0" + to_string(day);

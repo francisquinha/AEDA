@@ -8,7 +8,7 @@
 using namespace std;
 
 // Construtor de utilizador; parametros: id, password e acesso
-Utilizador::Utilizador(long id, std::string pass, int acess): Object{id}, password{pass}, acesso{acess}{}
+Utilizador::Utilizador(long id, std::string pass, int acess): Object {id}, password {pass}, acesso {acess} {}
 
 // obter password do utilizador; retorno: password
 string Utilizador::get_password() {
@@ -32,7 +32,7 @@ void Utilizador::set_acesso(int acess) {
 
 // escreve utilizador num ficheiro; parametros: string com nome do ficheiro
 void Utilizador::escreve(std::string ficheiro) {
-	stringstream out{};
+	stringstream out {};
 	out << get_ID() << endl
 			<< password << endl
 			<< acesso << endl;

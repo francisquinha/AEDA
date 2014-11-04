@@ -30,7 +30,7 @@ ostream& operator<<(ostream &out, Object_nao_existe &object) {
 	else if (ep!=0) {
 		out << "Excecao. Nao existe Emprestimo com ID ";
 	}
-	else{
+	else {
 		out << "Excecao. Nao existe Object com ID ";
 	}
 	out << object.get_ID() << "." << endl;

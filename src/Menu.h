@@ -3,38 +3,47 @@
 
 #include <string>
 #include <vector>
+#include <unistd.h>
 
 #include "Biblio.h"
 
+
 // Utilizador ligado ao sistema no momento
-class Utilizador_online: public Object {
+class Utilizador_online: public Object  {
     int acesso; // nivel de acesso do utilizador
 public:
+    bool online{false};
+    Utilizador_online(long id, int ace);
     int get_acesso(); // obter nivel de acesso do utilizador
 };
 
 // Menu, contem todas as funcoes a que os utilizadores podem aceder
-class Menu: public Biblioteca{
-    Utilizador_online utilizador_online;
-    void aguarda_input();
+class Menu: public Biblioteca {
+    Utilizador_online* utilizador_online;
+    bool e_numero(std::string num);
 public:
-    Menu(Utilizador_online util);
+    Menu(Utilizador_online* util);
 
-    int fazer_login(); // Menu inicial usado para fazer o login
-    void menu_principal(); // Mostra o menu principal
+    void set_utilizador(Utilizador_online* util);
+	Utilizador_online* get_utilizador();
 
-    void menu_consultas(); // Mostra as varias opcpes de consulta (opcao 1 do menu principal)
-    void menu_emprestimos(); // Mostra as varias opcoes de gestao de emprestimos (opcao 2 do menu principal)
-    void menu_livros();
-    void menu_funcionarios();
-    void menu_leitores();
-    void menu_utilizadores();
+    int efectuar_login(long id, std::string pass); // faz login do utilizador e devolve o nivel de acesso se o login estiver correto ou -1 se estiver errado
+    int menu_login(); // Menu inicial usado para fazer o login
+    void menu_principal(); // Mostra as opcoes do menu principal
+
+    void menu_consultas(); // Mostra as opcpes de consulta (opcao 1 do menu principal)
+    void menu_emprestimos(); // Mostra as opcoes de gestao de emprestimos (opcao 2 do menu principal)
+    void menu_livros(); // Mostra as opcoes de gestao de livros (opcao 3 do menu principal)
+    void menu_leitores(); // Mostra as opcoes de gestao de leitores (opcao 4 do menu principal)
+    void menu_funcionarios(); // Mostra as opces de gestao de funcionarios (opcao 5 do menu principal)
+    void menu_utilizadores(); // Mostra as opcoes de gestao de utilizadores (opcao 6 do menu principal)
 
     void consulta_livros();
+    void consulta_emprestimos();
+    void consulta_leitores();
     void consulta_funcionarios();
     void consulta_supervisores();
-    void consulta_leitores();
-    void consulta_emprestimos();
+    void consulta_utilizadores();
 
     void emprestimos_adicionar();
     void emprestimos_remover();
@@ -44,14 +53,14 @@ public:
     void livros_adicionar();
     void livros_remover();
 
+    void leitores_adicionar();
+    void leitores_remover();
+    void leitores_alterar();
+
     void funcionarios_adicionar();
     void funcionarios_remover();
     void funcionarios_promover ();
     void funcionarios_despromover();
-
-    void leitores_adicionar();
-    void leitores_remover();
-    void leitores_alterar();
 
     void utilizadores_adicionar();
     void utilizadores_remover();

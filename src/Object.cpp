@@ -5,7 +5,7 @@
 using namespace std;
 
 // construtor Object
-Object::Object(long id): ID{id} {}
+Object::Object(long id): ID {id} {}
 
 // obter ID
 long Object::get_ID() {

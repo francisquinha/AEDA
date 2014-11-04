@@ -13,15 +13,15 @@
 
 using namespace std;
 
-long Livro::num_livros{0};
+long Livro::num_livros {0};
 
 // construtor Livro
 Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, time_t dt):
-		Object{id}, titulo{tit}, autores{aut}, tema{tem}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
-		emprestado{ept}, data_emp{dt} {}
+		Object {id}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
+		emprestado {ept}, data_emp {dt} {}
 Livro::Livro(string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, time_t dt):
-		Object{num_livros+1}, titulo{tit}, autores{aut}, tema{tem}, ISBN{isbn}, cota{cot}, num_paginas{np}, edicao{ed},
-		emprestado{ept}, data_emp{dt} {num_livros++;}
+		Object {num_livros+1}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
+		emprestado {ept}, data_emp {dt} {num_livros++;}
 
 // modificar estado emprestado de Livro
 void Livro::set_emprestado(bool ept) {
@@ -47,7 +47,7 @@ time_t Livro::get_data_emp() {
 double Livro::get_dias_emp() {
 	time_t dt = get_data_emp();
 	time_t hj = std::time(0);
-	double tempo_dias{floor(difftime(hj,dt)/86400)};
+	double tempo_dias {floor(difftime(hj,dt)/86400)};
 	return tempo_dias;
 }
 
@@ -88,12 +88,12 @@ string Livro::get_cota() {
 
 // imprimir Livro
 string Livro::imprime() {
-	stringstream out{};
+	stringstream out {};
 	tm *ldata = localtime(&data_emp);
-	long year{1900 + ldata->tm_year};
-	long month{1 + ldata->tm_mon};
+	long year {1900 + ldata->tm_year};
+	long month {1 + ldata->tm_mon};
 	long day {ldata->tm_mday};
-	string dt{};
+	string dt {};
 	if (data_emp == 0) dt = "0";
 	else dt = to_string(year) + "/" + to_string(month) + "/" + to_string(day);
 	out << "ID: "<< get_ID() << endl
@@ -114,12 +114,12 @@ string Livro::imprime() {
 
 // escrever Livro
 void Livro::escreve(string ficheiro) {
-	stringstream out{};
+	stringstream out {};
 	tm *ldata = localtime(&data_emp);
-	long year{1900 + ldata->tm_year};
-	long month{1 + ldata->tm_mon};
+	long year {1900 + ldata->tm_year};
+	long month {1 + ldata->tm_mon};
 	long day {ldata->tm_mday};
-	string dt{};
+	string dt {};
 	if (data_emp == 0) dt = "0";
 	else dt = to_string(year) + "/" + to_string(month) + "/" + to_string(day);
 	out << get_ID() << endl

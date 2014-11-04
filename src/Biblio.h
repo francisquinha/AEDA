@@ -70,7 +70,6 @@ public:
 	void le_emprestimos(std::string ficheiro);
     void le_utilizadores(std::string ficheiro); // le utilizadores de um ficheiro e coloca-os no vetor de utilizadores de Biblioteca; parametros: string com nome do ficheiro
 	void le(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp, std::string ficheiro_lt, std::string ficheiro_ep, std::string ficheiro_ut);
-    int efectuar_login(long id, std::string pass); // faz login do utilizador e devolve o nivel de acesso se o login estiver correto ou -1 se estiver errado
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */

@@ -4,7 +4,7 @@
 class Ficheiro_indisponivel {
 	std::string ficheiro;
 public:
-	Ficheiro_indisponivel(std::string fch): ficheiro{fch} {};
+	Ficheiro_indisponivel(std::string fch): ficheiro {fch} {};
 	std::string get_ficheiro();
 };
 

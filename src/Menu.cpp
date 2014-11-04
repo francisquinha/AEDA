@@ -1,0 +1,329 @@
+
+#include <iostream>
+#include "Menu.h"
+
+using namespace std;
+
+Utilizador_online::Utilizador_online(long id, int ace): Object {id}, acesso {ace} {}
+
+int Utilizador_online::get_acesso() {
+	return acesso;
+}
+
+Menu::Menu(Utilizador_online* util): utilizador_online {util} {}
+
+bool Menu::e_numero(string num) {
+    for (string::size_type i = 0; i != num.size(); i++) {
+        if (!isdigit(num[i]))
+            return false; // existe pelo menos um caracter que nao e um numero
+    }
+    return true; // a string num e constituida exclusivamente por numeros
+}
+
+void Menu::set_utilizador(Utilizador_online* util){
+	utilizador_online = util;
+}
+
+Utilizador_online* Menu::get_utilizador(){
+	return utilizador_online;
+}
+
+// faz login do utilizador e devolve o nivel de acesso se o login estiver correto ou -1 se estiver errado
+int Menu::efectuar_login(long id, std::string pass) {
+	vector<Utilizador*> utilizadores {get_utilizadores()};
+	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it!= utilizadores.end(); it++) {
+		if ((*it)->get_ID() == id and (*it)->get_password() == pass) {
+			return (*it)->get_acesso();
+		}
+	}
+	return -1;
+}
+
+int Menu::menu_login() {
+    cout << "Acesso ao sistema informatico da Biblioteca" << endl
+         << endl;
+    bool continuar {false};
+    int tentativas {3}; // utilizador tem 3 tentativas para fazer login corretamente
+    while (!continuar) {
+        cout << "ID do utilizador (tentativas restantes " << tentativas << ", s para sair): ";
+        string ids {};
+        cin >> ids;
+        if (ids == "s")
+            return -1;
+        long id = atol(ids.c_str());
+        char *pass=getpass("Password do utilizador: ");
+        int login {efectuar_login(id, pass)};
+        if (login == -1) {
+            cout << "Username e password errados." << endl;
+            tentativas--; // atualizar numero de tentativas disponiveis
+            if (tentativas == 0) {
+    cout << "Numero de tentativas esgotado." << endl;
+    return -1;
+            }
+            else cout << "Por fazer tente novamente." << endl<<endl;
+        }
+        else {
+            Utilizador_online* util = new Utilizador_online {id, login};
+            util->online=true;
+            set_utilizador (util);
+        	if (login == 0) {
+        		cout << "Bem vindo administrador " << id << "." << endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
+        		continuar = true;
+        		return 0;
+        	}
+        	else if (login == 1) {
+        		cout << "Bem vindo supervisor " << id << "." << endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
+        		continuar = true;
+        		return 1;
+        	}
+        	else {
+        		cout << "Bem vindo funcionario " << id << "." << endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
+        		continuar = true;
+        		return 2;
+        	}
+        }
+    }
+    return -2; // nunca deve ser usado
+}
+
+void Menu::menu_principal() {
+    if (!utilizador_online->online) {
+        int login {menu_login()};
+        if (login == -1) {
+        	cout << endl << "Ate a proxima." << endl << endl;
+        }
+        else {
+            bool continuar {true};
+            system("clear");
+            while (continuar) {
+            	cout << "Menu Principal" << endl << endl;
+            	if (login == 0) cout << "ID do Administrador: " << utilizador_online->get_ID() << endl << endl;
+            	else if (login == 1) cout << "ID do Supervisor: " << utilizador_online->get_ID() << endl << endl;
+            	else cout << "ID do Funcionario: " << utilizador_online->get_ID() << endl << endl;
+            	cout << "1) Consultas" << endl
+            		 << "2) Emprestimos" << endl;
+            	if (login == 1) {
+            		cout << "3) Livros" << endl
+            			 << "4) Leitores" << endl;
+            	}
+            	if (login == 0) {
+            		cout << "3) Livros" << endl
+            			 << "4) Leitores" << endl
+            			 << "5) Funcionarios" << endl
+            			 << "6) Utilizadores" << endl;
+            	}
+            	if (login == 0) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
+            	else if (login == 1) cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
+            	else cout <<  endl << "Escolha uma opcao [1-2] (s para sair): ";
+            	string opcaos {};
+            	int opcao{};
+            	cin >> opcaos;
+                system("clear");
+            	if (opcaos == "s") {
+            		cout << endl << "Ate a proxima." << endl << endl;
+            		continuar=false;
+            	}
+            	else if (!e_numero(opcaos)) cout << "Opcao indisponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            	else {
+            		opcao = atoi(opcaos.c_str());
+            		switch (opcao) {
+            		case 1:
+            			menu_consultas();
+            			break;
+            		case 2:
+            			menu_emprestimos();
+            			break;
+            		case 3:
+            			if (login != 2) menu_livros();
+            			else cout << "Opcao indisponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			break;
+            		case 4:
+            			if (login != 2) menu_leitores();
+            			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			break;
+            		case 5:
+            			if (login == 0) menu_funcionarios();
+            			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			break;
+            		case 6:
+            			if (login == 0) menu_funcionarios();
+            			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			break;
+            		default:
+            			cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			break;
+            		}
+            	}
+            }
+        }
+    }
+}
+
+void Menu::menu_consultas() {
+	int login {utilizador_online->get_acesso()};
+    if (login != -1) {
+    	bool continuar {true};
+    	while (continuar) {
+    		cout << "Menu Consultas" << endl << endl;
+    		cout << "1) Livros" << endl
+    			 << "2) Emprestimos" << endl
+				 << "3) Leitores" << endl;
+    		if (login == 1) {
+    			cout << "4) Funcionarios" << endl;
+    		}
+    		if (login == 0) {
+    			cout << "5) Supervisores" << endl
+    				 << "6) Utilizadores" << endl;
+    		}
+    		if (login == 0) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
+    		else if (login == 1) cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
+    		else cout << "Escolha uma opcao [1-3] (s para sair): ";
+    		string opcaos {};
+    		int opcao{};
+    		cin >> opcaos;
+    		system("clear");
+    		if (opcaos == "s") continuar=false;
+    		else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    		else {
+    			opcao = atoi(opcaos.c_str());
+    			switch (opcao) {
+    			case 1:
+    				consulta_livros();
+    				break;
+    			case 2:
+    				consulta_emprestimos();
+    				break;
+    			case 3:
+    				consulta_leitores();
+    				break;
+    			case 4:
+    				if (login != 2) consulta_funcionarios();
+    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    				break;
+    			case 5:
+    				if (login == 0) consulta_supervisores();
+    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    				break;
+    			case 6:
+    				if (login == 0) consulta_utilizadores();
+    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    				break;
+    			default:
+    				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    				break;
+    			}
+    		}
+    	}
+    }
+}
+
+void Menu::menu_emprestimos() {
+
+}
+
+void Menu::menu_livros() {
+
+}
+
+void Menu::menu_leitores() {
+
+}
+
+void Menu::menu_funcionarios() {
+
+}
+
+void Menu::menu_utilizadores(){
+
+}
+
+void Menu::consulta_livros() {
+
+}
+
+void Menu::consulta_emprestimos() {
+
+}
+
+void Menu::consulta_leitores() {
+
+}
+
+void Menu::consulta_funcionarios() {
+
+}
+
+void Menu::consulta_supervisores() {
+
+}
+
+void Menu::consulta_utilizadores() {
+
+}
+
+void Menu::emprestimos_adicionar() {
+
+}
+
+void Menu::emprestimos_remover() {
+
+}
+
+void Menu::emprestimos_atrasados() {
+
+}
+
+void Menu::emprestimos_contactos() {
+
+}
+
+void Menu::livros_adicionar() {
+
+}
+
+void Menu::livros_remover() {
+
+}
+
+void Menu::leitores_adicionar() {
+
+}
+
+void Menu::leitores_remover() {
+
+}
+
+void Menu::leitores_alterar() {
+
+}
+
+void Menu::funcionarios_adicionar() {
+
+}
+
+void Menu::funcionarios_remover() {
+
+}
+
+void Menu::funcionarios_promover () {
+
+}
+
+void Menu::funcionarios_despromover() {
+
+}
+
+void Menu::utilizadores_adicionar() {
+
+}
+
+void Menu::utilizadores_remover() {
+
+}
+
+void Menu::utilizadores_alterar() {
+
+}
+
+
+
