@@ -633,10 +633,8 @@ void test_m_login() {
 	Biblioteca b9 {};
 	b9.le("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt", "Utilizador.txt");
 	vector<Funcionario*> funcios {b9.get_funcionarios()};
-	Utilizador* admin = new Utilizador {0,"0",0};
 	Utilizador* ut {};
 	Supervisor* sp {};
-	b9.adiciona_utilizador(admin);
 	for (vector<Funcionario*>::const_iterator it = funcios.begin(); it != funcios.end(); it++) {
 		sp = dynamic_cast<Supervisor*>(*it);
 		if (sp == 0) {
@@ -648,6 +646,8 @@ void test_m_login() {
 			b9.adiciona_utilizador(ut);
 		}
 	}
+	Utilizador* admin = new Utilizador {0,"0",0};
+	b9.adiciona_utilizador(admin);
 	ASSERT_EQUAL(18, b9.get_utilizadores().size());
 	b9.escreve("Livro.txt", "Funcionario.txt", "Supervisor.txt", "Leitor.txt", "Emprestimo.txt", "Utilizador.txt");
 	cout << b9.imprime();

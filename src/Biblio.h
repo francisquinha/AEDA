@@ -40,6 +40,7 @@ public:
 	std::string imprime_supervisores();
 	std::string imprime_leitores();
 	std::string imprime_emprestimos();
+	std::string imprime_utilizadores();
 	std::string imprime();
 	std::vector<Emprestimo*> get_emprestimos_atrasados();
 	std::string imprime_emprestimos_atrasados();

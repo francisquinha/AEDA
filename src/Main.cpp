@@ -14,6 +14,7 @@ int main()
 	m.le(path + "Livro.txt", path + "Funcionario.txt", path + "Supervisor.txt", path + "Leitor.txt", path + "Emprestimo.txt", path + "Utilizador.txt");
 	system("clear");
 	m.menu_principal();
+	m.escreve(path + "Livro.txt", path + "Funcionario.txt", path + "Supervisor.txt", path + "Leitor.txt", path + "Emprestimo.txt", path + "Utilizador.txt");
     return 0;
 }
 

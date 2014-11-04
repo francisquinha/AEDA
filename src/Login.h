@@ -18,6 +18,7 @@ public:
     int get_acesso(); // obter tipo de acesso do utilizador
     void set_acesso(int acess); // determinar tipo de acesso do utilizador; parametro: acesso
     void escreve(std::string ficheiro); // escreve utilizador num ficheiro; parametros: string com nome do ficheiro
+    std::string imprime();
 };
 
 #endif // SRC_LOGIN_H_

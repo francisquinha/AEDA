@@ -161,104 +161,257 @@ void Menu::menu_principal() {
 
 void Menu::menu_consultas() {
 	int login {utilizador_online->get_acesso()};
-    if (login != -1) {
-    	bool continuar {true};
-    	while (continuar) {
-    		cout << "Menu Consultas" << endl << endl;
-    		cout << "1) Livros" << endl
-    			 << "2) Emprestimos" << endl
-				 << "3) Leitores" << endl;
-    		if (login == 1) {
-    			cout << "4) Funcionarios" << endl;
-    		}
-    		if (login == 0) {
-    			cout << "5) Supervisores" << endl
-    				 << "6) Utilizadores" << endl;
-    		}
-    		if (login == 0) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
-    		else if (login == 1) cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
-    		else cout << "Escolha uma opcao [1-3] (s para sair): ";
-    		string opcaos {};
-    		int opcao{};
-    		cin >> opcaos;
-    		system("clear");
-    		if (opcaos == "s") continuar=false;
-    		else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
-    		else {
-    			opcao = atoi(opcaos.c_str());
-    			switch (opcao) {
-    			case 1:
-    				consulta_livros();
-    				break;
-    			case 2:
-    				consulta_emprestimos();
-    				break;
-    			case 3:
-    				consulta_leitores();
-    				break;
-    			case 4:
-    				if (login != 2) consulta_funcionarios();
-    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
-    				break;
-    			case 5:
-    				if (login == 0) consulta_supervisores();
-    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
-    				break;
-    			case 6:
-    				if (login == 0) consulta_utilizadores();
-    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
-    				break;
-    			default:
-    				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
-    				break;
-    			}
-    		}
+	bool continuar {true};
+    while (continuar) {
+    	cout << "Menu Consultas" << endl << endl;
+    	cout << "1) Livros" << endl
+    		 << "2) Emprestimos" << endl
+			 << "3) Leitores" << endl;
+    	if (login == 1) {
+    		cout << "4) Funcionarios" << endl;
     	}
-    }
+    	if (login == 0) {
+    		cout << "4) Funcionarios" << endl
+    			 << "5) Supervisores" << endl
+    			 << "6) Utilizadores" << endl;
+    	}
+    	if (login == 0) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
+    	else if (login == 1) cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
+    	else cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
+    	string opcaos {};
+    	int opcao{};
+    	cin >> opcaos;
+    	system("clear");
+    	if (opcaos == "s") continuar=false;
+    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else {
+    		opcao = atoi(opcaos.c_str());
+    		switch (opcao) {
+    		case 1:
+    			consulta_livros();
+    			break;
+    		case 2:
+    			consulta_emprestimos();
+    			break;
+    		case 3:
+    			consulta_leitores();
+    			break;
+   			case 4:
+   				if (login != 2) consulta_funcionarios();
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+   			case 5:
+   				if (login == 0) consulta_supervisores();
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+   			case 6:
+   				if (login == 0) consulta_utilizadores();
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+   			default:
+   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+  			}
+   		}
+   	}
 }
 
 void Menu::menu_emprestimos() {
-
+	bool continuar {true};
+    while (continuar) {
+    	cout << "Menu Emprestimos" << endl << endl;
+    	cout << "1) Adicionar" << endl
+    		 << "2) Remover" << endl
+			 << "3) Consultar atrasos" << endl
+		 	 << "4) Contactar atrasos" << endl;
+    	cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
+    	string opcaos {};
+    	int opcao{};
+    	cin >> opcaos;
+    	system("clear");
+    	if (opcaos == "s") continuar=false;
+    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else {
+    		opcao = atoi(opcaos.c_str());
+    		switch (opcao) {
+    		case 1:
+    			emprestimos_adicionar();
+    			break;
+    		case 2:
+    			emprestimos_remover();
+    			break;
+    		case 3:
+    			emprestimos_atrasados();
+    			break;
+   			case 4:
+    			emprestimos_contactos();
+    			break;
+   			default:
+   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+  			}
+   		}
+   	}
 }
 
 void Menu::menu_livros() {
-
+	bool continuar {true};
+    while (continuar) {
+    	cout << "Menu Livros" << endl << endl;
+    	cout << "1) Adicionar" << endl
+    		 << "2) Remover" << endl;
+    	cout << endl << "Escolha uma opcao [1-2] (s para sair): ";
+    	string opcaos {};
+    	int opcao{};
+    	cin >> opcaos;
+    	system("clear");
+    	if (opcaos == "s") continuar=false;
+    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else {
+    		opcao = atoi(opcaos.c_str());
+    		switch (opcao) {
+    		case 1:
+    			livros_adicionar();
+    			break;
+    		case 2:
+    			livros_remover();
+    			break;
+   			default:
+   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+  			}
+   		}
+   	}
 }
 
 void Menu::menu_leitores() {
-
+	bool continuar {true};
+    while (continuar) {
+    	cout << "Menu Leitores" << endl << endl;
+    	cout << "1) Adicionar" << endl
+    		 << "2) Remover" << endl
+			 << "3) Alterar" << endl;
+    	cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
+    	string opcaos {};
+    	int opcao{};
+    	cin >> opcaos;
+    	system("clear");
+    	if (opcaos == "s") continuar=false;
+    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else {
+    		opcao = atoi(opcaos.c_str());
+    		switch (opcao) {
+    		case 1:
+    			leitores_adicionar();
+    			break;
+    		case 2:
+    			leitores_remover();
+    			break;
+    		case 3:
+    			leitores_alterar();
+    			break;
+   			default:
+   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+  			}
+   		}
+   	}
 }
 
 void Menu::menu_funcionarios() {
-
+	bool continuar {true};
+    while (continuar) {
+    	cout << "Menu Funcionarios" << endl << endl;
+    	cout << "1) Adicionar" << endl
+    		 << "2) Remover" << endl
+			 << "3) Promover" << endl
+		 	 << "4) Despromover" << endl;
+    	cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
+    	string opcaos {};
+    	int opcao{};
+    	cin >> opcaos;
+    	system("clear");
+    	if (opcaos == "s") continuar=false;
+    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else {
+    		opcao = atoi(opcaos.c_str());
+    		switch (opcao) {
+    		case 1:
+    			funcionarios_adicionar();
+    			break;
+    		case 2:
+    			funcionarios_remover();
+    			break;
+    		case 3:
+    			funcionarios_promover();
+    			break;
+   			case 4:
+    			funcionarios_despromover();
+    			break;
+   			default:
+   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+  			}
+   		}
+   	}
 }
 
 void Menu::menu_utilizadores(){
-
+	bool continuar {true};
+    while (continuar) {
+    	cout << "Menu Utilizadores" << endl << endl;
+    	cout << "1) Adicionar" << endl
+    		 << "2) Remover" << endl
+			 << "3) Alterar" << endl;
+    	cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
+    	string opcaos {};
+    	int opcao{};
+    	cin >> opcaos;
+    	system("clear");
+    	if (opcaos == "s") continuar=false;
+    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else {
+    		opcao = atoi(opcaos.c_str());
+    		switch (opcao) {
+    		case 1:
+    			utilizadores_adicionar();
+    			break;
+    		case 2:
+    			utilizadores_remover();
+    			break;
+    		case 3:
+    			utilizadores_alterar();
+    			break;
+   			default:
+   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+  			}
+   		}
+   	}
 }
 
 void Menu::consulta_livros() {
-
+	cout << imprime_livros();
 }
 
 void Menu::consulta_emprestimos() {
-
+	cout << imprime_emprestimos();
 }
 
 void Menu::consulta_leitores() {
-
+	cout << imprime_leitores();
 }
 
 void Menu::consulta_funcionarios() {
-
+	cout << imprime_funcionarios();
 }
 
 void Menu::consulta_supervisores() {
-
+	cout << imprime_supervisores();
 }
 
 void Menu::consulta_utilizadores() {
-
+	cout << imprime_utilizadores();
 }
 
 void Menu::emprestimos_adicionar() {

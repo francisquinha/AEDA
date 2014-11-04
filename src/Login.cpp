@@ -44,3 +44,10 @@ void Utilizador::escreve(std::string ficheiro) {
 	else throw Ficheiro_indisponivel(ficheiro);
 }
 
+// imprime utilizador
+string Utilizador::imprime() {
+	stringstream out {};
+	out << "ID: " << get_ID() << endl
+			<< "Nivel de acesso: " << acesso << endl;
+	return out.str();
+}

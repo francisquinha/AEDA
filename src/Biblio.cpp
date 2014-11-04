@@ -304,9 +304,9 @@ bool Biblioteca::despromove_supervisor_funcionorario(long id) {
 // imprimir livros de Biblioteca
 string Biblioteca::imprime_livros() {
 	stringstream out {};
-	out << "LIVROS" << endl;
+	out << "LIVROS" << endl << endl;
 	for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++) {
-		out << (*it)->imprime();
+		out << (*it)->imprime() << endl;
 	}
 	return out.str();
 }
@@ -314,11 +314,11 @@ string Biblioteca::imprime_livros() {
 // imprimir funcionarios de Biblioteca
 string Biblioteca::imprime_funcionarios() {
 	stringstream out {};
-	out << "FUNCIONARIOS" << endl;
+	out << "FUNCIONARIOS" << endl << endl;
 	Supervisor* sp {};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 		sp = dynamic_cast<Supervisor*>(*it);
-		if (sp == 0) out << (*it)->imprime();
+		if (sp == 0) out << (*it)->imprime() << endl;
 	}
 	return out.str();
 }
@@ -326,11 +326,11 @@ string Biblioteca::imprime_funcionarios() {
 // imprimir supervisores de Biblioteca
 string Biblioteca::imprime_supervisores() {
 	stringstream out {};
-	out << "SUPERVISORES" << endl;
+	out << "SUPERVISORES" << endl << endl;
 	Supervisor* sp {};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 		sp = dynamic_cast<Supervisor*>(*it);
-		if (sp != 0) out << (*it)->imprime();
+		if (sp != 0) out << (*it)->imprime() << endl;
 	}
 	return out.str();
 }
@@ -338,9 +338,9 @@ string Biblioteca::imprime_supervisores() {
 // imprimir leitores de Biblioteca
 string Biblioteca::imprime_leitores() {
 	stringstream out {};
-	out << "LEITORES" << endl;
+	out << "LEITORES" << endl << endl;
 	for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
-		out << (*it)->imprime();
+		out << (*it)->imprime() << endl;
 	}
 	return out.str();
 }
@@ -348,9 +348,19 @@ string Biblioteca::imprime_leitores() {
 // imprimir emprestimos de Biblioteca
 string Biblioteca::imprime_emprestimos() {
 	stringstream out {};
-	out << "EMPRESTIMOS" << endl;
+	out << "EMPRESTIMOS" << endl << endl;
 	for (vector<Emprestimo*>::const_iterator it = emprestimos.begin(); it != emprestimos.end(); it++) {
-		out << (*it)->imprime();
+		out << (*it)->imprime() << endl;
+	}
+	return out.str();
+}
+
+// imprimir utilizadores de Biblioteca
+string Biblioteca::imprime_utilizadores() {
+	stringstream out {};
+	out << "UTILIZADORES" << endl << endl;
+	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it != utilizadores.end(); it++) {
+		out << (*it)->imprime() << endl;
 	}
 	return out.str();
 }
