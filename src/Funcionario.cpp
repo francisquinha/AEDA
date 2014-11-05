@@ -13,7 +13,7 @@ using namespace std;
 long Funcionario::num_funcionarios {0};
 
 // construtor Funcionario
-Funcionario::Funcionario(long id, string nom): Object {id}, nome {nom} {}
+Funcionario::Funcionario(long id, string nom): Object {id}, nome {nom} {num_funcionarios++;}
 Funcionario::Funcionario(string nom): Object {num_funcionarios+1}, nome {nom} {num_funcionarios++;}
 
 // obter nome

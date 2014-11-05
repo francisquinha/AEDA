@@ -17,9 +17,9 @@ long Emprestimo::num_emprestimos {0};
 
 // construtor Emprestimo
 Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object {id},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {}
+		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {num_emprestimos++;}
 Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): Object {id},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {std::time(0)} {}
+		livro {lv}, funcionario {fc}, leitor {lt}, data {std::time(0)} {num_emprestimos++;}
 Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt): Object {num_emprestimos+1},
 		livro {lv}, funcionario {fc}, leitor {lt}, data {std::time(0)} {num_emprestimos++;}
 Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object {num_emprestimos+1},

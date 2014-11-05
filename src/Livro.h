@@ -46,12 +46,4 @@ public:
 	void escreve(std::string ficheiro);
 };
 
-class Livro_indisponivel: public Livro {
-public:
-	Livro_indisponivel(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
-			std::string cot, int np, int ed, bool ept, std::time_t dt):
-				Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, dt} {};
-};
-
-
 #endif /* SRC_LIVRO_H_ */

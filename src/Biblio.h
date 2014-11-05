@@ -5,6 +5,7 @@
 #include "Supervisor.h"
 #include "Emprestimo.h"
 #include "Login.h"
+#include "Excecao.h"
 
 class Livro;
 class Funcionario;

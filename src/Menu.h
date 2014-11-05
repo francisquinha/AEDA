@@ -48,7 +48,8 @@ public:
     void emprestimos_adicionar();
     void emprestimos_remover();
     void emprestimos_atrasados();
-    void emprestimos_contactos();
+    void emprestimos_atrasados_leitores();
+    void emprestimos_atrasados_livros();
 
     void livros_adicionar();
     void livros_remover();

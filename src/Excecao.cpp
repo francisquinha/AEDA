@@ -39,13 +39,13 @@ ostream& operator<<(ostream &out, Object_nao_existe &object) {
 
 // excecao para quando o livro nao esta disponivel
 ostream& operator<<(ostream &out, Livro_indisponivel &livro) {
-	out << "Excecao. Livro com ID " << livro.get_ID() << " nao esta disponivel para emprestar. Foi emprestado ha " << livro.get_dias_emp() << " dia(s)." << endl;
+	out << "Livro com ID " << livro.get_ID() << " nao esta disponivel para emprestar. Foi emprestado ha " << livro.get_dias_emp() << " dia(s)." << endl;
 	return out;
 }
 
 // excecao para quando o leitor que queremos remover ainda tem emprestimos para devolver
 ostream& operator<<(ostream &out, Emprestimos_por_devolver &leitor) {
-	out << "Excecao. Tem que devolver emprestimo(s) com ID: ";
+	out << "Tem que devolver emprestimo(s) com ID: ";
 	for (vector<Emprestimo*>::const_iterator it = leitor.get_emp_leit().begin(); it != leitor.get_emp_leit().end(); it++) {
 		out << (*it)->get_ID() << "; ";
 	}
@@ -55,7 +55,7 @@ ostream& operator<<(ostream &out, Emprestimos_por_devolver &leitor) {
 
 // excecao para quando o leitor ja tem 3 emprestimos
 ostream& operator<<(ostream &out, Maximo_emprestimos &leitor) {
-	out << "Excecao. Leitor ja tem 3 emprestimos feitos." << endl;
+	out << "Leitor ja tem 3 emprestimos feitos." << endl;
 	return out;
 }
 
@@ -65,7 +65,7 @@ string Ficheiro_indisponivel::get_ficheiro() {
 }
 
 ostream& operator<<(ostream &out, Ficheiro_indisponivel &ficheiro) {
-	out << "Excecao. O ficheiro " << ficheiro.get_ficheiro() << "nao esta disponivel." << endl;
+	out << "O ficheiro " << ficheiro.get_ficheiro() << "nao esta disponivel." << endl;
 	return out;
 }
 

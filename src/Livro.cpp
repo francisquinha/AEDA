@@ -18,7 +18,7 @@ long Livro::num_livros {0};
 // construtor Livro
 Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, time_t dt):
 		Object {id}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
-		emprestado {ept}, data_emp {dt} {}
+		emprestado {ept}, data_emp {dt} {num_livros++;}
 Livro::Livro(string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, time_t dt):
 		Object {num_livros+1}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
 		emprestado {ept}, data_emp {dt} {num_livros++;}
@@ -141,4 +141,3 @@ void Livro::escreve(string ficheiro) {
 	}
 	else throw Ficheiro_indisponivel(ficheiro);
 }
-

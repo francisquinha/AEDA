@@ -80,21 +80,25 @@ void Biblioteca::set_livros(vector<Livro*> livr) {
 // adicionar Livro a Biblioteca
 void Biblioteca::adiciona_livro(Livro* lv) {
 	livros.push_back(lv);
+	cout << "Livro adicionado." << endl;
 }
 
 // adicionar Funcionario a Biblioteca
 void Biblioteca::adiciona_funcionario(Funcionario* fc) {
 	funcionarios.push_back(fc);
+	cout << "Funcionario adicionado." << endl;
 }
 
 // adicionar Leitor a Biblioteca
 void Biblioteca::adiciona_leitor(Leitor* lt) {
 	leitores.push_back(lt);
+	cout << "Leitor adicionado." << endl;
 }
 
 // adicionar Utilizador a Biblioteca
 void Biblioteca::adiciona_utilizador(Utilizador* ut) {
 	utilizadores.push_back(ut);
+	cout << "Utilizador adicionado." << endl;
 }
 
 // obter temas de livros de Biblioteca
@@ -185,14 +189,13 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
 			lv->set_data_emp(ep->get_data());
 			lt->adiciona_emp_leit(ep);
 			emprestimos.push_back(ep);
+			cout << "Emprestimo adicionado." << endl;
 		}
 		else {
-			cout << "Maximo emprestimos ID: " << lt->get_ID() << endl;
 			throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(), lt->get_telefone(), lt->get_email(), lt->get_emp_leit());
 		}
 	}
 	else {
-		cout << "Livro Indisponivel ID: " << lv->get_ID() << endl;
 		throw Livro_indisponivel(lv->get_ID(), lv->get_titulo(), lv->get_autores(), lv->get_tema(), lv->get_ISBN(),
 				lv->get_cota(), lv->get_num_paginas(), lv->get_edicao(), lv->get_emprestado(), lv->get_data_emp());
 	}
@@ -246,6 +249,7 @@ string Biblioteca::imprime_emprestimos_atrasados() {
 	vector<long> id_lt {};
 	long id {};
 	bool acrescenta {true};
+	out << "EMPRESTIMOS ATRASADOS" << endl << endl;
 	for (vector<Emprestimo*>::const_iterator it = atrasados.begin(); it != atrasados.end(); it++) {
 		id = (*it)->get_leitor()->get_ID();
 		acrescenta=true;
@@ -283,7 +287,7 @@ bool Biblioteca::promove_funcionario_supervisor(long id) {
 			return true;
 		}
 	}
-	return false;
+	throw Object_nao_existe(id);
 }
 
 // despromover supervisor a funcionario
@@ -298,7 +302,7 @@ bool Biblioteca::despromove_supervisor_funcionorario(long id) {
 			return true;
 		}
 	}
-	return false;
+	throw Object_nao_existe(id);
 }
 
 // imprimir livros de Biblioteca
