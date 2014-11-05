@@ -60,7 +60,6 @@ public:
     void leitores_adicionar();
     void leitores_remover();
     void leitores_alterar();
-    void leitores_emprestimos();
 
     void funcionarios_adicionar();
     void funcionarios_remover();

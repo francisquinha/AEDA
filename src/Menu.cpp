@@ -1,9 +1,19 @@
 
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
+
 #include "Menu.h"
 
 using namespace std;
+
+void clear_screen() {
+	#ifdef WINDOWS
+    	system("cls");
+	#else // Assume POSIX
+    	system("clear");
+	#endif
+}
 
 Utilizador_online::Utilizador_online(long id, int ace): Object {id}, acesso {ace} {}
 
@@ -21,11 +31,11 @@ bool Menu::e_numero(string num) {
     return true; // a string num e constituida exclusivamente por numeros
 }
 
-void Menu::set_utilizador(Utilizador_online* util){
+void Menu::set_utilizador(Utilizador_online* util) {
 	utilizador_online = util;
 }
 
-Utilizador_online* Menu::get_utilizador(){
+Utilizador_online* Menu::get_utilizador() {
 	return utilizador_online;
 }
 
@@ -106,7 +116,7 @@ void Menu::menu_principal() {
         }
         else {
             bool continuar {true};
-            system("clear");
+            clear_screen();
             while (continuar) {
             	cout << "MENU PRINCIPAL" << endl << endl;
             	if (login == 0) cout << "ID do Administrador: " << utilizador_online->get_ID() << endl << endl;
@@ -125,7 +135,7 @@ void Menu::menu_principal() {
             	string opcaos {};
             	int opcao{};
                 getline(cin, opcaos);
-                system("clear");
+                clear_screen();
             	if (opcaos == "s") {
             		cout << endl << "Ate a proxima." << endl << endl;
             		continuar=false;
@@ -186,7 +196,7 @@ void Menu::menu_consultas() {
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
-    	system("clear");
+    	clear_screen();
     	if (opcaos == "s") continuar=false;
     	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
@@ -234,7 +244,7 @@ void Menu::menu_emprestimos() {
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
-    	system("clear");
+    	clear_screen();
     	if (opcaos == "s") continuar=false;
     	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
@@ -280,7 +290,7 @@ void Menu::menu_livros() {
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
-    	system("clear");
+    	clear_screen();
     	if (opcaos == "s") continuar=false;
     	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
@@ -322,7 +332,7 @@ void Menu::menu_leitores() {
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
-    	system("clear");
+    	clear_screen();
     	if (opcaos == "s") continuar=false;
     	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
@@ -357,7 +367,7 @@ void Menu::menu_funcionarios() {
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
-    	system("clear");
+    	clear_screen();
     	if (opcaos == "s") continuar=false;
     	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
@@ -393,7 +403,7 @@ void Menu::menu_utilizadores(){
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
-    	system("clear");
+    	clear_screen();
     	if (opcaos == "s") continuar=false;
     	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
@@ -446,7 +456,7 @@ void Menu::emprestimos_adicionar() {
     	long id_lv{};
         getline(cin, id_lv_s);
     	if (id_lv_s == "s") {
-			system("clear");
+			clear_screen();
 			continuar = false;
     	}
     	else if (!e_numero(id_lv_s)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -463,7 +473,7 @@ void Menu::emprestimos_adicionar() {
             getline(cin, id_lt_s);
 			Leitor* lt{};
     		if (id_lt_s == "s") {
-    			system("clear");
+    			clear_screen();
     			continuar = false;
     		}
     		else if (!e_numero(id_lt_s)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -510,7 +520,7 @@ void Menu::emprestimos_remover() {
     	long id_ep{};
         getline(cin, id_ep_s);
     	if (id_ep_s == "s") {
-			system("clear");
+			clear_screen();
 			continuar=false;
     	}
     	else if (!e_numero(id_ep_s)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -568,10 +578,10 @@ void Menu::livros_tema(){
 	cout << "Tema: ";
 	getline (cin, tem);
 	if (tem == "s") {
-		system("clear");
+		clear_screen();
 	}
 	else {
-		system("clear");
+		clear_screen();
 		cout << imprime_livros_tema(tem);
 	}
 }
@@ -584,7 +594,7 @@ void Menu::livros_adicionar() {
     	cout << "Titulo: ";
     	getline (cin, tit);
     	if (tit == "s") {
-			system("clear");
+			clear_screen();
 			continuar = false;
     	}
     	else {
@@ -592,7 +602,7 @@ void Menu::livros_adicionar() {
         	cout << "Nome(s) do(s) autor(es) (separados por ;) : ";
         	getline (cin, auts);
         	if (auts == "s") {
-        		system("clear");
+        		clear_screen();
         		continuar = false;
         	}
         	else {
@@ -606,7 +616,7 @@ void Menu::livros_adicionar() {
             	cout << "Tema: ";
             	getline (cin, tem);
             	if (tem == "s") {
-        			system("clear");
+        			clear_screen();
         			continuar = false;
             	}
             	else {
@@ -614,7 +624,7 @@ void Menu::livros_adicionar() {
                 	cout << "ISBN: ";
                 	getline (cin, isbns);
                 	if (isbns == "s") {
-            			system("clear");
+            			clear_screen();
             			continuar = false;
                 	}
                 	else if (!e_numero(isbns)) cout << endl << "Por favor insira um numero no ISBN." << endl << endl;
@@ -624,7 +634,7 @@ void Menu::livros_adicionar() {
                     	cout << "Cota: ";
                     	getline (cin, cot);
                     	if (cot == "s") {
-                			system("clear");
+                			clear_screen();
                 			continuar = false;
                     	}
                     	else {
@@ -632,7 +642,7 @@ void Menu::livros_adicionar() {
                         	cout << "Num. Paginas: ";
                         	getline (cin, num_pags);
                         	if (num_pags == "s") {
-                    			system("clear");
+                    			clear_screen();
                     			continuar = false;
                         	}
                         	else if (!e_numero(num_pags)) cout << endl << "Por favor insira um numero no Num. Paginas." << endl << endl;
@@ -642,7 +652,7 @@ void Menu::livros_adicionar() {
                             	cout << "Edicao: ";
                             	getline (cin, edis);
                             	if (edis == "s") {
-                        			system("clear");
+                        			clear_screen();
                         			continuar = false;
                             	}
                             	else if (!e_numero(edis)) cout << endl << "Por favor insira um numero na Edicao." << endl << endl;
@@ -671,7 +681,7 @@ void Menu::livros_remover() {
     	long id{};
         getline(cin, ids);
     	if (ids == "s") {
-			system("clear");
+			clear_screen();
 			continuar=false;
     	}
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -699,7 +709,7 @@ void Menu::leitores_adicionar() {
     	cout << "Nome: ";
     	getline (cin, nom);
     	if (nom == "s") {
-			system("clear");
+			clear_screen();
 			continuar = false;
     	}
     	else {
@@ -707,7 +717,7 @@ void Menu::leitores_adicionar() {
         	cout << "Telefone : ";
         	getline (cin, tels);
         	if (tels == "s") {
-        		system("clear");
+        		clear_screen();
         		continuar = false;
         	}
         	else if (!e_numero(tels)) cout << endl << "Por favor insira um numero no ISBN." << endl << endl;
@@ -717,7 +727,7 @@ void Menu::leitores_adicionar() {
             	cout << "Email: ";
             	getline (cin, eml);
             	if (eml == "s") {
-        			system("clear");
+        			clear_screen();
         			continuar = false;
             	}
             	else {
@@ -740,7 +750,7 @@ void Menu::leitores_remover() {
     	long id{};
         getline(cin, ids);
     	if (ids == "s") {
-			system("clear");
+			clear_screen();
 			continuar=false;
     	}
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -768,7 +778,7 @@ void Menu::leitores_alterar() {
     	string ids {};
         getline(cin, ids);
     	if (ids == "s") {
-			system("clear");
+			clear_screen();
 			continuar=false;
     	}
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -778,7 +788,7 @@ void Menu::leitores_alterar() {
     		cout << "Nome: ";
     		getline (cin, nom);
     		if (nom == "s") {
-    			system("clear");
+    			clear_screen();
     			continuar = false;
     		}
     		else {
@@ -786,7 +796,7 @@ void Menu::leitores_alterar() {
     			cout << "Telefone : ";
     			getline (cin, tels);
     			if (tels == "s") {
-    				system("clear");
+    				clear_screen();
     				continuar = false;
     			}
     			else if (!e_numero(tels)) cout << endl << "Por favor insira um numero no telefone." << endl << endl;
@@ -796,7 +806,7 @@ void Menu::leitores_alterar() {
     				cout << "Email: ";
     				getline (cin, eml);
     				if (eml == "s") {
-    					system("clear");
+    					clear_screen();
     					continuar = false;
     				}
     				else {
@@ -831,7 +841,7 @@ void Menu::funcionarios_adicionar() {
     	cout << "Nome: ";
     	getline (cin, nom);
     	if (nom == "s") {
-			system("clear");
+			clear_screen();
 			continuar = false;
     	}
     	else {
@@ -852,7 +862,7 @@ void Menu::funcionarios_remover() {
     	long id{};
         getline(cin, ids);
     	if (ids == "s") {
-			system("clear");
+			clear_screen();
 			continuar=false;
     	}
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -881,7 +891,7 @@ void Menu::funcionarios_promover () {
     	long id{};
         getline(cin, ids);
     	if (ids == "s") {
-			system("clear");
+			clear_screen();
 			continuar=false;
     	}
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -910,7 +920,7 @@ void Menu::funcionarios_despromover() {
     	long id{};
         getline(cin, ids);
     	if (ids == "s") {
-			system("clear");
+			clear_screen();
 			continuar=false;
     	}
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -938,7 +948,7 @@ void Menu::utilizadores_adicionar() {
     	cout << "ID: ";
     	getline (cin, ids);
     	if (ids == "s") {
-			system("clear");
+			clear_screen();
 			continuar = false;
     	}
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
@@ -965,7 +975,7 @@ void Menu::utilizadores_adicionar() {
 					cout << "Nivel de acesso (0, 1, 2): ";
 			    	getline (cin, aces);
 			    	if (ids == "s") {
-						system("clear");
+						clear_screen();
 						continuar = false;
 			    	}
 			    	else if (!e_numero(aces)) cout << endl << "Por favor insira um numero entre 0 e 2." << endl << endl;
@@ -995,7 +1005,7 @@ void Menu::utilizadores_remover() {
     	long id{};
         getline(cin, ids);
     	if (ids == "s") {
-			system("clear");
+			clear_screen();
 			continuar=false;
     	}
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
