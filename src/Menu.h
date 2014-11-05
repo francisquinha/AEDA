@@ -51,12 +51,16 @@ public:
     void emprestimos_atrasados_leitores();
     void emprestimos_atrasados_livros();
 
+    void livros_disponiveis();
+    void livros_emprestados();
+    void livros_tema();
     void livros_adicionar();
     void livros_remover();
 
     void leitores_adicionar();
     void leitores_remover();
     void leitores_alterar();
+    void leitores_emprestimos();
 
     void funcionarios_adicionar();
     void funcionarios_remover();
@@ -65,7 +69,6 @@ public:
 
     void utilizadores_adicionar();
     void utilizadores_remover();
-    void utilizadores_alterar();
 };
 
 #endif /* SRC_MENU_H_ */

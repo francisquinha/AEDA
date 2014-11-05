@@ -2,6 +2,7 @@
 #ifndef SRC_BIBLIOTECA_H_
 #define SRC_BIBLIOTECA_H_
 
+#include "Administrador.h"
 #include "Supervisor.h"
 #include "Emprestimo.h"
 #include "Login.h"
@@ -37,6 +38,9 @@ public:
 	bool promove_funcionario_supervisor(long ID);
 	bool despromove_supervisor_funcionorario(long id);
 	std::string imprime_livros();
+	std::string imprime_livros_tema(std::string tem);
+	std::string imprime_livros_emprestados();
+	std::string imprime_livros_disponiveis();
 	std::string imprime_funcionarios();
 	std::string imprime_supervisores();
 	std::string imprime_leitores();
@@ -58,7 +62,9 @@ public:
 	void set_utilizadores(std::vector<Utilizador*> util);
 	void set_livros(std::vector<Livro*> livr);
 	std::vector<std::string> get_temas();
-	std::vector<Livro*> get_livros_tema(std::string xpto);
+	std::vector<Livro*> get_livros_tema(std::string tem);
+	std::vector<Livro*> get_livros_disponiveis();
+	std::vector<Livro*> get_livros_emprestados();
 	void escreve_livros(std::string ficheiro);
 	void escreve_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
 	void escreve_leitores(std::string ficheiro);

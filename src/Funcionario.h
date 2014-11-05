@@ -1,3 +1,4 @@
+#include <vector>
 
 #ifndef SRC_FUNCIONARIO_H_
 #define SRC_FUNCIONARIO_H_

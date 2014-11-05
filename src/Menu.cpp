@@ -113,20 +113,15 @@ void Menu::menu_principal() {
             	else if (login == 1) cout << "ID do Supervisor: " << utilizador_online->get_ID() << endl << endl;
             	else cout << "ID do Funcionario: " << utilizador_online->get_ID() << endl << endl;
             	cout << "1) Consultas" << endl
-            		 << "2) Emprestimos" << endl;
-            	if (login == 1) {
-            		cout << "3) Livros" << endl
-            			 << "4) Leitores" << endl;
-            	}
+            		 << "2) Emprestimos" << endl
+					 << "3) Livros" << endl
+            		 << "4) Leitores" << endl;
             	if (login == 0) {
-            		cout << "3) Livros" << endl
-            			 << "4) Leitores" << endl
-            			 << "5) Funcionarios" << endl
+            		cout << "5) Funcionarios" << endl
             			 << "6) Utilizadores" << endl;
             	}
             	if (login == 0) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
-            	else if (login == 1) cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
-            	else cout <<  endl << "Escolha uma opcao [1-2] (s para sair): ";
+            	else cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
             	string opcaos {};
             	int opcao{};
                 getline(cin, opcaos);
@@ -146,12 +141,10 @@ void Menu::menu_principal() {
             			menu_emprestimos();
             			break;
             		case 3:
-            			if (login != 2) menu_livros();
-            			else cout << "Opcao indisponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			menu_livros();
             			break;
             		case 4:
-            			if (login != 2) menu_leitores();
-            			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			menu_leitores();
             			break;
             		case 5:
             			if (login == 0) menu_funcionarios();
@@ -271,12 +264,19 @@ void Menu::menu_emprestimos() {
 }
 
 void Menu::menu_livros() {
+	int login {utilizador_online->get_acesso()};
 	bool continuar {true};
     while (continuar) {
     	cout << "MENU LIVROS" << endl << endl;
-    	cout << "1) Adicionar" << endl
-    		 << "2) Remover" << endl;
-    	cout << endl << "Escolha uma opcao [1-2] (s para sair): ";
+    	cout << "1) Disponiveis" << endl
+    		 << "2) Emprestados" << endl
+    		 << "3) Por tema" << endl;
+    	if (login != 2) {
+    		cout << "4) Adicionar" << endl
+    			 << "5) Remover" << endl;
+    	}
+    	if (login != 2) cout << endl << "Escolha uma opcao [1-5] (s para sair): ";
+    	else cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
@@ -287,11 +287,22 @@ void Menu::menu_livros() {
     		opcao = atoi(opcaos.c_str());
     		switch (opcao) {
     		case 1:
-    			livros_adicionar();
+    			livros_disponiveis();
     			break;
     		case 2:
-    			livros_remover();
+    			livros_emprestados();
     			break;
+    		case 3:
+    			livros_tema();
+    			break;
+    		case 4:
+   				if (login != 2) livros_adicionar();
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
+    		case 5:
+   				if (login != 2) livros_remover();
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				break;
    			default:
    				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
    				break;
@@ -377,9 +388,8 @@ void Menu::menu_utilizadores(){
     while (continuar) {
     	cout << "MENU UTILIZADORES" << endl << endl;
     	cout << "1) Adicionar" << endl
-    		 << "2) Remover" << endl
-			 << "3) Alterar" << endl;
-    	cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
+    		 << "2) Remover" << endl;
+    	cout << endl << "Escolha uma opcao [1-2] (s para sair): ";
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
@@ -394,9 +404,6 @@ void Menu::menu_utilizadores(){
     			break;
     		case 2:
     			utilizadores_remover();
-    			break;
-    		case 3:
-    			utilizadores_alterar();
     			break;
    			default:
    				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
@@ -545,6 +552,28 @@ void Menu::emprestimos_atrasados_livros() {
 		out << ((*it)->get_livro())->imprime() << endl;
 	}
 	cout << out.str();
+}
+
+void Menu::livros_disponiveis(){
+	cout << imprime_livros_disponiveis();
+}
+
+void Menu::livros_emprestados(){
+	cout << imprime_livros_emprestados();
+}
+
+void Menu::livros_tema(){
+	cout << "Escolha um tema (s para sair)" << endl << endl;
+	string tem {};
+	cout << "Tema: ";
+	getline (cin, tem);
+	if (tem == "s") {
+		system("clear");
+	}
+	else {
+		system("clear");
+		cout << imprime_livros_tema(tem);
+	}
 }
 
 void Menu::livros_adicionar() {
@@ -902,15 +931,88 @@ void Menu::funcionarios_despromover() {
 }
 
 void Menu::utilizadores_adicionar() {
+	bool continuar {true};
+    while (continuar) {
+    	cout << "Adicionar Utilizador (s para sair)" << endl << endl;
+    	string ids {};
+    	cout << "ID: ";
+    	getline (cin, ids);
+    	if (ids == "s") {
+			system("clear");
+			continuar = false;
+    	}
+    	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+    	else {
+    		long id = atol(ids.c_str());
+			vector<Funcionario*> funcios {get_funcionarios()};
+			bool encontrado{false};
+			for (vector<Funcionario*>::const_iterator it = funcios.begin(); it != funcios.end(); it++) {
+				if ((*it)->get_ID() == id) {
+					encontrado = true;
+				}
+			}
+			if (!encontrado) {
+				cout << endl << "Por favor insira o ID de um funcionario existente." << endl << endl;
+			}
+			else {
+				char *pass=getpass("Password: ");
+				char *pass_c=getpass("Repetir Password: ");
+				if (pass != pass_c) {
+					cout << endl << "As passwords que introduziu nao coincidem. Por favor tente novamente." << endl << endl;
+				}
+				else {
+			    	string aces{};
+					cout << "Nivel de acesso (0, 1, 2): ";
+			    	getline (cin, aces);
+			    	if (ids == "s") {
+						system("clear");
+						continuar = false;
+			    	}
+			    	else if (!e_numero(aces)) cout << endl << "Por favor insira um numero entre 0 e 2." << endl << endl;
+			    	else {
+			    		int ace = atoi(aces.c_str());
+			    		if (ace == 0 or ace == 1 or ace == 2) {
+			    			Utilizador* ut = new Utilizador{id, pass, ace};
+			    			cout << endl;
+			    			adiciona_utilizador (ut);
+			    			cout << endl;
+			    		}
+			    		else cout << endl << "Por favor insira um numero entre 0 e 2." << endl << endl;
+			    	}
+				}
+			}
+    	}
+   	}
 
 }
 
 void Menu::utilizadores_remover() {
-
-}
-
-void Menu::utilizadores_alterar() {
-
+	bool continuar {true};
+    while (continuar) {
+    	cout << "Remover Utilizador (s para sair)" << endl << endl;
+    	cout << "ID do Utilizador: ";
+    	string ids {};
+    	long id{};
+        getline(cin, ids);
+    	if (ids == "s") {
+			system("clear");
+			continuar=false;
+    	}
+    	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+    	else {
+    		id = atol(ids.c_str());
+    		try {
+    			remove_utilizador(id);
+    			}
+    		catch(Object_nao_existe &ob) {
+					ostringstream ostr{};
+					ostr << ob;
+					cout << ostr.str();
+    				cout << "Por favor insira o ID de um utilizador existente." << endl;
+    			}
+    		cout << endl;
+    	}
+    }
 }
 
 

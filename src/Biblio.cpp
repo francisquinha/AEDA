@@ -52,9 +52,11 @@ vector<Funcionario*>Biblioteca::get_supervisores() {
 vector<Funcionario*>Biblioteca::get_funcionarios_n_sup() {
 	vector<Funcionario*> funcionarios_n_sup {};
 	Supervisor* sp {};
+	Administrador* ad {};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 		sp = dynamic_cast<Supervisor*>(*it);
-		if (sp == 0) {
+		ad = dynamic_cast<Administrador*>(*it);
+		if (sp == 0 and ad == 0) {
 			funcionarios_n_sup.push_back(*it);
 		}
 	}
@@ -110,11 +112,33 @@ vector<string> Biblioteca::get_temas() {
 	return tem;
 }
 
-// obter livros com tema xpto
-vector<Livro*> Biblioteca::get_livros_tema(string xpto) {
+// obter livros com tema tem
+vector<Livro*> Biblioteca::get_livros_tema(string tem) {
 	vector<Livro*> lv {};
 	for (vector<Livro*>::const_iterator it = livros.begin(); it !=  livros.end(); it++) {
-		if ((*it)->get_tema() == xpto) {
+		if ((*it)->get_tema() == tem) {
+			lv.push_back(*it);
+		}
+	}
+	return lv;
+}
+
+// obter livros disponiveis
+vector<Livro*> Biblioteca::get_livros_disponiveis() {
+	vector<Livro*> lv {};
+	for (vector<Livro*>::const_iterator it = livros.begin(); it !=  livros.end(); it++) {
+		if ((*it)->get_emprestado() == false) {
+			lv.push_back(*it);
+		}
+	}
+	return lv;
+}
+
+// obter livros emprestados
+vector<Livro*> Biblioteca::get_livros_emprestados() {
+	vector<Livro*> lv {};
+	for (vector<Livro*>::const_iterator it = livros.begin(); it !=  livros.end(); it++) {
+		if ((*it)->get_emprestado() == true) {
 			lv.push_back(*it);
 		}
 	}
@@ -315,14 +339,61 @@ string Biblioteca::imprime_livros() {
 	return out.str();
 }
 
+// imprimir livros com tema
+string Biblioteca::imprime_livros_tema(string tem) {
+	stringstream out {};
+	vector<Livro*> livrs {get_livros_tema(tem)};
+	if (livrs.size() == 0) {
+		out << "Nao existem livros com o tema " << tem << "." << endl << endl;
+	}
+	else {
+		out << "LIVROS COM TEMA: " << tem << endl << endl;
+		for (vector<Livro*>::const_iterator it = livrs.begin(); it != livrs.end(); it++) {
+			out << (*it)->imprime() << endl;
+		}
+	}
+	return out.str();
+}
+
+// imprimir livros de Biblioteca
+string Biblioteca::imprime_livros_disponiveis() {
+	stringstream out {};
+	vector<Livro*> livrs {get_livros_disponiveis()};
+	if (livrs.size() == 0) {
+		out << "Nao existem livros disponiveis." << endl << endl;
+	}
+	else {
+		out << "LIVROS DISPONIVEIS" << endl << endl;
+		for (vector<Livro*>::const_iterator it = livrs.begin(); it != livrs.end(); it++) {
+			out << (*it)->imprime() << endl;
+		}
+	}
+	return out.str();
+}
+
+// imprimir livros de Biblioteca
+string Biblioteca::imprime_livros_emprestados() {
+	stringstream out {};
+	vector<Livro*> livrs {get_livros_emprestados()};
+	if (livrs.size() == 0) {
+		out << "Nao existem livros emprestados." << endl << endl;
+	}
+	else {
+		out << "LIVROS EMPRESTADOS" << endl << endl;
+		for (vector<Livro*>::const_iterator it = livrs.begin(); it != livrs.end(); it++) {
+			out << (*it)->imprime() << endl;
+		}
+	}
+	return out.str();
+}
+
 // imprimir funcionarios de Biblioteca
 string Biblioteca::imprime_funcionarios() {
 	stringstream out {};
 	out << "FUNCIONARIOS" << endl << endl;
-	Supervisor* sp {};
-	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
-		sp = dynamic_cast<Supervisor*>(*it);
-		if (sp == 0) out << (*it)->imprime() << endl;
+	vector<Funcionario*> funcios {get_funcionarios_n_sup()};
+	for (vector<Funcionario*>::const_iterator it = funcios.begin(); it != funcios.end(); it++) {
+		out << (*it)->imprime() << endl;
 	}
 	return out.str();
 }
@@ -331,10 +402,9 @@ string Biblioteca::imprime_funcionarios() {
 string Biblioteca::imprime_supervisores() {
 	stringstream out {};
 	out << "SUPERVISORES" << endl << endl;
-	Supervisor* sp {};
-	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
-		sp = dynamic_cast<Supervisor*>(*it);
-		if (sp != 0) out << (*it)->imprime() << endl;
+	vector<Funcionario*> supers {get_supervisores()};
+	for (vector<Funcionario*>::const_iterator it = supers.begin(); it != supers.end(); it++) {
+		out << (*it)->imprime() << endl;
 	}
 	return out.str();
 }
