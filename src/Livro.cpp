@@ -16,16 +16,21 @@ using namespace std;
 long Livro::num_livros {0};
 
 // construtor Livro
-Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, time_t dt):
+Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt):
 		Object {id}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
-		emprestado {ept}, data_emp {dt} {num_livros++;}
-Livro::Livro(string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, time_t dt):
+		emprestado {ept}, ID_ep{id_ep}, data_emp {dt} {num_livros++;}
+Livro::Livro(string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt):
 		Object {num_livros+1}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
-		emprestado {ept}, data_emp {dt} {num_livros++;}
+		emprestado {ept}, ID_ep{id_ep}, data_emp {dt} {num_livros++;}
 
 // modificar estado emprestado de Livro
 void Livro::set_emprestado(bool ept) {
 	emprestado = ept;
+}
+
+// modificar ID de emprestimo de Livro
+void Livro::set_ID_ep(long id_ep) {
+	ID_ep = id_ep;
 }
 
 // modificar dias de indisponibilidade de Livro
@@ -36,6 +41,11 @@ void Livro::set_data_emp(time_t dt) {
 // obter emprestado de Livro
 bool Livro::get_emprestado() {
 	return emprestado;
+}
+
+// obter ID de emprestimo de Livro
+long Livro::get_ID_ep() {
+	return ID_ep;
 }
 
 // obter data de emprestimo de Livro
@@ -108,6 +118,7 @@ string Livro::imprime() {
 			<< "Num. Paginas: " << num_paginas << endl
 			<< "Edicao: " << edicao << endl
 			<< "Emprestado: " << emprestado << endl
+			<< "ID Emprestimo: " << ID_ep << endl
 			<< "Data Emprestado: " << dt << endl;
 	return out.str();
 }
@@ -133,6 +144,7 @@ void Livro::escreve(string ficheiro) {
 			<< num_paginas << endl
 			<< edicao << endl
 			<< emprestado << endl
+			<< ID_ep << endl
 			<< dt << endl;
 	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {

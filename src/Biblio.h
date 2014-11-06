@@ -16,217 +16,378 @@ class Emprestimo;
 class Utilizadores;
 class Login;
 
-/* Biblioteca.
- *
- * Contem os seguintes vectores: livros - todos os livros da Biblioteca;
- * 							 	 funcionarios - todos os funcionarios, incluindo os supervisores e o administrador;
- * 							 	 leitores - todos os leitores da Biblioteca;
- * 							 	 emprestimos - todos os emprestimos que existem atualmente na Biblioteca;
- * 							 	 utilizadores - todos os utilizadores do sistema informatico.
- *
- * Notas: nao e guardado historico dos emprestimos, mas devia ser, isto e, devia existir um outro vector de emprestimos_antigos,
- *  com o atributo adicional data_entrega;
- * 		  os utilizadores devem ser os mesmos que os funcionarios e o seu ID tambem, caso contrario nem todas as funcoes funcionarao
- * 	corretamente. */
+/**
+ * @brief Classe com a informacao da Biblioteca.
+ * Notas: - nao e guardado historico dos emprestimos, mas devia ser, isto e, devia existir um outro vetor de
+ *  	  emprestimos_antigos, com o atributo adicional data_entrega;
+ * 		  - os utilizadores devem ser os mesmos que os funcionarios e o seu ID tambem, caso contrario nem todas
+ * 		  as funcoes funcionarao corretamente.
+ **/
 class Biblioteca {
-
-	std::vector<Livro*> livros;
-	std::vector<Funcionario*> funcionarios;
-	std::vector<Leitor*> leitores;
-	std::vector<Emprestimo*> emprestimos;
-	std::vector<Utilizador*> utilizadores;
+	std::vector<Livro*> livros; /**< @brief vetor com apontadores para os livros da Biblioteca
+	 **/
+	std::vector<Funcionario*> funcionarios; /**< @brief vetor com apontadores para os funcionarios da Biblioteca
+	 **/
+	std::vector<Leitor*> leitores; /**< @brief vetor com apontadores para os leitores da Biblioteca
+	 **/
+	std::vector<Emprestimo*> emprestimos; /**< @brief vetor com apontadores para os emprestimos da Biblioteca
+	 **/
+	std::vector<Utilizador*> utilizadores; /**< @brief vetor com apontadores para os utilizadores da Biblioteca
+	 **/
 
 public:
 
-	/* Construtor de Biblioteca. */
+	/**
+	 * @brief Construtor de Biblioteca
+	 **/
 	Biblioteca() {};
 
-	/* Funcao para adicionar um novo livro a Biblioteca.
-	 * Parametros: Livro* lv - apontador para o novo livro. */
-	void adiciona_livro(Livro* lv);
+	/**
+	 * @brief Funcao para obter todos os emprestimos atrasados da Biblioteca
+	 * @return vector<Emprestimo*> com os apontadores para os emprestimos atrasados
 
-	/* Funcao para adicionar um novo funcionario a Biblioteca.
-	 * Parametros: Funcionario* fc - apontador para o novo funcionario. */
-	void adiciona_funcionario(Funcionario* fc);
-
-	/* Funcao para adicionar um novo leitor a Biblioteca.
-	 * Parametros: Leitor* lt - apontador para o novo leitor. */
-	void adiciona_leitor(Leitor* lt);
-
-	/* Funcao para adicionar um novo emprestimo a Biblioteca.
-	 * Parametros: Emprestimo* ep - apontador para o novo emprestimo. */
-	void adiciona_emprestimo(Emprestimo* ep);
-
-	/* Funcao para adicionar um novo utilizador a Biblioteca.
-	 * Parametros: Utilizador* ut - apontador para o novo utilizador. */
-	void adiciona_utilizador(Utilizador* ut);
-
-	/* Funcao para remover um livro da Biblioteca.
-	 * Parametros: lond id - id do livro que queremos remover.
-	 * Retorno: true - se existe algum livro com esse id;
-	 * 			excecao Object_nao_existe - caso contrario.
-	 * Nota: remove o primeiro livro com o id indicado. */
-	bool remove_livro(long id);
-
-	/* Funcao para remover um funcionario da Biblioteca.
-	 * Parametros: lond id - id do funcionario que queremos remover.
-	 * Retorno: true - se existe algum funcionario com esse id;
-	 * 			excecao Object_nao_existe - caso contrario.
-	 * Nota: remove o primeiro funcionario com o id indicado. */
-	bool remove_funcionario(long id);
-
-	/* Funcao para remover um leitor da Biblioteca.
-	 * Parametros: lond id - id do leitor que queremos remover.
-	 * Retorno: true - se existe algum leitor com esse id;
-	 * 			excecao Object_nao_existe - caso contrario.
-	 * Nota: remove o primeiro leitor com o id indicado. */
-	bool remove_leitor(long id);
-
-	/* Funcao para remover um emprestimo da Biblioteca.
-	 * Parametros: lond id - id do emprestimo que queremos remover.
-	 * Retorno: true - se existe algum emprestimo com esse id;
-	 * 			excecao Object_nao_existe - caso contrario.
-	 * Nota: remove o primeiro emprestimo com o id indicado. */
-	bool remove_emprestimo(long id);
-
-	/* Funcao para remover um utilizador da Biblioteca.
-	 * Parametros: lond id - id do utilizador que queremos remover.
-	 * Retorno: true - se existe algum utilizador com esse id;
-	 * 			excecao Object_nao_existe - caso contrario.
-	 * Nota: remove o primeiro utilizador com o id indicado. */
-	bool remove_utilizador(long id);
-
-	/* Funcao para distribuir uniformemente os funcionarios pelos supervisores.
-	 * No final o numero de funcionarios por supervisor e o mais equilibrado possivel. */
-	void distribui_funcionarios();
-
-	/* Funcao para promover um funcionario a supervisor.
-	 * Parametros: long id - id do funcionario que pretendemos promover.
-	 * Retorno: true - se existe um funcionario com esse id;
-	 * 			excecao Object_nao_existe - caso contrario.
-	 * Notas: promove o primeiro funcionario com o id indicado;
-	 * 		  no final os funcionarios sao redistribuidos, pelo que se mantem o equlibrio
-	 *  entre o numero de funcionarios por supervisor. */
-	bool promove_funcionario_supervisor(long id);
-
-	/* Funcao para despromover um supervisor a funcionario.
-	 * Parametros: long id - id do supervisor que pretendemos despromover.
-	 * Retorno: true - se existe um supervisor com esse id;
-	 * 			excecao Object_nao_existe - caso contrario.
-	 * Notas: despromove o primeiro supervisor com o id indicado;
-	 * 		  no final os funcionarios sao redistribuidos, pelo que se mantem o equlibrio
-	 *  entre o numero de funcionarios por supervisor. */
-	bool despromove_supervisor_funcionorario(long id);
-
-	/* Funcao que imprime todos os livros da Biblioteca.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime_livros();
-
-	/* Funcao que imprime os livros da Biblioteca com um determinado tema.
-	 * Parametros: string tem - tema pretendido.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime_livros_tema(std::string tem);
-
-	/* Funcao que imprime todos os livros emprestados da Biblioteca.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime_livros_emprestados();
-
-	/* Funcao que imprime todos os livros disponiveis (nao emprestados) da Biblioteca.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime_livros_disponiveis();
-
-	/* Funcao que imprime todos os funcionarios da Biblioteca.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime_funcionarios();
-
-	/* Funcao que imprime todos os supervisores da Biblioteca.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime_supervisores();
-
-	/* Funcao que imprime todos os leitores da Biblioteca.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime_leitores();
-
-	/* Funcao que imprime todos os emprestimos da Biblioteca.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime_emprestimos();
-
-	/* Funcao que imprime todos os utilizadores da Biblioteca.
-	 * Retorno: string com o resultado da impressao.
-	 * Nota: nao imprime a password dos utilizadores. */
-	std::string imprime_utilizadores();
-
-	/* Funcao que imprime todos os livros, funcionarios, supervisores, leitores e emprestimos da Biblioteca.
-	 * Retorno: string com o resultado da impressao. */
-	std::string imprime();
-
-	/* Funcao para obter todos os emprestimos atrasados da Biblioteca.
-	 * Retorno: vector<Emprestimo*> com os apontadores para os emprestimos atrasados. */
+	 **/
 	std::vector<Emprestimo*> get_emprestimos_atrasados();
 
-	/* Funcao para imprimir os emprestimos atrasados por leitor para que os leitores posssam ser contactados.
-	 * Retorno: string com o resultado da impressao. */
+	/**
+	 * @brief Funcao que imprime os emprestimos atrasados por leitor para que os leitores posssam ser contactados
+	 * @return string com o resultado da impressao
+	 **/
 	std::string imprime_emprestimos_atrasados();
 
-	/* Funcao para obter os livros da Biblioteca.
-	 * Retorno: vector<Livro*> com os apontadores para os livros da biblioteca. */
+	/**
+	 * @brief Funcao para obter os livros da Biblioteca
+	 * @return vector<Livro*> com os apontadores para os livros da biblioteca
+	 **/
 	std::vector<Livro*> get_livros();
 
+	/**
+	 * @brief Funcao para obter os emprestimos da Biblioteca
+	 * @return vector<Emprestimo*> com os apontadores para os emprestimos da biblioteca
+	 **/
 	std::vector<Emprestimo*> get_emprestimos();
+
+	/**
+	 * @brief Funcao para obter os funcionarios da Biblioteca
+	 * @return vector<Fucionario*> com os funcionarios para os emprestimos da biblioteca
+	 **/
+	std::vector<Funcionario*> get_funcionarios();
+
+	/**
+	 * @brief Funcao para obter os supervisores da Biblioteca
+	 * @return vector<Funcionario*> com os apontadores para os supervisores da biblioteca
+	 **/
+	std::vector<Funcionario*> get_supervisores();
+
+	/**
+	 * @brief Funcao para obter os funcionarios nao supervisores da Biblioteca
+	 * @return vector<Funcionario*> com os apontadores para os funcionarios nao supervisores da biblioteca
+	 **/
+	std::vector<Funcionario*> get_funcionarios_n_sup();
+
+	/**
+	 * @brief Funcao para obter os leitores da Biblioteca
+	 * @return vector<Leitor*> com os apontadores para os leitores da biblioteca
+	 **/
+	std::vector<Leitor*> get_leitores();
+
+	/**
+	 * @brief Funcao para obter os utilizadores da Biblioteca
+	 * @return vector<Utilizador*> com os apontadores para os utilizadores da biblioteca
+	 **/
+	std::vector<Utilizador*> get_utilizadores();
+
+	/**
+	 * @brief Funcao para adicionar um novo livro a Biblioteca
+	 * @param lv apontador para o novo livro
+	 **/
+	void adiciona_livro(Livro* lv);
+
+	/**
+	 * @brief Funcao para adicionar um novo funcionario a Biblioteca
+	 * @param fc apontador para o novo funcionario
+	 **/
+	void adiciona_funcionario(Funcionario* fc);
+
+	/**
+	 * @brief Funcao para adicionar um novo leitor a Biblioteca
+	 * @param lt apontador para o novo leitor
+	 **/
+	void adiciona_leitor(Leitor* lt);
+
+	/**
+	 * @brief Funcao para adicionar um novo emprestimo a Biblioteca
+	 * @param ep apontador para o novo emprestimo
+	 **/
+	void adiciona_emprestimo(Emprestimo* ep);
+
+	/**
+	 * @brief Funcao para adicionar um novo utilizador a Biblioteca
+	 * @param ut apontador para o novo utilizador
+	 **/
+	void adiciona_utilizador(Utilizador* ut);
+
+	/**
+	 * @brief Funcao para remover um livro da Biblioteca
+	 * @param id identificacao do livro que queremos remover
+	 * @return true se existe algum livro com o id fornecido
+	 * @exception Object_nao_existe se nao existe nenhum livro com o id fornecido
+	 * Nota: remove o primeiro livro com o id indicado.
+	 **/
+	bool remove_livro(long id);
+
+	/**
+	 * @brief Funcao para remover um funcionario da Biblioteca
+	 * @param lond id identificacao do funcionario que queremos remover
+	 * @return true se existe algum funcionario com o id fornecido
+	 * @exception Object_nao_existe se nao existe nenhum funcionario com o id fornecido
+	 * Nota: remove o primeiro funcionario com o id indicado.
+	 **/
+	bool remove_funcionario(long id);
+
+	/**
+	 * @brief Funcao para remover um leitor da Biblioteca
+	 * @param lond id identificacao do leitor que queremos remover
+	 * @return true se existe algum leitor com o id fornecido
+	 * @exception Object_nao_existe se nao existe nenhum leitor com o id fornecido
+	 * Nota: remove o primeiro leitor com o id indicado.
+	 **/
+	bool remove_leitor(long id);
+
+	/**
+	 * @brief Funcao para remover um emprestimo da Biblioteca
+	 * @param lond id identificacao do emprestimo que queremos remover
+	 * @return true se existe algum emprestimo com o id fornecido
+	 * @exception Object_nao_existe se nao existe nenhum emprestimo com o id fornecido
+	 * Nota: remove o primeiro emprestimo com o id indicado.
+	 **/
+	bool remove_emprestimo(long id);
+
+	/**
+	 * @brief Funcao para remover um utilizador da Biblioteca
+	 * @param lond id identificacao do utilizador que queremos remover
+	 * @return true se existe algum utilizador com o id fornecido
+	 * @exception Object_nao_existe se nao existe nenhum utilizador com o id fornecido
+	 * Nota: remove o primeiro utilizador com o id indicado.
+	 **/
+	bool remove_utilizador(long id);
+
+	/**
+	 * @brief Funcao para distribuir uniformemente os funcionarios pelos supervisores
+	 * No final o numero de funcionarios por supervisor e o mais equilibrado possivel.
+	 **/
+	void distribui_funcionarios();
+
+	/**
+	 * @brief Funcao para promover um funcionario a supervisor
+	 * @param long id identificacao do funcionario que pretendemos promover
+	 * @return true se existe um funcionario com o id fornecido
+	 * @exception Object_nao_existe se nao existe nenhum funcionario com o id fornecido
+	 * Notas: - promove o primeiro funcionario com o id indicado;
+	 * 		  - no final os funcionarios sao redistribuidos, pelo que se mantem o equlibrio
+	 *  	  	 entre o numero de funcionarios por supervisor.
+	 **/
+	bool promove_funcionario_supervisor(long id);
+
+	/**
+	 * @brief Funcao para despromover um supervisor a funcionario
+	 * @param long id identificacao do supervisor que pretendemos despromover
+	 * @return true se existe um supervisor com o id fornecido
+	 * @exception Object_nao_existe se nao existe nenhum supervisor com o id fornecido
+	 * Notas: - despromove o primeiro supervisor com o id indicado;
+	 * 		   - no final os funcionarios sao redistribuidos, pelo que se mantem o equlibrio
+	 *  		 entre o numero de funcionarios por supervisor.
+	 **/
+	bool despromove_supervisor_funcionorario(long id);
+
+	/**
+	 * @brief Funcao que imprime todos os livros da Biblioteca
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_livros();
+
+	/**
+	 * @brief Funcao que imprime os livros da Biblioteca com um determinado tema
+	 * @param tem tema pretendido
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_livros_tema(std::string tem);
+
+	/**
+	 * @brief Funcao que imprime todos os livros emprestados da Biblioteca
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_livros_emprestados();
+
+	/**
+	 * @brief Funcao que imprime todos os livros disponiveis (nao emprestados) da Biblioteca
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_livros_disponiveis();
+
+	/**
+	 * @brief Funcao que imprime todos os funcionarios da Biblioteca
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_funcionarios();
+
+	/**
+	 * @brief Funcao que imprime todos os supervisores da Biblioteca
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_supervisores();
+
+	/**
+	 * @brief Funcao que imprime todos os leitores da Biblioteca
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_leitores();
+
+	/**
+	 * @brief Funcao que imprime todos os emprestimos da Biblioteca
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_emprestimos();
+
+	/**
+	 * @brief Funcao que imprime todos os utilizadores da Biblioteca
+	 * @return string com o resultado da impressao
+	 * Nota: nao imprime a password dos utilizadores
+	 **/
+	std::string imprime_utilizadores();
+
+	/**
+	 * @brief Funcao que imprime todos os livros, funcionarios, supervisores, leitores e emprestimos da Biblioteca
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime();
+
+	/* codigo desnecessario
 
 	void set_emprestimos(std::vector<Emprestimo*> emp);
 
-	std::vector<Funcionario*> get_funcionarios();
-
 	void set_funcionarios(std::vector<Funcionario*> func);
 
-	std::vector<Funcionario*> get_supervisores();
-
-	std::vector<Funcionario*> get_funcionarios_n_sup();
-
-	std::vector<Leitor*> get_leitores();
-
 	void set_leitores(std::vector<Leitor*> leit);
-
-	std::vector<Utilizador*> get_utilizadores();
 
 	void set_utilizadores(std::vector<Utilizador*> util);
 
 	void set_livros(std::vector<Livro*> livr);
 
+	**/
+
+	/**
+	 * @brief Funcao para obter os temas dos livros da Biblioteca
+	 * @return vector<string> com os temas dos livros da Biblioteca
+	 **/
 	std::vector<std::string> get_temas();
 
+	/**
+	 * @brief Funcao para obter os livros com um determinado tema da Biblioteca
+	 * @param tem tema escolhido.
+	 * @return vector<Livro*> com os apontadores para os livros com tema tem
+	 **/
 	std::vector<Livro*> get_livros_tema(std::string tem);
 
+	/**
+	 * @brief Funcao para obter os livros disponiveis (nao emprestados) da Biblioteca
+	 * @return vector<Livro*> com os apontadores para os livros disponiveis
+	 **/
 	std::vector<Livro*> get_livros_disponiveis();
 
+	/**
+	 * @brief Funcao para obter os livros emprestados da Biblioteca
+	 * @return vector<Livro*> com os apontadores para os livros emprestados
+	 **/
 	std::vector<Livro*> get_livros_emprestados();
 
+	/**
+	 * @brief Funcao que escreve todos os livros da Biblioteca para um ficheiro
+	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
 	void escreve_livros(std::string ficheiro);
 
+	/**
+	 * @brief Funcao que escreve os colaboradores da Biblioteca (exceto o administrador) para dois ficheiros
+	 * @param ficheiro_fc contem o caminho para o ficheiro onde queremos escrever os funcionarios
+	 * @param ficheiro_sp contem o caminho para o ficheiro onde queremos escrever os supervisores
+	 **/
 	void escreve_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
 
+	/**
+	 * @brief Funcao que escreve todos os leitores da Biblioteca para um ficheiro
+	 * @param string ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 **/
 	void escreve_leitores(std::string ficheiro);
 
+	/**
+	 * @brief Funcao que escreve todos os emprestimos da Biblioteca para um ficheiro
+	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 **/
 	void escreve_emprestimos(std::string ficheiro);
 
-	void escreve_utilizadores(std::string ficheiro); // escreve utilizadores de Biblioteca num ficheiro; parametros: string com nome do ficheiro
+	/**
+	 * @brief Funcao que escreve todos os utilizadores da Biblioteca para um ficheiro
+	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 **/
+	void escreve_utilizadores(std::string ficheiro);
 
-	void escreve(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp, std::string ficheiro_lt, std::string ficheiro_ep, std::string ficheiro_ut);
+	/**
+	 * @brief Funcao que escreve toda a informacao da Biblioteca para 6 ficheiros
+	 * @param ficheiro_lv contem o caminho para o ficheiro onde queremos escrever os livros
+	 * @param ficheiro_fc contem o caminho para o ficheiro onde queremos escrever os funcionarios
+	 * @param ficheiro_sp contem o caminho para o ficheiro onde queremos escrever os supervisores
+	 * @param ficheiro_lt contem o caminho para o ficheiro onde queremos escrever os leitores
+	 * @param ficheiro_ep contem o caminho para o ficheiro onde queremos escrever os emprestimos
+	 * @param ficheiro_ut contem o caminho para o ficheiro onde queremos escrever os utilizadores
+	 **/
+	void escreve(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp,
+			std::string ficheiro_lt, std::string ficheiro_ep, std::string ficheiro_ut);
 
+	/**
+	 * @brief Funcao que le todos os livros de um ficheiro e os adiciona a Biblioteca
+	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 **/
 	void le_livros(std::string ficheiro);
 
+	/**
+	 * @brief Funcao que le os colaboradores de dois ficheiros e os adiciona a Biblioteca
+	 * @param ficheiro_fc contem o caminho para o ficheiro de onde queremos ler os funcionarios
+	 * @param ficheiro_sp contem o caminho para o ficheiro de onde queremos ler os supervisores
+	 **/
 	void le_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
 
+	/**
+	 * @brief Funcao que le todos os leitores de um ficheiro e os adiciona a Biblioteca
+	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 **/
 	void le_leitores(std::string ficheiro);
 
-	void le_leitores_emprestimos(std::string ficheiro);
-
+	/**
+	 * @brief Funcao que le todos os emprestimos de um ficheiro e os adiciona a Biblioteca
+	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 * Nota: E atualizada a informacao sobre emprestimos nos leitores e nos livros.
+	 **/
 	void le_emprestimos(std::string ficheiro);
 
-	void le_utilizadores(std::string ficheiro); // le utilizadores de um ficheiro e coloca-os no vetor de utilizadores de Biblioteca; parametros: string com nome do ficheiro
+	/**
+	 * @brief Funcao que le todos os utilizadores de um ficheiro e os adiciona a Biblioteca
+	 * @param string ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 **/
+	void le_utilizadores(std::string ficheiro);
 
-	void le(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp, std::string ficheiro_lt, std::string ficheiro_ep, std::string ficheiro_ut);
+	/**
+	 * @brief Funcao que le toda a informacao de 6 ficheiros e adiciona a Biblioteca
+	 * @param ficheiro_lv contem o caminho para o ficheiro de onde queremos ler os livros
+	 * @param ficheiro_fc contem o caminho para o ficheiro de onde queremos ler os funcionarios
+	 * @param ficheiro_sp contem o caminho para o ficheiro de onde queremos ler os supervisores
+	 * @param ficheiro_lt contem o caminho para o ficheiro de onde queremos ler os leitores
+	 * @param ficheiro_ep contem o caminho para o ficheiro de onde queremos ler os emprestimos
+	 * @param ficheiro_ut contem o caminho para o ficheiro de onde queremos ler os utilizadores
+	 **/
+	void le(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp,
+			std::string ficheiro_lt, std::string ficheiro_ep, std::string ficheiro_ut);
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */

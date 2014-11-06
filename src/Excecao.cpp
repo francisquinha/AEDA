@@ -7,7 +7,6 @@
 #include <algorithm>
 #include <fstream>
 
-#include "Biblio.h"
 #include "Excecao.h"
 
 using namespace std;
@@ -40,6 +39,12 @@ ostream& operator<<(ostream &out, Object_nao_existe &object) {
 // excecao para quando o livro nao esta disponivel
 ostream& operator<<(ostream &out, Livro_indisponivel &livro) {
 	out << "Livro com ID " << livro.get_ID() << " nao esta disponivel para emprestar. Foi emprestado ha " << livro.get_dias_emp() << " dia(s)." << endl;
+	return out;
+}
+
+// excecao para quando o livro que queremos remover esta emprestado
+ostream& operator<<(ostream &out, Livro_emprestado &livro) {
+	out << "Livro emprestado, tem que devolver emprestimo com ID " << livro.get_ID_ep() << "." << endl;
 	return out;
 }
 

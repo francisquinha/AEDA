@@ -574,6 +574,12 @@ void Menu::livros_emprestados(){
 
 void Menu::livros_tema(){
 	cout << "Escolha um tema (s para sair)" << endl << endl;
+	cout << "Temas possiveis: ";
+	vector<string> temas {get_temas()};
+	for (int i = 0; i < temas.size() - 1; i++){
+		cout << temas[i] << "; ";
+	}
+	cout << temas[temas.size()-1] << "." << endl << endl;
 	string tem {};
 	cout << "Tema: ";
 	getline (cin, tem);
@@ -658,7 +664,7 @@ void Menu::livros_adicionar() {
                             	else if (!e_numero(edis)) cout << endl << "Por favor insira um numero na Edicao." << endl << endl;
                             	else {
                             		int edi = atol(edis.c_str());
-                            		Livro* lv = new Livro{tit, aut, tem, isbn, cot, num_pag, edi, false, 0};
+                            		Livro* lv = new Livro{tit, aut, tem, isbn, cot, num_pag, edi, false, 0, 0};
                             		cout << endl;
                             		adiciona_livro(lv);
                         			cout << endl;
@@ -689,6 +695,12 @@ void Menu::livros_remover() {
     		id = atol(ids.c_str());
     		try {
     			remove_livro(id);
+    		}
+    		catch(Livro_emprestado &lv) {
+					ostringstream ostr{};
+					ostr << lv;
+					cout << ostr.str();
+    				cout << "Por favor devolva o emprestimo antes de remover o livro." << endl;
     		}
     		catch(Object_nao_existe &ob) {
 					ostringstream ostr{};
@@ -758,6 +770,12 @@ void Menu::leitores_remover() {
     		id = atol(ids.c_str());
     		try {
     			remove_leitor(id);
+    			}
+    		catch(Emprestimos_por_devolver &ep) {
+					ostringstream ostr{};
+					ostr << ep;
+					cout << ostr.str();
+    				cout << "Por favor remova o(s) emprestimo(s) antes." << endl;
     			}
     		catch(Object_nao_existe &ob) {
 					ostringstream ostr{};

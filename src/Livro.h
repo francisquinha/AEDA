@@ -16,13 +16,14 @@ class Livro: public Object {
 	int num_paginas;
 	int edicao;
 	bool emprestado;
+	long ID_ep;
 	std::time_t data_emp;
 	static long num_livros;
 public:
 	Livro(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn, std::string cot,
-			int np, int ed, bool ept, std::time_t dt);
+			int np, int ed, bool ept, long id_ep, std::time_t dt);
 	Livro(std::string tit, std::vector<std::string> aut, std::string tem, long isbn, std::string cot,
-			int np, int ed, bool ept, std::time_t dt);
+			int np, int ed, bool ept, long id_ep, std::time_t dt);
 	std::string imprime();
 	std::string get_titulo();
 	void set_titulo(std::string tit);
@@ -40,6 +41,8 @@ public:
 	void set_edicao(int ed);
 	bool get_emprestado();
 	void set_emprestado(bool ept);
+	long get_ID_ep();
+	void set_ID_ep(long id_ep);
 	std::time_t get_data_emp();
 	void set_data_emp(std::time_t dt);
 	double get_dias_emp();

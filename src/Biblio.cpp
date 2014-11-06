@@ -13,28 +13,16 @@
 
 using namespace std;
 
+vector<Livro*> Biblioteca::get_livros() {
+	return livros;
+}
+
 vector<Emprestimo*> Biblioteca::get_emprestimos() {
 	return emprestimos;
 }
 
-void Biblioteca::set_emprestimos(vector<Emprestimo*> emp) {
-	emprestimos = emp;
-}
-
 vector<Funcionario*>Biblioteca::get_funcionarios() {
 	return funcionarios;
-}
-
-void Biblioteca::set_funcionarios(vector<Funcionario*> func) {
-	funcionarios = func;
-}
-
-vector<Utilizador*>Biblioteca::get_utilizadores() {
-	return utilizadores;
-}
-
-void Biblioteca::set_utilizadores(vector<Utilizador*> util) {
-	utilizadores = util;
 }
 
 vector<Funcionario*>Biblioteca::get_supervisores() {
@@ -67,17 +55,32 @@ vector<Leitor*> Biblioteca::get_leitores() {
 	return leitores;
 }
 
-void Biblioteca::set_leitores(vector<Leitor*> leit) {
-	leitores = leit;
+vector<Utilizador*>Biblioteca::get_utilizadores() {
+	return utilizadores;
 }
 
-vector<Livro*> Biblioteca::get_livros() {
-	return livros;
+/* codigo desnecessario
+
+void Biblioteca::set_emprestimos(vector<Emprestimo*> emp) {
+	emprestimos = emp;
+}
+
+void Biblioteca::set_funcionarios(vector<Funcionario*> func) {
+	funcionarios = func;
+}
+
+void Biblioteca::set_utilizadores(vector<Utilizador*> util) {
+	utilizadores = util;
+}
+
+void Biblioteca::set_leitores(vector<Leitor*> leit) {
+	leitores = leit;
 }
 
 void Biblioteca::set_livros(vector<Livro*> livr) {
 	livros = livr;
 }
+*/
 
 // adicionar Livro a Biblioteca
 void Biblioteca::adiciona_livro(Livro* lv) {
@@ -107,8 +110,15 @@ void Biblioteca::adiciona_utilizador(Utilizador* ut) {
 vector<string> Biblioteca::get_temas() {
 	vector<string> tem {};
 	for (vector<Livro*>::const_iterator it = livros.begin(); it !=  livros.end(); it++) {
-		tem.push_back((*it)->get_tema());
+		bool adicionar{true};
+		for (vector<string>::const_iterator itt = tem.begin(); itt != tem.end(); itt++) {
+			if ((*itt) == (*it)->get_tema()) {
+				adicionar = false;
+			}
+		}
+		if (adicionar) tem.push_back((*it)->get_tema());
 	}
+	sort(tem.begin(), tem.end());
 	return tem;
 }
 
@@ -210,6 +220,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
 	if (lv->get_emprestado() == false) {
 		if (ep_lt.size() < 3) {
 			lv->set_emprestado(true);
+			lv->set_ID_ep(ep->get_ID());
 			lv->set_data_emp(ep->get_data());
 			lt->adiciona_emp_leit(ep);
 			emprestimos.push_back(ep);
@@ -221,7 +232,8 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
 	}
 	else {
 		throw Livro_indisponivel(lv->get_ID(), lv->get_titulo(), lv->get_autores(), lv->get_tema(), lv->get_ISBN(),
-				lv->get_cota(), lv->get_num_paginas(), lv->get_edicao(), lv->get_emprestado(), lv->get_data_emp());
+				lv->get_cota(), lv->get_num_paginas(), lv->get_edicao(), lv->get_emprestado(), lv-> get_ID_ep(),
+				lv->get_data_emp());
 	}
 }
 
@@ -235,6 +247,7 @@ bool Biblioteca::remove_emprestimo(long id) {
 						<< (*it)->get_multa() << "euros.";
 			}
 			((*it)->get_livro())->set_emprestado(false);
+			((*it)->get_livro())->set_ID_ep(0);
 			((*it)->get_livro())->set_data_emp( {});
 			((*it)->get_leitor())->remove_emp_leit(id);
 			emprestimos.erase(it);
@@ -516,10 +529,7 @@ void Biblioteca::escreve(string ficheiro_lv, string ficheiro_fc, string ficheiro
 void Biblioteca::le_livros(string ficheiro) {
 	ifstream islv(ficheiro);
 	if (!islv) throw Ficheiro_indisponivel(ficheiro);
-	string ids {}, tit {}, auts {}, tem {}, isbns {}, cot {}, num_pags {}, edis {}, epts {}, ymds {}, years {}, months {}, days {};
-	time_t dt {};
-	struct tm* dtinfo {};
-	int year {}, month {}, day {};
+	string ids {}, tit {}, auts {}, tem {}, isbns {}, cot {}, num_pags {}, edis {}, epts {}, ideps {}, ymds {};
 	istringstream autss {};
 	while (!islv.eof()) {
 		getline(islv, ids);
@@ -531,6 +541,7 @@ void Biblioteca::le_livros(string ficheiro) {
 		getline(islv, num_pags);
 		getline(islv, edis);
 		getline(islv, epts);
+		getline(islv, ideps);
 		getline(islv, ymds);
 		long id = atol(ids.c_str());
 		vector<string>aut {};
@@ -542,26 +553,9 @@ void Biblioteca::le_livros(string ficheiro) {
 		long isbn = atol(isbns.c_str());
 		int num_pag = atoi(num_pags.c_str());
 		int edi = atoi(edis.c_str());
-		bool ept = atoi(epts.c_str());
-		if (ymds == "0") dt=0;
-		else {
-			stringstream ymdss(ymds);
-			getline(ymdss, years, '/');
-			getline(ymdss, months, '/');
-			getline(ymdss, days);
-			year = atoi(years.c_str());
-			month = atoi(months.c_str());
-			day = atoi(days.c_str());
-			time (&dt);
-			dtinfo = localtime ( &dt );
-			dtinfo->tm_year = year - 1900;
-			dtinfo->tm_mon = month - 1;
-			dtinfo->tm_mday = day;
-			dt = mktime (dtinfo);
-		}
 		if (ids != "") {
-			Livro* lv = new Livro {id, tit, aut, tem, isbn, cot, num_pag, edi, ept, dt};
-			livros.push_back(lv);
+			Livro* lv = new Livro {id, tit, aut, tem, isbn, cot, num_pag, edi, 0, 0, 0};
+			adiciona_livro(lv);
 		}
 	}
 	islv.close();
@@ -585,7 +579,7 @@ void Biblioteca::le_funcionarios(string ficheiro_fc, string ficheiro_sp) {
 		id = atol(ids.c_str());
 		if (ids != "") {
 			Funcionario* fc = new Funcionario {id, nom};
-			funcionarios.push_back(fc);
+			adiciona_funcionario(fc);
 		}
 	}
 	isfc.close();
@@ -609,7 +603,7 @@ void Biblioteca::le_funcionarios(string ficheiro_fc, string ficheiro_sp) {
 		}
 		if (ids != "") {
 			Supervisor* sp = new Supervisor {id, nom, func_sup};
-			funcionarios.push_back(sp);
+			adiciona_funcionario(sp);
 		}
 	}
 	issp.close();
@@ -620,10 +614,8 @@ void Biblioteca::le_leitores(string ficheiro) {
 	ifstream islt(ficheiro);
 	if (!islt) throw Ficheiro_indisponivel(ficheiro);
 	string ids {}, nom {}, tels {}, eml {}, epids {};
-	long id {}, tel {}, epid {};
+	long id {}, tel {};
 	istringstream epidss {};
-	bool encontrado {false};
-	vector<Emprestimo*> emp_leit {};
 	string empids {};
 	while (!islt.eof()) {
 		getline(islt, ids);
@@ -633,70 +625,9 @@ void Biblioteca::le_leitores(string ficheiro) {
 		getline(islt, epids);
 		id = atol(ids.c_str());
 		tel = atol(tels.c_str());
-		emp_leit = {};
-		if (epids != "" and emprestimos.size() > 0) {
-			stringstream epidss(epids);
-			while (getline(epidss, empids, ';')) {
-				encontrado=false;
-				epid = atol(empids.c_str());
-				for (vector<Emprestimo*>::const_iterator it = emprestimos.begin(); it != emprestimos.end(); it++) {
-					if ((*it)->get_ID() == epid) {
-						emp_leit.push_back(*it);
-						encontrado=true;
-					}
-				}
-				if (!encontrado) throw Object_nao_existe(epid);
-			}
-		}
 		if (ids != "") {
-			Leitor* lt = new Leitor {id,nom,tel,eml,emp_leit};
-			leitores.push_back(lt);
-		}
-	}
-	islt.close();
-}
-
-// acrescentar emprestimos a leitores de Biblioteca
-void Biblioteca::le_leitores_emprestimos(string ficheiro) {
-	ifstream islt(ficheiro);
-	if (!islt) throw Ficheiro_indisponivel(ficheiro);
-	string ids {}, nom {}, tels {}, eml {}, epids {};
-	long id {}, epid {};
-	istringstream epidss {};
-	bool encontrado_ep {false}, encontrado_lt {false};
-	string empids {};
-	Leitor* lt {};
-	while (!islt.eof()) {
-		getline(islt, ids);
-		getline(islt, nom);
-		getline(islt, tels);
-		getline(islt, eml);
-		getline(islt, epids);
-		id = atol(ids.c_str());
-		encontrado_lt = false;
-		if (ids != "") {
-			for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
-				if ((*it)->get_ID() == id) {
-					encontrado_lt = true;
-					lt = (*it);
-				}
-			}
-			if (!encontrado_lt) throw Object_nao_existe(id);
-			if (epids != "" and emprestimos.size()>0) {
-				stringstream epidss(epids);
-				while (getline(epidss, empids, ';')) {
-					encontrado_ep=false;
-					epid = atol(empids.c_str());
-					for (vector<Emprestimo*>::const_iterator it = emprestimos.begin(); it != emprestimos.end(); it++) {
-						if ((*it)->get_ID() == epid) {
-							lt->adiciona_emp_leit((*it));
-							encontrado_ep = true;
-						}
-					}
-					if (!encontrado_ep) throw Object_nao_existe(id);
-				}
-			}
-			encontrado_ep = false;
+			Leitor* lt = new Leitor {id,nom,tel,eml,{}};
+			adiciona_leitor(lt);
 		}
 	}
 	islt.close();
@@ -767,7 +698,7 @@ void Biblioteca::le_emprestimos(string ficheiro) {
 			}
 			if (!encontrado) throw Object_nao_existe(ltid);
 			Emprestimo* ep = new Emprestimo {id,lv,fc,lt,dt};
-			emprestimos.push_back(ep);
+			adiciona_emprestimo(ep);
 		}
 	}
 	isep.close();
@@ -788,7 +719,7 @@ void Biblioteca::le_utilizadores(string ficheiro) {
 		ace = atoi(aces.c_str());
 		if (ids != "") {
 			Utilizador* ut = new Utilizador {id, pass, ace};
-			utilizadores.push_back(ut);
+			adiciona_utilizador(ut);
 		}
 	}
 	isut.close();
@@ -800,7 +731,6 @@ void Biblioteca::le(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, 
 	le_funcionarios(ficheiro_fc, ficheiro_sp);
 	le_leitores(ficheiro_lt);
 	le_emprestimos(ficheiro_ep);
-	le_leitores_emprestimos(ficheiro_lt);
 	le_utilizadores(ficheiro_ut);
 }
 

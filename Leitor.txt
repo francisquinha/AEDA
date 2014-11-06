@@ -10,7 +10,7 @@ mariafonseca@fe.up.pt
 
 3
 Ana Moura
-915672839
+912231234
 anamoura@fe.up.pt
 
 4
@@ -32,7 +32,7 @@ joaomeireles@fe.up.pt
 Alexandre Cunha
 963453442
 alexandrecunha@fe.up.pt
-
+6;
 8
 Andreia Teixeira
 913563455
@@ -192,4 +192,59 @@ marcomarques@fe.up.pt
 Filipe Pedro
 938899989
 filipepedro@fe.up.pt
+
+40
+Celia Ferreira
+967538921
+celiaferreira@fe.up.pt
+
+41
+Hortensia Costa
+912316752
+hortensiacosta@fe.up.pt
+
+42
+Helia Costa
+967834562
+heliacosta@fe.up.pt
+
+43
+Maria Sousa
+935768345
+mariasousa@fe.up.pt
+
+44
+Sergio Dias
+912349876
+sergiodias@fe.up.pt
+
+45
+Isabel Pinto
+935627634
+isabelpinto@fe.up.pt
+
+46
+Lara Lacerda
+918527639
+laralacerda@fe.up.pt
+
+47
+Nuno Aires
+926736543
+nunoaires@fe.up.pt
+
+48
+Jose Cardoso
+937865432
+josecardoso@fe.up.pt
+
+49
+Maria Pereira
+938764352
+mariapereira@fe.up.pt
+
+50
+Alberto Pinto
+91998766
+albertopinto@fe.up.pt
 
