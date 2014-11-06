@@ -203,7 +203,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>codigo de identificacao do emprestimo </td></tr>
-    <tr><td class="paramname">lv</td><td>apontador para o livro Funcionario* fc - apontador para o funcionarios; Leitor* lt - apontador para o leitor; time_t dt - data do emprestimo. </td></tr>
+    <tr><td class="paramname">lv</td><td>apontador para o livro </td></tr>
+    <tr><td class="paramname">fc</td><td>apontador para o funcionarios </td></tr>
+    <tr><td class="paramname">lt</td><td>apontador para o leitor </td></tr>
+    <tr><td class="paramname">dt</td><td>data do emprestimo </td></tr>
   </table>
   </dd>
 </dl>
@@ -249,7 +252,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Construtor de <a class="el" href="class_emprestimo.html" title="Classe com toda a informacao de Emprestimo. ">Emprestimo</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">long</td><td>id - codigo de identificacao do emprestimo; Livro* lv - apontador para o livro; Funcionario* fc - apontador para o funcionarios; Leitor* lt - apontador para o leitor. </td></tr>
+    <tr><td class="paramname">id</td><td>codigo de identificacao do emprestimo </td></tr>
+    <tr><td class="paramname">lv</td><td>apontador para o livro </td></tr>
+    <tr><td class="paramname">fc</td><td>apontador para o funcionarios </td></tr>
+    <tr><td class="paramname">lt</td><td>apontador para o leitor </td></tr>
   </table>
   </dd>
 </dl>
@@ -291,7 +297,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Construtor de <a class="el" href="class_emprestimo.html" title="Classe com toda a informacao de Emprestimo. ">Emprestimo</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Livro*</td><td>lv - apontador para o livro; Funcionario* fc - apontador para o funcionarios; Leitor* lt - apontador para o leitor; </td></tr>
+    <tr><td class="paramname">lv</td><td>apontador para o livro </td></tr>
+    <tr><td class="paramname">fc</td><td>apontador para o funcionarios </td></tr>
+    <tr><td class="paramname">lt</td><td>apontador para o leitor </td></tr>
   </table>
   </dd>
 </dl>
@@ -339,7 +347,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Construtor de <a class="el" href="class_emprestimo.html" title="Classe com toda a informacao de Emprestimo. ">Emprestimo</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Livro*</td><td>lv - apontador para o livro; Funcionario* fc - apontador para o funcionarios; Leitor* lt - apontador para o leitor; time_t dt - data do emprestimo. </td></tr>
+    <tr><td class="paramname">lv</td><td>apontador para o livro </td></tr>
+    <tr><td class="paramname">fc</td><td>apontador para o funcionarios </td></tr>
+    <tr><td class="paramname">lt</td><td>apontador para o leitor </td></tr>
+    <tr><td class="paramname">dt</td><td>data do emprestimo </td></tr>
   </table>
   </dd>
 </dl>
@@ -364,7 +375,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Funcao que escreve os atributos do emprestimo num ficheiro. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">string</td><td>ficheiro - com o caminho do ficheiro onde pretendemos escrever. </td></tr>
+    <tr><td class="paramname">ficheiro</td><td>contem o caminho do ficheiro onde pretendemos escrever </td></tr>
   </table>
   </dd>
 </dl>
@@ -387,7 +398,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><div class="memdoc">
 
 <p>Funcao que determina o numero de dias de atraso do emprestimo. </p>
-<dl class="section return"><dt>Returns</dt><dd>int - numero de dias de atraso (numero de dias depois dos 7 permitidos). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>numero de dias de atraso (numero de dias depois dos 7 permitidos) </dd></dl>
 
 <p>Definition at line <a class="el" href="_emprestimo_8cpp_source.html#l00049">49</a> of file <a class="el" href="_emprestimo_8cpp_source.html">Emprestimo.cpp</a>.</p>
 
@@ -407,7 +418,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><div class="memdoc">
 
 <p>Funcao para obter a data do emprestimo. </p>
-<dl class="section return"><dt>Returns</dt><dd>time_t - data do emprestimo. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>data do emprestimo </dd></dl>
 
 <p>Definition at line <a class="el" href="_emprestimo_8cpp_source.html#l00039">39</a> of file <a class="el" href="_emprestimo_8cpp_source.html">Emprestimo.cpp</a>.</p>
 
@@ -427,7 +438,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><div class="memdoc">
 
 <p>Funcao para obter o funcionario responsavel pelo emprestimo. </p>
-<dl class="section return"><dt>Returns</dt><dd>Funcionario* - apontador para o funcionario. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>apontador para o funcionario </dd></dl>
 
 <p>Definition at line <a class="el" href="_emprestimo_8cpp_source.html#l00044">44</a> of file <a class="el" href="_emprestimo_8cpp_source.html">Emprestimo.cpp</a>.</p>
 
@@ -447,7 +458,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><div class="memdoc">
 
 <p>Funcao para obter o leitor a quem e feito o emprestimo. </p>
-<dl class="section return"><dt>Returns</dt><dd>Leitor* - apontador para o leitor. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>apontador para o leitor </dd></dl>
 
 <p>Definition at line <a class="el" href="_emprestimo_8cpp_source.html#l00034">34</a> of file <a class="el" href="_emprestimo_8cpp_source.html">Emprestimo.cpp</a>.</p>
 
@@ -467,7 +478,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><div class="memdoc">
 
 <p>Funcao para obter o livro do emprestimo. </p>
-<dl class="section return"><dt>Returns</dt><dd>Livro* - apontador para o livro. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>apontador para o livro </dd></dl>
 
 <p>Definition at line <a class="el" href="_emprestimo_8cpp_source.html#l00029">29</a> of file <a class="el" href="_emprestimo_8cpp_source.html">Emprestimo.cpp</a>.</p>
 
@@ -487,7 +498,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><div class="memdoc">
 
 <p>Funcao que determina o valor da multa do emprestimo. </p>
-<dl class="section return"><dt>Returns</dt><dd>double - valor da multa. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>valor da multa. </dd></dl>
 
 <p>Definition at line <a class="el" href="_emprestimo_8cpp_source.html#l00057">57</a> of file <a class="el" href="_emprestimo_8cpp_source.html">Emprestimo.cpp</a>.</p>
 
@@ -507,7 +518,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><div class="memdoc">
 
 <p>Funcao que imprime os atributos do emprestimo. </p>
-<dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
 <p>Definition at line <a class="el" href="_emprestimo_8cpp_source.html#l00065">65</a> of file <a class="el" href="_emprestimo_8cpp_source.html">Emprestimo.cpp</a>.</p>
 
@@ -520,7 +531,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 6 2014 17:39:15 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 6 2014 21:07:10 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['promove_5ffuncionario_5fsupervisor',['promove_funcionario_supervisor',['../class_biblioteca.html#ac85540fbd68e2c86da2b9be44ac3bc32',1,'Biblioteca']]]
+  ['maximo_5femprestimos',['Maximo_emprestimos',['../class_maximo__emprestimos.html#a76912fe9a2c763f5490a6ffb81a424fc',1,'Maximo_emprestimos']]]
 ];

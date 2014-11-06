@@ -8,6 +8,6 @@ var searchData=
   ['le_5futilizadores',['le_utilizadores',['../class_biblioteca.html#a06b8cca3f7831a1a0b0a4896a277ad3c',1,'Biblioteca']]],
   ['leitor',['Leitor',['../class_leitor.html',1,'']]],
   ['livro',['Livro',['../class_livro.html',1,'']]],
-  ['livro_5femprestado',['Livro_emprestado',['../class_livro__emprestado.html',1,'']]],
-  ['livro_5findisponivel',['Livro_indisponivel',['../class_livro__indisponivel.html',1,'']]]
+  ['livro_5femprestado',['Livro_emprestado',['../class_livro__emprestado.html',1,'Livro_emprestado'],['../class_livro__emprestado.html#a367274ffd130a4b2523a2a902a0fffcc',1,'Livro_emprestado::Livro_emprestado()']]],
+  ['livro_5findisponivel',['Livro_indisponivel',['../class_livro__indisponivel.html',1,'Livro_indisponivel'],['../class_livro__indisponivel.html#a307e55e62e0624640cbfb1663e514c8b',1,'Livro_indisponivel::Livro_indisponivel()']]]
 ];
