@@ -2,9 +2,12 @@ var searchData=
 [
   ['get_5fatraso',['get_atraso',['../class_emprestimo.html#a302089cf92e57d0396d55193704d1925',1,'Emprestimo']]],
   ['get_5fdata',['get_data',['../class_emprestimo.html#a288797962175f45d788e8115dde3deed',1,'Emprestimo']]],
+  ['get_5femail',['get_email',['../class_leitor.html#ac6ae04877e2fcfa582ee2173300c323f',1,'Leitor']]],
+  ['get_5femp_5fleit',['get_emp_leit',['../class_leitor.html#a79526ea48e6ef91f2da167770e1bc85b',1,'Leitor']]],
   ['get_5femprestimos',['get_emprestimos',['../class_biblioteca.html#a289307a5846e36e644b3d0a5a814c339',1,'Biblioteca']]],
-  ['get_5femprestimos_5fatrasados',['get_emprestimos_atrasados',['../class_biblioteca.html#a50128488a900a6638f43901ee1566242',1,'Biblioteca']]],
+  ['get_5femprestimos_5fatrasados',['get_emprestimos_atrasados',['../class_biblioteca.html#a50128488a900a6638f43901ee1566242',1,'Biblioteca::get_emprestimos_atrasados()'],['../class_leitor.html#a7763571f6218d5cbe0e998f59973d9c0',1,'Leitor::get_emprestimos_atrasados()']]],
   ['get_5fficheiro',['get_ficheiro',['../class_ficheiro__indisponivel.html#acdf927fbc98f6cf62f16cde603a1fc98',1,'Ficheiro_indisponivel']]],
+  ['get_5ffunc_5fsup',['get_func_sup',['../class_funcionario.html#a5f0fb2cd40efcff4b64e580398c1f267',1,'Funcionario::get_func_sup()'],['../class_supervisor.html#a4134839fe3be98219b4ae8c7e112626c',1,'Supervisor::get_func_sup()']]],
   ['get_5ffuncionario',['get_funcionario',['../class_emprestimo.html#a2db61ddf23dbaf6688841c1a14c17274',1,'Emprestimo']]],
   ['get_5ffuncionarios',['get_funcionarios',['../class_biblioteca.html#af55987dc71096b59587afd2d411d7aa1',1,'Biblioteca']]],
   ['get_5ffuncionarios_5fn_5fsup',['get_funcionarios_n_sup',['../class_biblioteca.html#a0ba8f0a591542740386b946c1257890a',1,'Biblioteca']]],
@@ -16,7 +19,9 @@ var searchData=
   ['get_5flivros_5femprestados',['get_livros_emprestados',['../class_biblioteca.html#a0cd7c560665c15a77406076a906f853e',1,'Biblioteca']]],
   ['get_5flivros_5ftema',['get_livros_tema',['../class_biblioteca.html#a4e3d51da03de704fd03010fce7423307',1,'Biblioteca']]],
   ['get_5fmulta',['get_multa',['../class_emprestimo.html#a69337c767dd79da145c765b51c1df0cf',1,'Emprestimo']]],
+  ['get_5fnome',['get_nome',['../class_funcionario.html#a2430745545441152ff96387e5d4bca4e',1,'Funcionario::get_nome()'],['../class_leitor.html#afad250e59d53aef2540017e1b2f61434',1,'Leitor::get_nome()']]],
   ['get_5fsupervisores',['get_supervisores',['../class_biblioteca.html#a356b8ed8df37893d7054b44fd9e6ab86',1,'Biblioteca']]],
+  ['get_5ftelefone',['get_telefone',['../class_leitor.html#a159a5bd6c4bde5c27301923f0f378f26',1,'Leitor']]],
   ['get_5ftemas',['get_temas',['../class_biblioteca.html#a3881ac0c0b907128519610e6a104aba4',1,'Biblioteca']]],
   ['get_5futilizadores',['get_utilizadores',['../class_biblioteca.html#a4bd6917a633b7008ddbc2cd179776d30',1,'Biblioteca']]]
 ];

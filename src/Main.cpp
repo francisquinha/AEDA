@@ -13,10 +13,10 @@ int main()
 	Administrador* admin = new Administrador {0, "Administrador"};
 	m.adiciona_funcionario(admin);
 	string path{"/Users/Angie/Documents/MIEIC/2A1S/AEDA/trabalhos/biblioteca/"};
-	m.le(path + "Livro.txt", path + "Funcionario.txt", path + "Supervisor.txt", path + "Leitor.txt", path + "Emprestimo.txt", path + "Utilizador.txt");
+	m.le(path + "Livro.txt", path + "Funcionario.txt", path + "Supervisor.txt", path + "Leitor.txt", path + "Emprestimo_old.txt", path + "Emprestimo.txt", path + "Utilizador.txt");
 	system("clear");
 	m.menu_principal();
-	m.escreve(path + "Livro.txt", path + "Funcionario.txt", path + "Supervisor.txt", path + "Leitor.txt", path + "Emprestimo.txt", path + "Utilizador.txt");
+	m.escreve(path + "Livro.txt", path + "Funcionario.txt", path + "Supervisor.txt", path + "Leitor.txt", path + "Emprestimo_old.txt", path + "Emprestimo.txt", path + "Utilizador.txt");
     return 0;
 }
 

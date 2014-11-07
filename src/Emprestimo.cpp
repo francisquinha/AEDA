@@ -16,6 +16,8 @@ using namespace std;
 long Emprestimo::num_emprestimos {0};
 
 // construtor Emprestimo
+Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {id},
+		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_emprestimos++;}
 Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object {id},
 		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {num_emprestimos++;}
 Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): Object {id},
@@ -85,7 +87,7 @@ string Emprestimo::imprime() {
 }
 
 // escrever Emprestimo
-void Emprestimo::escreve(string ficheiro) {
+void Emprestimo::escreve(string ficheiro, string ficheiro_old) {
 	stringstream out {};
 	tm *ldata = localtime(&data);
 	long year {1900 + ldata->tm_year};

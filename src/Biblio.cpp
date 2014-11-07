@@ -160,6 +160,7 @@ bool Biblioteca::remove_livro(long id) {
 	for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++) {
 		if ((*it)->get_ID() == id) {
 			livros.erase(it);
+			cout << endl << "Livro removido." << endl;
 			return true;
 		}
 	}
@@ -191,6 +192,7 @@ bool Biblioteca::remove_funcionario(long id) {
 	}
 	if (encontrado) {
 		distribui_funcionarios();
+		cout << endl << "Funcionario removido." << endl;
 		return true;
 	}
 	throw Object_nao_existe(id);
@@ -202,6 +204,7 @@ bool Biblioteca::remove_leitor(long id) {
 		if ((*it)->get_ID() == id) {
 			if ((*it)->get_emp_leit().size() == 0) {
 				leitores.erase(it);
+				cout << endl << "Leitor removido." << endl;
 				return true;
 			}
 			else {
@@ -210,6 +213,11 @@ bool Biblioteca::remove_leitor(long id) {
 		}
 	}
 	throw Object_nao_existe(id);
+}
+
+// adicionar Emprestimo antigo a Biblioteca
+void Biblioteca::adiciona_emprestimo_old(Emprestimo_old* ep) {
+	emprestimos_old.push_back(ep);
 }
 
 // adicionar Emprestimo a Biblioteca
@@ -224,7 +232,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
 			lv->set_data_emp(ep->get_data());
 			lt->adiciona_emp_leit(ep);
 			emprestimos.push_back(ep);
-			cout << "Emprestimo adicionado." << endl;
+			cout << endl << "Emprestimo adicionado." << endl;
 		}
 		else {
 			throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(), lt->get_telefone(), lt->get_email(), lt->get_emp_leit());
@@ -243,14 +251,17 @@ bool Biblioteca::remove_emprestimo(long id) {
 		if ((*it)->get_ID() == id) {
 			int dias {(*it)->get_atraso()};
 			if (dias > 0) {
-				cout << "Devolucao de livro " << dias << " dia(s) em atraso. Deve efetuar o pagamento de "
-						<< (*it)->get_multa() << "euros.";
+				cout << endl << "Devolucao de livro " << dias << " dia(s) em atraso. Deve efetuar o pagamento de "
+						<< (*it)->get_multa() << "euros." << endl;
 			}
 			((*it)->get_livro())->set_emprestado(false);
 			((*it)->get_livro())->set_ID_ep(0);
 			((*it)->get_livro())->set_data_emp( {});
 			((*it)->get_leitor())->remove_emp_leit(id);
+			Emprestimo_old* eo = new Emprestimo_old{(*it)->get_ID(), (*it)->get_livro(), (*it)->get_funcionario(), (*it)->get_leitor(), (*it)->get_data()};
+			adiciona_emprestimo_old(eo);
 			emprestimos.erase(it);
+			cout << endl << "Emprestimo removido." << endl;
 			return true;
 		}
 	}
@@ -261,6 +272,7 @@ bool Biblioteca::remove_utilizador(long id) {
 	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it != utilizadores.end(); it++) {
 		if ((*it)->get_ID() == id) {
 			utilizadores.erase(it);
+			cout << endl << "Utilizador removido." << endl;
 			return true;
 		}
 	}
@@ -432,6 +444,16 @@ string Biblioteca::imprime_leitores() {
 	return out.str();
 }
 
+// imprimir emprestimos antigos de Biblioteca
+string Biblioteca::imprime_emprestimos_old() {
+	stringstream out {};
+	out << "EMPRESTIMOS ANTIGOS" << endl << endl;
+	for (vector<Emprestimo_old*>::const_iterator it = emprestimos_old.begin(); it != emprestimos_old.end(); it++) {
+		out << (*it)->imprime() << endl;
+	}
+	return out.str();
+}
+
 // imprimir emprestimos de Biblioteca
 string Biblioteca::imprime_emprestimos() {
 	stringstream out {};
@@ -496,13 +518,23 @@ void Biblioteca::escreve_leitores(string ficheiro) {
 	}
 }
 
+// escrever emprestimos antigos de Biblioteca
+void Biblioteca::escreve_emprestimos_old(string ficheiro, string ficheiro_old) {
+	ofstream myfile(ficheiro_old);
+	myfile << "";
+	myfile.close();
+	for (vector<Emprestimo_old*>::const_iterator it = emprestimos_old.begin(); it != emprestimos_old.end(); it++) {
+		(*it)->escreve(ficheiro, ficheiro_old);
+	}
+}
+
 // escrever emprestimos de Biblioteca
-void Biblioteca::escreve_emprestimos(string ficheiro) {
+void Biblioteca::escreve_emprestimos(string ficheiro, string ficheiro_old) {
 	ofstream myfile(ficheiro);
 	myfile << "";
 	myfile.close();
 	for (vector<Emprestimo*>::const_iterator it = emprestimos.begin(); it != emprestimos.end(); it++) {
-		(*it)->escreve(ficheiro);
+		(*it)->escreve(ficheiro, ficheiro_old);
 	}
 }
 
@@ -517,11 +549,12 @@ void Biblioteca::escreve_utilizadores(string ficheiro) {
 }
 
 // escrever todos os ficheiros de Biblioteca
-void Biblioteca::escreve(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt, string ficheiro_ep, string ficheiro_ut) {
+void Biblioteca::escreve(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt, string ficheiro_epo, string ficheiro_ep, string ficheiro_ut) {
 	escreve_livros(ficheiro_lv);
 	escreve_funcionarios(ficheiro_fc, ficheiro_sp);
 	escreve_leitores(ficheiro_lt);
-	escreve_emprestimos(ficheiro_ep);
+	escreve_emprestimos_old(ficheiro_ep, ficheiro_epo);
+	escreve_emprestimos(ficheiro_ep, ficheiro_epo);
 	escreve_utilizadores(ficheiro_ut);
 }
 
@@ -633,6 +666,95 @@ void Biblioteca::le_leitores(string ficheiro) {
 	islt.close();
 }
 
+// ler emprestimos antigos de Biblioteca
+void Biblioteca::le_emprestimos_old(string ficheiro) {
+	ifstream isep(ficheiro);
+	if (!isep) throw Ficheiro_indisponivel(ficheiro);
+	string ids {}, lvids {}, fcids {}, ltids {}, ymds {}, years {}, months {}, days {}, ymdse {}, yearse {}, monthse {}, dayse {};
+	long id {}, lvid {}, fcid {}, ltid {};
+	time_t dt {}, dte{};
+	struct tm* dtinfo {};
+	struct tm* dteinfo {};
+	int year {}, month {}, day {}, yeare {}, monthe {}, daye {};
+	Livro* lv {};
+	Funcionario* fc {};
+	Leitor* lt {};
+	bool encontrado {false};
+	while (!isep.eof()) {
+		getline(isep, ids);
+		getline(isep, lvids);
+		getline(isep, fcids);
+		getline(isep, ltids);
+		getline(isep, ymds);
+		getline(isep, ymdse);
+		id = atol(ids.c_str());
+		lvid = atol(lvids.c_str());
+		fcid = atol(fcids.c_str());
+		ltid = atol(ltids.c_str());
+		if (ymds == "0") dt=0;
+		else {
+			stringstream ymdss(ymds);
+			getline(ymdss, years, '/');
+			getline(ymdss, months, '/');
+			getline(ymdss, days);
+			year = atoi(years.c_str());
+			month = atoi(months.c_str());
+			day = atoi(days.c_str());
+			time (&dt);
+			dtinfo = localtime ( &dt );
+			dtinfo->tm_year = year - 1900;
+			dtinfo->tm_mon = month - 1;
+			dtinfo->tm_mday = day;
+			dt = mktime (dtinfo);
+		}
+		if (ymdse == "0") dte=0;
+		else {
+			stringstream ymdsse(ymdse);
+			getline(ymdsse, yearse, '/');
+			getline(ymdsse, monthse, '/');
+			getline(ymdsse, dayse);
+			yeare = atoi(yearse.c_str());
+			monthe = atoi(monthse.c_str());
+			daye = atoi(dayse.c_str());
+			time (&dte);
+			dteinfo = localtime ( &dte );
+			dteinfo->tm_year = yeare - 1900;
+			dteinfo->tm_mon = monthe - 1;
+			dteinfo->tm_mday = daye;
+			dte = mktime (dteinfo);
+		}
+		if (ids != "") {
+			encontrado=false;
+			for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++) {
+				if ((*it)->get_ID() == lvid) {
+					lv = (*it);
+					encontrado = true;
+				}
+			}
+			if (!encontrado) throw Object_nao_existe(lvid);
+			encontrado = false;
+			for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
+				if ((*it)->get_ID() == fcid) {
+					fc = (*it);
+					encontrado = true;
+				}
+			}
+			if (!encontrado) throw Object_nao_existe(fcid);
+			encontrado=false;
+			for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
+				if ((*it)->get_ID() == ltid) {
+					lt = (*it);
+					encontrado = true;
+				}
+			}
+			if (!encontrado) throw Object_nao_existe(ltid);
+			Emprestimo_old* ep = new Emprestimo_old {id,lv,fc,lt,dt,dte,true};
+			adiciona_emprestimo_old(ep);
+		}
+	}
+	isep.close();
+}
+
 // ler emprestimos de Biblioteca
 void Biblioteca::le_emprestimos(string ficheiro) {
 	ifstream isep(ficheiro);
@@ -726,10 +848,11 @@ void Biblioteca::le_utilizadores(string ficheiro) {
 }
 
 // ler todos os ficheiros de Biblioteca
-void Biblioteca::le(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt, string ficheiro_ep, string ficheiro_ut) {
+void Biblioteca::le(string ficheiro_lv, string ficheiro_fc, string ficheiro_sp, string ficheiro_lt,string ficheiro_epo, string ficheiro_ep, string ficheiro_ut) {
 	le_livros(ficheiro_lv);
 	le_funcionarios(ficheiro_fc, ficheiro_sp);
 	le_leitores(ficheiro_lt);
+	le_emprestimos_old(ficheiro_epo);
 	le_emprestimos(ficheiro_ep);
 	le_utilizadores(ficheiro_ut);
 }

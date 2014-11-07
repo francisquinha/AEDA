@@ -36,17 +36,12 @@ bool Leitor::remove_emp_leit(long id) {
 			return true;
 		}
 	}
-	return false;
+	throw Object_nao_existe(id);
 }
 
 // obter Emprestimos de Leitor
 vector<Emprestimo*> Leitor::get_emp_leit() {
 	return emprestimos_leitor;
-}
-
-// determinar Emprestimos de Leitor
-void Leitor::set_emp_leit(vector<Emprestimo*> emp_leit) {
-	emprestimos_leitor=emp_leit;
 }
 
 // obter nome de Leitor
@@ -65,6 +60,7 @@ string Leitor::get_email() {
 }
 
 // determinar nome de Leitor
+
 void Leitor::set_nome(string nom) {
 	nome = nom;
 }

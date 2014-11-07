@@ -33,7 +33,7 @@ void Livro::set_ID_ep(long id_ep) {
 	ID_ep = id_ep;
 }
 
-// modificar dias de indisponibilidade de Livro
+// modificar data de emprestimo de Livro
 void Livro::set_data_emp(time_t dt) {
 	data_emp = dt;
 }

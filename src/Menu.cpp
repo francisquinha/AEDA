@@ -239,8 +239,9 @@ void Menu::menu_emprestimos() {
     		 << "2) Remover" << endl
 			 << "3) Consultar atrasos" << endl
 		 	 << "4) Consultar atrasos por leitor" << endl
-    		 << "5) Consultar livros atrasados" << endl;
-    	cout << endl << "Escolha uma opcao [1-5] (s para sair): ";
+    		 << "5) Consultar livros atrasados" << endl
+			 << "5) Consultar emprestimos antigos" << endl;
+    	cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
@@ -264,6 +265,9 @@ void Menu::menu_emprestimos() {
     			break;
    			case 5:
    				emprestimos_atrasados_livros();
+    			break;
+   			case 6:
+   				emprestimos_antigos();
     			break;
    			default:
    				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
@@ -562,6 +566,10 @@ void Menu::emprestimos_atrasados_livros() {
 		out << ((*it)->get_livro())->imprime() << endl;
 	}
 	cout << out.str();
+}
+
+void Menu::emprestimos_antigos() {
+	cout << imprime_emprestimos_old();
 }
 
 void Menu::livros_disponiveis(){

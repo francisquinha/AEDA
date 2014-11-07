@@ -72,9 +72,9 @@ Romance
 82 /ZUZm/RAP
 463
 4
-1
-5
-2014/11/4
+0
+0
+0
 8
 Como mentir com a estatistica
 Huff, Darrell;
@@ -95,7 +95,7 @@ Matematica
 169
 1
 1
-4
+5
 2014/11/1
 10
 Think Python
@@ -127,9 +127,9 @@ Arte
 821.134.3-2/MONL/FEL
 144
 7
-0
-0
-0
+1
+9
+2014/11/7
 13
 Iniciacao ao Desenho
 Sanmiguel, David;
@@ -138,9 +138,9 @@ Arte
 810.123.3-2/SAND/DES
 128
 3
-0
-0
-0
+1
+8
+2014/11/7
 14
 Mecanica dos Fluidos
 Oliveira, Luis Adriano;Lopes, Antonio Gameiro;
@@ -150,7 +150,7 @@ Engenharia
 792
 4
 1
-6
+7
 2014/11/6
 15
 Etica para Engenheiros

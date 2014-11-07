@@ -50,6 +50,7 @@ public:
     void emprestimos_atrasados();
     void emprestimos_atrasados_leitores();
     void emprestimos_atrasados_livros();
+    void emprestimos_antigos();
 
     void livros_disponiveis();
     void livros_emprestados();

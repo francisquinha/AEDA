@@ -21,11 +21,6 @@ string Funcionario::get_nome() {
 	return nome;
 }
 
-// establecer nome
-void Funcionario::set_nome(string nom) {
-	nome = nom;
-}
-
 // imprimir Funcionario
 string Funcionario::imprime() {
 	stringstream out {};
