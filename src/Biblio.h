@@ -5,13 +5,15 @@
 #include "Administrador.h"
 #include "Supervisor.h"
 #include "Emprestimo_old.h"
+#include "Funcionario_old.h"
+#include "Livro_old.h"
+#include "Leitor_old.h"
 #include "Login.h"
 #include "Excecao.h"
 
-class Livro;
-class Funcionario;
+class Livro_old;
+class Leitor_old;
 class Supervisor;
-class Leitor;
 class Emprestimo_old;
 class Utilizadores;
 class Login;
@@ -31,7 +33,6 @@ class Biblioteca {
 	std::vector<Leitor*> leitores; /**< @brief vetor com apontadores para os leitores da Biblioteca **/
 	std::vector<Emprestimo*> emprestimos; /**< @brief vetor com apontadores para os emprestimos da Biblioteca **/
 	std::vector<Utilizador*> utilizadores; /**< @brief vetor com apontadores para os utilizadores da Biblioteca **/
-	std::vector<Emprestimo_old*> emprestimos_old; /**< @brief vetor com apontadores para os emprestimos antigos da Biblioteca **/
 
 public:
 
@@ -56,6 +57,13 @@ public:
 	std::string imprime_emprestimos_atrasados();
 
 	/**
+	 * @brief Funcao para obter os livros antigos da Biblioteca
+	 *
+	 * @return vector<Livro_old*> com os apontadores para os livros antigos da biblioteca
+	 **/
+	std::vector<Livro_old*> get_livros_old();
+
+	/**
 	 * @brief Funcao para obter os livros da Biblioteca
 	 *
 	 * @return vector<Livro*> com os apontadores para os livros da biblioteca
@@ -63,23 +71,37 @@ public:
 	std::vector<Livro*> get_livros();
 
 	/**
-	 * @brief Funcao para obter os emprestimos da Biblioteca
+	 * @brief Funcao para obter os emprestimos antigos da Biblioteca
 	 *
-	 * @return vector<Emprestimo*> com os apontadores para os emprestimos da biblioteca
+	 * @return vector<Emprestimo_old*> com os apontadores para os emprestimos antigos
+	 **/
+	std::vector<Emprestimo_old*> get_emprestimos_old();
+
+	/**
+	 * @brief Funcao para obter os emprestimos atuais da Biblioteca
+	 *
+	 * @return vector<Emprestimo*> com os apontadores para os emprestimos atuais
 	 **/
 	std::vector<Emprestimo*> get_emprestimos();
 
 	/**
+	 * @brief Funcao para obter os funcionarios antigos da Biblioteca
+	 *
+	 * @return vector<Fucionario_old*> com os apontadores para os funcionarios antigos
+	 **/
+	std::vector<Funcionario_old*> get_funcionarios_old();
+
+	/**
 	 * @brief Funcao para obter os funcionarios da Biblioteca
 	 *
-	 * @return vector<Fucionario*> com os funcionarios para os emprestimos da biblioteca
+	 * @return vector<Fucionario*> com os apontadores para os funcionarios
 	 **/
 	std::vector<Funcionario*> get_funcionarios();
 
 	/**
 	 * @brief Funcao para obter os supervisores da Biblioteca
 	 *
-	 * @return vector<Funcionario*> com os apontadores para os supervisores da biblioteca
+	 * @return vector<Funcionario*> com os apontadores para os supervisores
 	 **/
 	std::vector<Funcionario*> get_supervisores();
 
@@ -89,6 +111,13 @@ public:
 	 * @return vector<Funcionario*> com os apontadores para os funcionarios nao supervisores da biblioteca
 	 **/
 	std::vector<Funcionario*> get_funcionarios_n_sup();
+
+	/**
+	 * @brief Funcao para obter os leitores antigos da Biblioteca
+	 *
+	 * @return vector<Leitor_old*> com os apontadores para os leitores antigos da biblioteca
+	 **/
+	std::vector<Leitor_old*> get_leitores_old();
 
 	/**
 	 * @brief Funcao para obter os leitores da Biblioteca
@@ -105,6 +134,13 @@ public:
 	std::vector<Utilizador*> get_utilizadores();
 
 	/**
+	 * @brief Funcao para adicionar um livro antigo a Biblioteca
+	 *
+	 * @param lv apontador para o livro antigo
+	 **/
+	void adiciona_livro_old(Livro_old* lv);
+
+	/**
 	 * @brief Funcao para adicionar um novo livro a Biblioteca
 	 *
 	 * @param lv apontador para o novo livro
@@ -112,11 +148,25 @@ public:
 	void adiciona_livro(Livro* lv);
 
 	/**
+	 * @brief Funcao para adicionar um funcionario antigo a Biblioteca
+	 *
+	 * @param fc apontador para o funcionario antigo
+	 **/
+	void adiciona_funcionario_old(Funcionario_old* fc);
+
+	/**
 	 * @brief Funcao para adicionar um novo funcionario a Biblioteca
 	 *
 	 * @param fc apontador para o novo funcionario
 	 **/
 	void adiciona_funcionario(Funcionario* fc);
+
+	/**
+	 * @brief Funcao para adicionar um leitor antigo a Biblioteca
+	 *
+	 * @param lt apontador para o leitor antigo
+	 **/
+	void adiciona_leitor_old(Leitor_old* lt);
 
 	/**
 	 * @brief Funcao para adicionar um novo leitor a Biblioteca
@@ -128,7 +178,7 @@ public:
 	/**
 	 * @brief Funcao para adicionar um emprestimo antigo a Biblioteca
 	 *
-	 * @param ep apontador para o emprestimo
+	 * @param ep apontador para o emprestimo antigo
 	 **/
 	void adiciona_emprestimo_old(Emprestimo_old* ep);
 
@@ -249,6 +299,13 @@ public:
 	bool despromove_supervisor_funcionorario(long id);
 
 	/**
+	 * @brief Funcao que imprime todos os livros antigos da Biblioteca
+	 *
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_livros_old();
+
+	/**
 	 * @brief Funcao que imprime todos os livros da Biblioteca
 	 *
 	 * @return string com o resultado da impressao
@@ -279,6 +336,13 @@ public:
 	std::string imprime_livros_disponiveis();
 
 	/**
+	 * @brief Funcao que imprime todos os funcionarios antigos da Biblioteca
+	 *
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_funcionarios_old();
+
+	/**
 	 * @brief Funcao que imprime todos os funcionarios da Biblioteca
 	 *
 	 * @return string com o resultado da impressao
@@ -291,6 +355,13 @@ public:
 	 * @return string com o resultado da impressao
 	 **/
 	std::string imprime_supervisores();
+
+	/**
+	 * @brief Funcao que imprime todos os leitores antigos da Biblioteca
+	 *
+	 * @return string com o resultado da impressao
+	 **/
+	std::string imprime_leitores_old();
 
 	/**
 	 * @brief Funcao que imprime todos os leitores da Biblioteca
@@ -374,6 +445,15 @@ public:
 	std::vector<Livro*> get_livros_emprestados();
 
 	/**
+	 * @brief Funcao que escreve todos os livros antigos da Biblioteca para um ficheiro
+	 *
+	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
+	void escreve_livros_old(std::string ficheiro);
+
+	/**
 	 * @brief Funcao que escreve todos os livros da Biblioteca para um ficheiro
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
@@ -383,17 +463,47 @@ public:
 	void escreve_livros(std::string ficheiro);
 
 	/**
-	 * @brief Funcao que escreve os colaboradores da Biblioteca (exceto o administrador) para dois ficheiros
+	 * @brief Funcao que escreve os funcionarios antigos da Biblioteca para um ficheiro
 	 *
-	 * @param ficheiro_fc contem o caminho para o ficheiro onde queremos escrever os funcionarios
-	 * @param ficheiro_sp contem o caminho para o ficheiro onde queremos escrever os supervisores
+	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
-	void escreve_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
+	void escreve_funcionarios_old(std::string ficheiro);
+
+	/**
+	 * @brief Funcao que escreve os funcionarios da Biblioteca
+	 *
+	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
+	void escreve_funcionarios(std::string ficheiro);
+
+	/**
+	 * @brief Funcao que escreve os supervisores da Biblioteca
+	 *
+	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
+	void escreve_supervisores(std::string ficheiro);
+
+	/**
+	 * @brief Funcao que escreve todos os leitores antigos da Biblioteca para um ficheiro
+	 *
+	 * @param string ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
+	void escreve_leitores_old(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que escreve todos os leitores da Biblioteca para um ficheiro
 	 *
 	 * @param string ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void escreve_leitores(std::string ficheiro);
 
@@ -401,55 +511,101 @@ public:
 	 * @brief Funcao que escreve todos os emprestimos antigos da Biblioteca para um ficheiro
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
-	void escreve_emprestimos_old(std::string ficheiro, std::string ficheiro_old);
+	void escreve_emprestimos_old(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que escreve todos os emprestimos da Biblioteca para um ficheiro
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
-	void escreve_emprestimos(std::string ficheiro, std::string ficheiro_old);
+	void escreve_emprestimos(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que escreve todos os utilizadores da Biblioteca para um ficheiro
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void escreve_utilizadores(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que escreve toda a informacao da Biblioteca para 6 ficheiros
 	 *
+	 * @param ficheiro_lvo contem o caminho para o ficheiro onde queremos escrever os livros antigos
 	 * @param ficheiro_lv contem o caminho para o ficheiro onde queremos escrever os livros
+	 * @param ficheiro_fco contem o caminho para o ficheiro onde queremos escrever os funcionarios antigos
 	 * @param ficheiro_fc contem o caminho para o ficheiro onde queremos escrever os funcionarios
 	 * @param ficheiro_sp contem o caminho para o ficheiro onde queremos escrever os supervisores
+	 * @param ficheiro_lto contem o caminho para o ficheiro onde queremos escrever os leitores antigos
 	 * @param ficheiro_lt contem o caminho para o ficheiro onde queremos escrever os leitores
+	 * @param ficheiro_epo contem o caminho para o ficheiro onde queremos escrever os emprestimos antigos
 	 * @param ficheiro_ep contem o caminho para o ficheiro onde queremos escrever os emprestimos
 	 * @param ficheiro_ut contem o caminho para o ficheiro onde queremos escrever os utilizadores
+	 *
+	 * @exception Ficheiro_indisponivel se algum ficheiro nao existir
 	 **/
-	void escreve(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp,
-			std::string ficheiro_lt, std::string ficheiro_epo, std::string ficheiro_ep, std::string ficheiro_ut);
+	void escreve(std::string ficheiro_lvo, std::string ficheiro_lv, std::string ficheiro_fco, std::string ficheiro_fc,
+			std::string ficheiro_sp, std::string ficheiro_lto, std::string ficheiro_lt, std::string ficheiro_epo,
+			std::string ficheiro_ep, std::string ficheiro_ut);
+
+	/**
+	 * @brief Funcao que le todos os livros antigos de um ficheiro e os adiciona a Biblioteca
+	 *
+	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
+	void le_livros_old(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que le todos os livros de um ficheiro e os adiciona a Biblioteca
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void le_livros(std::string ficheiro);
+
+	/**
+	 * @brief Funcao que le os funcionarios antigos e os adiciona a Biblioteca
+	 *
+	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
+	void le_funcionarios_old(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que le os colaboradores de dois ficheiros e os adiciona a Biblioteca
 	 *
 	 * @param ficheiro_fc contem o caminho para o ficheiro de onde queremos ler os funcionarios
 	 * @param ficheiro_sp contem o caminho para o ficheiro de onde queremos ler os supervisores
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void le_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
+
+	/**
+	 * @brief Funcao que le todos os leitores antigos de um ficheiro e os adiciona a Biblioteca
+	 *
+	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
+	void le_leitores_old(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que le todos os leitores de um ficheiro e os adiciona a Biblioteca
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void le_leitores(std::string ficheiro);
 
@@ -457,6 +613,8 @@ public:
 	 * @brief Funcao que le todos os emprestimos antigos de um ficheiro e os adiciona a Biblioteca
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void le_emprestimos_old(std::string ficheiro);
 
@@ -464,6 +622,8 @@ public:
 	 * @brief Funcao que le todos os emprestimos de um ficheiro e os adiciona a Biblioteca
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 *
 	 * Nota: E atualizada a informacao sobre emprestimos nos leitores e nos livros.
 	 **/
@@ -473,22 +633,30 @@ public:
 	 * @brief Funcao que le todos os utilizadores de um ficheiro e os adiciona a Biblioteca
 	 *
 	 * @param string ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void le_utilizadores(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que le toda a informacao de 6 ficheiros e adiciona a Biblioteca
 	 *
-	 * @param ficheiro_lv contem o caminho para o ficheiro de onde queremos ler os livros
-	 * @param ficheiro_fc contem o caminho para o ficheiro de onde queremos ler os funcionarios
-	 * @param ficheiro_sp contem o caminho para o ficheiro de onde queremos ler os supervisores
-	 * @param ficheiro_lt contem o caminho para o ficheiro de onde queremos ler os leitores
-	 * @param ficheiro_epo contem o caminho para o ficheiro de onde queremos ler os emprestimos antigos
-	 * @param ficheiro_ep contem o caminho para o ficheiro de onde queremos ler os emprestimos
-	 * @param ficheiro_ut contem o caminho para o ficheiro de onde queremos ler os utilizadores
+	 * @param ficheiro_lvo contem o caminho para o ficheiro onde queremos ler os livros antigos
+	 * @param ficheiro_lv contem o caminho para o ficheiro onde queremos ler os livros
+	 * @param ficheiro_fco contem o caminho para o ficheiro onde queremos ler os funcionarios antigos
+	 * @param ficheiro_fc contem o caminho para o ficheiro onde queremos ler os funcionarios
+	 * @param ficheiro_sp contem o caminho para o ficheiro onde queremos ler os supervisores
+	 * @param ficheiro_lto contem o caminho para o ficheiro onde queremos ler os leitores antigos
+	 * @param ficheiro_lt contem o caminho para o ficheiro onde queremos ler os leitores
+	 * @param ficheiro_epo contem o caminho para o ficheiro onde queremos ler os emprestimos antigos
+	 * @param ficheiro_ep contem o caminho para o ficheiro onde queremos ler os emprestimos
+	 * @param ficheiro_ut contem o caminho para o ficheiro onde queremos ler os utilizadores
+	 *
+	 * @exception Ficheiro_indisponivel se algum ficheiro nao existir
 	 **/
-	void le(std::string ficheiro_lv, std::string ficheiro_fc, std::string ficheiro_sp,
-			std::string ficheiro_lt, std::string ficheiro_epo, std::string ficheiro_ep, std::string ficheiro_ut);
+	void le(std::string ficheiro_lvo, std::string ficheiro_lv, std::string ficheiro_fco, std::string ficheiro_fc,
+			std::string ficheiro_sp, std::string ficheiro_lto, std::string ficheiro_lt, std::string ficheiro_epo,
+			std::string ficheiro_ep, std::string ficheiro_ut);
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */

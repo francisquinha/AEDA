@@ -1,16 +1,13 @@
-#include <vector>
-
 #ifndef SRC_FUNCIONARIO_H_
 #define SRC_FUNCIONARIO_H_
 
+#include <vector>
 #include "Object.h"
 
 class Object;
 
 /**
  * @brief Classe com toda a informacao de Funcionario
- *
- * Subclasse de Object.
  **/
 class Funcionario: public Object {
 
@@ -24,15 +21,17 @@ public:
 	 *
 	 * @param id codigo de identificacao do funcionario
 	 * @param nom nome do funcionario
+	 * @param ct indica se devemos incrementar o contador de funcionarios
 	 **/
-	Funcionario(long id, std::string nom);
+	Funcionario(long id, std::string nom, bool ct);
 
 	/**
 	 * @brief Construtor de Funcionario
 	 *
 	 * @param nom nome do funcionario
+	 * @param ct indica se devemos incrementar o contador de funcionarios
 	 **/
-	Funcionario(std::string nom);
+	Funcionario(std::string nom, bool ct);
 
 	/**
 	 * @brief Destrutor virtual de Funcionario
@@ -56,14 +55,9 @@ public:
 	/**
 	 * @brief Funcao que escreve os atributos do funcionario num ficheiro
 	 *
-	 * @param ficheiro_fc caminho para o ficheiro onde pretendemos escrever funcionario
-	 * @param ficheiro_fc caminho para o ficheiro onde pretendemos escrever supervisor
-	 *
-	 * Nota: Temos dois ficheiros nos parametros porque consoante o funcionario ser ou nao supervisor,
-	 * a sua informacao e colocada no ficheiro dos supervisores ou no dos funcionarios. A funcao chamada
-	 * e diferente, consoante se trata de um supervisor ou nao.
+	 * @param ficheiro caminho para o ficheiro onde pretendemos escrever
 	 **/
-	virtual void escreve(std::string ficheiro_fc, std::string ficheiro_sp);
+	virtual void escreve(std::string ficheiro);
 
 	/**
 	 * @brief Funcao virtual para determinar os funcionarios supervisionados por um supervisor

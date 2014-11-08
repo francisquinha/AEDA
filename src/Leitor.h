@@ -10,8 +10,6 @@ class Object;
 
 /**
  * @brief Classe com toda a informacao de Leitor
- *
- * Subclasse de Object.
  **/
 class Leitor: public Object {
 
@@ -31,8 +29,9 @@ public:
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
+	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt);
+	Leitor(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt, bool ct);
 
 	/**
 	 * @brief Construtor de Leitor
@@ -41,8 +40,9 @@ public:
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
+	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt);
+	Leitor(std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt, bool ct);
 
 	/**
 	 * @brief Construtor de Leitor
@@ -51,8 +51,9 @@ public:
 	 * @param nom nome do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
+	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(long id, std::string nom, long tel, std::string eml);
+	Leitor(long id, std::string nom, long tel, std::string eml, bool ct);
 
 	/**
 	 * @brief Construtor de Leitor
@@ -60,15 +61,21 @@ public:
 	 * @param nom nome do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
+	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(std::string nom, long tel, std::string eml);
+	Leitor(std::string nom, long tel, std::string eml, bool ct);
+
+	/**
+	 * @brief Destrutor virtual de Leitor
+	 **/
+	virtual ~Leitor() {};
 
 	/**
 	 * @brief Funcao que imprime os atributos do leitor
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	std::string imprime();
+	virtual std::string imprime();
 
 	/**
 	 * @brief Funcao para obter o nome do leitor
@@ -156,9 +163,7 @@ public:
 	 *
 	 * @param ficheiro caminho para o ficheiro que pretendemos usar
 	 **/
-	void escreve(std::string ficheiro);
+	virtual void escreve(std::string ficheiro);
 };
-
-
 
 #endif /* SRC_LEITOR_H_ */

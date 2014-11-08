@@ -1,9 +1,6 @@
 0
 pass0
 0
-1
-pass1
-2
 2
 pass2
 2

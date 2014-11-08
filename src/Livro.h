@@ -9,8 +9,6 @@ class Object;
 
 /**
  * @brief Classe com toda a informacao de Livro
- *
- * Subclasse de Object.
  **/
 class Livro: public Object {
 
@@ -29,12 +27,17 @@ class Livro: public Object {
 public:
 
 	Livro(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn, std::string cot,
-			int np, int ed, bool ept, long id_ep, std::time_t dt);
+			int np, int ed, bool ept, long id_ep, std::time_t dt, bool ct);
 
 	Livro(std::string tit, std::vector<std::string> aut, std::string tem, long isbn, std::string cot,
-			int np, int ed, bool ept, long id_ep, std::time_t dt);
+			int np, int ed, bool ept, long id_ep, std::time_t dt, bool ct);
 
-	std::string imprime();
+	/**
+	 * @brief Destrutor virtual de Livro
+	 **/
+	virtual ~Livro() {};
+
+	virtual std::string imprime();
 
 	std::string get_titulo();
 
@@ -64,7 +67,7 @@ public:
 
 	double get_dias_emp();
 
-	void escreve(std::string ficheiro);
+	virtual void escreve(std::string ficheiro);
 };
 
 

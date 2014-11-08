@@ -45,19 +45,9 @@ public:
 	 * @param lv apontador para o livro
 	 * @param fc apontador para o funcionarios
 	 * @param lt apontador para o leitor
-	 * @param dt data do emprestimo
+	 * @param ct indica se devemos incrementar o contador de emprestimos
 	 **/
-	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt);
-
-	/**
-	 * @brief Construtor de Emprestimo
-	 *
-	 * @param id codigo de identificacao do emprestimo
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionarios
-	 * @param lt apontador para o leitor
-	 **/
-	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt);
+	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, bool ct);
 
 	/**
 	 * @brief Construtor de Emprestimo
@@ -65,8 +55,9 @@ public:
 	 * @param lv apontador para o livro
 	 * @param fc apontador para o funcionarios
 	 * @param lt apontador para o leitor
+	 * @param ct indica se devemos incrementar o contador de emprestimos
 	 **/
-	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt);
+	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, bool ct);
 
 	/**
 	 * @brief Construtor de Emprestimo
@@ -75,8 +66,9 @@ public:
 	 * @param fc apontador para o funcionarios
 	 * @param lt apontador para o leitor
 	 * @param dt data do emprestimo
+	 * @param ct indica se devemos incrementar o contador de emprestimos
 	 **/
-	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt);
+	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt, bool ct);
 
 	/**
 	 * @brief Destrutor virtual de Emprestimo
@@ -137,7 +129,7 @@ public:
 	 *
 	 * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
 	 **/
-	virtual void escreve(std::string ficheiro, std::string ficheiro_old);
+	virtual void escreve(std::string ficheiro);
 
 };
 

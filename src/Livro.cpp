@@ -16,12 +16,12 @@ using namespace std;
 long Livro::num_livros {0};
 
 // construtor Livro
-Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt):
+Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt, bool ct):
 		Object {id}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
-		emprestado {ept}, ID_ep{id_ep}, data_emp {dt} {num_livros++;}
-Livro::Livro(string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt):
+		emprestado {ept}, ID_ep{id_ep}, data_emp {dt} {if (ct) num_livros++;}
+Livro::Livro(string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt, bool ct):
 		Object {num_livros+1}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
-		emprestado {ept}, ID_ep{id_ep}, data_emp {dt} {num_livros++;}
+		emprestado {ept}, ID_ep{id_ep}, data_emp {dt} {if(ct) num_livros++;}
 
 // modificar estado emprestado de Livro
 void Livro::set_emprestado(bool ept) {
@@ -103,9 +103,15 @@ string Livro::imprime() {
 	long year {1900 + ldata->tm_year};
 	long month {1 + ldata->tm_mon};
 	long day {ldata->tm_mday};
+	string years {to_string(year)};
+	string months {}, days {};
+	if (month<10) months = "0" + to_string(month);
+	else months = to_string(month);
+	if (day<10) days = "0" + to_string(day);
+	else days = to_string(day);
 	string dt {};
 	if (data_emp == 0) dt = "0";
-	else dt = to_string(year) + "/" + to_string(month) + "/" + to_string(day);
+	else dt = years + "/" + months + "/" + days;
 	out << "ID: "<< get_ID() << endl
 			<< "Titulo: " << titulo << endl
 			<< "Autores: ";
@@ -130,9 +136,15 @@ void Livro::escreve(string ficheiro) {
 	long year {1900 + ldata->tm_year};
 	long month {1 + ldata->tm_mon};
 	long day {ldata->tm_mday};
+	string years {to_string(year)};
+	string months {}, days {};
+	if (month<10) months = "0" + to_string(month);
+	else months = to_string(month);
+	if (day<10) days = "0" + to_string(day);
+	else days = to_string(day);
 	string dt {};
 	if (data_emp == 0) dt = "0";
-	else dt = to_string(year) + "/" + to_string(month) + "/" + to_string(day);
+	else dt = years + "/" + months + "/" + days;
 	out << get_ID() << endl
 			<< titulo << endl;
 	for (vector<string>::const_iterator it = autores.begin(); it != autores.end(); it++) {

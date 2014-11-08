@@ -9,10 +9,10 @@
 using namespace std;
 
 // construtor de Administrador
-Administrador::Administrador(long id, string nom): Funcionario {id, nom} {}
+Administrador::Administrador(long id, string nom): Funcionario {id, nom, true} {}
 
 // escreve Administrador
-void Administrador::escreve(string ficheiro_fc, string ficheiro_sp) {}
+void Administrador::escreve(string ficheiro) {}
 
 
 

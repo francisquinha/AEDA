@@ -34,7 +34,7 @@ public:
 	 * @param ficheiro_fc nome do ficheiro dos funcionarios
 	 * @param ficheiro_sp nome do ficheiro dos supervisores
 	 **/
-	void escreve(std::string ficheiro_fc, std::string ficheiro_sp);
+	void escreve(std::string ficheiro);
 };
 
 #endif /* SRC_ADMINISTRADOR_H_ */

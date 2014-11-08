@@ -10,7 +10,7 @@ class Leitor;
 /**
  * @brief Excecao Object_nao_existe
  *
- * Subclasse de Object. Sempre que um livro, funcionario, leitor, emprestimo ou utilizador nao exista,
+ * Sempre que um livro, funcionario, leitor, emprestimo ou utilizador nao exista,
  * esta excecao e utilizada.
  **/
 class Object_nao_existe: public Object {
@@ -43,7 +43,7 @@ std::ostream& operator<<(std::ostream &out, Object_nao_existe &object);
 /**
  * @brief Excecao Livro_indisponivel
  *
- * Subclasse de Livro. Sempre que se tenta emprestar um livro ja emprestado esta excecao e utilizada.
+ * Sempre que se tenta emprestar um livro ja emprestado esta excecao e utilizada.
  **/
 class Livro_indisponivel: public Livro {
 
@@ -66,7 +66,7 @@ public:
 	 **/
 	Livro_indisponivel(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
 			std::string cot, int np, int ed, bool ept, long id_ep, std::time_t dt):
-				Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, id_ep, dt} {};
+				Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, id_ep, dt, false} {};
 };
 
 /**
@@ -82,14 +82,14 @@ std::ostream& operator<<(std::ostream &out, Livro_indisponivel &livro);
 /**
  * @brief Excecao Livro_emprestado
  *
- * Subclasse de Livro. Sempre que se tenta remover um livro emprestado esta excecao e utilizada.
+ * Sempre que se tenta remover um livro emprestado esta excecao e utilizada.
  **/
 class Livro_emprestado: public Livro {
 
 public:
 
 	/**
-	 * @brief Construtor de Livro_indisponivel
+	 * @brief Construtor de Livro_emprestado
 	 *
 	 * @param id codigo de identificacao do livro
 	 * @param tit titulo do livro
@@ -105,7 +105,7 @@ public:
 	 **/
 	Livro_emprestado(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
 			std::string cot, int np, int ed, bool ept, long id_ep, std::time_t dt):
-				Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, id_ep, dt} {};
+				Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, id_ep, dt, false} {};
 };
 
 /**
@@ -121,7 +121,7 @@ std::ostream& operator<<(std::ostream &out, Livro_emprestado &livro);
 /**
  * @brief Excecao Emprestimos_por_devolver
  *
- * Subclasse de Leitor. Sempre que se tenta remover um leitor com emprestimos esta excecao e utilizada.
+ * Sempre que se tenta remover um leitor com emprestimos esta excecao e utilizada.
  **/
 class Emprestimos_por_devolver: public Leitor {
 
@@ -137,7 +137,7 @@ public:
 	 * @param ep_lt vetor com os emprestimos do leitor
 	 **/
 	Emprestimos_por_devolver(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
-		Leitor {id, nom, tel, eml, ep_lt} {};
+		Leitor {id, nom, tel, eml, ep_lt, false} {};
 };
 
 /**
@@ -153,7 +153,7 @@ std::ostream& operator<<(std::ostream &out, Emprestimos_por_devolver &leitor);
 /**
  * @brief Excecao Maximo_emprestimos
  *
- * Subclasse de Leitor. Sempre que se tenta adicionar um emprestimo a um leitor com 3 emprestimos esta excecao e utilizada.
+ * Sempre que se tenta adicionar um emprestimo a um leitor com 3 emprestimos esta excecao e utilizada.
  **/
 class Maximo_emprestimos: public Leitor {
 
@@ -169,7 +169,7 @@ public:
 	 * @param ep_lt vetor com os emprestimos do leitor
 	 **/
 	Maximo_emprestimos(long id, std::string nom, int tel, std::string eml, std::vector<Emprestimo*> ep_lt):
-		Leitor {id, nom, tel, eml, ep_lt} {};
+		Leitor {id, nom, tel, eml, ep_lt, false} {};
 };
 
 /**

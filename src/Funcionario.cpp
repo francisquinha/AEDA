@@ -13,8 +13,8 @@ using namespace std;
 long Funcionario::num_funcionarios {-1};
 
 // construtor Funcionario
-Funcionario::Funcionario(long id, string nom): Object {id}, nome {nom} {num_funcionarios++;}
-Funcionario::Funcionario(string nom): Object {num_funcionarios+1}, nome {nom} {num_funcionarios++;}
+Funcionario::Funcionario(long id, string nom, bool ct): Object {id}, nome {nom} {if (ct) num_funcionarios++;}
+Funcionario::Funcionario(string nom, bool ct): Object {num_funcionarios+1}, nome {nom} {if (ct) num_funcionarios++;}
 
 // obter nome
 string Funcionario::get_nome() {
@@ -30,14 +30,14 @@ string Funcionario::imprime() {
 }
 
 // escrever Funcionario
-void Funcionario::escreve(string ficheiro_fc, string ficheiro_sp) {
+void Funcionario::escreve(string ficheiro) {
 	stringstream out {};
 	out << get_ID() << endl
 			<< nome << endl;
-	ofstream myfile (ficheiro_fc, ios::app);
+	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
 		myfile << out.str();
 		myfile.close();
 	}
-	else throw Ficheiro_indisponivel(ficheiro_fc);
+	else throw Ficheiro_indisponivel(ficheiro);
 }

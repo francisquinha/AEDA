@@ -100,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// construtor Supervisor</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;Supervisor::Supervisor(<span class="keywordtype">long</span> <span class="keywordtype">id</span>, <span class="keywordtype">string</span> nom, vector&lt;Funcionario*&gt; func_sup):</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="class_funcionario.html">Funcionario</a> {id, nom}, funcionarios_sup {func_sup} {}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="class_funcionario.html">Funcionario</a> {id, nom, <span class="keyword">false</span>}, funcionarios_sup {func_sup} {}</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// obter funcionarios supervisonados</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_supervisor.html#a4134839fe3be98219b4ae8c7e112626c">   18</a></span>&#160;vector&lt;Funcionario*&gt; <a class="code" href="class_supervisor.html#a4134839fe3be98219b4ae8c7e112626c">Supervisor::get_func_sup</a>() {</div>
@@ -131,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">// escrever Supervisor</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_supervisor.html#a308cf4c4ed01ab16c3eb35e420123773">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_supervisor.html#a308cf4c4ed01ab16c3eb35e420123773">Supervisor::escreve</a>(<span class="keywordtype">string</span> ficheiro_fc, <span class="keywordtype">string</span> ficheiro_sp) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_supervisor.html#aa409eff55470c05a8bc2597b619db1d2">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_supervisor.html#aa409eff55470c05a8bc2597b619db1d2">Supervisor::escreve</a>(<span class="keywordtype">string</span> ficheiro) {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    stringstream out {};</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    out &lt;&lt; get_ID() &lt;&lt; endl</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            &lt;&lt; <a class="code" href="class_funcionario.html#a2430745545441152ff96387e5d4bca4e">get_nome</a>() &lt;&lt; endl;</div>
@@ -139,26 +139,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        out &lt;&lt; (*it)-&gt;get_ID() &lt;&lt; <span class="stringliteral">&quot;;&quot;</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    out &lt;&lt; endl;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    ofstream myfile (ficheiro_sp, ios::app);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    ofstream myfile (ficheiro, ios::app);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (myfile.is_open()) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        myfile &lt;&lt; out.str();</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        myfile.close();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">throw</span> <a class="code" href="class_ficheiro__indisponivel.html">Ficheiro_indisponivel</a>(ficheiro_sp);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">throw</span> <a class="code" href="class_ficheiro__indisponivel.html">Ficheiro_indisponivel</a>(ficheiro);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 <div class="ttc" id="class_supervisor_html_a9b46111a2e1c69cc8730ec566eb5a6d5"><div class="ttname"><a href="class_supervisor.html#a9b46111a2e1c69cc8730ec566eb5a6d5">Supervisor::set_func_sup</a></div><div class="ttdeci">void set_func_sup(std::vector&lt; Funcionario * &gt; func_sup)</div><div class="ttdoc">Funcao virtual para determinar os funcionarios supervisionados por um supervisor. ...</div><div class="ttdef"><b>Definition:</b> <a href="_supervisor_8cpp_source.html#l00023">Supervisor.cpp:23</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
 <div class="ttc" id="class_supervisor_html_a4134839fe3be98219b4ae8c7e112626c"><div class="ttname"><a href="class_supervisor.html#a4134839fe3be98219b4ae8c7e112626c">Supervisor::get_func_sup</a></div><div class="ttdeci">std::vector&lt; Funcionario * &gt; get_func_sup()</div><div class="ttdoc">Funcao virtual para obter os funcionarios supervisionados por um supervisor. </div><div class="ttdef"><b>Definition:</b> <a href="_supervisor_8cpp_source.html#l00018">Supervisor.cpp:18</a></div></div>
-<div class="ttc" id="class_funcionario_html"><div class="ttname"><a href="class_funcionario.html">Funcionario</a></div><div class="ttdoc">Classe com toda a informacao de Funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8h_source.html#l00015">Funcionario.h:15</a></div></div>
+<div class="ttc" id="class_funcionario_html"><div class="ttname"><a href="class_funcionario.html">Funcionario</a></div><div class="ttdoc">Classe com toda a informacao de Funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8h_source.html#l00012">Funcionario.h:12</a></div></div>
 <div class="ttc" id="class_funcionario_html_a2430745545441152ff96387e5d4bca4e"><div class="ttname"><a href="class_funcionario.html#a2430745545441152ff96387e5d4bca4e">Funcionario::get_nome</a></div><div class="ttdeci">std::string get_nome()</div><div class="ttdoc">Funcao para obter o nome do funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8cpp_source.html#l00020">Funcionario.cpp:20</a></div></div>
 <div class="ttc" id="class_supervisor_html_a0b83ddf41c986a4cc9dbd0cf53faa120"><div class="ttname"><a href="class_supervisor.html#a0b83ddf41c986a4cc9dbd0cf53faa120">Supervisor::adiciona_func_sup</a></div><div class="ttdeci">void adiciona_func_sup(Funcionario *fc)</div><div class="ttdoc">Funcao virtual para adicionar um funcionario aos os funcionarios supervisionados por um supervisor...</div><div class="ttdef"><b>Definition:</b> <a href="_supervisor_8cpp_source.html#l00028">Supervisor.cpp:28</a></div></div>
 <div class="ttc" id="class_ficheiro__indisponivel_html"><div class="ttname"><a href="class_ficheiro__indisponivel.html">Ficheiro_indisponivel</a></div><div class="ttdoc">Excecao Ficheiro_indisponivel. </div><div class="ttdef"><b>Definition:</b> <a href="_excecao_8h_source.html#l00190">Excecao.h:190</a></div></div>
-<div class="ttc" id="class_supervisor_html_a308cf4c4ed01ab16c3eb35e420123773"><div class="ttname"><a href="class_supervisor.html#a308cf4c4ed01ab16c3eb35e420123773">Supervisor::escreve</a></div><div class="ttdeci">void escreve(std::string ficheiro_fc, std::string ficheiro_sp)</div><div class="ttdoc">Funcao que escreve os atributos do funcionario num ficheiro. </div><div class="ttdef"><b>Definition:</b> <a href="_supervisor_8cpp_source.html#l00046">Supervisor.cpp:46</a></div></div>
 <div class="ttc" id="class_supervisor_html_aeba4de47a3c947f9e9d99f479db60f36"><div class="ttname"><a href="class_supervisor.html#aeba4de47a3c947f9e9d99f479db60f36">Supervisor::imprime</a></div><div class="ttdeci">std::string imprime()</div><div class="ttdoc">Funcao que imprime os atributos do funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_supervisor_8cpp_source.html#l00033">Supervisor.cpp:33</a></div></div>
+<div class="ttc" id="class_supervisor_html_aa409eff55470c05a8bc2597b619db1d2"><div class="ttname"><a href="class_supervisor.html#aa409eff55470c05a8bc2597b619db1d2">Supervisor::escreve</a></div><div class="ttdeci">void escreve(std::string ficheiro)</div><div class="ttdoc">Funcao que escreve os atributos do funcionario num ficheiro. </div><div class="ttdef"><b>Definition:</b> <a href="_supervisor_8cpp_source.html#l00046">Supervisor.cpp:46</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 7 2014 03:27:01 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 00:41:12 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

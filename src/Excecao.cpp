@@ -13,25 +13,7 @@ using namespace std;
 
 // excecao para quando nao existe Livro, Funcionario, Leitor, Emprestimo
 ostream& operator<<(ostream &out, Object_nao_existe &object) {
-	Livro* lv = dynamic_cast<Livro*>(&object);
-	Funcionario* fc = dynamic_cast<Funcionario*>(&object);
-	Leitor* lt = dynamic_cast<Leitor*>(&object);
-	Emprestimo* ep = dynamic_cast<Emprestimo*>(&object);
-	if (lv!=0) {
-		out << "Excecao. Nao existe Livro com ID ";
-	}
-	else if (fc!=0) {
-		out << "Excecao. Nao existe Funcionario com ID ";
-	}
-	else if (lt!=0) {
-		out << "Excecao. Nao existe Leitor com ID ";
-	}
-	else if (ep!=0) {
-		out << "Excecao. Nao existe Emprestimo com ID ";
-	}
-	else {
-		out << "Excecao. Nao existe Object com ID ";
-	}
+	out << "Nao existe ID ";
 	out << object.get_ID() << "." << endl;
 	return out;
 }

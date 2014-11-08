@@ -13,15 +13,14 @@ using namespace std;
 long Leitor::num_leitores {0};
 
 // construtor Leitor
-vector<Emprestimo*> ep_lt {};
-Leitor::Leitor(long id, string nom, long tel, string eml, vector<Emprestimo*> ep_lt):
-		 Object {id}, nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {num_leitores++;}
-Leitor::Leitor(string nom, long tel, string eml, vector<Emprestimo*> ep_lt): Object {num_leitores+1},
-		nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {num_leitores++;}
-Leitor::Leitor(long id, string nom, long tel, string eml):
-				 Object {id}, nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {num_leitores++;}
-Leitor::Leitor(string nom, long tel, string eml): Object {num_leitores+1},
-				nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {num_leitores++;}
+Leitor::Leitor(long id, string nom, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct):
+		 Object {id}, nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
+Leitor::Leitor(string nom, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct): Object {num_leitores+1},
+		nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
+Leitor::Leitor(long id, string nom, long tel, string eml, bool ct):
+				 Object {id}, nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
+Leitor::Leitor(string nom, long tel, string eml, bool ct): Object {num_leitores+1},
+				nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
 
 // adicionar Emprestimo a Leitor
 void Leitor::adiciona_emp_leit(Emprestimo* ep) {

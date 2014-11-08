@@ -113,11 +113,6 @@ Viriato Sousa
 928534982
 viriatosousa@fe.up.pt
 
-24
-Alzira Pinto
-910934899
-alzirapinto@fe.up.pt
-
 25
 Edmundo Santos
 910998768
@@ -247,4 +242,9 @@ mariapereira@fe.up.pt
 Alberto Pinto
 91998766
 albertopinto@fe.up.pt
+
+51
+Margarida Pinto
+967568932
+margaridapinto@fe.up.pt
 

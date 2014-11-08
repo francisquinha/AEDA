@@ -14,14 +14,11 @@
 using namespace std;
 
 // construtor Emprestimo_old
-Emprestimo_old::Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, time_t dt_e):
-		Emprestimo {id, lv, fc, lt, dt}, data_entrega {dt_e} {}
-
-Emprestimo_old::Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt):
-		Emprestimo {id, lv, fc, lt, dt}, data_entrega {std::time(0)} {}
-
 Emprestimo_old::Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, time_t dt_e, bool ct):
 				Emprestimo {id, lv, fc, lt, dt, ct}, data_entrega {dt_e} {}
+
+Emprestimo_old::Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct):
+				Emprestimo {id, lv, fc, lt, dt, ct}, data_entrega {time(0)} {}
 
 // imprimir Emprestimo_old
 string Emprestimo_old::imprime() {
@@ -61,7 +58,7 @@ string Emprestimo_old::imprime() {
 }
 
 // escrever Emprestimo
-void Emprestimo_old::escreve(string ficheiro, string ficheiro_old) {
+void Emprestimo_old::escreve(string ficheiro) {
 	stringstream out {};
 	time_t dat=get_data();
 	tm *ldata = localtime(&dat);
@@ -94,12 +91,12 @@ void Emprestimo_old::escreve(string ficheiro, string ficheiro_old) {
 	<< get_leitor()->get_ID() << endl
 	<< dt << endl
 	<< dt_e << endl;
-	ofstream myfile (ficheiro_old, ios::app);
+	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
 		myfile << out.str();
 		myfile.close();
 	}
-	else throw Ficheiro_indisponivel(ficheiro_old);
+	else throw Ficheiro_indisponivel(ficheiro);
 }
 
 

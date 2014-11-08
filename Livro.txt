@@ -19,18 +19,7 @@ Romance
 13
 1
 1
-2014/10/2
-3
-A chuva pasmada
-Couto, Mia;
-Romance
-9722116541
-821.134.3(679) /COUm/CHU
-74
-1
-0
-0
-0
+2014/10/02
 4
 Introduction to automata theory, languages, and computation
 Hopcroft, John E.;Motwani, Rajeev;Ullman, Jeffrey D.;
@@ -96,7 +85,7 @@ Matematica
 1
 1
 5
-2014/11/1
+2014/11/01
 10
 Think Python
 Downey, Allen B.;
@@ -129,7 +118,7 @@ Arte
 7
 1
 9
-2014/11/7
+2014/11/07
 13
 Iniciacao ao Desenho
 Sanmiguel, David;
@@ -140,7 +129,7 @@ Arte
 3
 1
 8
-2014/11/7
+2014/11/07
 14
 Mecanica dos Fluidos
 Oliveira, Luis Adriano;Lopes, Antonio Gameiro;
@@ -151,7 +140,7 @@ Engenharia
 4
 1
 7
-2014/11/6
+2014/11/06
 15
 Etica para Engenheiros
 Braga, Jorge;Rego, Armenio;

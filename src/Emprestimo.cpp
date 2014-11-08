@@ -18,14 +18,12 @@ long Emprestimo::num_emprestimos {0};
 // construtor Emprestimo
 Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {id},
 		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_emprestimos++;}
-Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object {id},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {num_emprestimos++;}
-Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt): Object {id},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {std::time(0)} {num_emprestimos++;}
-Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt): Object {num_emprestimos+1},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {std::time(0)} {num_emprestimos++;}
-Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt): Object {num_emprestimos+1},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {num_emprestimos++;}
+Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, bool ct): Object {id},
+		livro {lv}, funcionario {fc}, leitor {lt}, data {time(0)} {if (ct) num_emprestimos++;}
+Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, bool ct): Object {num_emprestimos+1},
+		livro {lv}, funcionario {fc}, leitor {lt}, data {time(0)} {if (ct) num_emprestimos++;}
+Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {num_emprestimos+1},
+		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_emprestimos++;}
 
 // obter Livro de Emprestimo
 Livro* Emprestimo::get_livro() {
@@ -49,7 +47,7 @@ Funcionario* Emprestimo::get_funcionario() {
 
 // obter atraso na entrega de Emprestimo
 int Emprestimo::get_atraso() {
-	time_t hoje = std::time(0);
+	time_t hoje = time(0);
 	double tempo_dias {floor(difftime(hoje, data)/86400)};
 	double tempo_extra {max(tempo_dias - 7, 0.0)};
 	return (int) tempo_extra;
@@ -87,7 +85,7 @@ string Emprestimo::imprime() {
 }
 
 // escrever Emprestimo
-void Emprestimo::escreve(string ficheiro, string ficheiro_old) {
+void Emprestimo::escreve(string ficheiro) {
 	stringstream out {};
 	tm *ldata = localtime(&data);
 	long year {1900 + ldata->tm_year};

@@ -12,7 +12,7 @@ using namespace std;
 
 // construtor Supervisor
 Supervisor::Supervisor(long id, string nom, vector<Funcionario*> func_sup):
-		Funcionario {id, nom}, funcionarios_sup {func_sup} {}
+		Funcionario {id, nom, false}, funcionarios_sup {func_sup} {}
 
 // obter funcionarios supervisonados
 vector<Funcionario*> Supervisor::get_func_sup() {
@@ -43,7 +43,7 @@ string Supervisor::imprime() {
 }
 
 // escrever Supervisor
-void Supervisor::escreve(string ficheiro_fc, string ficheiro_sp) {
+void Supervisor::escreve(string ficheiro) {
 	stringstream out {};
 	out << get_ID() << endl
 			<< get_nome() << endl;
@@ -51,10 +51,10 @@ void Supervisor::escreve(string ficheiro_fc, string ficheiro_sp) {
 		out << (*it)->get_ID() << ";";
 	}
 	out << endl;
-	ofstream myfile (ficheiro_sp, ios::app);
+	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
 		myfile << out.str();
 		myfile.close();
 	}
-	else throw Ficheiro_indisponivel(ficheiro_sp);
+	else throw Ficheiro_indisponivel(ficheiro);
 }

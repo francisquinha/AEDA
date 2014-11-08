@@ -55,17 +55,20 @@ public:
     void livros_disponiveis();
     void livros_emprestados();
     void livros_tema();
+    void livros_antigos();
     void livros_adicionar();
     void livros_remover();
 
     void leitores_adicionar();
     void leitores_remover();
     void leitores_alterar();
+    void leitores_antigos();
 
     void funcionarios_adicionar();
     void funcionarios_remover();
     void funcionarios_promover ();
     void funcionarios_despromover();
+    void funcionarios_antigos();
 
     void utilizadores_adicionar();
     void utilizadores_remover();
