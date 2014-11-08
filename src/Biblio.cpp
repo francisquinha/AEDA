@@ -13,6 +13,13 @@
 
 using namespace std;
 
+/** @file
+ *
+ * @brief Source das funcoes da Biblioteca.
+ *
+ * Apos os menus, estas sao as funcoes chamadas pelas varias opcoes da aplicacao.
+ **/
+
 vector<Livro_old*> Biblioteca::get_livros_old() {
 	vector<Livro_old*> liv_old {};
 	Livro_old* lo{};
@@ -740,16 +747,86 @@ void Biblioteca::escreve_utilizadores(string ficheiro) {
 
 // escrever todos os ficheiros de Biblioteca
 void Biblioteca::escreve(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco, string ficheiro_fc, string ficheiro_sp, string ficheiro_lto, string ficheiro_lt, string ficheiro_epo, string ficheiro_ep, string ficheiro_ut) {
-	escreve_livros_old(ficheiro_lvo);
-	escreve_livros(ficheiro_lv);
-	escreve_funcionarios_old(ficheiro_fco);
-	escreve_funcionarios(ficheiro_fc);
-	escreve_supervisores(ficheiro_sp);
-	escreve_leitores_old(ficheiro_lto);
-	escreve_leitores(ficheiro_lt);
-	escreve_emprestimos_old(ficheiro_epo);
-	escreve_emprestimos(ficheiro_ep);
-	escreve_utilizadores(ficheiro_ut);
+	try {
+		escreve_livros_old(ficheiro_lvo);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_livros(ficheiro_lv);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_funcionarios_old(ficheiro_fco);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_funcionarios(ficheiro_fc);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_supervisores(ficheiro_sp);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_leitores_old(ficheiro_lto);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_leitores(ficheiro_lt);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_emprestimos(ficheiro_ep);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_emprestimos_old(ficheiro_epo);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		escreve_utilizadores(ficheiro_ut);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
 }
 
 // ler livros antigos de Biblioteca
@@ -879,17 +956,11 @@ void Biblioteca::le_funcionarios_old(string ficheiro) {
 }
 
 // ler funcionarios de Biblioteca
-void Biblioteca::le_funcionarios(string ficheiro_fc, string ficheiro_sp) {
-	ifstream isfc(ficheiro_fc);
-	ifstream issp(ficheiro_sp);
-	if (!isfc) throw Ficheiro_indisponivel(ficheiro_fc);
-	if (!issp) throw Ficheiro_indisponivel(ficheiro_sp);
-	string ids {}, nom {}, fsids {};
-	istringstream fsidss {};
-	long id {}, fsid {};
-	bool encontrado {false};
-	vector<Funcionario*> func_sup {};
-	string funsid {};
+void Biblioteca::le_funcionarios(string ficheiro) {
+	ifstream isfc(ficheiro);
+	if (!isfc) throw Ficheiro_indisponivel(ficheiro);
+	string ids {}, nom {};
+	long id {};
 	while (!isfc.eof()) {
 		getline(isfc, ids);
 		getline(isfc, nom);
@@ -900,6 +971,18 @@ void Biblioteca::le_funcionarios(string ficheiro_fc, string ficheiro_sp) {
 		}
 	}
 	isfc.close();
+}
+
+// ler supervisores de Biblioteca
+void Biblioteca::le_supervisores(string ficheiro) {
+	ifstream issp(ficheiro);
+	if (!issp) throw Ficheiro_indisponivel(ficheiro);
+	string ids {}, nom {}, fsids {};
+	istringstream fsidss {};
+	long id {}, fsid {};
+	bool encontrado {false};
+	vector<Funcionario*> func_sup {};
+	string funsid {};
 	while (!issp.eof()) {
 		getline(issp, ids);
 		getline(issp, nom);
@@ -1145,7 +1228,19 @@ void Biblioteca::le_emprestimos(string ficheiro) {
 			}
 			if (!encontrado) throw Object_nao_existe(ltid);
 			Emprestimo* ep = new Emprestimo {id,lv,fc,lt,dt,true};
-			adiciona_emprestimo(ep);
+			try {
+				adiciona_emprestimo(ep);
+			}
+			catch (Livro_indisponivel &liv) {
+				ostringstream ostr{};
+				ostr << liv;
+				cout << ostr.str();
+			}
+			catch(Maximo_emprestimos &lei ) {
+				ostringstream ostr{};
+				ostr << lei;
+				cout << ostr.str();
+			}
 		}
 	}
 	isep.close();
@@ -1174,14 +1269,90 @@ void Biblioteca::le_utilizadores(string ficheiro) {
 
 // ler todos os ficheiros de Biblioteca
 void Biblioteca::le(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco, string ficheiro_fc, string ficheiro_sp, string ficheiro_lto, string ficheiro_lt, string ficheiro_epo, string ficheiro_ep, string ficheiro_ut) {
-	le_livros_old(ficheiro_lvo);
-	le_livros(ficheiro_lv);
-	le_funcionarios_old(ficheiro_fco);
-	le_funcionarios(ficheiro_fc, ficheiro_sp);
-	le_leitores_old(ficheiro_lto);
-	le_leitores(ficheiro_lt);
-	le_emprestimos(ficheiro_ep);
-	le_emprestimos_old(ficheiro_epo);
-	le_utilizadores(ficheiro_ut);
+	try {
+		le_livros_old(ficheiro_lvo);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		le_livros(ficheiro_lv);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		le_funcionarios_old(ficheiro_fco);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		le_funcionarios(ficheiro_fc);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		le_supervisores(ficheiro_sp);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		le_leitores_old(ficheiro_lto);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		le_leitores(ficheiro_lt);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		le_emprestimos_old(ficheiro_epo);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	try {
+		le_emprestimos(ficheiro_ep);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
+	catch (Object_nao_existe &obj) {
+		ostringstream ostr{};
+		ostr << obj;
+		cout << ostr.str();
+	}
+	try {
+		le_utilizadores(ficheiro_ut);
+	}
+	catch (Ficheiro_indisponivel &fic) {
+		ostringstream ostr{};
+		ostr << fic;
+		cout << ostr.str();
+	}
 }
 

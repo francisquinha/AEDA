@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,20 +88,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_utilizador.html">Utilizador</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>escreve</b>(std::string ficheiro) (defined in <a class="el" href="class_utilizador.html">Utilizador</a>)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>get_acesso</b>() (defined in <a class="el" href="class_utilizador.html">Utilizador</a>)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_ID</b>() (defined in <a class="el" href="class_object.html">Object</a>)</td><td class="entry"><a class="el" href="class_object.html">Object</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>get_password</b>() (defined in <a class="el" href="class_utilizador.html">Utilizador</a>)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>imprime</b>() (defined in <a class="el" href="class_utilizador.html">Utilizador</a>)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Object</b>(long id) (defined in <a class="el" href="class_object.html">Object</a>)</td><td class="entry"><a class="el" href="class_object.html">Object</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>set_acesso</b>(int acess) (defined in <a class="el" href="class_utilizador.html">Utilizador</a>)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>set_ID</b>(long id) (defined in <a class="el" href="class_object.html">Object</a>)</td><td class="entry"><a class="el" href="class_object.html">Object</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>set_password</b>(std::string pass) (defined in <a class="el" href="class_utilizador.html">Utilizador</a>)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Utilizador</b>(long id, std::string pass, int acess) (defined in <a class="el" href="class_utilizador.html">Utilizador</a>)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_utilizador.html#a84752982872d2c007e718d703351c535">escreve</a>(std::string ficheiro)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_utilizador.html#ac1106986ab1184f16e21f27a31d645dc">get_acesso</a>()</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a>()</td><td class="entry"><a class="el" href="class_object.html">Object</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_utilizador.html#aa0b59c3eb1b0062c5e26dbc9fcac5915">get_password</a>()</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_utilizador.html#a92483a7c23722ccc57b6ed7c42ec99e7">imprime</a>()</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_object.html#a2e1e8cbde22b050bb3442d1a6749f18b">Object</a>(long id)</td><td class="entry"><a class="el" href="class_object.html">Object</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_utilizador.html#ae0f75c5c5947befd5eab7149bda73299">set_acesso</a>(int acess)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_utilizador.html#a2eed83a4cfcea7d1a9d5f5afb487341a">set_password</a>(std::string pass)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_utilizador.html#a4c6761daec35a3a02d3f304087b07c3b">Utilizador</a>(long id, std::string pass, int acess)</td><td class="entry"><a class="el" href="class_utilizador.html">Utilizador</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 00:41:13 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 22:24:07 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

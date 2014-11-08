@@ -10,6 +10,13 @@
 
 using namespace std;
 
+/** @file
+ *
+ * @brief Source das funcoes de Supervisor.
+ *
+ * As funcoes relacionadas com supervisores, nao estando nos ficheiros Biblio ou Funcionario, estao aqui.
+ **/
+
 // construtor Supervisor
 Supervisor::Supervisor(long id, string nom, vector<Funcionario*> func_sup):
 		Funcionario {id, nom, false}, funcionarios_sup {func_sup} {}

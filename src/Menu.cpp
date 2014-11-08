@@ -7,6 +7,13 @@
 
 using namespace std;
 
+/** @file
+ *
+ * @brief Header das classes relacionadas com o Menu da aplicacao.
+ *
+ * Toda a interacao do utilizador com o programa e feita atraves destes menus.
+ **/
+
 void clear_screen() {
 	#ifdef WINDOWS
     	system("cls");
@@ -183,7 +190,8 @@ void Menu::menu_consultas() {
     		 << "2) Emprestimos" << endl
 			 << "3) Leitores" << endl;
     	if (login == 1) {
-    		cout << "4) Funcionarios" << endl;
+    		cout << "4) Funcionarios" << endl
+    			 << "5) Supervisores" << endl;
     	}
     	if (login == 0) {
     		cout << "4) Funcionarios" << endl
@@ -191,7 +199,7 @@ void Menu::menu_consultas() {
     			 << "6) Utilizadores" << endl;
     	}
     	if (login == 0) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
-    	else if (login == 1) cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
+    	else if (login == 1) cout << endl << "Escolha uma opcao [1-5] (s para sair): ";
     	else cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
     	string opcaos {};
     	int opcao{};
@@ -216,7 +224,7 @@ void Menu::menu_consultas() {
    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
    				break;
    			case 5:
-   				if (login == 0) consulta_supervisores();
+   				if (login != 2) consulta_supervisores();
    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
    				break;
    			case 6:

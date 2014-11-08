@@ -6,6 +6,13 @@
 
 class Object;
 
+/** @file
+ *
+ * @brief Header das funcoes de Funcionario.
+ *
+ * Se uma funcao relacionada com funcionarios nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 /**
  * @brief Classe com toda a informacao de Funcionario
  **/

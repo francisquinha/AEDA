@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,6 +88,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Object Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe com toda o id de qualquer objeto da biblioteca.  
+ <a href="class_object.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_object_8h_source.html">Object.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Object:</div>
 <div class="dyncontent">
@@ -99,12 +104,12 @@ Inheritance diagram for Object:</div>
 <area href="class_leitor.html" title="Classe com toda a informacao de Leitor. " alt="Leitor" shape="rect" coords="525,56,690,80"/>
 <area href="class_livro.html" title="Classe com toda a informacao de Livro. " alt="Livro" shape="rect" coords="875,56,1040,80"/>
 <area href="class_object__nao__existe.html" title="Excecao Object_nao_existe. " alt="Object_nao_existe" shape="rect" coords="1050,56,1215,80"/>
-<area href="class_utilizador.html" alt="Utilizador" shape="rect" coords="1225,56,1390,80"/>
-<area href="class_utilizador__online.html" alt="Utilizador_online" shape="rect" coords="1400,56,1565,80"/>
-<area href="class_emprestimo__old.html" title="Classe com toda a informacao de Emprestimo antigo. " alt="Emprestimo_old" shape="rect" coords="0,112,165,136"/>
+<area href="class_utilizador.html" title="Classe com toda a informacao de Utilizador. " alt="Utilizador" shape="rect" coords="1225,56,1390,80"/>
+<area href="class_utilizador__online.html" title="Classe com o nivel de acesso e o ID do utilizador ligado ao sistema. " alt="Utilizador_online" shape="rect" coords="1400,56,1565,80"/>
+<area href="class_emprestimo__old.html" title="Classe com toda a informacao de Emprestimo_old. " alt="Emprestimo_old" shape="rect" coords="0,112,165,136"/>
 <area href="class_administrador.html" title="Administrador do sistema informatico. " alt="Administrador" shape="rect" coords="350,112,515,136"/>
 <area href="class_funcionario__old.html" title="Classe com toda a informacao de Funcionario antigo. " alt="Funcionario_old" shape="rect" coords="350,168,515,192"/>
-<area href="class_supervisor.html" alt="Supervisor" shape="rect" coords="350,224,515,248"/>
+<area href="class_supervisor.html" title="Classe com toda a informacao de Supervisor. " alt="Supervisor" shape="rect" coords="350,224,515,248"/>
 <area href="class_emprestimos__por__devolver.html" title="Excecao Emprestimos_por_devolver. " alt="Emprestimos_por_devolver" shape="rect" coords="700,112,865,136"/>
 <area href="class_leitor__old.html" title="Classe com toda a informacao de Leitor antigo. " alt="Leitor_old" shape="rect" coords="700,168,865,192"/>
 <area href="class_maximo__emprestimos.html" title="Excecao Maximo_emprestimos. " alt="Maximo_emprestimos" shape="rect" coords="700,224,865,248"/>
@@ -116,27 +121,74 @@ Inheritance diagram for Object:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2e1e8cbde22b050bb3442d1a6749f18b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e1e8cbde22b050bb3442d1a6749f18b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Object</b> (long id)</td></tr>
+<tr class="memitem:a2e1e8cbde22b050bb3442d1a6749f18b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a2e1e8cbde22b050bb3442d1a6749f18b">Object</a> (long id)</td></tr>
+<tr class="memdesc:a2e1e8cbde22b050bb3442d1a6749f18b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. ">Object</a>.  <a href="#a2e1e8cbde22b050bb3442d1a6749f18b">More...</a><br /></td></tr>
 <tr class="separator:a2e1e8cbde22b050bb3442d1a6749f18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a628958b64857be73b921a4ac6b359b31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a628958b64857be73b921a4ac6b359b31"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>get_ID</b> ()</td></tr>
+<tr class="memitem:a628958b64857be73b921a4ac6b359b31"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a> ()</td></tr>
+<tr class="memdesc:a628958b64857be73b921a4ac6b359b31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter o id de um objeto.  <a href="#a628958b64857be73b921a4ac6b359b31">More...</a><br /></td></tr>
 <tr class="separator:a628958b64857be73b921a4ac6b359b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a555b70d22a8233c99ad1cd64113c38c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a555b70d22a8233c99ad1cd64113c38c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)</td></tr>
-<tr class="separator:a555b70d22a8233c99ad1cd64113c38c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="_object_8h_source.html#l00004">4</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>Classe com toda o id de qualquer objeto da biblioteca. </p>
+<p>Todas as classes com um id sao subclasses de <a class="el" href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. ">Object</a> (ou de uma subclasse de <a class="el" href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. ">Object</a>) </p>
+
+<p>Definition at line <a class="el" href="_object_8h_source.html#l00016">16</a> of file <a class="el" href="_object_8h_source.html">Object.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a2e1e8cbde22b050bb3442d1a6749f18b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Object::Object </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construtor de <a class="el" href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. ">Object</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>codigo de identificacao do objeto </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_object_8cpp_source.html#l00016">16</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a628958b64857be73b921a4ac6b359b31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long Object::get_ID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao para obter o id de um objeto. </p>
+<dl class="section return"><dt>Returns</dt><dd>long com o id </dd></dl>
+
+<p>Definition at line <a class="el" href="_object_8cpp_source.html#l00019">19</a> of file <a class="el" href="_object_8cpp_source.html">Object.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>biblioteca/src/<a class="el" href="_object_8h_source.html">Object.h</a></li>
 <li>biblioteca/src/<a class="el" href="_object_8cpp_source.html">Object.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 00:41:12 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 22:24:06 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

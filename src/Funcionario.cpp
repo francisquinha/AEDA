@@ -12,6 +12,13 @@ using namespace std;
 
 long Funcionario::num_funcionarios {-1};
 
+/** @file
+ *
+ * @brief Source das funcoes de Funcionario.
+ *
+ * Se uma funcao relacionada com funcionarios nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 // construtor Funcionario
 Funcionario::Funcionario(long id, string nom, bool ct): Object {id}, nome {nom} {if (ct) num_funcionarios++;}
 Funcionario::Funcionario(string nom, bool ct): Object {num_funcionarios+1}, nome {nom} {if (ct) num_funcionarios++;}

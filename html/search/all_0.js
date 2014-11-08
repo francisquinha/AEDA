@@ -11,5 +11,7 @@ var searchData=
   ['adiciona_5flivro',['adiciona_livro',['../class_biblioteca.html#a51d882c3bad6e85c85b04d88fb11e41a',1,'Biblioteca']]],
   ['adiciona_5flivro_5fold',['adiciona_livro_old',['../class_biblioteca.html#a21887c90c2ed6a7a0d02192d446e3c84',1,'Biblioteca']]],
   ['adiciona_5futilizador',['adiciona_utilizador',['../class_biblioteca.html#a0d29eaba16e1f9c4dc3bbbe046c72b0e',1,'Biblioteca']]],
-  ['administrador',['Administrador',['../class_administrador.html',1,'Administrador'],['../class_administrador.html#a8320aed5f1940d98c96053e94b762da4',1,'Administrador::Administrador()']]]
+  ['administrador',['Administrador',['../class_administrador.html',1,'Administrador'],['../class_administrador.html#a8320aed5f1940d98c96053e94b762da4',1,'Administrador::Administrador()']]],
+  ['administrador_2ecpp',['Administrador.cpp',['../_administrador_8cpp.html',1,'']]],
+  ['administrador_2eh',['Administrador.h',['../_administrador_8h.html',1,'']]]
 ];

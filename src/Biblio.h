@@ -1,4 +1,3 @@
-
 #ifndef SRC_BIBLIOTECA_H_
 #define SRC_BIBLIOTECA_H_
 
@@ -18,13 +17,19 @@ class Emprestimo_old;
 class Utilizadores;
 class Login;
 
+/** @file
+ *
+ * @brief Header das funcoes da Biblioteca.
+ *
+ * Apos os menus, estas sao as funcoes chamadas pelas varias opcoes da aplicacao.
+ **/
+
 /**
  * @brief Classe com a informacao da Biblioteca.
  *
- * Notas: - nao e guardado historico dos emprestimos, mas devia ser, isto e, devia existir um outro vetor de
- *  	  emprestimos_antigos, com o atributo adicional data_entrega;
- * 		  - os utilizadores devem ser os mesmos que os funcionarios e o seu ID tambem, caso contrario nem todas
- * 		  as funcoes funcionarao corretamente.
+ *	E composta por livros, funcionarios (normais, supervisores ou administrador), leitores, emprestimos e utilizadores.
+ *	A excecao dos utilizadores, e guardado historico de todos estes objetos em objetos do tipo _old (subclasses da respetiva
+ *	classe). Por exemplo, um leitor removido nao desaparece, e guardado como leitor_old com a data em que foi removido. *
  **/
 class Biblioteca {
 
@@ -573,7 +578,7 @@ public:
 	void le_livros(std::string ficheiro);
 
 	/**
-	 * @brief Funcao que le os funcionarios antigos e os adiciona a Biblioteca
+	 * @brief Funcao que le os funcionarios antigos de um ficheiro e os adiciona a Biblioteca
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
 	 *
@@ -582,14 +587,22 @@ public:
 	void le_funcionarios_old(std::string ficheiro);
 
 	/**
-	 * @brief Funcao que le os colaboradores de dois ficheiros e os adiciona a Biblioteca
+	 * @brief Funcao que le os funcionarios de um ficheiro e os adiciona a Biblioteca
 	 *
-	 * @param ficheiro_fc contem o caminho para o ficheiro de onde queremos ler os funcionarios
-	 * @param ficheiro_sp contem o caminho para o ficheiro de onde queremos ler os supervisores
+	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
 	 *
 	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
-	void le_funcionarios(std::string ficheiro_fc, std::string ficheiro_sp);
+	void le_funcionarios(std::string ficheiro);
+
+	/**
+	 * @brief Funcao que le os supervisores de um ficheiro e os adiciona a Biblioteca
+	 *
+	 * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+	 *
+	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
+	 **/
+	void le_supervisores(std::string ficheiro);
 
 	/**
 	 * @brief Funcao que le todos os leitores antigos de um ficheiro e os adiciona a Biblioteca

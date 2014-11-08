@@ -11,6 +11,14 @@
 
 using namespace std;
 
+/** @file
+ *
+ * @brief Source das classes e dos operadores << de Excecao.
+ *
+ * Todas as excessoes estao aqui.
+ **/
+
+
 // excecao para quando nao existe Livro, Funcionario, Leitor, Emprestimo
 ostream& operator<<(ostream &out, Object_nao_existe &object) {
 	out << "Nao existe ID ";
@@ -52,7 +60,7 @@ string Ficheiro_indisponivel::get_ficheiro() {
 }
 
 ostream& operator<<(ostream &out, Ficheiro_indisponivel &ficheiro) {
-	out << "O ficheiro " << ficheiro.get_ficheiro() << "nao esta disponivel." << endl;
+	out << "O ficheiro " << ficheiro.get_ficheiro() << " nao esta disponivel." << endl;
 	return out;
 }
 

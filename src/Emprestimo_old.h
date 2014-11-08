@@ -7,8 +7,17 @@
 
 class Emprestimo;
 
+/** @file
+ *
+ * @brief Header das funcoes de Emprestimo_old.
+ *
+ * Se uma funcao relacionada com emprestimos antigos nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 /**
- * @brief Classe com toda a informacao de Emprestimo antigo
+ * @brief Classe com toda a informacao de Emprestimo_old
+ *
+ * Na Biblioteca, os emprestimos antigos sao guardados no mesmo vetor dos emprestimos atuais.
  **/
 class Emprestimo_old: public Emprestimo {
 

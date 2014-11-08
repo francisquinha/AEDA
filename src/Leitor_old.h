@@ -7,8 +7,17 @@
 
 class Leitor;
 
+/** @file
+ *
+ * @brief Header das funcoes dos Leitor_old.
+ *
+ * Se uma funcao relacionada com leitores antigos nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 /**
  * @brief Classe com toda a informacao de Leitor antigo
+ *
+ * Na Biblioteca, os leitores antigos sao guardados no mesmo vetor dos leitores atuais.
  **/
 class Leitor_old: public Leitor {
 

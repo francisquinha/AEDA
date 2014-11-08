@@ -13,6 +13,13 @@
 
 using namespace std;
 
+/** @file
+ *
+ * @brief Source das funcoes de Emprestimo.
+ *
+ * Se uma funcao relacionada com emprestimos nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 long Emprestimo::num_emprestimos {0};
 
 // construtor Emprestimo

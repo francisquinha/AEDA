@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,7 +99,7 @@ Inheritance diagram for Leitor:</div>
  <div class="center">
   <img src="class_leitor.png" usemap="#Leitor_map" alt=""/>
   <map id="Leitor_map" name="Leitor_map">
-<area href="class_object.html" alt="Object" shape="rect" coords="175,0,340,24"/>
+<area href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. " alt="Object" shape="rect" coords="175,0,340,24"/>
 <area href="class_emprestimos__por__devolver.html" title="Excecao Emprestimos_por_devolver. " alt="Emprestimos_por_devolver" shape="rect" coords="0,112,165,136"/>
 <area href="class_leitor__old.html" title="Classe com toda a informacao de Leitor antigo. " alt="Leitor_old" shape="rect" coords="175,112,340,136"/>
 <area href="class_maximo__emprestimos.html" title="Excecao Maximo_emprestimos. " alt="Maximo_emprestimos" shape="rect" coords="350,112,515,136"/>
@@ -164,20 +164,17 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:ac24c07a618640bf9c6f92016d3b5d8c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que escreve os atributos do leitor num ficheiro.  <a href="#ac24c07a618640bf9c6f92016d3b5d8c9">More...</a><br /></td></tr>
 <tr class="separator:ac24c07a618640bf9c6f92016d3b5d8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_object.html">Object</a></td></tr>
-<tr class="memitem:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e1e8cbde22b050bb3442d1a6749f18b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Object</b> (long id)</td></tr>
+<tr class="memitem:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a2e1e8cbde22b050bb3442d1a6749f18b">Object</a> (long id)</td></tr>
+<tr class="memdesc:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. ">Object</a>.  <a href="#a2e1e8cbde22b050bb3442d1a6749f18b">More...</a><br /></td></tr>
 <tr class="separator:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a628958b64857be73b921a4ac6b359b31"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>get_ID</b> ()</td></tr>
+<tr class="memitem:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a> ()</td></tr>
+<tr class="memdesc:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter o id de um objeto.  <a href="#a628958b64857be73b921a4ac6b359b31">More...</a><br /></td></tr>
 <tr class="separator:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a555b70d22a8233c99ad1cd64113c38c1 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a555b70d22a8233c99ad1cd64113c38c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)</td></tr>
-<tr class="separator:a555b70d22a8233c99ad1cd64113c38c1 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe com toda a informacao de <a class="el" href="class_leitor.html" title="Classe com toda a informacao de Leitor. ">Leitor</a>. </p>
 
-<p>Definition at line <a class="el" href="_leitor_8h_source.html#l00014">14</a> of file <a class="el" href="_leitor_8h_source.html">Leitor.h</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8h_source.html#l00021">21</a> of file <a class="el" href="_leitor_8h_source.html">Leitor.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1511358ff5bf1fa185e120c3d99ce9b3"></a>
 <div class="memitem">
@@ -426,7 +423,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00026">26</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00033">33</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -462,7 +459,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 
 <p>Reimplemented in <a class="el" href="class_leitor__old.html#a8b60c266894b09b1902d4cf0b8e187f4">Leitor_old</a>.</p>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00090">90</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00097">97</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -482,7 +479,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Funcao para obter o email do leitor. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o email do leitor </dd></dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00057">57</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00064">64</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -502,7 +499,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Funcao para obter emprestimos do leitor. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Emprestimo*&gt; de apontadores para os emprestimos do leitor </dd></dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00042">42</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00049">49</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -522,7 +519,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Funcao para obter os emprestimos atrasados do leitor. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Emprestimo*&gt; de apontadores para os emprestimos atrasados </dd></dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00118">118</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00125">125</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -542,7 +539,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Funcao para obter o nome do leitor. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o nome do leitor </dd></dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00047">47</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00054">54</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -562,7 +559,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Funcao para obter o telefone do leitor. </p>
 <dl class="section return"><dt>Returns</dt><dd>long com o telefone do leitor </dd></dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00052">52</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00059">59</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -592,7 +589,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 
 <p>Reimplemented in <a class="el" href="class_leitor__old.html#a2f2074818e14e12d4f35000bb0c1b9da">Leitor_old</a>.</p>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00078">78</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00085">85</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -612,7 +609,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Funcao que imprime os emprestimos do leitor. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00109">109</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00116">116</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -645,7 +642,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00031">31</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00038">38</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -666,7 +663,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 <p>Funcao para determinar o email do leitor. </p>
 <dl class="section return"><dt>Returns</dt><dd>eml email do leitor </dd></dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00073">73</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00080">80</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -692,7 +689,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00063">63</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00070">70</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -718,7 +715,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00068">68</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_leitor_8cpp_source.html#l00075">75</a> of file <a class="el" href="_leitor_8cpp_source.html">Leitor.cpp</a>.</p>
 
 </div>
 </div>
@@ -729,7 +726,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 00:41:12 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 22:24:06 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

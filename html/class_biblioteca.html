@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,7 +99,7 @@ Inheritance diagram for Biblioteca:</div>
  <div class="center">
   <img src="class_biblioteca.png" usemap="#Biblioteca_map" alt=""/>
   <map id="Biblioteca_map" name="Biblioteca_map">
-<area href="class_menu.html" alt="Menu" shape="rect" coords="0,56,67,80"/>
+<area href="class_menu.html" title="Classe todas as funcoes a que os utilizadores podem aceder. " alt="Menu" shape="rect" coords="0,56,67,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -293,11 +293,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:afebd5eb5839cea1b3eae572ed8accdfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que le todos os livros de um ficheiro e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  <a href="#afebd5eb5839cea1b3eae572ed8accdfe">More...</a><br /></td></tr>
 <tr class="separator:afebd5eb5839cea1b3eae572ed8accdfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af007a4ca00fafbeaf9cc18949b2432ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biblioteca.html#af007a4ca00fafbeaf9cc18949b2432ac">le_funcionarios_old</a> (std::string ficheiro)</td></tr>
-<tr class="memdesc:af007a4ca00fafbeaf9cc18949b2432ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que le os funcionarios antigos e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  <a href="#af007a4ca00fafbeaf9cc18949b2432ac">More...</a><br /></td></tr>
+<tr class="memdesc:af007a4ca00fafbeaf9cc18949b2432ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que le os funcionarios antigos de um ficheiro e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  <a href="#af007a4ca00fafbeaf9cc18949b2432ac">More...</a><br /></td></tr>
 <tr class="separator:af007a4ca00fafbeaf9cc18949b2432ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61193a5c0987668085d44e0dacc60d63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biblioteca.html#a61193a5c0987668085d44e0dacc60d63">le_funcionarios</a> (std::string ficheiro_fc, std::string ficheiro_sp)</td></tr>
-<tr class="memdesc:a61193a5c0987668085d44e0dacc60d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que le os colaboradores de dois ficheiros e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  <a href="#a61193a5c0987668085d44e0dacc60d63">More...</a><br /></td></tr>
-<tr class="separator:a61193a5c0987668085d44e0dacc60d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bd3eeaf7b7164523d848f3b20a46fb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biblioteca.html#a6bd3eeaf7b7164523d848f3b20a46fb1">le_funcionarios</a> (std::string ficheiro)</td></tr>
+<tr class="memdesc:a6bd3eeaf7b7164523d848f3b20a46fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que le os funcionarios de um ficheiro e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  <a href="#a6bd3eeaf7b7164523d848f3b20a46fb1">More...</a><br /></td></tr>
+<tr class="separator:a6bd3eeaf7b7164523d848f3b20a46fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac926499a6d925fb077ae3add6b3dfe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biblioteca.html#aac926499a6d925fb077ae3add6b3dfe6">le_supervisores</a> (std::string ficheiro)</td></tr>
+<tr class="memdesc:aac926499a6d925fb077ae3add6b3dfe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que le os supervisores de um ficheiro e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  <a href="#aac926499a6d925fb077ae3add6b3dfe6">More...</a><br /></td></tr>
+<tr class="separator:aac926499a6d925fb077ae3add6b3dfe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3db9a5a65bda831ea8ccb289042a69db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biblioteca.html#a3db9a5a65bda831ea8ccb289042a69db">le_leitores_old</a> (std::string ficheiro)</td></tr>
 <tr class="memdesc:a3db9a5a65bda831ea8ccb289042a69db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que le todos os leitores antigos de um ficheiro e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  <a href="#a3db9a5a65bda831ea8ccb289042a69db">More...</a><br /></td></tr>
 <tr class="separator:a3db9a5a65bda831ea8ccb289042a69db"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -319,11 +322,9 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe com a informacao da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
-<p>Notas: - nao e guardado historico dos emprestimos, mas devia ser, isto e, devia existir um outro vetor de emprestimos_antigos, com o atributo adicional data_entrega;</p><ul>
-<li>os utilizadores devem ser os mesmos que os funcionarios e o seu ID tambem, caso contrario nem todas as funcoes funcionarao corretamente. </li>
-</ul>
+<p>E composta por livros, funcionarios (normais, supervisores ou administrador), leitores, emprestimos e utilizadores. A excecao dos utilizadores, e guardado historico de todos estes objetos em objetos do tipo _old (subclasses da respetiva classe). Por exemplo, um leitor removido nao desaparece, e guardado como leitor_old com a data em que foi removido. * </p>
 
-<p>Definition at line <a class="el" href="_biblio_8h_source.html#l00029">29</a> of file <a class="el" href="_biblio_8h_source.html">Biblio.h</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8h_source.html#l00034">34</a> of file <a class="el" href="_biblio_8h_source.html">Biblio.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="acc03014984c068e7c0a29d2e07b5f6ad"></a>
 <div class="memitem">
@@ -347,7 +348,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00328">328</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00335">335</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -373,7 +374,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00323">323</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00330">330</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -399,7 +400,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00176">176</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00183">183</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -425,7 +426,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00171">171</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00178">178</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -451,7 +452,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00187">187</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00194">194</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -477,7 +478,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00182">182</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00189">189</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -503,7 +504,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00160">160</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00167">167</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -529,7 +530,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00166">166</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00173">173</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -555,7 +556,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00193">193</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00200">200</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -591,7 +592,7 @@ Public Member Functions</h2></td></tr>
 <li>no final os funcionarios sao redistribuidos, pelo que se mantem o equlibrio entre o numero de funcionarios por supervisor. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00450">450</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00457">457</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -611,7 +612,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para distribuir uniformemente os funcionarios pelos supervisores. </p>
 <p>No final o numero de funcionarios por supervisor e o mais equilibrado possivel. </p>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00269">269</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00276">276</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -710,7 +711,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00742">742</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00749">749</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -742,7 +743,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00721">721</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00728">728</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -774,7 +775,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00710">710</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00717">717</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -806,7 +807,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00666">666</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00673">673</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -838,7 +839,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00655">655</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00662">662</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -870,7 +871,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00699">699</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00706">706</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -902,7 +903,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00688">688</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00695">695</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -934,7 +935,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00644">644</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00651">651</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -966,7 +967,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00633">633</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00640">640</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -998,7 +999,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00677">677</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00684">684</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1030,7 +1031,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00732">732</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00739">739</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1051,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os emprestimos atuais da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Emprestimo*&gt; com os apontadores para os emprestimos atuais </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00052">52</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00059">59</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1070,7 +1071,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter todos os emprestimos atrasados da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Emprestimo*&gt; com os apontadores para os emprestimos atrasados </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00389">389</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00396">396</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1090,7 +1091,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os emprestimos antigos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Emprestimo_old*&gt; com os apontadores para os emprestimos antigos </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00040">40</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00047">47</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1110,7 +1111,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os funcionarios da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Fucionario*&gt; com os apontadores para os funcionarios </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00076">76</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00083">83</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1130,7 +1131,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os funcionarios nao supervisores da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Funcionario*&gt; com os apontadores para os funcionarios nao supervisores da biblioteca </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00092">92</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00099">99</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1150,7 +1151,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os funcionarios antigos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Fucionario_old*&gt; com os apontadores para os funcionarios antigos </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00064">64</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00071">71</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1171,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os leitores da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Leitor*&gt; com os apontadores para os leitores da biblioteca </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00120">120</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00127">127</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1190,7 +1191,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os leitores antigos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Leitor_old*&gt; com os apontadores para os leitores antigos da biblioteca </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00108">108</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00115">115</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1210,7 +1211,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os livros da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Livro*&gt; com os apontadores para os livros da biblioteca </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00028">28</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00035">35</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1230,7 +1231,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os livros disponiveis (nao emprestados) da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Livro*&gt; com os apontadores para os livros disponiveis </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00228">228</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00235">235</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1250,7 +1251,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os livros emprestados da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Livro*&gt; com os apontadores para os livros emprestados </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00240">240</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00247">247</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1270,7 +1271,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os livros antigos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Livro_old*&gt; com os apontadores para os livros antigos da biblioteca </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00016">16</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00023">23</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1297,7 +1298,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Livro*&gt; com os apontadores para os livros com tema tem </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00216">216</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00223">223</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1317,7 +1318,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os supervisores da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Funcionario*&gt; com os apontadores para os supervisores </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00080">80</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00087">87</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1337,7 +1338,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os temas dos livros da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;string&gt; com os temas dos livros da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00199">199</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00206">206</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1357,7 +1358,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao para obter os utilizadores da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;Utilizador*&gt; com os apontadores para os utilizadores da biblioteca </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00132">132</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00139">139</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1377,7 +1378,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os livros, funcionarios, supervisores, leitores e emprestimos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00622">622</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00629">629</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1397,7 +1398,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os emprestimos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00601">601</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00608">608</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1417,7 +1418,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime os emprestimos atrasados por leitor para que os leitores posssam ser contactados. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00401">401</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00408">408</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1437,7 +1438,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os emprestimos antigos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00590">590</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00597">597</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1457,7 +1458,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os funcionarios da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00546">546</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00553">553</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1477,7 +1478,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os funcionarios antigos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00535">535</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00542">542</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1497,7 +1498,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os leitores da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00579">579</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00586">586</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1517,7 +1518,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os leitores antigos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00568">568</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00575">575</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1537,7 +1538,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os livros da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00476">476</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00483">483</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1557,7 +1558,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os livros disponiveis (nao emprestados) da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00503">503</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00510">510</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1577,7 +1578,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os livros emprestados da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00519">519</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00526">526</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1597,7 +1598,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os livros antigos da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00465">465</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00472">472</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1624,7 +1625,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00487">487</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00494">494</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1644,7 +1645,7 @@ Public Member Functions</h2></td></tr>
 <p>Funcao que imprime todos os supervisores da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00557">557</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00564">564</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1665,7 +1666,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao</dd></dl>
 <p>Nota: nao imprime a password dos utilizadores </p>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00612">612</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00619">619</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1764,7 +1765,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01176">1176</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01271">1271</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1797,7 +1798,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>Nota: E atualizada a informacao sobre emprestimos nos leitores e nos livros. </p>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01084">1084</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01167">1167</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1829,11 +1830,11 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00995">995</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01078">1078</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a61193a5c0987668085d44e0dacc60d63"></a>
+<a class="anchor" id="a6bd3eeaf7b7164523d848f3b20a46fb1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1841,27 +1842,16 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void Biblioteca::le_funcionarios </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>ficheiro_fc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>ficheiro</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>ficheiro_sp</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Funcao que le os colaboradores de dois ficheiros e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
+<p>Funcao que le os funcionarios de um ficheiro e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ficheiro_fc</td><td>contem o caminho para o ficheiro de onde queremos ler os funcionarios </td></tr>
-    <tr><td class="paramname">ficheiro_sp</td><td>contem o caminho para o ficheiro de onde queremos ler os supervisores</td></tr>
+    <tr><td class="paramname">ficheiro</td><td>contem o caminho para o ficheiro de onde queremos ler</td></tr>
   </table>
   </dd>
 </dl>
@@ -1872,7 +1862,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00882">882</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00959">959</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1890,7 +1880,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Funcao que le os funcionarios antigos e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
+<p>Funcao que le os funcionarios antigos de um ficheiro e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ficheiro</td><td>contem o caminho para o ficheiro de onde queremos ler</td></tr>
@@ -1904,7 +1894,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00844">844</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00921">921</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1936,7 +1926,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00971">971</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01054">1054</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -1968,7 +1958,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00930">930</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01013">1013</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2000,7 +1990,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00808">808</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00885">885</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2032,7 +2022,39 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00756">756</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00833">833</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aac926499a6d925fb077ae3add6b3dfe6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Biblioteca::le_supervisores </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>ficheiro</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funcao que le os supervisores de um ficheiro e os adiciona a <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ficheiro</td><td>contem o caminho para o ficheiro de onde queremos ler</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_ficheiro__indisponivel.html" title="Excecao Ficheiro_indisponivel. ">Ficheiro_indisponivel</a></td><td>se o ficheiro nao existir </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00977">977</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2064,7 +2086,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01155">1155</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l01250">1250</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2100,7 +2122,7 @@ Public Member Functions</h2></td></tr>
 <li>no final os funcionarios sao redistribuidos, pelo que se mantem o equlibrio entre o numero de funcionarios por supervisor. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00434">434</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00441">441</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2134,7 +2156,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>Nota: remove o primeiro emprestimo com o id indicado. </p>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00353">353</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00360">360</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2168,7 +2190,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>Nota: remove o primeiro funcionario com o id indicado. </p>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00283">283</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00290">290</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2202,7 +2224,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>Nota: remove o primeiro leitor com o id indicado. </p>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00302">302</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00309">309</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2236,7 +2258,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>Nota: remove o primeiro livro com o id indicado. </p>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00252">252</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00259">259</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2270,7 +2292,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <p>Nota: remove o primeiro utilizador com o id indicado. </p>
 
-<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00377">377</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_biblio_8cpp_source.html#l00384">384</a> of file <a class="el" href="_biblio_8cpp_source.html">Biblio.cpp</a>.</p>
 
 </div>
 </div>
@@ -2281,7 +2303,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 00:41:12 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 22:24:06 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

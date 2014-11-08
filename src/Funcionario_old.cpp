@@ -10,6 +10,13 @@
 
 using namespace std;
 
+/** @file
+ *
+ * @brief Source das funcoes de Funcionario_old.
+ *
+ * Se uma funcao relacionada com funcionarios antigos nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 // construtor Funcionario antigo
 Funcionario_old::Funcionario_old(long id, string nom, time_t dtf, bool ct): Funcionario {id, nom, ct}, data_fim {dtf} {};
 Funcionario_old::Funcionario_old(long id, string nom, bool ct): Funcionario {id, nom, ct}, data_fim {time(0)} {};

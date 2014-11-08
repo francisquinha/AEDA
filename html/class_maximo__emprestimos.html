@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,7 +100,7 @@ Inheritance diagram for Maximo_emprestimos:</div>
   <img src="class_maximo__emprestimos.png" usemap="#Maximo_emprestimos_map" alt=""/>
   <map id="Maximo_emprestimos_map" name="Maximo_emprestimos_map">
 <area href="class_leitor.html" title="Classe com toda a informacao de Leitor. " alt="Leitor" shape="rect" coords="0,56,131,80"/>
-<area href="class_object.html" alt="Object" shape="rect" coords="0,0,131,24"/>
+<area href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. " alt="Object" shape="rect" coords="0,0,131,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -166,21 +166,18 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:ac24c07a618640bf9c6f92016d3b5d8c9 inherit pub_methods_class_leitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que escreve os atributos do leitor num ficheiro.  <a href="#ac24c07a618640bf9c6f92016d3b5d8c9">More...</a><br /></td></tr>
 <tr class="separator:ac24c07a618640bf9c6f92016d3b5d8c9 inherit pub_methods_class_leitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_object.html">Object</a></td></tr>
-<tr class="memitem:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e1e8cbde22b050bb3442d1a6749f18b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Object</b> (long id)</td></tr>
+<tr class="memitem:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a2e1e8cbde22b050bb3442d1a6749f18b">Object</a> (long id)</td></tr>
+<tr class="memdesc:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. ">Object</a>.  <a href="#a2e1e8cbde22b050bb3442d1a6749f18b">More...</a><br /></td></tr>
 <tr class="separator:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a628958b64857be73b921a4ac6b359b31"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>get_ID</b> ()</td></tr>
+<tr class="memitem:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a> ()</td></tr>
+<tr class="memdesc:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter o id de um objeto.  <a href="#a628958b64857be73b921a4ac6b359b31">More...</a><br /></td></tr>
 <tr class="separator:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a555b70d22a8233c99ad1cd64113c38c1 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a555b70d22a8233c99ad1cd64113c38c1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)</td></tr>
-<tr class="separator:a555b70d22a8233c99ad1cd64113c38c1 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Excecao <a class="el" href="class_maximo__emprestimos.html" title="Excecao Maximo_emprestimos. ">Maximo_emprestimos</a>. </p>
 <p>Sempre que se tenta adicionar um emprestimo a um leitor com 3 emprestimos esta excecao e utilizada. </p>
 
-<p>Definition at line <a class="el" href="_excecao_8h_source.html#l00158">158</a> of file <a class="el" href="_excecao_8h_source.html">Excecao.h</a>.</p>
+<p>Definition at line <a class="el" href="_excecao_8h_source.html#l00165">165</a> of file <a class="el" href="_excecao_8h_source.html">Excecao.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a76912fe9a2c763f5490a6ffb81a424fc"></a>
 <div class="memitem">
@@ -244,7 +241,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_excecao_8h_source.html#l00171">171</a> of file <a class="el" href="_excecao_8h_source.html">Excecao.h</a>.</p>
+<p>Definition at line <a class="el" href="_excecao_8h_source.html#l00178">178</a> of file <a class="el" href="_excecao_8h_source.html">Excecao.h</a>.</p>
 
 </div>
 </div>
@@ -254,7 +251,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ID</b> (long id)<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 8 2014 00:41:12 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 8 2014 22:24:06 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

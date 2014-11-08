@@ -15,6 +15,13 @@ using namespace std;
 
 long Livro::num_livros {0};
 
+/** @file
+ *
+ * @brief Source das funcoes de Livro.
+ *
+ * Se uma funcao relacionada com livros nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 // construtor Livro
 Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt, bool ct):
 		Object {id}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},

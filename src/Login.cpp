@@ -7,6 +7,13 @@
 
 using namespace std;
 
+/** @file
+ *
+ * @brief Source das funcoes de Utilizador
+ *
+ * Se uma funcao relacionada com utilizadores nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 // Construtor de utilizador; parametros: id, password e acesso
 Utilizador::Utilizador(long id, std::string pass, int acess): Object {id}, password {pass}, acesso {acess} {}
 

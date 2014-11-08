@@ -13,6 +13,13 @@ class Funcionario;
 class Leitor;
 class Object;
 
+/** @file
+ *
+ * @brief Header das funcoes de Emprestimo.
+ *
+ * Se uma funcao relacionada com emprestimos nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 /**
  * @brief Classe com toda a informacao de Emprestimo
  **/

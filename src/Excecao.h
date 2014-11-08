@@ -7,6 +7,13 @@ class Object;
 class Livro;
 class Leitor;
 
+/** @file
+ *
+ * @brief Header das classes e dos operadores << de Excecao.
+ *
+ * Todas as excessoes estao aqui.
+ **/
+
 /**
  * @brief Excecao Object_nao_existe
  *

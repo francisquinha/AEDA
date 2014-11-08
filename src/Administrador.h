@@ -6,13 +6,20 @@
 
 class Funcionario;
 
+/** @file
+ *
+ * @brief Header da classe Administrador.
+ *
+ * Serve apenas para adicionar um unico administrador quando a aplicacao e iniciada.
+ **/
+
 /**
  * @brief Administrador do sistema informatico
  *
  * Funciona como uma especie de gerente da Biblioteca. Tem acesso a todas as funcoes dos outros utilizadores.
  * E o unico que pode adicionar e remover funcionarios, promover e despromover e adicionar utilizadores
  * ao sistema informatico.
- * Na pratica esta classe apenas e utilizada para criar um administrador com ID = 0 e nome = Administrador.
+ * Na pratica esta classe apenas e utilizada para criar um administrador com ID 0, nome Administrador e nivel de acesso 0.
  **/
 class Administrador: public Funcionario {
 public:

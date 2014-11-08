@@ -12,6 +12,13 @@ using namespace std;
 
 long Leitor::num_leitores {0};
 
+/** @file
+ *
+ * @brief Source das funcoes de Leitor.
+ *
+ * Se uma funcao relacionada com leitores nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 // construtor Leitor
 Leitor::Leitor(long id, string nom, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct):
 		 Object {id}, nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}

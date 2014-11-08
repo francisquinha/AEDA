@@ -8,8 +8,17 @@
 
 class Funcionario;
 
+/** @file
+ *
+ * @brief Header das funcoes de Funcionario_old.
+ *
+ * Se uma funcao relacionada com funcionarios antigos nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 /**
  * @brief Classe com toda a informacao de Funcionario antigo
+
+ * Na Biblioteca, os funcionarios antigos sao guardados no mesmo vetor dos funcionarios atuais.
  **/
 class Funcionario_old: public Funcionario {
 

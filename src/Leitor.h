@@ -8,6 +8,13 @@
 class Emprestimo;
 class Object;
 
+/** @file
+ *
+ * @brief Header das funcoes de Leitor.
+ *
+ * Se uma funcao relacionada com leitores nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 /**
  * @brief Classe com toda a informacao de Leitor
  **/

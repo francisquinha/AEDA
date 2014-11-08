@@ -10,6 +10,13 @@
 
 using namespace std;
 
+/** @file
+ *
+ * @brief Source das funcoes de Leitor_old.
+ *
+ * Se uma funcao relacionada com leitores antigos nao estiver nos ficheiros biblio, esta aqui.
+ **/
+
 // construtor Leitor
 Leitor_old::Leitor_old(long id, string nom, long tel, string eml, time_t dtf, bool ct):
 		Leitor {id, nom, tel, eml, {}, ct}, data_fim {dtf} {};
