@@ -97,10 +97,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// construtor de Administrador</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_administrador.html#a8320aed5f1940d98c96053e94b762da4">   19</a></span>&#160;<a class="code" href="class_administrador.html#a8320aed5f1940d98c96053e94b762da4">Administrador::Administrador</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>, <span class="keywordtype">string</span> nom): <a class="code" href="class_funcionario.html">Funcionario</a> {id, nom, <span class="keyword">true</span>} {}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// escreve Administrador</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* construtor de Administrador</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * nao incrementa o contador de funcionarios, porque o administrador tem id 0 */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_administrador.html#a8320aed5f1940d98c96053e94b762da4">   20</a></span>&#160;<a class="code" href="class_administrador.html#a8320aed5f1940d98c96053e94b762da4">Administrador::Administrador</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>, <span class="keywordtype">string</span> nom): <a class="code" href="class_funcionario.html">Funcionario</a> {id, nom, <span class="keyword">false</span>} {}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_administrador.html#a157b8dc7936777497db83a157adcb415">   22</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_administrador.html#a157b8dc7936777497db83a157adcb415">Administrador::escreve</a>(<span class="keywordtype">string</span> ficheiro) {}</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
@@ -108,13 +108,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="class_administrador_html_a157b8dc7936777497db83a157adcb415"><div class="ttname"><a href="class_administrador.html#a157b8dc7936777497db83a157adcb415">Administrador::escreve</a></div><div class="ttdeci">void escreve(std::string ficheiro)</div><div class="ttdoc">Funcao de escrita de Administrador. </div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8cpp_source.html#l00022">Administrador.cpp:22</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
 <div class="ttc" id="class_funcionario_html"><div class="ttname"><a href="class_funcionario.html">Funcionario</a></div><div class="ttdoc">Classe com toda a informacao de Funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8h_source.html#l00019">Funcionario.h:19</a></div></div>
-<div class="ttc" id="class_administrador_html_a8320aed5f1940d98c96053e94b762da4"><div class="ttname"><a href="class_administrador.html#a8320aed5f1940d98c96053e94b762da4">Administrador::Administrador</a></div><div class="ttdeci">Administrador(long id, std::string nom)</div><div class="ttdoc">Construtor de Administrador. </div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8cpp_source.html#l00019">Administrador.cpp:19</a></div></div>
+<div class="ttc" id="class_administrador_html_a8320aed5f1940d98c96053e94b762da4"><div class="ttname"><a href="class_administrador.html#a8320aed5f1940d98c96053e94b762da4">Administrador::Administrador</a></div><div class="ttdeci">Administrador(long id, std::string nom)</div><div class="ttdoc">Construtor de Administrador. </div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8cpp_source.html#l00020">Administrador.cpp:20</a></div></div>
 <div class="ttc" id="_excecao_8h_html"><div class="ttname"><a href="_excecao_8h.html">Excecao.h</a></div><div class="ttdoc">Header das classes e dos operadores << de Excecao. </div></div>
 <div class="ttc" id="_administrador_8h_html"><div class="ttname"><a href="_administrador_8h.html">Administrador.h</a></div><div class="ttdoc">Header da classe Administrador. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 02:55:58 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 9 2014 14:31:17 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -19,7 +19,6 @@ long Leitor::num_leitores {0};
  * Se uma funcao relacionada com leitores nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-// construtor Leitor
 Leitor::Leitor(long id, string nom, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct):
 		 Object {id}, nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
 Leitor::Leitor(string nom, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct): Object {num_leitores+1},
@@ -29,12 +28,10 @@ Leitor::Leitor(long id, string nom, long tel, string eml, bool ct):
 Leitor::Leitor(string nom, long tel, string eml, bool ct): Object {num_leitores+1},
 				nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
 
-// adicionar Emprestimo a Leitor
 void Leitor::adiciona_emp_leit(Emprestimo* ep) {
 	emprestimos_leitor.push_back(ep);
 }
 
-// remover Emprestimo de Leitor
 bool Leitor::remove_emp_leit(long id) {
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end();it++) {
 		if ((*it)->get_ID() == id) {
@@ -45,43 +42,34 @@ bool Leitor::remove_emp_leit(long id) {
 	throw Object_nao_existe(id);
 }
 
-// obter Emprestimos de Leitor
 vector<Emprestimo*> Leitor::get_emp_leit() {
 	return emprestimos_leitor;
 }
 
-// obter nome de Leitor
 string Leitor::get_nome() {
 	return nome;
 }
 
-// obter telefone de Leitor
 long Leitor::get_telefone() {
 	return telefone;
 }
 
-// obter email de Leitor
 string Leitor::get_email() {
 	return email;
 }
-
-// determinar nome de Leitor
 
 void Leitor::set_nome(string nom) {
 	nome = nom;
 }
 
-// determinar telefone de Leitor
 void Leitor::set_telefone(long tel) {
 	telefone = tel;
 }
 
-// determinar email de Leitor
 void Leitor::set_email(string eml) {
 	email = eml;
 }
 
-// imprimir Leitor
 string Leitor::imprime() {
 	stringstream out {};
 	out << "ID: "<< get_ID() << endl<< "Nome: " << nome << endl << "Telefone: "<< telefone << endl
@@ -93,7 +81,6 @@ string Leitor::imprime() {
 	return out.str();
 }
 
-// escrever Leitor
 void Leitor::escreve(string ficheiro) {
 	stringstream out {};
 	out << get_ID() << endl
@@ -112,7 +99,6 @@ void Leitor::escreve(string ficheiro) {
 	else throw Ficheiro_indisponivel(ficheiro);
 }
 
-// imprimir emprestimos de Leitor
 string Leitor::imprime_emp_leit() {
 	stringstream out {};
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
@@ -121,7 +107,6 @@ string Leitor::imprime_emp_leit() {
 	return out.str();
 }
 
-// obter Emprestimos atrasados de Leitor
 vector<Emprestimo*> Leitor::get_emprestimos_atrasados() {
 	vector<Emprestimo*> atrasados {};
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {

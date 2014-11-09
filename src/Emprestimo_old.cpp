@@ -20,14 +20,12 @@ using namespace std;
  * Se uma funcao relacionada com emprestimos antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-// construtor Emprestimo_old
 Emprestimo_old::Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, time_t dt_e, bool ct):
 				Emprestimo {id, lv, fc, lt, dt, ct}, data_entrega {dt_e} {}
 
 Emprestimo_old::Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct):
 				Emprestimo {id, lv, fc, lt, dt, ct}, data_entrega {time(0)} {}
 
-// imprimir Emprestimo_old
 string Emprestimo_old::imprime() {
 	stringstream out {};
 	time_t dat=get_data();
@@ -64,7 +62,6 @@ string Emprestimo_old::imprime() {
 	return out.str();
 }
 
-// escrever Emprestimo
 void Emprestimo_old::escreve(string ficheiro) {
 	stringstream out {};
 	time_t dat=get_data();

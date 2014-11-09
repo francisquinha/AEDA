@@ -25,12 +25,21 @@ using namespace std;
  * sendo que essas acedem as restantes classes.
  **/
 
-int main()
-{
+int main() {
+	/* criacao de um Utilizador_online falso so para poder invocar o construtor de Menu
+	 * o verdadeiro login sera feito mais tarde, na aplicacao */
 	Utilizador_online* util = new Utilizador_online {-1,-1};
+
+	/* criacao de um Menu */
 	Menu m {Menu (util)};
+
+	/* criacao do administrador, uma vez que e o unico que nao se encontra nos ficheiros*/
 	Administrador* admin = new Administrador {0, "Administrador"};
+
+	/* adicao do administrador aos funcionarios*/
 	m.adiciona_funcionario(admin);
+
+	/* caminho para a pasta onde estao os ficheiros e caminhos para cada um dos ficheiros*/
 	string path{"/Users/Angie/Documents/MIEIC/2A1S/AEDA/trabalhos/biblioteca/txt/"};
 	string ficheiro_lvo {path + "Livro_old.txt"};
 	string ficheiro_lv {path + "Livro.txt"};
@@ -43,13 +52,22 @@ int main()
 	string ficheiro_ep {path + "Emprestimo.txt"};
 	string ficheiro_ut {path + "Utilizador.txt"};
 
+	/* leitura dos ficheiros e adicao dos varios objetos a biblioteca */
 	m.le(ficheiro_lvo, ficheiro_lv, ficheiro_fco, ficheiro_fc, ficheiro_sp,
 			ficheiro_lto, ficheiro_lt, ficheiro_epo, ficheiro_ep, ficheiro_ut);
-	system("clear");
+
+	/* limpeza do ecra */
+	clear_screen();
+
+	/* invocacao do menu principal */
 	m.menu_principal();
+
+	/* no final, se sairmos da aplicacao com "s", sao gravadas as alteracoes aos objetos
+	 * nos respetivos ficheiros */
 	m.escreve(ficheiro_lvo, ficheiro_lv, ficheiro_fco, ficheiro_fc, ficheiro_sp,
 			ficheiro_lto, ficheiro_lt, ficheiro_epo, ficheiro_ep, ficheiro_ut);
-    return 0;
+
+	return 0;
 }
 
 

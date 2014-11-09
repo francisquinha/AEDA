@@ -15,6 +15,15 @@
  **/
 
 /**
+ * @brief funcao para limpar o ecra
+ * o codigo so compila em c++11, mas desde que essa seja a versao utilizada,
+ * da forma como esta funcao esta construida, devemos conseguir compilar e correr
+ * a aplicacao na maior parte dos sistemas operativos
+ **/
+void clear_screen();
+
+
+/**
  * @brief Classe com o nivel de acesso e o ID do utilizador ligado ao sistema
  *
  * Quando um utilizador faz login, fica registado aqui o seu ID e o seu nivel de acesso.

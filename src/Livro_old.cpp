@@ -20,14 +20,12 @@ using namespace std;
  * Se uma funcao relacionada com livros antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-// construtor Livro antigo
 Livro_old::Livro_old(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt, time_t dtf, bool ct):
 		Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, id_ep, dt, ct}, data_fim {dtf} {};
 Livro_old::Livro_old(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt, bool ct):
 		Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, id_ep, dt, ct}, data_fim {time(0)} {};
 
 
-// imprimir Livro
 string Livro_old::imprime() {
 	stringstream out {};
 	tm *ldataf = localtime(&data_fim);
@@ -59,7 +57,6 @@ string Livro_old::imprime() {
 	return out.str();
 }
 
-// escrever Livro
 void Livro_old::escreve(string ficheiro) {
 	stringstream out {};
 	tm *ldataf = localtime(&data_fim);

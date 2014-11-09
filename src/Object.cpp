@@ -12,10 +12,8 @@ using namespace std;
  * Praticamente todas as outras classes sao subclasses de Object.
  **/
 
-// construtor Object
 Object::Object(long id): ID {id} {}
 
-// obter ID
 long Object::get_ID() {
 	return ID;
 }

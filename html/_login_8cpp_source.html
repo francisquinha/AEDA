@@ -96,67 +96,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// Construtor de utilizador; parametros: id, password e acesso</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_utilizador.html#a4c6761daec35a3a02d3f304087b07c3b">   18</a></span>&#160;<a class="code" href="class_utilizador.html#a4c6761daec35a3a02d3f304087b07c3b">Utilizador::Utilizador</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>, std::string pass, <span class="keywordtype">int</span> acess): <a class="code" href="class_object.html">Object</a> {<span class="keywordtype">id</span>}, password {pass}, acesso {acess} {}</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// obter password do utilizador; retorno: password</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_utilizador.html#aa0b59c3eb1b0062c5e26dbc9fcac5915">   21</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="class_utilizador.html#aa0b59c3eb1b0062c5e26dbc9fcac5915">Utilizador::get_password</a>() {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span> password;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// determinar password do utilizador; parametros: password</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_utilizador.html#a2eed83a4cfcea7d1a9d5f5afb487341a">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_utilizador.html#a2eed83a4cfcea7d1a9d5f5afb487341a">Utilizador::set_password</a>(std::string pass) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    password = pass;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// obter tipo de acesso do utilizador; retorno: acesso</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_utilizador.html#ac1106986ab1184f16e21f27a31d645dc">   31</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_utilizador.html#ac1106986ab1184f16e21f27a31d645dc">Utilizador::get_acesso</a>() {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> acesso;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_utilizador.html#a4c6761daec35a3a02d3f304087b07c3b">   17</a></span>&#160;<a class="code" href="class_utilizador.html#a4c6761daec35a3a02d3f304087b07c3b">Utilizador::Utilizador</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>, std::string pass, <span class="keywordtype">int</span> acess): <a class="code" href="class_object.html">Object</a> {<span class="keywordtype">id</span>}, password {pass}, acesso {acess} {}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_utilizador.html#aa0b59c3eb1b0062c5e26dbc9fcac5915">   19</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="class_utilizador.html#aa0b59c3eb1b0062c5e26dbc9fcac5915">Utilizador::get_password</a>() {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> password;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_utilizador.html#a2eed83a4cfcea7d1a9d5f5afb487341a">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_utilizador.html#a2eed83a4cfcea7d1a9d5f5afb487341a">Utilizador::set_password</a>(std::string pass) {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    password = pass;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_utilizador.html#ac1106986ab1184f16e21f27a31d645dc">   27</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_utilizador.html#ac1106986ab1184f16e21f27a31d645dc">Utilizador::get_acesso</a>() {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> acesso;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_utilizador.html#ae0f75c5c5947befd5eab7149bda73299">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_utilizador.html#ae0f75c5c5947befd5eab7149bda73299">Utilizador::set_acesso</a>(<span class="keywordtype">int</span> acess) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    acesso = acess;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// determinar tipo de acesso do utilizador; parametros: acesso</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_utilizador.html#ae0f75c5c5947befd5eab7149bda73299">   36</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_utilizador.html#ae0f75c5c5947befd5eab7149bda73299">Utilizador::set_acesso</a>(<span class="keywordtype">int</span> acess) {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    acesso = acess;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// escreve utilizador num ficheiro; parametros: string com nome do ficheiro</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_utilizador.html#a84752982872d2c007e718d703351c535">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_utilizador.html#a84752982872d2c007e718d703351c535">Utilizador::escreve</a>(std::string ficheiro) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    stringstream out {};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    out &lt;&lt; <a class="code" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a>() &lt;&lt; endl</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            &lt;&lt; password &lt;&lt; endl</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            &lt;&lt; acesso &lt;&lt; endl;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    ofstream myfile (ficheiro, ios::app);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (myfile.is_open()) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        myfile &lt;&lt; out.str();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        myfile.close();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">throw</span> <a class="code" href="class_ficheiro__indisponivel.html">Ficheiro_indisponivel</a>(ficheiro);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// imprime utilizador</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_utilizador.html#a92483a7c23722ccc57b6ed7c42ec99e7">   55</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="class_utilizador.html#a92483a7c23722ccc57b6ed7c42ec99e7">Utilizador::imprime</a>() {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    stringstream out {};</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;ID: &quot;</span> &lt;&lt; <a class="code" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a>() &lt;&lt; endl</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            &lt;&lt; <span class="stringliteral">&quot;Nivel de acesso: &quot;</span> &lt;&lt; acesso &lt;&lt; endl;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> out.str();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="ttc" id="class_utilizador_html_a92483a7c23722ccc57b6ed7c42ec99e7"><div class="ttname"><a href="class_utilizador.html#a92483a7c23722ccc57b6ed7c42ec99e7">Utilizador::imprime</a></div><div class="ttdeci">std::string imprime()</div><div class="ttdoc">Funcao que imprime os atributos do utilizador exceto a password. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00055">Login.cpp:55</a></div></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_utilizador.html#a84752982872d2c007e718d703351c535">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_utilizador.html#a84752982872d2c007e718d703351c535">Utilizador::escreve</a>(std::string ficheiro) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    stringstream out {};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    out &lt;&lt; <a class="code" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a>() &lt;&lt; endl</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            &lt;&lt; password &lt;&lt; endl</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            &lt;&lt; acesso &lt;&lt; endl;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ofstream myfile (ficheiro, ios::app);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (myfile.is_open()) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        myfile &lt;&lt; out.str();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        myfile.close();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">throw</span> <a class="code" href="class_ficheiro__indisponivel.html">Ficheiro_indisponivel</a>(ficheiro);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_utilizador.html#a92483a7c23722ccc57b6ed7c42ec99e7">   48</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="class_utilizador.html#a92483a7c23722ccc57b6ed7c42ec99e7">Utilizador::imprime</a>() {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    stringstream out {};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;ID: &quot;</span> &lt;&lt; <a class="code" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a>() &lt;&lt; endl</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            &lt;&lt; <span class="stringliteral">&quot;Nivel de acesso: &quot;</span> &lt;&lt; acesso &lt;&lt; endl;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> out.str();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="ttc" id="class_utilizador_html_a92483a7c23722ccc57b6ed7c42ec99e7"><div class="ttname"><a href="class_utilizador.html#a92483a7c23722ccc57b6ed7c42ec99e7">Utilizador::imprime</a></div><div class="ttdeci">std::string imprime()</div><div class="ttdoc">Funcao que imprime os atributos do utilizador exceto a password. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00048">Login.cpp:48</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
-<div class="ttc" id="class_utilizador_html_a84752982872d2c007e718d703351c535"><div class="ttname"><a href="class_utilizador.html#a84752982872d2c007e718d703351c535">Utilizador::escreve</a></div><div class="ttdeci">void escreve(std::string ficheiro)</div><div class="ttdoc">Funcao que escreve os atributos do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00041">Login.cpp:41</a></div></div>
-<div class="ttc" id="class_utilizador_html_a2eed83a4cfcea7d1a9d5f5afb487341a"><div class="ttname"><a href="class_utilizador.html#a2eed83a4cfcea7d1a9d5f5afb487341a">Utilizador::set_password</a></div><div class="ttdeci">void set_password(std::string pass)</div><div class="ttdoc">Funcao para determinar a password do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00026">Login.cpp:26</a></div></div>
-<div class="ttc" id="class_utilizador_html_ae0f75c5c5947befd5eab7149bda73299"><div class="ttname"><a href="class_utilizador.html#ae0f75c5c5947befd5eab7149bda73299">Utilizador::set_acesso</a></div><div class="ttdeci">void set_acesso(int acess)</div><div class="ttdoc">Funcao para determinar o nivel de acesso do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00036">Login.cpp:36</a></div></div>
-<div class="ttc" id="class_utilizador_html_ac1106986ab1184f16e21f27a31d645dc"><div class="ttname"><a href="class_utilizador.html#ac1106986ab1184f16e21f27a31d645dc">Utilizador::get_acesso</a></div><div class="ttdeci">int get_acesso()</div><div class="ttdoc">Funcao para obter o nivel de acesso do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00031">Login.cpp:31</a></div></div>
+<div class="ttc" id="class_utilizador_html_a84752982872d2c007e718d703351c535"><div class="ttname"><a href="class_utilizador.html#a84752982872d2c007e718d703351c535">Utilizador::escreve</a></div><div class="ttdeci">void escreve(std::string ficheiro)</div><div class="ttdoc">Funcao que escreve os atributos do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00035">Login.cpp:35</a></div></div>
+<div class="ttc" id="class_utilizador_html_a2eed83a4cfcea7d1a9d5f5afb487341a"><div class="ttname"><a href="class_utilizador.html#a2eed83a4cfcea7d1a9d5f5afb487341a">Utilizador::set_password</a></div><div class="ttdeci">void set_password(std::string pass)</div><div class="ttdoc">Funcao para determinar a password do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00023">Login.cpp:23</a></div></div>
+<div class="ttc" id="class_utilizador_html_ae0f75c5c5947befd5eab7149bda73299"><div class="ttname"><a href="class_utilizador.html#ae0f75c5c5947befd5eab7149bda73299">Utilizador::set_acesso</a></div><div class="ttdeci">void set_acesso(int acess)</div><div class="ttdoc">Funcao para determinar o nivel de acesso do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00031">Login.cpp:31</a></div></div>
+<div class="ttc" id="class_utilizador_html_ac1106986ab1184f16e21f27a31d645dc"><div class="ttname"><a href="class_utilizador.html#ac1106986ab1184f16e21f27a31d645dc">Utilizador::get_acesso</a></div><div class="ttdeci">int get_acesso()</div><div class="ttdoc">Funcao para obter o nivel de acesso do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00027">Login.cpp:27</a></div></div>
 <div class="ttc" id="class_ficheiro__indisponivel_html"><div class="ttname"><a href="class_ficheiro__indisponivel.html">Ficheiro_indisponivel</a></div><div class="ttdoc">Excecao Ficheiro_indisponivel. </div><div class="ttdef"><b>Definition:</b> <a href="_excecao_8h_source.html#l00197">Excecao.h:197</a></div></div>
-<div class="ttc" id="class_utilizador_html_aa0b59c3eb1b0062c5e26dbc9fcac5915"><div class="ttname"><a href="class_utilizador.html#aa0b59c3eb1b0062c5e26dbc9fcac5915">Utilizador::get_password</a></div><div class="ttdeci">std::string get_password()</div><div class="ttdoc">Funcao para obter a password do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00021">Login.cpp:21</a></div></div>
+<div class="ttc" id="class_utilizador_html_aa0b59c3eb1b0062c5e26dbc9fcac5915"><div class="ttname"><a href="class_utilizador.html#aa0b59c3eb1b0062c5e26dbc9fcac5915">Utilizador::get_password</a></div><div class="ttdeci">std::string get_password()</div><div class="ttdoc">Funcao para obter a password do utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00019">Login.cpp:19</a></div></div>
 <div class="ttc" id="_login_8h_html"><div class="ttname"><a href="_login_8h.html">Login.h</a></div><div class="ttdoc">Header das funcoes de Utilizador. </div></div>
-<div class="ttc" id="class_utilizador_html_a4c6761daec35a3a02d3f304087b07c3b"><div class="ttname"><a href="class_utilizador.html#a4c6761daec35a3a02d3f304087b07c3b">Utilizador::Utilizador</a></div><div class="ttdeci">Utilizador(long id, std::string pass, int acess)</div><div class="ttdoc">Construtor de Utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00018">Login.cpp:18</a></div></div>
+<div class="ttc" id="class_utilizador_html_a4c6761daec35a3a02d3f304087b07c3b"><div class="ttname"><a href="class_utilizador.html#a4c6761daec35a3a02d3f304087b07c3b">Utilizador::Utilizador</a></div><div class="ttdeci">Utilizador(long id, std::string pass, int acess)</div><div class="ttdoc">Construtor de Utilizador. </div><div class="ttdef"><b>Definition:</b> <a href="_login_8cpp_source.html#l00017">Login.cpp:17</a></div></div>
 <div class="ttc" id="class_object_html"><div class="ttname"><a href="class_object.html">Object</a></div><div class="ttdoc">Classe com toda o id de qualquer objeto da biblioteca. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00016">Object.h:16</a></div></div>
 <div class="ttc" id="_excecao_8h_html"><div class="ttname"><a href="_excecao_8h.html">Excecao.h</a></div><div class="ttdoc">Header das classes e dos operadores << de Excecao. </div></div>
-<div class="ttc" id="class_object_html_a628958b64857be73b921a4ac6b359b31"><div class="ttname"><a href="class_object.html#a628958b64857be73b921a4ac6b359b31">Object::get_ID</a></div><div class="ttdeci">long get_ID()</div><div class="ttdoc">Funcao para obter o id de um objeto. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8cpp_source.html#l00019">Object.cpp:19</a></div></div>
+<div class="ttc" id="class_object_html_a628958b64857be73b921a4ac6b359b31"><div class="ttname"><a href="class_object.html#a628958b64857be73b921a4ac6b359b31">Object::get_ID</a></div><div class="ttdeci">long get_ID()</div><div class="ttdoc">Funcao para obter o id de um objeto. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8cpp_source.html#l00017">Object.cpp:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 02:55:59 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 9 2014 14:31:18 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

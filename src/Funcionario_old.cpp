@@ -17,11 +17,9 @@ using namespace std;
  * Se uma funcao relacionada com funcionarios antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-// construtor Funcionario antigo
 Funcionario_old::Funcionario_old(long id, string nom, time_t dtf, bool ct): Funcionario {id, nom, ct}, data_fim {dtf} {};
 Funcionario_old::Funcionario_old(long id, string nom, bool ct): Funcionario {id, nom, ct}, data_fim {time(0)} {};
 
-// imprimir Funcionario
 string Funcionario_old::imprime() {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);
@@ -42,7 +40,6 @@ string Funcionario_old::imprime() {
 	return out.str();
 }
 
-// escrever Funcionario
 void Funcionario_old::escreve(string ficheiro) {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);

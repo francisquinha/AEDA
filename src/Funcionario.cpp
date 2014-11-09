@@ -10,7 +10,7 @@
 
 using namespace std;
 
-long Funcionario::num_funcionarios {-1};
+long Funcionario::num_funcionarios {0};
 
 /** @file
  *
@@ -19,16 +19,13 @@ long Funcionario::num_funcionarios {-1};
  * Se uma funcao relacionada com funcionarios nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-// construtor Funcionario
 Funcionario::Funcionario(long id, string nom, bool ct): Object {id}, nome {nom} {if (ct) num_funcionarios++;}
 Funcionario::Funcionario(string nom, bool ct): Object {num_funcionarios+1}, nome {nom} {if (ct) num_funcionarios++;}
 
-// obter nome
 string Funcionario::get_nome() {
 	return nome;
 }
 
-// imprimir Funcionario
 string Funcionario::imprime() {
 	stringstream out {};
 	out << "ID: "<< get_ID() << endl
@@ -36,7 +33,6 @@ string Funcionario::imprime() {
 	return out.str();
 }
 
-// escrever Funcionario
 void Funcionario::escreve(string ficheiro) {
 	stringstream out {};
 	out << get_ID() << endl

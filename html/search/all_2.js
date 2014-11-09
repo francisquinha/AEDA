@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['clear_5fscreen',['clear_screen',['../_menu_8cpp.html#a4953d1edcbbfc7e420c423ded1d5621a',1,'clear_screen():&#160;Menu.cpp'],['../_menu_8h.html#a4953d1edcbbfc7e420c423ded1d5621a',1,'clear_screen():&#160;Menu.cpp']]],
   ['consulta_5femprestimos',['consulta_emprestimos',['../class_menu.html#a3827b44d358a5e695eec0167f8f4c151',1,'Menu']]],
   ['consulta_5ffuncionarios',['consulta_funcionarios',['../class_menu.html#ab789b1bc713ef4dde568100f547b0859',1,'Menu']]],
   ['consulta_5fleitores',['consulta_leitores',['../class_menu.html#afdf0ed032182ed49f4b55f8cbb5e4f50',1,'Menu']]],

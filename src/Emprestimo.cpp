@@ -22,7 +22,6 @@ using namespace std;
 
 long Emprestimo::num_emprestimos {0};
 
-// construtor Emprestimo
 Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {id},
 		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_emprestimos++;}
 Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, bool ct): Object {id},
@@ -32,27 +31,22 @@ Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, bool ct): Object 
 Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {num_emprestimos+1},
 		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_emprestimos++;}
 
-// obter Livro de Emprestimo
 Livro* Emprestimo::get_livro() {
 	return livro;
 }
 
-// obter Leitor de Emprestimo
 Leitor* Emprestimo::get_leitor() {
 	return leitor;
 }
 
-// obter data de Emprestimo
 time_t Emprestimo::get_data() {
 	return data;
 }
 
-// obter Funcionario de Emprestimo
 Funcionario* Emprestimo::get_funcionario() {
 	return funcionario;
 }
 
-// obter atraso na entrega de Emprestimo
 int Emprestimo::get_atraso() {
 	time_t hoje = time(0);
 	double tempo_dias {floor(difftime(hoje, data)/86400)};
@@ -60,7 +54,6 @@ int Emprestimo::get_atraso() {
 	return (int) tempo_extra;
 }
 
-// obter multa na entraga de Emprestimo
 double Emprestimo::get_multa() {
 	int tempo_extra=get_atraso();
 	int tempo_extra_extra {max(tempo_extra-7, 0)};
@@ -68,7 +61,6 @@ double Emprestimo::get_multa() {
 	return divida;
 }
 
-// imprimir Emprestimo
 string Emprestimo::imprime() {
 	stringstream out {};
 	tm *ldata = localtime(&data);
@@ -91,7 +83,6 @@ string Emprestimo::imprime() {
 	return out.str();
 }
 
-// escrever Emprestimo
 void Emprestimo::escreve(string ficheiro) {
 	stringstream out {};
 	tm *ldata = localtime(&data);

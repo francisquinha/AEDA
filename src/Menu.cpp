@@ -17,7 +17,7 @@ using namespace std;
 void clear_screen() {
 	#ifdef WINDOWS
     	system("cls");
-	#else // Assume POSIX
+	#else /* Assume POSIX */
     	system("clear");
 	#endif
 }
@@ -33,9 +33,9 @@ Menu::Menu(Utilizador_online* util): utilizador_online {util} {}
 bool Menu::e_numero(string num) {
     for (string::size_type i = 0; i != num.size(); i++) {
         if (!isdigit(num[i]))
-            return false; // existe pelo menos um caracter que nao e um numero
+            return false; /* existe pelo menos um caracter que nao e um numero */
     }
-    return true; // a string num e constituida exclusivamente por numeros
+    return true; /* a string num e constituida exclusivamente por numeros */
 }
 
 void Menu::set_utilizador(Utilizador_online* util) {
@@ -46,7 +46,6 @@ Utilizador_online* Menu::get_utilizador() {
 	return utilizador_online;
 }
 
-// faz login do utilizador e devolve o nivel de acesso se o login estiver correto ou -1 se estiver errado
 int Menu::efectuar_login(long id, std::string pass) {
 	vector<Utilizador*> utilizadores {get_utilizadores()};
 	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it!= utilizadores.end(); it++) {
@@ -61,7 +60,7 @@ int Menu::menu_login() {
     cout << "Acesso ao sistema informatico da Biblioteca" << endl
          << endl;
     bool continuar {false};
-    int tentativas {3}; // utilizador tem 3 tentativas para fazer login corretamente
+    int tentativas {3}; /* utilizador tem 3 tentativas para fazer login corretamente */
     while (!continuar) {
         cout << "ID do utilizador (tentativas restantes " << tentativas << ", s para sair): ";
         string ids {};
@@ -112,7 +111,7 @@ int Menu::menu_login() {
         	}
         }
     }
-    return -2; // nunca deve ser usado
+    return -2; /* nunca deve ser usado */
 }
 
 void Menu::menu_principal() {
@@ -508,7 +507,7 @@ void Menu::emprestimos_adicionar() {
     				if ((*it)->get_ID() == id_lt) lt = (*it);
     			}
     			Funcionario* fc{};
-    			vector<Funcionario*> funcionarios = get_funcionarios();
+    			vector<Funcionario*> funcionarios = get_funcionarios_todos();
     			for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++){
     				if ((*it)->get_ID() == utilizador_online->get_ID()) fc = (*it);
     			}
@@ -1012,7 +1011,7 @@ void Menu::utilizadores_adicionar() {
     	else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
     	else {
     		long id = atol(ids.c_str());
-			vector<Funcionario*> funcios {get_funcionarios()};
+			vector<Funcionario*> funcios {get_funcionarios_todos()};
 			bool encontrado{false};
 			for (vector<Funcionario*>::const_iterator it = funcios.begin(); it != funcios.end(); it++) {
 				if ((*it)->get_ID() == id) {

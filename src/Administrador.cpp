@@ -15,10 +15,10 @@ using namespace std;
  * Serve apenas para adicionar um unico administrador quando a aplicacao e iniciada.
  **/
 
-// construtor de Administrador
-Administrador::Administrador(long id, string nom): Funcionario {id, nom, true} {}
+/* construtor de Administrador
+ * nao incrementa o contador de funcionarios, porque o administrador tem id 0 */
+Administrador::Administrador(long id, string nom): Funcionario {id, nom, false} {}
 
-// escreve Administrador
 void Administrador::escreve(string ficheiro) {}
 
 

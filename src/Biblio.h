@@ -101,7 +101,7 @@ public:
 	 *
 	 * @return vector<Fucionario*> com os apontadores para os funcionarios
 	 **/
-	std::vector<Funcionario*> get_funcionarios();
+	std::vector<Funcionario*> get_funcionarios_todos();
 
 	/**
 	 * @brief Funcao para obter os supervisores da Biblioteca
@@ -115,7 +115,7 @@ public:
 	 *
 	 * @return vector<Funcionario*> com os apontadores para os funcionarios nao supervisores da biblioteca
 	 **/
-	std::vector<Funcionario*> get_funcionarios_n_sup();
+	std::vector<Funcionario*> get_funcionarios();
 
 	/**
 	 * @brief Funcao para obter os leitores antigos da Biblioteca

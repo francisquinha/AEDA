@@ -17,13 +17,11 @@ using namespace std;
  * Se uma funcao relacionada com leitores antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-// construtor Leitor
 Leitor_old::Leitor_old(long id, string nom, long tel, string eml, time_t dtf, bool ct):
 		Leitor {id, nom, tel, eml, {}, ct}, data_fim {dtf} {};
 Leitor_old::Leitor_old(long id, string nom, long tel, string eml, bool ct):
 		Leitor {id, nom, tel, eml, {}, ct}, data_fim {time(0)} {};
 
-// imprimir Leitor
 string Leitor_old::imprime() {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);
@@ -43,7 +41,6 @@ string Leitor_old::imprime() {
 	return out.str();
 }
 
-// escrever Leitor
 void Leitor_old::escreve(string ficheiro) {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);
