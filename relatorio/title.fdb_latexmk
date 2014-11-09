@@ -1,9 +1,0 @@
-# Fdb version 2
-["latex"] 0 "title.tex" "title.dvi" "title" 
-  "title.tex" 1415487923 336 05de68e39664e536f5fb6ae81b332213 ""
-["pdflatex"] 1415488556 "title.tex" "title.pdf" "title" 
-  "e.g., `I\hbox'" 0 -1 0 ""
-  "e.g., `\hobx'" 0 -1 0 ""
-  "job aborted, no legal \end found" 0 -1 0 ""
-  "title.aux" 1415487925 8 a94a2480d3289e625eea47cd1b285758 ""
-  "title.tex" 1415488552 298 1017278c22a4744ffd558b42f09846f5 ""
