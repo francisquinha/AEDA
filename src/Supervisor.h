@@ -23,13 +23,23 @@ class Supervisor: public Funcionario {
 public:
 
 	/**
-	 * @brief Construtor de Funcionario
+	 * @brief Construtor de Supervisor
 	 *
-	 * @param id codigo de identificacao do funcionario
-	 * @param nom nome do funcionario
+	 * @param id codigo de identificacao do supervisor
+	 * @param nom nome do supervisor
 	 * @param func_sup vetor com os apontadores para os funcionarios supervisionados
 	 **/
 	Supervisor(long id, std::string nom, std::vector<Funcionario*> func_sup);
+
+	/**
+	 * @brief Construtor de Supervisor
+	 *
+	 * @param id codigo de identificacao do supervisor
+	 * @param nom nome do supervisor
+	 * @param func_sup vetor com os apontadores para os funcionarios supervisionados
+	 * @param ct indica se devemos incrementar o numero de funcionarios
+	 **/
+	Supervisor(long id, std::string nom, std::vector<Funcionario*> func_sup, bool ct);
 
 	/**
 	 * @brief Funcao para adicionar um funcionario aos supervisionados

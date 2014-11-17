@@ -263,16 +263,21 @@ bool Biblioteca::remove_livro(long id) {
 	for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++) {
 		lvo = dynamic_cast<Livro_old*>(*it);
 		if ((*it)->get_ID() == id and lvo == 0) {
-			Livro_old* lo = new Livro_old{(*it)->get_ID(), (*it)->get_titulo(), (*it)->get_autores(),
+			if ((*it)->get_emprestado()==0) {
+				Livro_old* lo = new Livro_old{(*it)->get_ID(), (*it)->get_titulo(), (*it)->get_autores(),
+					(*it)->get_tema(), (*it)->get_ISBN(), (*it)->get_cota(), (*it)->get_num_paginas(),
+					(*it)->get_edicao(), 0, 0, time(0), false};
+				adiciona_livro_old(lo); /* ao remover um livro adicionamo-lo como Livro_old */
+				livros.erase(it);
+				cout << endl << "Livro removido." << endl;
+				return true;
+			}
+			else throw Livro_emprestado{(*it)->get_ID(), (*it)->get_titulo(), (*it)->get_autores(),
 				(*it)->get_tema(), (*it)->get_ISBN(), (*it)->get_cota(), (*it)->get_num_paginas(),
-				(*it)->get_edicao(), (*it)->get_emprestado(), (*it)->get_data_emp(), time(0), false};
-			adiciona_livro_old(lo); /* ao remover um livro adicionamo-lo como Livro_old */
-			livros.erase(it);
-			cout << endl << "Livro removido." << endl;
-			return true;
+				(*it)->get_edicao(), (*it)->get_emprestado(), (*it)->get_ID_ep(), (*it)->get_data_emp()};
 		}
 	}
-	throw Object_nao_existe(id);
+	throw Object_nao_existe(id, "livro");
 }
 
 /* distribuicao dos funcionarios de forma uniforme pelos supervisores.
@@ -294,21 +299,17 @@ void Biblioteca::distribui_funcionarios() {
  * porque se apagarmos o ultimo elemento, o iterador nunca chega ao fim.
  * mas como estamos a fazer return logo depois, nao deve haver problema. */
 bool Biblioteca::remove_funcionario(long id) {
-	bool encontrado {false};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 		if ((*it)->get_ID() == id) {
-			encontrado = true;
 			Funcionario_old* fo = new Funcionario_old{(*it)->get_ID(), (*it)->get_nome(), time(0), false};
 			adiciona_funcionario_old(fo); /* ao remover um funcionario adicionamo-lo como Funcionario_old */
 			funcionarios.erase(it);
+			distribui_funcionarios();
+			cout << endl << "Funcionario removido." << endl;
+			return true;
 		}
 	}
-	if (encontrado) {
-		distribui_funcionarios();
-		cout << endl << "Funcionario removido." << endl;
-		return true;
-	}
-	throw Object_nao_existe(id);
+	throw Object_nao_existe(id, "funcionario");
 }
 
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com o iterador,
@@ -331,7 +332,7 @@ bool Biblioteca::remove_leitor(long id) {
 			}
 		}
 	}
-	throw Object_nao_existe(id);
+	throw Object_nao_existe(id, "leitor");
 }
 
 void Biblioteca::adiciona_emprestimo_old(Emprestimo_old* ep) {
@@ -362,6 +363,62 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
 	}
 }
 
+void Biblioteca::adiciona_emprestimo_ids(long id_lv, long id_lt, long id_fc) {
+	Livro* lv{};
+    vector<Livro*> livrs = get_livros();
+    bool livro_encontrado {false};
+    for (vector<Livro*>::const_iterator it = livrs.begin(); it != livrs.end(); it++){
+    	if ((*it)->get_ID() == id_lv) {
+    		lv = (*it);
+    		livro_encontrado = true;
+    	}
+    }
+    if (livro_encontrado) {
+    	Leitor* lt{};
+    	vector<Leitor*> leitors = get_leitores();
+    	bool leitor_encontrado {false};
+    	for (vector<Leitor*>::const_iterator it = leitors.begin(); it != leitors.end(); it++){
+    		if ((*it)->get_ID() == id_lt) {
+    			lt = (*it);
+    			leitor_encontrado = true;
+    		}
+    	}
+    	if (leitor_encontrado) {
+    		Funcionario* fc{};
+    		bool func_encontrado {false};
+    		vector<Funcionario*> funcs = get_funcionarios_todos();
+    		for (vector<Funcionario*>::const_iterator it = funcs.begin(); it != funcs.end(); it++){
+    			if ((*it)->get_ID() == id_fc) {
+    				fc = (*it);
+    				func_encontrado=true;
+    			}
+    		}
+    		if (func_encontrado) {
+    			Emprestimo* ep = new Emprestimo{lv, fc, lt, true};
+    			try {
+    				adiciona_emprestimo(ep);
+    			}
+    			catch (Livro_indisponivel &liv) {
+    				ostringstream ostr{};
+    				ostr << liv;
+    				cout << ostr.str();
+    				cout << "Por favor escolha um livro disponivel." << endl;
+    			}
+    			catch(Maximo_emprestimos &lei ) {
+    				ostringstream ostr{};
+    				ostr << lei;
+    				cout << ostr.str();
+    				cout << "Por favor escolha um leitor com menos de 3 emprestimos." << endl;
+    			}
+    			cout << endl;
+    		}
+    		else throw Object_nao_existe(id_fc, "funcionario");
+    	}
+    	else throw Object_nao_existe(id_lt, "leitor");
+   	}
+    else throw Object_nao_existe(id_lv, "livro");
+}
+
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com os iteradores,
  * porque se apagarmos o ultimo elemento, nunca chegam ao fim.
  * mas como estamos a adicionar um elemento antes de apagar, nao deve haver problema */
@@ -386,7 +443,7 @@ bool Biblioteca::remove_emprestimo(long id) {
 			return true;
 		}
 	}
-	throw Object_nao_existe(id);
+	throw Object_nao_existe(id, "emprestimo");
 }
 
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com o iterador,
@@ -400,7 +457,7 @@ bool Biblioteca::remove_utilizador(long id) {
 			return true;
 		}
 	}
-	throw Object_nao_existe(id);
+	throw Object_nao_existe(id, "utilizador");
 }
 
 vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados() {
@@ -449,33 +506,55 @@ string Biblioteca::imprime_emprestimos_atrasados() {
 
 bool Biblioteca::promove_funcionario_supervisor(long id) {
 	vector<Funcionario*> func_sup {};
-	vector<Funcionario*> supervisores {get_supervisores()};
+	Supervisor* spd {};
+	Funcionario_old* fco {};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 		if ((*it)->get_ID() == id) {
-			Supervisor* sp = new Supervisor {id, (*it)->get_nome(), func_sup};
-			funcionarios.erase(it);
-			funcionarios.push_back(sp);
-			/* sempre que ha alteracoes nos funcionarios e necessario distribui-los para garantir o equilibrio */
-			distribui_funcionarios();
-			return true;
+			spd = dynamic_cast<Supervisor*>(*it);
+			fco = dynamic_cast<Funcionario_old*>(*it);
+			if (spd==0 and fco==0) {
+				Supervisor* sp = new Supervisor {id, (*it)->get_nome(), func_sup};
+				funcionarios.erase(it);
+				funcionarios.push_back(sp);
+				/* sempre que ha alteracoes nos funcionarios e necessario distribui-los para garantir o equilibrio */
+				distribui_funcionarios();
+				for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it != utilizadores.end(); it++) {
+					if ((*it)->get_ID() == id) {
+						(*it)->set_acesso(1);
+					}
+				}
+				cout << endl << "Funcionario promovido." << endl;
+				return true;
+			}
+			else throw Object_nao_existe(id, "funcionario");
 		}
 	}
-	throw Object_nao_existe(id);
+	throw Object_nao_existe(id, "funcionario");
 }
 
 bool Biblioteca::despromove_supervisor_funcionorario(long id) {
-	vector<Funcionario*> supervisores {get_supervisores()};
-	for (vector<Funcionario*>::const_iterator it = supervisores.begin(); it != supervisores.end(); it++) {
+	Supervisor* sp {};
+	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 		if ((*it)->get_ID() == id) {
-			Funcionario* fc=new Funcionario {id, (*it)->get_nome(), false};
-			funcionarios.erase(it);
-			funcionarios.push_back(fc);
-			/* sempre que ha alteracoes nos funcionarios e necessario distribui-los para garantir o equilibrio */
-			distribui_funcionarios();
-			return true;
+			sp = dynamic_cast<Supervisor*>(*it);
+			if (sp != 0) {
+				Funcionario* fc=new Funcionario {id, (*it)->get_nome(), false};
+				funcionarios.erase(it);
+				funcionarios.push_back(fc);
+				/* sempre que ha alteracoes nos funcionarios e necessario distribui-los para garantir o equilibrio */
+				distribui_funcionarios();
+				for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it != utilizadores.end(); it++) {
+					if ((*it)->get_ID() == id) {
+						(*it)->set_acesso(2);
+					}
+				}
+				cout << endl << "Supervisor despromovido." << endl;
+				return true;
+			}
+			else throw Object_nao_existe(id, "supervisor");
 		}
 	}
-	throw Object_nao_existe(id);
+	throw Object_nao_existe(id, "supervisor");
 }
 
 string Biblioteca::imprime_livros_old() {
@@ -983,10 +1062,10 @@ void Biblioteca::le_supervisores(string ficheiro) {
 					encontrado = true;
 				}
 			}
-			if (!encontrado) throw Object_nao_existe(fsid);
+			if (!encontrado) throw Object_nao_existe(fsid, "funcionario");
 		}
 		if (ids != "") {
-			Supervisor* sp = new Supervisor {id, nom, func_sup};
+			Supervisor* sp = new Supervisor {id, nom, func_sup, true};
 			adiciona_funcionario(sp);
 		}
 	}
@@ -1121,7 +1200,7 @@ void Biblioteca::le_emprestimos_old(string ficheiro) {
 					encontrado = true;
 				}
 			}
-			if (!encontrado) throw Object_nao_existe(lvid);
+			if (!encontrado) throw Object_nao_existe(lvid, "livro");
 			encontrado = false;
 			for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 				if ((*it)->get_ID() == fcid) {
@@ -1129,7 +1208,7 @@ void Biblioteca::le_emprestimos_old(string ficheiro) {
 					encontrado = true;
 				}
 			}
-			if (!encontrado) throw Object_nao_existe(fcid);
+			if (!encontrado) throw Object_nao_existe(fcid, "funcionario");
 			encontrado=false;
 			for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
 				if ((*it)->get_ID() == ltid) {
@@ -1137,7 +1216,7 @@ void Biblioteca::le_emprestimos_old(string ficheiro) {
 					encontrado = true;
 				}
 			}
-			if (!encontrado) throw Object_nao_existe(ltid);
+			if (!encontrado) throw Object_nao_existe(ltid, "leitor");
 			Emprestimo_old* ep = new Emprestimo_old {id,lv,fc,lt,dt,dte,true};
 			adiciona_emprestimo_old(ep);
 		}
@@ -1191,7 +1270,7 @@ void Biblioteca::le_emprestimos(string ficheiro) {
 					encontrado = true;
 				}
 			}
-			if (!encontrado) throw Object_nao_existe(lvid);
+			if (!encontrado) throw Object_nao_existe(lvid, "livro");
 			encontrado = false;
 			for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 				if ((*it)->get_ID() == fcid) {
@@ -1199,7 +1278,7 @@ void Biblioteca::le_emprestimos(string ficheiro) {
 					encontrado = true;
 				}
 			}
-			if (!encontrado) throw Object_nao_existe(fcid);
+			if (!encontrado) throw Object_nao_existe(fcid, "funcionario");
 			encontrado=false;
 			for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
 				if ((*it)->get_ID() == ltid) {
@@ -1207,7 +1286,7 @@ void Biblioteca::le_emprestimos(string ficheiro) {
 					encontrado = true;
 				}
 			}
-			if (!encontrado) throw Object_nao_existe(ltid);
+			if (!encontrado) throw Object_nao_existe(ltid, "leitor");
 			Emprestimo* ep = new Emprestimo {id,lv,fc,lt,dt,true};
 			try {
 				adiciona_emprestimo(ep);

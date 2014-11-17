@@ -20,6 +20,9 @@ using namespace std;
 Supervisor::Supervisor(long id, string nom, vector<Funcionario*> func_sup):
 		Funcionario {id, nom, false}, funcionarios_sup {func_sup} {}
 
+Supervisor::Supervisor(long id, string nom, vector<Funcionario*> func_sup, bool ct):
+				Funcionario {id, nom, ct}, funcionarios_sup {func_sup} {}
+
 vector<Funcionario*> Supervisor::get_func_sup() {
 	return funcionarios_sup;
 }

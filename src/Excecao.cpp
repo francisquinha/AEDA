@@ -18,11 +18,13 @@ using namespace std;
  * Todas as excessoes estao aqui.
  **/
 
-
 // excecao para quando nao existe Livro, Funcionario, Leitor, Emprestimo
+string Object_nao_existe::get_tipo(){
+	return tipo;
+}
+
 ostream& operator<<(ostream &out, Object_nao_existe &object) {
-	out << "Nao existe ID ";
-	out << object.get_ID() << "." << endl;
+	out << "Nao existe " << object.get_tipo() << " com ID " << object.get_ID() << "." << endl;
 	return out;
 }
 

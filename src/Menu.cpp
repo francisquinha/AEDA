@@ -484,17 +484,11 @@ void Menu::emprestimos_adicionar() {
     	}
     	else if (!e_numero(id_lv_s)) cout << endl << "Por favor insira um numero." << endl << endl;
     	else {
-    		id_lv = atol(id_lv_s.c_str());
-    		Livro* lv{};
-    		vector<Livro*> livros = get_livros();
-    		for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++){
-    			if ((*it)->get_ID() == id_lv) lv = (*it);
-    		}
+    		id_lv = atol (id_lv_s.c_str());
     		cout << "ID do leitor: ";
     		string id_lt_s {};
     		long id_lt{};
-            getline(cin, id_lt_s);
-			Leitor* lt{};
+    		getline(cin, id_lt_s);
     		if (id_lt_s == "s") {
     			clear_screen();
     			continuar = false;
@@ -502,31 +496,15 @@ void Menu::emprestimos_adicionar() {
     		else if (!e_numero(id_lt_s)) cout << endl << "Por favor insira um numero." << endl << endl;
     		else {
     			id_lt = atol(id_lt_s.c_str());
-    			vector<Leitor*> leitores = get_leitores();
-    			for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++){
-    				if ((*it)->get_ID() == id_lt) lt = (*it);
-    			}
-    			Funcionario* fc{};
-    			vector<Funcionario*> funcionarios = get_funcionarios_todos();
-    			for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++){
-    				if ((*it)->get_ID() == utilizador_online->get_ID()) fc = (*it);
-    			}
-    			Emprestimo* ep = new Emprestimo{lv, fc, lt, true};
     			cout << endl;
     			try {
-    				adiciona_emprestimo(ep);
+    				adiciona_emprestimo_ids(id_lv, id_lt, utilizador_online->get_ID());
     			}
-    			catch (Livro_indisponivel &liv) {
+    			catch (Object_nao_existe &ob) {
     				ostringstream ostr{};
-    				ostr << liv;
+    				ostr << ob;
     				cout << ostr.str();
-    				cout << "Por favor escolha um livro disponivel." << endl;
-    			}
-    			catch(Maximo_emprestimos &lei ) {
-    				ostringstream ostr{};
-    				ostr << lei;
-    				cout << ostr.str();
-    				cout << "Por favor escolha um leitor com menos de 3 emprestimos." << endl;
+    				cout << "Por favor escolha outro." << endl;
     			}
     			cout << endl;
     		}
@@ -684,7 +662,7 @@ void Menu::livros_adicionar() {
                         	}
                         	else if (!e_numero(num_pags)) cout << endl << "Por favor insira um numero no Num. Paginas." << endl << endl;
                         	else {
-                        		int num_pag = atol(num_pags.c_str());
+                        		int num_pag = atoi(num_pags.c_str());
                             	string edis {};
                             	cout << "Edicao: ";
                             	getline (cin, edis);
@@ -694,7 +672,7 @@ void Menu::livros_adicionar() {
                             	}
                             	else if (!e_numero(edis)) cout << endl << "Por favor insira um numero na Edicao." << endl << endl;
                             	else {
-                            		int edi = atol(edis.c_str());
+                            		int edi = atoi(edis.c_str());
                             		Livro* lv = new Livro{tit, aut, tem, isbn, cot, num_pag, edi, false, 0, 0, true};
                             		cout << endl;
                             		adiciona_livro(lv);

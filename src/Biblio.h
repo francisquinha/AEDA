@@ -195,6 +195,15 @@ public:
 	void adiciona_emprestimo(Emprestimo* ep);
 
 	/**
+	 * @brief Funcao para adicionar um novo emprestimo a Biblioteca
+	 *
+	 * @param id_lv identificacao do livro do emprestimo
+	 * @param id_lt identificacao do leitor do emprestimo
+	 * @param id_fc identificacao do funcionario do emprestimo
+	 **/
+	void adiciona_emprestimo_ids(long id_lv, long id_lt, long id_fc);
+
+	/**
 	 * @brief Funcao para adicionar um novo utilizador a Biblioteca
 	 *
 	 * @param ut apontador para o novo utilizador

@@ -22,6 +22,9 @@ class Leitor;
  **/
 class Object_nao_existe: public Object {
 
+	/** @brief tipo de objeto que nao existe (livro, leitor, funcionario, supervisor, emprestimo, utilizador) **/
+	std::string tipo;
+
 public:
 
 	/**
@@ -29,12 +32,19 @@ public:
 	 *
 	 * @param id codigo de identificacao do objecto que nao existe
 	 **/
-	Object_nao_existe(long id): Object {id} {};
+	Object_nao_existe(long id, std::string tp): Object {id}, tipo {tp} {};
 
 	/**
 	 * @brief Destrutor virtual, porque a classe Object e virtual e tem um destrutor virtual
 	 **/
 	virtual ~Object_nao_existe() {};
+
+	/**
+	 * @brief Funcao para obter o tipo do objeto inexistente
+	 *
+	 * @return string com o tipo de objeto.
+	 **/
+	std::string get_tipo();
 };
 
 /**
@@ -175,7 +185,7 @@ public:
 	 * @param eml email do leitor;
 	 * @param ep_lt vetor com os emprestimos do leitor
 	 **/
-	Maximo_emprestimos(long id, std::string nom, int tel, std::string eml, std::vector<Emprestimo*> ep_lt):
+	Maximo_emprestimos(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
 		Leitor {id, nom, tel, eml, ep_lt, false} {};
 };
 

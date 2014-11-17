@@ -39,7 +39,7 @@ bool Leitor::remove_emp_leit(long id) {
 			return true;
 		}
 	}
-	throw Object_nao_existe(id);
+	throw Object_nao_existe(id, "emprestimo");
 }
 
 vector<Emprestimo*> Leitor::get_emp_leit() {
