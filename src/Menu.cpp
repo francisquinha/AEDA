@@ -15,13 +15,22 @@ using namespace std;
  **/
 
 void clear_screen() {
-	#ifdef WINDOWS
+	#if defined(__APPLE__) || defined(__unix__)
+		system("clear");
+	#else /* Assume Windows */
     	system("cls");
-	#else /* Assume POSIX */
-    	system("clear");
 	#endif
 }
 
+char* ler_password(const char* texto) {
+	#if defined(__APPLE__) || defined(__unix__)
+		char* pass {getpass(texto)};
+		return pass;
+	#else /* Assume Windows */
+		char* pass {getch(texto)};
+		return pass;
+	#endif
+}
 Utilizador_online::Utilizador_online(long id, int ace): Object {id}, acesso {ace} {}
 
 int Utilizador_online::get_acesso() {
@@ -78,7 +87,7 @@ int Menu::menu_login() {
         }
         else {
         	long id = atol(ids.c_str());
-        	char *pass=getpass("Password do utilizador: ");
+        	char *pass=ler_password("Password do utilizador: ");
         	int login {efectuar_login(id, pass)};
         	if (login == -1) {
         		cout << "Username e/ou password errados." << endl;
@@ -1000,8 +1009,8 @@ void Menu::utilizadores_adicionar() {
 				cout << endl << "Por favor insira o ID de um funcionario existente." << endl << endl;
 			}
 			else {
-				char *pass=getpass("Password: ");
-				char *pass_c=getpass("Repetir Password: ");
+				char *pass=ler_password("Password: ");
+				char *pass_c=ler_password("Repetir Password: ");
 				if (pass != pass_c) {
 					cout << endl << "As passwords que introduziu nao coincidem. Por favor tente novamente." << endl << endl;
 				}

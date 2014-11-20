@@ -16,12 +16,25 @@
 
 /**
  * @brief funcao para limpar o ecra
+ *
  * o codigo so compila em c++11, mas desde que essa seja a versao utilizada,
  * da forma como esta funcao esta construida, devemos conseguir compilar e correr
  * a aplicacao na maior parte dos sistemas operativos
  **/
 void clear_screen();
 
+/**
+ * @brief funcao para ler uma password sem a mostrar
+ *
+ * o codigo so compila em c++11, mas desde que essa seja a versao utilizada,
+ * da forma como esta funcao esta construida, devemos conseguir compilar e correr
+ * a aplicacao na maior parte dos sistemas operativos
+ *
+ * @param texto texto que e imprimido quando e pedida a password
+ *
+ * @return char com a password
+ **/
+char* ler_password(const char* texto);
 
 /**
  * @brief Classe com o nivel de acesso e o ID do utilizador ligado ao sistema
