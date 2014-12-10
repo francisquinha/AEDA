@@ -19,14 +19,14 @@ long Leitor::num_leitores {0};
  * Se uma funcao relacionada com leitores nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Leitor::Leitor(long id, string nom, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct):
-		 Object {id}, nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
-Leitor::Leitor(string nom, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct): Object {num_leitores+1},
-		nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
-Leitor::Leitor(long id, string nom, long tel, string eml, bool ct):
-				 Object {id}, nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
-Leitor::Leitor(string nom, long tel, string eml, bool ct): Object {num_leitores+1},
-				nome {nom}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
+Leitor::Leitor(long id, string nom, int tip, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct):
+		 Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
+Leitor::Leitor(string nom, int tip, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct): Object {num_leitores+1},
+		nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
+Leitor::Leitor(long id, string nom, int tip, long tel, string eml, bool ct):
+				 Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
+Leitor::Leitor(string nom, int tip, long tel, string eml, bool ct): Object {num_leitores+1},
+				nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
 
 void Leitor::adiciona_emp_leit(Emprestimo* ep) {
 	emprestimos_leitor.push_back(ep);
@@ -50,6 +50,10 @@ string Leitor::get_nome() {
 	return nome;
 }
 
+int Leitor::get_tipo() {
+	return tipo;
+}
+
 long Leitor::get_telefone() {
 	return telefone;
 }
@@ -62,6 +66,10 @@ void Leitor::set_nome(string nom) {
 	nome = nom;
 }
 
+void Leitor::set_tipo(int tip) {
+	tipo = tip;
+}
+
 void Leitor::set_telefone(long tel) {
 	telefone = tel;
 }
@@ -72,8 +80,12 @@ void Leitor::set_email(string eml) {
 
 string Leitor::imprime() {
 	stringstream out {};
-	out << "ID: "<< get_ID() << endl<< "Nome: " << nome << endl << "Telefone: "<< telefone << endl
-			<< "Email: " << email << endl << "ID Emprestimos: ";
+	string tipos {};
+	if (tipo == 0) tipos = "Estudante";
+	else if (tipo == 1) tipos = "Crianca";
+	else tipos = "Adulto";
+	out << "ID: "<< get_ID() << endl<< "Nome: " << nome << endl << "Tipo: " << tipos << endl
+			<< "Telefone: "<< telefone << endl << "Email: " << email << endl << "ID Emprestimos: ";
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		out << (*it)->get_ID() << "; ";
 	}
@@ -85,6 +97,7 @@ void Leitor::escreve(string ficheiro) {
 	stringstream out {};
 	out << get_ID() << endl
 			<< nome << endl
+			<< tipo << endl
 			<< telefone << endl
 			<< email << endl;
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {

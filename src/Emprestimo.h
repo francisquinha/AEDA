@@ -38,7 +38,7 @@ public:
 	 *
 	 * @param id codigo de identificacao do emprestimo
 	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionarios
+	 * @param fc apontador para o funcionario
 	 * @param lt apontador para o leitor
 	 * @param dt data do emprestimo
 	 * @param ct indica se devemos incrementar o contador de emprestimos
@@ -50,7 +50,7 @@ public:
 	 *
 	 * @param id codigo de identificacao do emprestimo
 	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionarios
+	 * @param fc apontador para o funcionario
 	 * @param lt apontador para o leitor
 	 * @param ct indica se devemos incrementar o contador de emprestimos
 	 **/
@@ -60,7 +60,7 @@ public:
 	 * @brief Construtor de Emprestimo
 	 *
 	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionarios
+	 * @param fc apontador para o funcionario
 	 * @param lt apontador para o leitor
 	 * @param ct indica se devemos incrementar o contador de emprestimos
 	 **/
@@ -70,7 +70,7 @@ public:
 	 * @brief Construtor de Emprestimo
 	 *
 	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionarios
+	 * @param fc apontador para o funcionario
 	 * @param lt apontador para o leitor
 	 * @param dt data do emprestimo
 	 * @param ct indica se devemos incrementar o contador de emprestimos

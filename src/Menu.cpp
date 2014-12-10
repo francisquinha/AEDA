@@ -2,6 +2,10 @@
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
+#if defined(__APPLE__) || defined(__unix__)
+#else /* Assume Windows */
+	#include <conio.h>
+#endif
 
 #include "Menu.h"
 
@@ -25,12 +29,13 @@ void clear_screen() {
 char* ler_password(const char* texto) {
 	#if defined(__APPLE__) || defined(__unix__)
 		char* pass {getpass(texto)};
-		return pass;
 	#else /* Assume Windows */
-		char* pass {getch(texto)};
-		return pass;
+		cout << texto;
+		char* pass {getchar()};
 	#endif
+	return pass;
 }
+
 Utilizador_online::Utilizador_online(long id, int ace): Object {id}, acesso {ace} {}
 
 int Utilizador_online::get_acesso() {
@@ -103,17 +108,20 @@ int Menu::menu_login() {
         		util->online=true;
         		set_utilizador (util);
         		if (login == 0) {
-        			cout << "Bem vindo administrador " << id << "." << endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
+        			cout << "Bem vindo administrador " << id << "."
+        					<< endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
         			continuar = true;
         			return 0;
         		}
         		else if (login == 1) {
-        			cout << "Bem vindo supervisor " << id << "." << endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
+        			cout << "Bem vindo supervisor " << id << "."
+        					<< endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
         			continuar = true;
         			return 1;
         		}
         		else {
-        			cout << "Bem vindo funcionario " << id << "." << endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
+        			cout << "Bem vindo funcionario " << id << "."
+        					<< endl << endl; // nao esta a ser usado, porque o ecra e limpo logo de seguida
         			continuar = true;
         			return 2;
         		}
@@ -155,7 +163,8 @@ void Menu::menu_principal() {
             		cout << endl << "Ate a proxima." << endl << endl;
             		continuar=false;
             	}
-            	else if (!e_numero(opcaos)) cout << "Opcao indisponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            	else if (!e_numero(opcaos)) cout
+            			<< "Opcao indisponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
             	else {
             		opcao = atoi(opcaos.c_str());
             		switch (opcao) {
@@ -173,14 +182,17 @@ void Menu::menu_principal() {
             			break;
             		case 5:
             			if (login == 0) menu_funcionarios();
-            			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+            					<< endl << endl;
             			break;
             		case 6:
             			if (login == 0) menu_utilizadores();
-            			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+            					<< endl << endl;
             			break;
             		default:
-            			cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+            			cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+						<< endl << endl;
             			break;
             		}
             	}
@@ -214,7 +226,8 @@ void Menu::menu_consultas() {
         getline(cin, opcaos);
     	clear_screen();
     	if (opcaos == "s") continuar=false;
-    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else if (!e_numero(opcaos)) cout
+    			<< "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
     		opcao = atoi(opcaos.c_str());
     		switch (opcao) {
@@ -229,18 +242,22 @@ void Menu::menu_consultas() {
     			break;
    			case 4:
    				if (login != 2) consulta_funcionarios();
-   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+   						<< endl << endl;
    				break;
    			case 5:
    				if (login != 2) consulta_supervisores();
-   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+   						<< endl << endl;
    				break;
    			case 6:
    				if (login == 0) consulta_utilizadores();
-   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+   						<< endl << endl;
    				break;
    			default:
-   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+				<< endl << endl;
    				break;
   			}
    		}
@@ -263,7 +280,8 @@ void Menu::menu_emprestimos() {
         getline(cin, opcaos);
     	clear_screen();
     	if (opcaos == "s") continuar=false;
-    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else if (!e_numero(opcaos)) cout <<
+    			"Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
     		opcao = atoi(opcaos.c_str());
     		switch (opcao) {
@@ -313,7 +331,8 @@ void Menu::menu_livros() {
         getline(cin, opcaos);
     	clear_screen();
     	if (opcaos == "s") continuar=false;
-    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else if (!e_numero(opcaos)) cout
+    			<< "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
     		opcao = atoi(opcaos.c_str());
     		switch (opcao) {
@@ -331,14 +350,17 @@ void Menu::menu_livros() {
     			break;
     		case 5:
    				if (login != 2) livros_adicionar();
-   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+   						<< endl << endl;
    				break;
     		case 6:
    				if (login != 2) livros_remover();
-   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+   						<< endl << endl;
    				break;
    			default:
-   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+   				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+				<< endl << endl;
    				break;
   			}
    		}
@@ -359,7 +381,8 @@ void Menu::menu_leitores() {
         getline(cin, opcaos);
     	clear_screen();
     	if (opcaos == "s") continuar=false;
-    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else if (!e_numero(opcaos)) cout
+    			<< "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
     		opcao = atoi(opcaos.c_str());
     		switch (opcao) {
@@ -398,7 +421,8 @@ void Menu::menu_funcionarios() {
         getline(cin, opcaos);
     	clear_screen();
     	if (opcaos == "s") continuar=false;
-    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else if (!e_numero(opcaos)) cout
+    			<< "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
     		opcao = atoi(opcaos.c_str());
     		switch (opcao) {
@@ -437,7 +461,8 @@ void Menu::menu_utilizadores(){
         getline(cin, opcaos);
     	clear_screen();
     	if (opcaos == "s") continuar=false;
-    	else if (!e_numero(opcaos)) cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+    	else if (!e_numero(opcaos)) cout
+    			<< "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
     	else {
     		opcao = atoi(opcaos.c_str());
     		switch (opcao) {
@@ -554,7 +579,8 @@ void Menu::emprestimos_atrasados() {
 	vector<Emprestimo*> emprestimos_atrasados {get_emprestimos_atrasados()};
 	stringstream out {};
 	out << "EMPRESTIMOS ATRASADOS" << endl << endl;
-	for (vector<Emprestimo*>::const_iterator it = emprestimos_atrasados.begin(); it != emprestimos_atrasados.end(); it++) {
+	for (vector<Emprestimo*>::const_iterator it = emprestimos_atrasados.begin();
+			it != emprestimos_atrasados.end(); it++) {
 		out << (*it)->imprime() << endl;
 	}
 	cout << out.str();
@@ -568,7 +594,8 @@ void Menu::emprestimos_atrasados_livros() {
 	vector<Emprestimo*> emprestimos_atrasados {get_emprestimos_atrasados()};
 	stringstream out {};
 	out << "LIVROS ATRASADOS" << endl << endl;
-	for (vector<Emprestimo*>::const_iterator it = emprestimos_atrasados.begin(); it != emprestimos_atrasados.end(); it++) {
+	for (vector<Emprestimo*>::const_iterator it = emprestimos_atrasados.begin();
+			it != emprestimos_atrasados.end(); it++) {
 		out << ((*it)->get_livro())->imprime() << endl;
 	}
 	cout << out.str();
@@ -651,7 +678,8 @@ void Menu::livros_adicionar() {
             			clear_screen();
             			continuar = false;
                 	}
-                	else if (!e_numero(isbns)) cout << endl << "Por favor insira um numero no ISBN." << endl << endl;
+                	else if (!e_numero(isbns)) cout << endl << "Por favor insira um numero no ISBN."
+                			<< endl << endl;
                 	else {
                 		long isbn = atol(isbns.c_str());
                     	string cot {};
@@ -669,7 +697,8 @@ void Menu::livros_adicionar() {
                     			clear_screen();
                     			continuar = false;
                         	}
-                        	else if (!e_numero(num_pags)) cout << endl << "Por favor insira um numero no Num. Paginas." << endl << endl;
+                        	else if (!e_numero(num_pags)) cout << endl
+                        			<< "Por favor insira um numero no Num. Paginas." << endl << endl;
                         	else {
                         		int num_pag = atoi(num_pags.c_str());
                             	string edis {};
@@ -679,10 +708,12 @@ void Menu::livros_adicionar() {
                         			clear_screen();
                         			continuar = false;
                             	}
-                            	else if (!e_numero(edis)) cout << endl << "Por favor insira um numero na Edicao." << endl << endl;
+                            	else if (!e_numero(edis)) cout << endl
+                            			<< "Por favor insira um numero na Edicao." << endl << endl;
                             	else {
                             		int edi = atoi(edis.c_str());
-                            		Livro* lv = new Livro{tit, aut, tem, isbn, cot, num_pag, edi, false, 0, 0, true};
+                            		Livro* lv = new Livro{tit, aut, tem, isbn, cot, num_pag, edi,
+                            			false, 0, 0, true};
                             		cout << endl;
                             		adiciona_livro(lv);
                         			cout << endl;
@@ -743,32 +774,44 @@ void Menu::leitores_adicionar() {
 			continuar = false;
     	}
     	else {
-        	string tels {};
-        	cout << "Telefone: ";
-        	getline (cin, tels);
-        	if (tels == "s") {
+        	string tips {};
+        	cout << "Tipo (0 - Estudante, 1 - Crianca, 2 - Adulto): ";
+        	getline (cin, tips);
+        	if (tips == "s") {
         		clear_screen();
         		continuar = false;
         	}
-        	else if (!e_numero(tels)) cout << endl << "Por favor insira um numero no ISBN." << endl << endl;
+        	else if (tips != "1" and tips != "2" and tips != "3") cout << endl
+        			<< "Por favor insira um numero entre 0 e 2 no Tipo." << endl << endl;
         	else {
-        		long tel = atol(tels.c_str());
-            	string eml {};
-            	cout << "Email: ";
-            	getline (cin, eml);
-            	if (eml == "s") {
-        			clear_screen();
-        			continuar = false;
-            	}
-            	else {
-            		Leitor* lt = new Leitor{nom, tel, eml, true};
-                    cout << endl;
-                    adiciona_leitor(lt);
-                    cout << endl;
-            	}
-    		}
-    	}
-   	}
+				int tip = atoi(tips.c_str());
+				string tels {};
+				cout << "Telefone: ";
+				getline (cin, tels);
+				if (tels == "s") {
+					clear_screen();
+					continuar = false;
+				}
+				else if (!e_numero(tels)) cout << endl << "Por favor insira um numero no Telefone." << endl << endl;
+				else {
+					long tel = atol(tels.c_str());
+					string eml {};
+					cout << "Email: ";
+					getline (cin, eml);
+					if (eml == "s") {
+						clear_screen();
+						continuar = false;
+					}
+					else {
+						Leitor* lt = new Leitor{nom, tip, tel, eml, true};
+						cout << endl;
+						adiciona_leitor(lt);
+						cout << endl;
+					}
+				}
+			}
+		}
+    }
 }
 
 void Menu::leitores_remover() {
@@ -835,7 +878,8 @@ void Menu::leitores_alterar() {
     				clear_screen();
     				continuar = false;
     			}
-    			else if (!e_numero(tels)) cout << endl << "Por favor insira um numero no telefone." << endl << endl;
+    			else if (!e_numero(tels)) cout << endl
+    					<< "Por favor insira um numero no telefone." << endl << endl;
     			else {
     				long tel = atol(tels.c_str());
     				string eml {};
@@ -1012,7 +1056,8 @@ void Menu::utilizadores_adicionar() {
 				char *pass=ler_password("Password: ");
 				char *pass_c=ler_password("Repetir Password: ");
 				if (pass != pass_c) {
-					cout << endl << "As passwords que introduziu nao coincidem. Por favor tente novamente." << endl << endl;
+					cout << endl << "As passwords que introduziu nao coincidem. Por favor tente novamente."
+							<< endl << endl;
 				}
 				else {
 			    	string aces{};
@@ -1022,7 +1067,8 @@ void Menu::utilizadores_adicionar() {
 						clear_screen();
 						continuar = false;
 			    	}
-			    	else if (!e_numero(aces)) cout << endl << "Por favor insira um numero entre 0 e 2." << endl << endl;
+			    	else if (!e_numero(aces)) cout << endl << "Por favor insira um numero entre 0 e 2."
+			    			<< endl << endl;
 			    	else {
 			    		int ace = atoi(aces.c_str());
 			    		if (ace == 0 or ace == 1 or ace == 2) {

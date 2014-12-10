@@ -1,3 +1,9 @@
+/* Alterar a classe Livro:
+ * - acrescentar exemplares e ex_disponiveis;
+ * - retirar emprestado, ID_ep, data_emp;
+ * - acrescentar lista (ou vetor) ID_ep e lista (ou vetor) data_emp
+ * 	 com as referencias aos emprestimos dos varios exemplares. */
+
 
 #ifndef SRC_LIVRO_H_
 #define SRC_LIVRO_H_

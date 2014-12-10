@@ -153,8 +153,8 @@ public:
 	 * @param eml email do leitor;
 	 * @param ep_lt vetor com os emprestimos do leitor
 	 **/
-	Emprestimos_por_devolver(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
-		Leitor {id, nom, tel, eml, ep_lt, false} {};
+	Emprestimos_por_devolver(long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
+		Leitor {id, nom, tip, tel, eml, ep_lt, false} {};
 };
 
 /**
@@ -185,8 +185,8 @@ public:
 	 * @param eml email do leitor;
 	 * @param ep_lt vetor com os emprestimos do leitor
 	 **/
-	Maximo_emprestimos(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
-		Leitor {id, nom, tel, eml, ep_lt, false} {};
+	Maximo_emprestimos(long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
+		Leitor {id, nom, tip, tel, eml, ep_lt, false} {};
 };
 
 /**

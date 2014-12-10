@@ -30,24 +30,26 @@ public:
 	 *
 	 * @param id codigo de identificacao do leitor
 	 * @param nom nome do leitor
+	 * @param tip tipo do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor_old(long id, std::string nom, long tel, std::string eml, std::time_t dtf, bool ct);
+	Leitor_old(long id, std::string nom, int tip, long tel, std::string eml, std::time_t dtf, bool ct);
 
 	/**
 	 * @brief Construtor de Leitor antigo
 	 *
 	 * @param id codigo de identificacao do leitor
 	 * @param nom nome do leitor
+	 * @param tip tipo do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor_old(long id, std::string nom, long tel, std::string eml, bool ct);
+	Leitor_old(long id, std::string nom, int tip, long tel, std::string eml, bool ct);
 
 	/**
 	 * @brief Funcao que imprime os atributos do leitor antigo

@@ -321,14 +321,14 @@ bool Biblioteca::remove_leitor(long id) {
 		lto = dynamic_cast<Leitor_old*>(*it);
 		if ((*it)->get_ID() == id and lto == 0) {
 			if ((*it)->get_emp_leit().size() == 0) {
-				Leitor_old* lo = new Leitor_old{(*it)->get_ID(), (*it)->get_nome(), (*it)->get_telefone(), (*it)->get_email(), time(0), false};
+				Leitor_old* lo = new Leitor_old{(*it)->get_ID(), (*it)->get_nome(), (*it)->get_tipo(), (*it)->get_telefone(), (*it)->get_email(), time(0), false};
 				adiciona_leitor_old(lo); /* ao remover um leitor adicionamo-lo como Leitor_old */
 				leitores.erase(it);
 				cout << endl << "Leitor removido." << endl;
 				return true;
 			}
 			else { /* nao podemos remover um leitor com emprestimos por devolver */
-				throw Emprestimos_por_devolver(id, (*it)->get_nome(),(*it)->get_telefone(), (*it)->get_email(), (*it)->get_emp_leit());
+				throw Emprestimos_por_devolver(id, (*it)->get_nome(), (*it)->get_tipo(), (*it)->get_telefone(), (*it)->get_email(), (*it)->get_emp_leit());
 			}
 		}
 	}
@@ -353,7 +353,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
 			cout << "Emprestimo adicionado." << endl;
 		}
 		else { /* nao podemos adicionar mais emprestimos a um leitor que ja tenha 3 */
-			throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(), lt->get_telefone(), lt->get_email(), lt->get_emp_leit());
+			throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(), lt->get_tipo(), lt->get_telefone(), lt->get_email(), lt->get_emp_leit());
 		}
 	}
 	else { /* nao podemos emprestar um livro que ja esteja emprestado */
@@ -1075,18 +1075,21 @@ void Biblioteca::le_supervisores(string ficheiro) {
 void Biblioteca::le_leitores_old(string ficheiro) {
 	ifstream islt(ficheiro);
 	if (!islt) throw Ficheiro_indisponivel(ficheiro);
-	string ids {}, nom {}, tels {}, eml {}, ymds {}, years{}, months{}, days{};
+	string ids {}, nom {}, tels {}, eml {}, ymds {}, years {}, months {}, days {}, tips {};
 	long id {}, tel {};
+	int tip {};
 	time_t dt {};
 	struct tm* dtinfo {};
 	int year {}, month {}, day {};
 	while (!islt.eof()) {
 		getline(islt, ids);
 		getline(islt, nom);
+		getline(islt, tips);
 		getline(islt, tels);
 		getline(islt, eml);
 		getline(islt, ymds);
 		id = atol(ids.c_str());
+		tip = atoi(tips.c_str());
 		tel = atol(tels.c_str());
 		if (ymds == "0") dt=0;
 		else {
@@ -1105,7 +1108,7 @@ void Biblioteca::le_leitores_old(string ficheiro) {
 			dt = mktime (dtinfo);
 		}
 		if (ids != "") {
-			Leitor_old* lto = new Leitor_old {id,nom,tel,eml,dt,true};
+			Leitor_old* lto = new Leitor_old {id, nom, tip, tel, eml, dt, true};
 			adiciona_leitor_old(lto);
 		}
 	}
@@ -1115,20 +1118,23 @@ void Biblioteca::le_leitores_old(string ficheiro) {
 void Biblioteca::le_leitores(string ficheiro) {
 	ifstream islt(ficheiro);
 	if (!islt) throw Ficheiro_indisponivel(ficheiro);
-	string ids {}, nom {}, tels {}, eml {}, epids {};
+	string ids {}, nom {}, tels {}, eml {}, epids {}, tips {};
 	long id {}, tel {};
+	int tip{};
 	istringstream epidss {};
 	string empids {};
 	while (!islt.eof()) {
 		getline(islt, ids);
 		getline(islt, nom);
+		getline(islt, tips);
 		getline(islt, tels);
 		getline(islt, eml);
 		getline(islt, epids);
 		id = atol(ids.c_str());
+		tip = atoi(tips.c_str());
 		tel = atol(tels.c_str());
 		if (ids != "") {
-			Leitor* lt = new Leitor {id,nom,tel,eml,{}, true};
+			Leitor* lt = new Leitor {id, nom, tip, tel, eml, {}, true};
 			adiciona_leitor(lt);
 		}
 	}

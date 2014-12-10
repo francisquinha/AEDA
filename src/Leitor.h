@@ -21,6 +21,7 @@ class Object;
 class Leitor: public Object {
 
 	std::string nome; /**< @brief nome do leitor **/
+	int tipo; /**< @brief tipo de leitor (0 - estudante, 1 - crianca ate 12 anos, 2 - adulto) **/
 	long telefone; /**< @brief telefone do leitor **/
 	std::string email; /**< @brief email do leitor **/
 	std::vector<Emprestimo*> emprestimos_leitor; /**< @brief vetor com apontadores para os emprestimos do leitor **/
@@ -33,44 +34,48 @@ public:
 	 *
 	 * @param id codigo de identificacao do leitor
 	 * @param nom nome do leitor
+	 * @param tip tipo do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(long id, std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt, bool ct);
+	Leitor(long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt, bool ct);
 
 	/**
 	 * @brief Construtor de Leitor
 	 *
 	 * @param nom nome do leitor
+	 * @param tip tipo do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(std::string nom, long tel, std::string eml, std::vector<Emprestimo*> ep_lt, bool ct);
+	Leitor(std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt, bool ct);
 
 	/**
 	 * @brief Construtor de Leitor
 	 *
 	 * @param id codigo de identificacao do leitor
 	 * @param nom nome do leitor
+	 * @param tip tipo do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(long id, std::string nom, long tel, std::string eml, bool ct);
+	Leitor(long id, std::string nom, int tip, long tel, std::string eml, bool ct);
 
 	/**
 	 * @brief Construtor de Leitor
 	 *
 	 * @param nom nome do leitor
+	 * @param tip tipo do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(std::string nom, long tel, std::string eml, bool ct);
+	Leitor(std::string nom, int tip, long tel, std::string eml, bool ct);
 
 	/**
 	 * @brief Destrutor virtual de Leitor
@@ -97,6 +102,20 @@ public:
 	 * @param nom nome do leitor
 	 **/
 	void set_nome(std::string nom);
+
+	/**
+	 * @brief Funcao para obter o tipo do leitor
+	 *
+	 * @return int com o tipo do leitor
+	 **/
+	int get_tipo();
+
+	/**
+	 * @brief Funcao para determinar o tipo do leitor
+	 *
+	 * @param tip tipo do leitor
+	 **/
+	void set_tipo(int tip);
 
 	/**
 	 * @brief Funcao para obter o telefone do leitor

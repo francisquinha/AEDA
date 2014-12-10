@@ -1,9 +1,12 @@
 #ifndef SRC_BIBLIOTECA_H_
 #define SRC_BIBLIOTECA_H_
 
+#include <list>
+#include <queue>
 #include "Administrador.h"
 #include "Supervisor.h"
 #include "Emprestimo_old.h"
+#include "Pedido.h"
 #include "Funcionario_old.h"
 #include "Livro_old.h"
 #include "Leitor_old.h"
@@ -14,6 +17,7 @@ class Livro_old;
 class Leitor_old;
 class Supervisor;
 class Emprestimo_old;
+class Pedido;
 class Utilizadores;
 class Login;
 
@@ -38,7 +42,7 @@ class Biblioteca {
 	std::vector<Leitor*> leitores; /**< @brief vetor com apontadores para os leitores da Biblioteca **/
 	std::vector<Emprestimo*> emprestimos; /**< @brief vetor com apontadores para os emprestimos da Biblioteca **/
 	std::vector<Utilizador*> utilizadores; /**< @brief vetor com apontadores para os utilizadores da Biblioteca **/
-
+	std::queue<Pedido*> pedidos;
 public:
 
 	/**
