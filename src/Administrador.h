@@ -30,7 +30,7 @@ public:
 	 * @param id codigo de identificacao do administrador
 	 * @param nom nome do administrador
 	 **/
-	Administrador(long id, std::string nom);
+	Administrador(unsigned long id, std::string nom);
 
 	/**
 	 * @brief Funcao de escrita de Administrador

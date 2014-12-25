@@ -32,7 +32,7 @@ public:
 	 *
 	 * @param id codigo de identificacao do objecto que nao existe
 	 **/
-	Object_nao_existe(long id, std::string tp): Object {id}, tipo {tp} {};
+	Object_nao_existe(unsigned long id, std::string tp): Object {id}, tipo {tp} {};
 
 	/**
 	 * @brief Destrutor virtual, porque a classe Object e virtual e tem um destrutor virtual
@@ -69,7 +69,7 @@ public:
 	/**
 	 * @brief Construtor de Livro_indisponivel
 	 *
-	 * @param id codigo de identificacao do livro
+     * @param ano ano de edicao do livro
 	 * @param tit titulo do livro
 	 * @param aut vetor com os nomes dos autores do livro
 	 * @param tem tema do livro
@@ -77,52 +77,139 @@ public:
 	 * @param cot cota do livro na biblioteca
 	 * @param np numero de paginas do livro
 	 * @param ed numero da edicao do livro
-	 * @param ept indicador se o livro se encontra emprestado ou nao
-	 * @param id_ep ID do emprestimo do livro, caso exista
-	 * @param dt data do emprestimo, caso exista
+     * @param id codigo de identificacao do livro
+	 * @param ex numero total de exemplares do livro
+	 * @param exd numero de exemmplares disponiveis do livro
+     * @param id_ep vetor com os IDs de emprestimo dos exemplares do livro
+	 * @param dt vetor com as datas de emprestimo dos exemplares do livro
 	 **/
-	Livro_indisponivel(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
-			std::string cot, int np, int ed, bool ept, long id_ep, std::time_t dt):
-				Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, id_ep, dt, false} {};
+    Livro_indisponivel(int ano, std::string tit, std::vector<std::string> aut, std::string tem,
+                       long isbn, std::string cot, int np, int ed, unsigned long id, int ex, int exd,
+                       std::vector<unsigned long> id_ep, std::vector<time_t> dt):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt} {};
+};
+
+class Exemplar_indisponivel: public Livro {
+    
+    unsigned long indice; /**< @brief indice do exemplar do livro **/
+    
+public:
+    
+    /**
+     * @brief Construtor de Exemplar_indisponivel
+     *
+     * @param ind indice do exemplar do livro
+     * @param ano ano de edicao do livro
+     * @param tit titulo do livro
+     * @param aut vetor com os nomes dos autores do livro
+     * @param tem tema do livro
+     * @param isbn ISBN do livro
+     * @param cot cota do livro na biblioteca
+     * @param np numero de paginas do livro
+     * @param ed numero da edicao do livro
+     * @param id codigo de identificacao do livro
+     * @param ex numero total de exemplares do livro
+     * @param exd numero de exemplares disponiveis do livro
+     * @param id_ep vetor com os IDs de emprestimo dos exemplares do livro
+     * @param dt vetor com as datas de emprestimo dos exemplares do livro
+     **/
+    Exemplar_indisponivel(unsigned long ind, int ano, std::string tit,
+                         std::vector<std::string> aut, std::string tem, long isbn,
+                          std::string cot, int np, int ed, unsigned long id, int ex, int exd,
+                          std::vector<unsigned long> id_ep, std::vector<time_t> dt):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt}, indice {ind} {};
+    
+    unsigned long get_indice();
 };
 
 /**
- * @brief Overload do operador << para imprimir um membro da classe Livro_indisponivel
+ * @brief Overload do operador << para imprimir um membro da classe Exemplar_inexistente
  *
  * @param &out referencia para ostream onde sera colocada a impressao
- * @param &livro referencia do livro que nao existe
+ * @param &livro referencia do exemplar inexistente
  *
  * @return ostream com a impressao
  **/
-std::ostream& operator<<(std::ostream &out, Livro_indisponivel &livro);
+std::ostream& operator<<(std::ostream &out, Exemplar_indisponivel &livro);
+
+class Exemplar_inexistente: public Livro {
+   
+    unsigned long indice; /**< @brief indice do exemplar do livro **/
+    
+public:
+    
+    /**
+     * @brief Construtor de Exemplar_inexistente
+     *
+     * @param ind indice do exemplar do livro
+     * @param ano ano de edicao do livro
+     * @param tit titulo do livro
+     * @param aut vetor com os nomes dos autores do livro
+     * @param tem tema do livro
+     * @param isbn ISBN do livro
+     * @param cot cota do livro na biblioteca
+     * @param np numero de paginas do livro
+     * @param ed numero da edicao do livro
+     * @param id codigo de identificacao do livro
+     * @param ex numero total de exemplares do livro
+     * @param exd numero de exemplares disponiveis do livro
+     * @param id_ep vetor com os IDs de emprestimo dos exemplares do livro
+     * @param dt vetor com as datas de emprestimo dos exemplares do livro
+     **/
+    Exemplar_inexistente(unsigned long ind, int ano, std::string tit,
+                         std::vector<std::string> aut, std::string tem, long isbn,
+                         std::string cot, int np, int ed, unsigned long id, int ex, int exd,
+                         std::vector<unsigned long> id_ep, std::vector<time_t> dt):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt}, indice {ind} {};
+    
+    unsigned long get_indice();
+};
+
+/**
+ * @brief Overload do operador << para imprimir um membro da classe Exemplar_inexistente
+ *
+ * @param &out referencia para ostream onde sera colocada a impressao
+ * @param &livro referencia do exemplar inexistente
+ *
+ * @return ostream com a impressao
+ **/
+std::ostream& operator<<(std::ostream &out, Exemplar_inexistente &livro);
 
 /**
  * @brief Excecao Livro_emprestado
  *
- * Sempre que se tenta remover um livro emprestado esta excecao e utilizada.
+ * Sempre que se tenta remover um exemplar emprestado de um livro esta excecao e utilizada.
  **/
 class Livro_emprestado: public Livro {
+    
+    unsigned long indice; /**< @brief indice do exemplar do livro **/
 
 public:
 
 	/**
 	 * @brief Construtor de Livro_emprestado
 	 *
-	 * @param id codigo de identificacao do livro
-	 * @param tit titulo do livro
-	 * @param aut vetor com os nomes dos autores do livro
-	 * @param tem tema do livro
-	 * @param isbn ISBN do livro
-	 * @param cot cota do livro na biblioteca
-	 * @param np numero de paginas do livro
-	 * @param ed numero da edicao do livro
-	 * @param ept indicador se o livro se encontra emprestado ou nao
-	 * @param id_ep ID do emprestimo do livro, caso exista
-	 * @param dt data do emprestimo, caso exista
+     * @param ind indice do exemplar do livro
+     * @param ano ano de edicao do livro
+     * @param tit titulo do livro
+     * @param aut vetor com os nomes dos autores do livro
+     * @param tem tema do livro
+     * @param isbn ISBN do livro
+     * @param cot cota do livro na biblioteca
+     * @param np numero de paginas do livro
+     * @param ed numero da edicao do livro
+     * @param id codigo de identificacao do livro
+     * @param ex numero total de exemplares do livro
+     * @param exd numero de exemplares disponiveis do livro
+     * @param id_ep vetor com os IDs de emprestimo dos exemplares do livro
+     * @param dt vetor com as datas de emprestimo dos exemplares do livro
 	 **/
-	Livro_emprestado(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
-			std::string cot, int np, int ed, bool ept, long id_ep, std::time_t dt):
-				Livro {id, tit, aut, tem, isbn, cot, np, ed, ept, id_ep, dt, false} {};
+    Livro_emprestado(unsigned long ind, int ano, std::string tit, std::vector<std::string> aut,
+                     std::string tem, long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
+                     int exd, std::vector<unsigned long> id_ep, std::vector<time_t> dt):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt}, indice {ind} {};
+    
+    unsigned long get_indice();
 };
 
 /**
@@ -153,8 +240,8 @@ public:
 	 * @param eml email do leitor;
 	 * @param ep_lt vetor com os emprestimos do leitor
 	 **/
-	Emprestimos_por_devolver(long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
-		Leitor {id, nom, tip, tel, eml, ep_lt, false} {};
+	Emprestimos_por_devolver(unsigned long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
+		Leitor {nom, tip, tel, eml, false, id, ep_lt} {};
 };
 
 /**
@@ -185,8 +272,8 @@ public:
 	 * @param eml email do leitor;
 	 * @param ep_lt vetor com os emprestimos do leitor
 	 **/
-	Maximo_emprestimos(long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
-		Leitor {id, nom, tip, tel, eml, ep_lt, false} {};
+	Maximo_emprestimos(unsigned long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
+		Leitor {nom, tip, tel, eml, false, id, ep_lt} {};
 };
 
 /**

@@ -14,7 +14,7 @@ using namespace std;
  * Se uma funcao relacionada com utilizadores nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Utilizador::Utilizador(long id, std::string pass, int acess): Object {id}, password {pass}, acesso {acess} {}
+Utilizador::Utilizador(unsigned long id, std::string pass, int acess): Object {id}, password {pass}, acesso {acess} {}
 
 string Utilizador::get_password() {
 	return password;

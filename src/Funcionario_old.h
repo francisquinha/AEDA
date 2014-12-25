@@ -34,16 +34,7 @@ public:
 	 * @param dtf data em que foi removido o funcionario
 	 * @param ct indica se devemos incrementar o contador de funcionarios
 	 **/
-	Funcionario_old(long id, std::string nom, std::time_t dtf, bool ct);
-
-	/**
-	 * @brief Construtor de Funcionario antigo
-	 *
-	 * @param id codigo de identificacao do funcionario
-	 * @param nom nome do funcionario
-	 * @param ct indica se devemos incrementar o contador de funcionarios
-	 **/
-	Funcionario_old(long id, std::string nom, bool ct);
+	Funcionario_old(unsigned long id, std::string nom, bool ct, std::time_t dtf = time(0));
 
 	/**
 	 * @brief Funcao que imprime os atributos do funcionario antigo

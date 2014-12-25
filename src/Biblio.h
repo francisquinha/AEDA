@@ -205,7 +205,7 @@ public:
 	 * @param id_lt identificacao do leitor do emprestimo
 	 * @param id_fc identificacao do funcionario do emprestimo
 	 **/
-	void adiciona_emprestimo_ids(long id_lv, long id_lt, long id_fc);
+	void adiciona_emprestimo_ids(unsigned long id_lv, unsigned long ind, unsigned long id_lt, unsigned long id_fc);
 
 	/**
 	 * @brief Funcao para adicionar um novo utilizador a Biblioteca
@@ -215,17 +215,18 @@ public:
 	void adiciona_utilizador(Utilizador* ut);
 
 	/**
-	 * @brief Funcao para remover um livro da Biblioteca
+	 * @brief Funcao para remover um exemplar de um livro da Biblioteca
 	 *
-	 * @param id identificacao do livro que queremos remover
+	 * @param id identificacao do livro cujo exemplar queremos remover
+     * @param ind indice do exemplar do livro que queremos remover
 	 *
 	 * @return true se existe algum livro com o id fornecido
 	 *
 	 * @exception Object_nao_existe se nao existe nenhum livro com o id fornecido
 	 *
-	 * Nota: remove o primeiro livro com o id indicado.
+	 * Nota: remove o exemplar do primeiro livro com o id indicado.
 	 **/
-	bool remove_livro(long id);
+	bool remove_livro(unsigned long id, unsigned long ind);
 
 	/**
 	 * @brief Funcao para remover um funcionario da Biblioteca
@@ -238,7 +239,7 @@ public:
 	 *
 	 * Nota: remove o primeiro funcionario com o id indicado.
 	 **/
-	bool remove_funcionario(long id);
+	bool remove_funcionario(unsigned long id);
 
 	/**
 	 * @brief Funcao para remover um leitor da Biblioteca
@@ -251,7 +252,7 @@ public:
 	 *
 	 * Nota: remove o primeiro leitor com o id indicado.
 	 **/
-	bool remove_leitor(long id);
+	bool remove_leitor(unsigned long id);
 
 	/**
 	 * @brief Funcao para remover um emprestimo da Biblioteca
@@ -264,7 +265,7 @@ public:
 	 *
 	 * Nota: remove o primeiro emprestimo com o id indicado.
 	 **/
-	bool remove_emprestimo(long id);
+	bool remove_emprestimo(unsigned long id);
 
 	/**
 	 * @brief Funcao para remover um utilizador da Biblioteca
@@ -277,7 +278,7 @@ public:
 	 *
 	 * Nota: remove o primeiro utilizador com o id indicado.
 	 **/
-	bool remove_utilizador(long id);
+	bool remove_utilizador(unsigned long id);
 
 	/**
 	 * @brief Funcao para distribuir uniformemente os funcionarios pelos supervisores
@@ -289,7 +290,7 @@ public:
 	/**
 	 * @brief Funcao para promover um funcionario a supervisor
 	 *
-	 * @param long id identificacao do funcionario que pretendemos promover
+	 * @param unsigned long id identificacao do funcionario que pretendemos promover
 	 *
 	 * @return true se existe um funcionario com o id fornecido
 	 *
@@ -299,12 +300,12 @@ public:
 	 * 		  - no final os funcionarios sao redistribuidos, pelo que se mantem o equlibrio
 	 *  	  	 entre o numero de funcionarios por supervisor.
 	 **/
-	bool promove_funcionario_supervisor(long id);
+	bool promove_funcionario_supervisor(unsigned long id);
 
 	/**
 	 * @brief Funcao para despromover um supervisor a funcionario
 	 *
-	 * @param long id identificacao do supervisor que pretendemos despromover
+	 * @param unsigned long id identificacao do supervisor que pretendemos despromover
 	 *
 	 * @return true se existe um supervisor com o id fornecido
 	 *
@@ -314,7 +315,7 @@ public:
 	 * 		   - no final os funcionarios sao redistribuidos, pelo que se mantem o equlibrio
 	 *  		 entre o numero de funcionarios por supervisor.
 	 **/
-	bool despromove_supervisor_funcionorario(long id);
+	bool despromove_supervisor_funcionorario(unsigned long id);
 
 	/**
 	 * @brief Funcao que imprime todos os livros antigos da Biblioteca

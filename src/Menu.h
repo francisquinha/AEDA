@@ -56,7 +56,7 @@ public:
 	 * @param id codigo de identificacao do utilizador
 	 * @param acess nivel de acesso do utilizador
 	 **/
-    Utilizador_online(long id, int ace);
+    Utilizador_online(unsigned long id, int ace);
 
 	/**
 	 * @brief Funcao para obter o nivel de acesso do Utilizador_online
@@ -116,7 +116,7 @@ public:
 	 *
 	 * @return int com o nivel de acesso se o id e a pass corresponderem a um utilizador existente, -1 caso contrario
 	 **/
-    int efectuar_login(long id, std::string pass);
+    int efectuar_login(unsigned long id, std::string pass);
 
 	/**
 	 * @brief Menu inicial usado para fazer login

@@ -19,7 +19,7 @@ class Object;
 class Funcionario: public Object {
 
 	std::string nome; /**< @brief nome do funcionario **/
-	static long num_funcionarios; /**< @brief contador de funcionarios na biblioteca **/
+	static unsigned long num_funcionarios; /**< @brief contador de funcionarios na biblioteca **/
 
 public:
 
@@ -30,15 +30,7 @@ public:
 	 * @param nom nome do funcionario
 	 * @param ct indica se devemos incrementar o contador de funcionarios
 	 **/
-	Funcionario(long id, std::string nom, bool ct);
-
-	/**
-	 * @brief Construtor de Funcionario
-	 *
-	 * @param nom nome do funcionario
-	 * @param ct indica se devemos incrementar o contador de funcionarios
-	 **/
-	Funcionario(std::string nom, bool ct);
+	Funcionario(std::string nom, bool ct, unsigned long id = num_funcionarios + 1);
 
 	/**
 	 * @brief Destrutor virtual de Funcionario

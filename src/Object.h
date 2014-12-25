@@ -15,7 +15,7 @@
  **/
 class Object {
 
-	long ID; /**< @brief codigo de identificacao do objeto **/
+	unsigned long ID; /**< @brief codigo de identificacao do objeto **/
 
 public:
 
@@ -24,14 +24,14 @@ public:
 	 *
 	 * @param id codigo de identificacao do objeto
 	 **/
-	Object(long id);
+	Object(unsigned long id);
 
 	/**
 	 * @brief Funcao para obter o id de um objeto
 	 *
 	 * @return long com o id
 	 **/
-	long get_ID();
+	unsigned long get_ID();
 };
 
 #endif /* SRC_OBJECT_H_ */

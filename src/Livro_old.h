@@ -2,7 +2,15 @@
 #ifndef SRC_LIVRO_OLD_H_
 #define SRC_LIVRO_OLD_H_
 
+#include <string>
+#include <vector>
+#include <iostream>
+#include <sstream>
+#include <fstream>
 #include <ctime>
+#include <algorithm>
+#include <cmath>
+
 #include "Livro.h"
 
 class Livro;
@@ -29,41 +37,23 @@ public:
 	/**
 	 * @brief Construtor de Livro antigo
 	 *
-	 * @param id codigo de identificacao do livro
-	 * @param tit titulo do livro
-	 * @param aut vetor com os nomes dos autores
-	 * @param tem tema do livro
-	 * @param isbn ISBN do livro
-	 * @param cot cota do livro na biblioteca
-	 * @param np numero de paginas do livro
-	 * @param ed numero da edicao do livro
-	 * @param ept indica se o livro esta emprestado (sempre false)
-	 * @param id_ep ID do emprestimo do livro (sempre 0)
-	 * @param dt data de emprestimo do livro (sempre 0)
-	 * @param dtf data de remocao do livro da biblioteca
-	 * @param ct indica se devemos incrementar o contador de livros
+     * @param ano ano de edicao do livro
+     * @param tit titulo do livro
+     * @param aut vetor com os nomes dos autores
+     * @param tem tema do livro
+     * @param isbn ISBN do livro
+     * @param cot cota do livro na biblioteca
+     * @param np numero de paginas do livro
+     * @param ed numero da edicao do livro
+     * @param dtf lista com as datas de emprestimo de cada exemplar do livro, tudo 0
+     * @param ct indica se devemos incrementar o contador de livros
+     * @param id codigo de identificacao do livro
+     * @param ex numero total de exemplares do livro
+     * @param exd numero de exemplares disponiveis do livro
 	 **/
-	Livro_old(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn, std::string cot,
-			int np, int ed, bool ept, long id_ep, std::time_t dt, std::time_t dtf, bool ct);
-
-	/**
-	 * @brief Construtor de Livro antigo
-	 *
-	 * @param id codigo de identificacao do livro
-	 * @param tit titulo do livro
-	 * @param aut vetor com os nomes dos autores
-	 * @param tem tema do livro
-	 * @param isbn ISBN do livro
-	 * @param cot cota do livro na biblioteca
-	 * @param np numero de paginas do livro
-	 * @param ed numero da edicao do livro
-	 * @param ept indica se o livro esta emprestado (sempre false)
-	 * @param id_ep ID do emprestimo do livro (sempre 0)
-	 * @param dt data de emprestimo do livro (sempre 0)
-	 * @param ct indica se devemos incrementar o contador de livros
-	 **/
-	Livro_old(long id, std::string tit, std::vector<std::string> aut, std::string tem, long isbn, std::string cot,
-			int np, int ed, bool ept, long id_ep, std::time_t dt, bool ct);
+    Livro_old(int ano, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
+              std::string cot, int np, int ed, bool ct, time_t dtf, unsigned long id, int ex = 1,
+              int exd = 1);
 
 	/**
 	 * @brief Funcao que imprime os atributos do livro antigo

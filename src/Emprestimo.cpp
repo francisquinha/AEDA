@@ -20,19 +20,18 @@ using namespace std;
  * Se uma funcao relacionada com emprestimos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-long Emprestimo::num_emprestimos {0};
+unsigned long Emprestimo::num_emprestimos {0};
 
-Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {id},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_emprestimos++;}
-Emprestimo::Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, bool ct): Object {id},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {time(0)} {if (ct) num_emprestimos++;}
-Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, bool ct): Object {num_emprestimos+1},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {time(0)} {if (ct) num_emprestimos++;}
-Emprestimo::Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {num_emprestimos+1},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_emprestimos++;}
+Emprestimo::Emprestimo(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt, bool ct, time_t dt,
+                       unsigned long id): Object {id}, livro {lv}, funcionario {fc}, leitor {lt}, data {dt},
+    indice {ind} {if (ct) num_emprestimos++;}
 
 Livro* Emprestimo::get_livro() {
 	return livro;
+}
+
+unsigned long Emprestimo::get_indice() {
+    return indice;
 }
 
 Leitor* Emprestimo::get_leitor() {
@@ -77,6 +76,7 @@ string Emprestimo::imprime() {
 	else dt = years + "/" + months + "/" + days;
 	out << "ID: "<< get_ID() << endl
 			<< "ID Livro: " << livro->get_ID() << endl
+            << "Indice Exemplar: " << indice << endl
 			<< "ID Funcionario: " << funcionario->get_ID() << endl
 			<< "ID Leitor: " << leitor->get_ID() << endl
 			<< "Data: " << dt << endl;
@@ -99,6 +99,7 @@ void Emprestimo::escreve(string ficheiro) {
 	else dt = years + "/" + months + "/" + days;
 	out << get_ID() << endl
 	<< livro->get_ID() << endl
+    << indice << endl
 	<< funcionario->get_ID() << endl
 	<< leitor->get_ID() << endl
 	<< dt << endl;

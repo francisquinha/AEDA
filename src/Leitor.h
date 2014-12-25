@@ -1,3 +1,10 @@
+/*
+ * Alterar a classe Leitor:
+ * - acrescentar data_ult_emp;
+ * - adaptar ficheiros txt a data_ult_emp e a tipo de leitor;
+ * - alterar/acrescentar funcoes para alterar dados do leitor;
+ * - criar outras condicoes para lidar com leitores inativos;
+ */
 
 #ifndef SRC_LEITOR_H_
 #define SRC_LEITOR_H_
@@ -25,7 +32,7 @@ class Leitor: public Object {
 	long telefone; /**< @brief telefone do leitor **/
 	std::string email; /**< @brief email do leitor **/
 	std::vector<Emprestimo*> emprestimos_leitor; /**< @brief vetor com apontadores para os emprestimos do leitor **/
-	static long num_leitores; /**< @brief contador de leitores na biblioteca **/
+	static unsigned long num_leitores; /**< @brief contador de leitores na biblioteca **/
 
 public:
 
@@ -40,42 +47,8 @@ public:
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor(long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt, bool ct);
-
-	/**
-	 * @brief Construtor de Leitor
-	 *
-	 * @param nom nome do leitor
-	 * @param tip tipo do leitor
-	 * @param tel telefone do leitor
-	 * @param eml email do leitor
-	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
-	 * @param ct indica se devemos incrementar o contador de leitores
-	 **/
-	Leitor(std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt, bool ct);
-
-	/**
-	 * @brief Construtor de Leitor
-	 *
-	 * @param id codigo de identificacao do leitor
-	 * @param nom nome do leitor
-	 * @param tip tipo do leitor
-	 * @param tel telefone do leitor
-	 * @param eml email do leitor
-	 * @param ct indica se devemos incrementar o contador de leitores
-	 **/
-	Leitor(long id, std::string nom, int tip, long tel, std::string eml, bool ct);
-
-	/**
-	 * @brief Construtor de Leitor
-	 *
-	 * @param nom nome do leitor
-	 * @param tip tipo do leitor
-	 * @param tel telefone do leitor
-	 * @param eml email do leitor
-	 * @param ct indica se devemos incrementar o contador de leitores
-	 **/
-	Leitor(std::string nom, int tip, long tel, std::string eml, bool ct);
+    Leitor(std::string nom, int tip, long tel, std::string eml, bool ct,
+           unsigned long id = num_leitores + 1, std::vector<Emprestimo*> ep_lt = {});
 
 	/**
 	 * @brief Destrutor virtual de Leitor
@@ -161,7 +134,7 @@ public:
 	 *
 	 * @exception Object_nao_existe se o leitor nao tem nenhum emprestimo com o id fornecido
 	 **/
-	bool remove_emp_leit(long id);
+	bool remove_emp_leit(unsigned long id);
 
 	/**
 	 * @brief Funcao para obter emprestimos do leitor

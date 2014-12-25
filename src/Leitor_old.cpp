@@ -17,10 +17,8 @@ using namespace std;
  * Se uma funcao relacionada com leitores antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Leitor_old::Leitor_old(long id, string nom, int tip, long tel, string eml, time_t dtf, bool ct):
-		Leitor {id, nom, tip, tel, eml, {}, ct}, data_fim {dtf} {};
-Leitor_old::Leitor_old(long id, string nom, int tip, long tel, string eml, bool ct):
-		Leitor {id, nom, tip, tel, eml, {}, ct}, data_fim {time(0)} {};
+Leitor_old::Leitor_old(unsigned long id, string nom, int tip, long tel, string eml, bool ct, time_t dtf):
+		Leitor {nom, tip, tel, eml, ct, id}, data_fim {dtf} {};
 
 string Leitor_old::imprime() {
 	stringstream out {};

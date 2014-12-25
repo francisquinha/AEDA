@@ -10,7 +10,7 @@
 
 using namespace std;
 
-long Funcionario::num_funcionarios {0};
+unsigned long Funcionario::num_funcionarios {0};
 
 /** @file
  *
@@ -19,8 +19,7 @@ long Funcionario::num_funcionarios {0};
  * Se uma funcao relacionada com funcionarios nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Funcionario::Funcionario(long id, string nom, bool ct): Object {id}, nome {nom} {if (ct) num_funcionarios++;}
-Funcionario::Funcionario(string nom, bool ct): Object {num_funcionarios+1}, nome {nom} {if (ct) num_funcionarios++;}
+Funcionario::Funcionario(string nom, bool ct, unsigned long id): Object {id}, nome {nom} {if (ct) num_funcionarios++;}
 
 string Funcionario::get_nome() {
 	return nome;

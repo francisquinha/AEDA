@@ -42,7 +42,7 @@ public:
 	 * @param pass password do utilizador
 	 * @param acess nivel de acesso do utilizador
 	 **/
-	Utilizador(long id, std::string pass, int acess);
+	Utilizador(unsigned long id, std::string pass, int acess);
 
 	/**
 	 * @brief Funcao para obter a password do utilizador

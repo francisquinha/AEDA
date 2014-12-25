@@ -17,8 +17,7 @@ using namespace std;
  * Se uma funcao relacionada com funcionarios antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Funcionario_old::Funcionario_old(long id, string nom, time_t dtf, bool ct): Funcionario {id, nom, ct}, data_fim {dtf} {};
-Funcionario_old::Funcionario_old(long id, string nom, bool ct): Funcionario {id, nom, ct}, data_fim {time(0)} {};
+Funcionario_old::Funcionario_old(unsigned long id, string nom, bool ct, time_t dtf): Funcionario {nom, ct, id}, data_fim {dtf} {};
 
 string Funcionario_old::imprime() {
 	stringstream out {};

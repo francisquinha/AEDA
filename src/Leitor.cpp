@@ -10,7 +10,7 @@
 
 using namespace std;
 
-long Leitor::num_leitores {0};
+unsigned long Leitor::num_leitores {0};
 
 /** @file
  *
@@ -19,20 +19,15 @@ long Leitor::num_leitores {0};
  * Se uma funcao relacionada com leitores nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Leitor::Leitor(long id, string nom, int tip, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct):
+Leitor::Leitor(string nom, int tip, long tel, string eml, bool ct, unsigned long id,
+               vector<Emprestimo*> ep_lt):
 		 Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
-Leitor::Leitor(string nom, int tip, long tel, string eml, vector<Emprestimo*> ep_lt, bool ct): Object {num_leitores+1},
-		nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
-Leitor::Leitor(long id, string nom, int tip, long tel, string eml, bool ct):
-				 Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
-Leitor::Leitor(string nom, int tip, long tel, string eml, bool ct): Object {num_leitores+1},
-				nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {} {if (ct) num_leitores++;}
 
 void Leitor::adiciona_emp_leit(Emprestimo* ep) {
 	emprestimos_leitor.push_back(ep);
 }
 
-bool Leitor::remove_emp_leit(long id) {
+bool Leitor::remove_emp_leit(unsigned long id) {
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end();it++) {
 		if ((*it)->get_ID() == id) {
 			emprestimos_leitor.erase(it);

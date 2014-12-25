@@ -30,13 +30,39 @@ ostream& operator<<(ostream &out, Object_nao_existe &object) {
 
 // excecao para quando o livro nao esta disponivel
 ostream& operator<<(ostream &out, Livro_indisponivel &livro) {
-	out << "Livro com ID " << livro.get_ID() << " nao esta disponivel para emprestar. Foi emprestado ha " << livro.get_dias_emp() << " dia(s)." << endl;
+	out << "Livro com ID " << livro.get_ID() << " nao esta disponivel para emprestar. Todos os exemplares foram emprestados." << endl;
 	return out;
 }
 
-// excecao para quando o livro que queremos remover esta emprestado
+// excecao para quando o exemplar do livro esta emprestado
+unsigned long Exemplar_indisponivel::get_indice() {
+    return indice;
+}
+
+ostream& operator<<(ostream &out, Exemplar_indisponivel &livro) {
+    out << "O exemplar " << livro.get_indice() << " do livro com ID " << livro.get_ID() << " nao esta disponivel." << endl;
+    return out;
+}
+
+// excecao para quando o exemplar do livro nao existe
+unsigned long Exemplar_inexistente::get_indice() {
+    return indice;
+}
+
+ostream& operator<<(ostream &out, Exemplar_inexistente &livro) {
+    out << "O livro com ID " << livro.get_ID() << " nao tem exemplar com indice "
+    << livro.get_indice() << "." << endl;
+    return out;
+}
+
+// excecao para quando o exemplar do livro que queremos remover esta emprestado
+unsigned long Livro_emprestado::get_indice() {
+    return indice;
+}
+
 ostream& operator<<(ostream &out, Livro_emprestado &livro) {
-	out << "Livro emprestado, tem que devolver emprestimo com ID " << livro.get_ID_ep() << "." << endl;
+	out << "Exemplar do livro emprestado, tem que devolver emprestimo com ID "
+    << livro.get_ID_ep()[livro.get_indice()] << "." << endl;
 	return out;
 }
 

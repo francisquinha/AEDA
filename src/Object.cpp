@@ -12,8 +12,8 @@ using namespace std;
  * Praticamente todas as outras classes sao subclasses de Object.
  **/
 
-Object::Object(long id): ID {id} {}
+Object::Object(unsigned long id): ID {id} {}
 
-long Object::get_ID() {
+unsigned long Object::get_ID() {
 	return ID;
 }

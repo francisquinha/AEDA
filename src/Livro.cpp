@@ -1,13 +1,4 @@
 
-#include <string>
-#include <vector>
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <ctime>
-#include <algorithm>
-#include <cmath>
-
 #include "Livro.h"
 #include "Excecao.h"
 
@@ -22,39 +13,51 @@ long Livro::num_livros {0};
  * Se uma funcao relacionada com livros nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Livro::Livro(long id, string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt, bool ct):
-		Object {id}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
-		emprestado {ept}, ID_ep{id_ep}, data_emp {dt} {if (ct) num_livros++;}
-Livro::Livro(string tit, vector<string> aut, string tem, long isbn, string cot, int np, int ed, bool ept, long id_ep, time_t dt, bool ct):
-		Object {num_livros+1}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
-		emprestado {ept}, ID_ep{id_ep}, data_emp {dt} {if(ct) num_livros++;}
+Livro::Livro(int ano, string tit, vector<string> aut, string tem, long isbn, string cot, int np,
+             int ed, bool ct, unsigned long id, int ex, int exd,
+             vector<unsigned long> id_ep, vector<time_t> dt): Object {id}, ano_edicao {ano},
+titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
+ID_ep{id_ep}, data_emp {dt} {if (ct) num_livros++;}
 
-void Livro::set_emprestado(bool ept) {
-	emprestado = ept;
+
+void Livro::set_ID_ep(unsigned long ind, unsigned long id_ep) {
+    ID_ep[ind] = id_ep;
 }
 
-void Livro::set_ID_ep(long id_ep) {
-	ID_ep = id_ep;
+int Livro::get_ano_edicao() {
+    return ano_edicao;
 }
 
-void Livro::set_data_emp(time_t dt) {
-	data_emp = dt;
+void Livro::set_data_emp(unsigned long ind, time_t dt) {
+	data_emp[ind] = dt;
 }
 
-bool Livro::get_emprestado() {
-	return emprestado;
-}
-
-long Livro::get_ID_ep() {
+vector<unsigned long> Livro::get_ID_ep() {
 	return ID_ep;
 }
 
-time_t Livro::get_data_emp() {
+vector<time_t> Livro::get_data_emp() {
 	return data_emp;
 }
 
-double Livro::get_dias_emp() {
-	time_t dt = get_data_emp();
+void Livro::inc_ID_ep() {
+    ID_ep.push_back(0);
+}
+
+void Livro::del_ID_ep(unsigned long ind) {
+    ID_ep.erase(ID_ep.begin() + ind);
+}
+
+void Livro::inc_data_emp() {
+    data_emp.push_back(0);
+}
+
+void Livro::del_data_emp(unsigned long ind) {
+    data_emp.erase(data_emp.begin() + ind);
+}
+
+double Livro::get_dias_emp(unsigned long ind) {
+	time_t dt = get_data_emp()[ind];
 	time_t hj = std::time(0);
 	double tempo_dias {floor(difftime(hj,dt)/86400)};
 	return tempo_dias;
@@ -88,66 +91,104 @@ string Livro::get_cota() {
 	return cota;
 }
 
+int Livro::get_exemplares() {
+    return exemplares;
+}
+
+void Livro::inc_exemplares() {
+    exemplares++;
+}
+
+void Livro::dec_exemplares() {
+    exemplares--;
+}
+
+int Livro::get_ex_disponiveis() {
+    return ex_disponiveis;
+}
+
+void Livro::inc_ex_disponiveis() {
+    ex_disponiveis++;
+}
+
+void Livro::dec_ex_disponiveis() {
+    ex_disponiveis--;
+}
+
 string Livro::imprime() {
 	stringstream out {};
-	tm *ldata = localtime(&data_emp);
-	long year {1900 + ldata->tm_year};
-	long month {1 + ldata->tm_mon};
-	long day {ldata->tm_mday};
-	string years {to_string(year)};
-	string months {}, days {};
-	if (month<10) months = "0" + to_string(month);
-	else months = to_string(month);
-	if (day<10) days = "0" + to_string(day);
-	else days = to_string(day);
-	string dt {};
-	if (data_emp == 0) dt = "0";
-	else dt = years + "/" + months + "/" + days;
+    stringstream datas {};
+    for (vector<time_t>::const_iterator it = data_emp.begin(); it != data_emp.end(); it++) {
+        tm *ldata = localtime(&*it);
+        long year {1900 + ldata->tm_year};
+        long month {1 + ldata->tm_mon};
+        long day {ldata->tm_mday};
+        string years {to_string(year)};
+        string months {}, days {};
+        if (month<10) months = "0" + to_string(month);
+        else months = to_string(month);
+        if (day<10) days = "0" + to_string(day);
+        else days = to_string(day);
+        string dt {};
+        if (&*it == 0) dt = "0";
+        else dt = years + "/" + months + "/" + days;
+        datas << dt << "; ";
+    }
 	out << "ID: "<< get_ID() << endl
-			<< "Titulo: " << titulo << endl
-			<< "Autores: ";
+        << "Ano Edicao: " << ano_edicao << endl
+        << "Titulo: " << titulo << endl
+        << "Autores: ";
 	for (vector<string>::const_iterator it = autores.begin(); it != autores.end(); it++) {
 		out << *it << "; ";
 	}
 	out << endl << "Tema: " << tema << endl
-			<< "ISBN: " << ISBN << endl
-			<< "Cota: " << cota << endl
-			<< "Num. Paginas: " << num_paginas << endl
-			<< "Edicao: " << edicao << endl
-			<< "Emprestado: " << emprestado << endl
-			<< "ID Emprestimo: " << ID_ep << endl
-			<< "Data Emprestado: " << dt << endl;
+        << "ISBN: " << ISBN << endl
+        << "Cota: " << cota << endl
+        << "Num. Paginas: " << num_paginas << endl
+        << "Edicao: " << edicao << endl
+        << "Exemplares: " << exemplares << endl
+        << "Exemplares Disponiveis: " << ex_disponiveis << endl
+        << "IDs Emprestimos: ";
+    for (vector<unsigned long>::const_iterator it = ID_ep.begin(); it != ID_ep.end(); it++) {
+        out << *it << "; ";
+    }
+    out << endl << "Datas Emprestimos: " << datas.str() << endl;
 	return out.str();
 }
 
 void Livro::escreve(string ficheiro) {
 	stringstream out {};
-	tm *ldata = localtime(&data_emp);
-	long year {1900 + ldata->tm_year};
-	long month {1 + ldata->tm_mon};
-	long day {ldata->tm_mday};
-	string years {to_string(year)};
-	string months {}, days {};
-	if (month<10) months = "0" + to_string(month);
-	else months = to_string(month);
-	if (day<10) days = "0" + to_string(day);
-	else days = to_string(day);
-	string dt {};
-	if (data_emp == 0) dt = "0";
-	else dt = years + "/" + months + "/" + days;
+    stringstream datas {};
+    for (vector<time_t>::const_iterator it = data_emp.begin(); it != data_emp.end(); it++) {
+        tm *ldata = localtime(&*it);
+        long year {1900 + ldata->tm_year};
+        long month {1 + ldata->tm_mon};
+        long day {ldata->tm_mday};
+        string years {to_string(year)};
+        string months {}, days {};
+        if (month<10) months = "0" + to_string(month);
+        else months = to_string(month);
+        if (day<10) days = "0" + to_string(day);
+        else days = to_string(day);
+        string dt {};
+        if (&*it == 0) dt = "0";
+        else dt = years + "/" + months + "/" + days;
+        datas << dt << "; ";
+    }
 	out << get_ID() << endl
-			<< titulo << endl;
+        << titulo << endl;
 	for (vector<string>::const_iterator it = autores.begin(); it != autores.end(); it++) {
 		out << *it << ";";
 	}
 	out << endl << tema << endl
-			<< ISBN << endl
-			<< cota << endl
-			<< num_paginas << endl
-			<< edicao << endl
-			<< emprestado << endl
-			<< ID_ep << endl
-			<< dt << endl;
+        << ISBN << endl
+        << cota << endl
+        << num_paginas << endl
+        << edicao << endl;
+    for (vector<unsigned long>::const_iterator it = ID_ep.begin(); it != ID_ep.end(); it++) {
+        out << *it << "; ";
+    }
+	out	<< endl	<< datas.str() << endl;
 	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
 		myfile << out.str();

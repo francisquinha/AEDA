@@ -20,11 +20,9 @@ using namespace std;
  * Se uma funcao relacionada com emprestimos antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Emprestimo_old::Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, time_t dt_e, bool ct):
-				Emprestimo {id, lv, fc, lt, dt, ct}, data_entrega {dt_e} {}
-
-Emprestimo_old::Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct):
-				Emprestimo {id, lv, fc, lt, dt, ct}, data_entrega {time(0)} {}
+Emprestimo_old::Emprestimo_old(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt, bool ct,
+                               std::time_t dt, unsigned long id, std::time_t dt_e):
+    Emprestimo {lv, ind, fc, lt, ct, dt, id}, data_entrega {dt_e} {}
 
 string Emprestimo_old::imprime() {
 	stringstream out {};

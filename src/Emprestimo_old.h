@@ -35,44 +35,8 @@ public:
 	 * @param dt data de inicio emprestimo
 	 * @param dt_e data de fim do emprestimo
 	 **/
-	Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt, std::time_t dt_e);
-
-	/**
-	 * @brief Construtor de Emprestimo_old
-	 *
-	 * @param id codigo de identificacao do emprestimo
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionarios
-	 * @param lt apontador para o leitor
-	 * @param dt data de inicio emprestimo
-	 **/
-	Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt);
-
-	/**
-	 * @brief Construtor de Emprestimo_old
-	 *
-	 * @param id codigo de identificacao do emprestimo
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionarios
-	 * @param lt apontador para o leitor
-	 * @param dt data de inicio emprestimo
-	 * @param dt_e data de fim do emprestimo
-	 * @param ct indica se devemos aumentar o contador de emprestimos da Biblioteca
-	 **/
-	Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt, std::time_t dt_e, bool ct);
-
-	/**
-	 * @brief Construtor de Emprestimo_old
-	 *
-	 * @param id codigo de identificacao do emprestimo
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionarios
-	 * @param lt apontador para o leitor
-	 * @param dt data de inicio emprestimo
-	 * @param dt_e data de fim do emprestimo
-	 * @param ct indica se devemos aumentar o contador de emprestimos da Biblioteca
-	 **/
-	Emprestimo_old(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt, bool ct);
+	Emprestimo_old(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt, bool ct,
+                   std::time_t dt, unsigned long id, std::time_t dt_e = time(0));
 
 	/**
 	 * @brief Funcao que imprime os atributos do emprestimo antigo

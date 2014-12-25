@@ -26,56 +26,27 @@ class Object;
 class Emprestimo: public Object {
 
 	Livro* livro; /**< @brief apontador para o livro do emprestimo **/
+    unsigned long indice;  /**< @brief indice do exemplar do livro do emprestimo **/
 	Funcionario* funcionario; /**< @brief apontador para o funcionario que fez o emprestimo **/
 	Leitor* leitor; /**< @brief apontador para o leitor do emprestimo **/
 	std::time_t data; /**< @brief data do emprestimo **/
-	static long num_emprestimos; /**< @brief contador de emprestimos na biblioteca (atuais e antigos) **/
+	static unsigned long num_emprestimos; /**< @brief contador de emprestimos na biblioteca (atuais e antigos) **/
 
 public:
 
 	/**
 	 * @brief Construtor de Emprestimo
 	 *
-	 * @param id codigo de identificacao do emprestimo
 	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionario
-	 * @param lt apontador para o leitor
-	 * @param dt data do emprestimo
-	 * @param ct indica se devemos incrementar o contador de emprestimos
-	 **/
-	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt, bool ct);
-
-	/**
-	 * @brief Construtor de Emprestimo
-	 *
-	 * @param id codigo de identificacao do emprestimo
-	 * @param lv apontador para o livro
+     * @param ind indice do exemplar do livro
 	 * @param fc apontador para o funcionario
 	 * @param lt apontador para o leitor
 	 * @param ct indica se devemos incrementar o contador de emprestimos
+     * @param dt data do emprestimo
+     * @param id codigo de identificacao do emprestimo
 	 **/
-	Emprestimo(long id, Livro* lv, Funcionario* fc, Leitor* lt, bool ct);
-
-	/**
-	 * @brief Construtor de Emprestimo
-	 *
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionario
-	 * @param lt apontador para o leitor
-	 * @param ct indica se devemos incrementar o contador de emprestimos
-	 **/
-	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, bool ct);
-
-	/**
-	 * @brief Construtor de Emprestimo
-	 *
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionario
-	 * @param lt apontador para o leitor
-	 * @param dt data do emprestimo
-	 * @param ct indica se devemos incrementar o contador de emprestimos
-	 **/
-	Emprestimo(Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt, bool ct);
+	Emprestimo(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt, bool ct,
+               std::time_t dt = time (0), unsigned long id = num_emprestimos + 1);
 
 	/**
 	 * @brief Destrutor virtual de Emprestimo
@@ -88,6 +59,13 @@ public:
 	 * @return apontador para o livro
 	 **/
 	Livro* get_livro();
+
+    /**
+     * @brief Funcao para obter o indice do exemplar do livro do emprestimo
+     *
+     * @return unsigned long com o indice do exemplar do livro
+     **/
+    unsigned long get_indice();
 
 	/**
 	 * @brief Funcao para obter o funcionario responsavel pelo emprestimo

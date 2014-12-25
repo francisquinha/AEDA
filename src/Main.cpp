@@ -28,7 +28,7 @@ using namespace std;
 int main() {
 	/* criacao de um Utilizador_online falso so para poder invocar o construtor de Menu
 	 * o verdadeiro login sera feito mais tarde, na aplicacao */
-	Utilizador_online* util = new Utilizador_online {-1,-1};
+	Utilizador_online* util = new Utilizador_online {999999,999999};
 
 	/* criacao de um Menu */
 	Menu m {Menu (util)};

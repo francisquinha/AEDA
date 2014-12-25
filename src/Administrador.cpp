@@ -17,7 +17,7 @@ using namespace std;
 
 /* construtor de Administrador
  * nao incrementa o contador de funcionarios, porque o administrador tem id 0 */
-Administrador::Administrador(long id, string nom): Funcionario {id, nom, false} {}
+Administrador::Administrador(unsigned long id, string nom): Funcionario {nom, false, id} {}
 
 void Administrador::escreve(string ficheiro) {}
 
