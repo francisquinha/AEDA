@@ -77,7 +77,7 @@ class Menu: public Biblioteca {
     Utilizador_online* utilizador_online; /**< @brief utilizador ligado ao sistema no momento **/
 
 	/**
-	 * @brief Funcao para determinar se uma determinada string e um numero ou nao
+	 * @brief Funcao para determinar se uma string e um numero (inteiro nao negativo) ou nao
 	 *
 	 * @param num string que pretendemos determinar se e um numero
 	 *

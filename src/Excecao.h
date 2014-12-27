@@ -84,10 +84,20 @@ public:
 	 * @param dt vetor com as datas de emprestimo dos exemplares do livro
 	 **/
     Livro_indisponivel(int ano, std::string tit, std::vector<std::string> aut, std::string tem,
-                       long isbn, std::string cot, int np, int ed, unsigned long id, int ex, int exd,
-                       std::vector<unsigned long> id_ep, std::vector<time_t> dt):
+                       long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
+                       int exd, std::vector<unsigned long> id_ep, std::vector<time_t> dt):
     Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt} {};
 };
+
+/**
+ * @brief Overload do operador << para imprimir um membro da classe Livro_indisponivel
+ *
+ * @param &out referencia para ostream onde sera colocada a impressao
+ * @param &livro referencia do exemplar inexistente
+ *
+ * @return ostream com a impressao
+ **/
+std::ostream& operator<<(std::ostream &out, Livro_indisponivel &livro);
 
 class Exemplar_indisponivel: public Livro {
     
@@ -123,10 +133,10 @@ public:
 };
 
 /**
- * @brief Overload do operador << para imprimir um membro da classe Exemplar_inexistente
+ * @brief Overload do operador << para imprimir um membro da classe Exemplar_indisponivel
  *
  * @param &out referencia para ostream onde sera colocada a impressao
- * @param &livro referencia do exemplar inexistente
+ * @param &livro referencia do exemplar indisponivel
  *
  * @return ostream com a impressao
  **/

@@ -34,8 +34,12 @@ string Leitor_old::imprime() {
 	else days = to_string(day);
 	if (data_fim == 0) dt = "0";
 	else dt = years + "/" + months + "/" + days;
-	out << "ID: "<< get_ID() << endl<< "Nome: " << get_nome() << endl << "Telefone: "<< get_telefone() << endl
-			<< "Email: " << get_email() << endl << "Data Fim: " << dt << endl;
+	out << "ID: "<< get_ID() << endl
+        << "Nome: " << get_nome() << endl
+        << "Tipo: " << get_tipo() << endl
+        << "Telefone: "<< get_telefone() << endl
+        << "Email: " << get_email() << endl
+        << "Data Fim: " << dt << endl;
 	return out.str();
 }
 
@@ -54,10 +58,11 @@ void Leitor_old::escreve(string ficheiro) {
 	if (data_fim == 0) dt = "0";
 	else dt = years + "/" + months + "/" + days;
 	out << get_ID() << endl
-			<< get_nome() << endl
-			<< get_telefone() << endl
-			<< get_email() << endl
-			<< dt << endl;
+        << get_nome() << endl
+        << get_tipo() << endl
+        << get_telefone() << endl
+        << get_email() << endl
+        << dt << endl;
 	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
 		myfile << out.str();

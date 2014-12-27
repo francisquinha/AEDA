@@ -545,13 +545,19 @@ void Menu::emprestimos_adicionar() {
                     id_lt = atol(id_lt_s.c_str());
                     cout << endl;
                     try {
-                        adiciona_emprestimo_ids(id_lv, ind, id_lt, utilizador_online->get_ID());
+                        adiciona_emprestimo_ids(id_lv, id_lt, utilizador_online->get_ID());
                     }
                     catch (Object_nao_existe &ob) {
                         ostringstream ostr{};
                         ostr << ob;
                         cout << ostr.str();
                         cout << "Por favor escolha outro." << endl;
+                    }
+                    catch (Livro_indisponivel &liv) {
+                        ostringstream ostr{};
+                        ostr << liv;
+                        cout << ostr.str();
+                        cout << "Por favor escolha um livro disponivel." << endl;
                     }
                     cout << endl;
                 }

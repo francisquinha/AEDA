@@ -22,9 +22,9 @@ using namespace std;
 
 unsigned long Emprestimo::num_emprestimos {0};
 
-Emprestimo::Emprestimo(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt, bool ct, time_t dt,
-                       unsigned long id): Object {id}, livro {lv}, funcionario {fc}, leitor {lt}, data {dt},
-    indice {ind} {if (ct) num_emprestimos++;}
+Emprestimo::Emprestimo(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt, bool ct,
+                       time_t dt, unsigned long id): Object {id}, livro {lv}, funcionario {fc},
+    leitor {lt}, data {dt}, indice {ind} {if (ct) num_emprestimos++;}
 
 Livro* Emprestimo::get_livro() {
 	return livro;

@@ -35,8 +35,8 @@ public:
 	/**
 	 * @brief Funcao de escrita de Administrador
 	 *
-	 * Nao faz nada, apenas existe para que a funcao virtual escreve na classe funcionario a chame,
-	 * em vez de colocar o administrador no ficheiro dos funcionarios
+	 * Nao faz nada, apenas existe para que a funcao virtual escreve na classe funcionario a
+     * chame, em vez de colocar o administrador no ficheiro dos funcionarios
 	 *
 	 * @param ficheiro_fc nome do ficheiro dos funcionarios
 	 * @param ficheiro_sp nome do ficheiro dos supervisores

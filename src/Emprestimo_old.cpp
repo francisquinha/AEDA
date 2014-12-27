@@ -20,9 +20,9 @@ using namespace std;
  * Se uma funcao relacionada com emprestimos antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Emprestimo_old::Emprestimo_old(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt, bool ct,
+Emprestimo_old::Emprestimo_old(Livro* lv, Funcionario* fc, Leitor* lt, bool ct,
                                std::time_t dt, unsigned long id, std::time_t dt_e):
-    Emprestimo {lv, ind, fc, lt, ct, dt, id}, data_entrega {dt_e} {}
+    Emprestimo {lv, 0, fc, lt, ct, dt, id}, data_entrega {dt_e} {}
 
 string Emprestimo_old::imprime() {
 	stringstream out {};
@@ -89,7 +89,7 @@ void Emprestimo_old::escreve(string ficheiro) {
 	else dt_e = years_e + "/" + months_e + "/" + days_e;
 	out << get_ID() << endl
 	<< get_livro()->get_ID() << endl
-	<< get_funcionario()->get_ID() << endl
+    << get_funcionario()->get_ID() << endl
 	<< get_leitor()->get_ID() << endl
 	<< dt << endl
 	<< dt_e << endl;

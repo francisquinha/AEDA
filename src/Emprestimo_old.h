@@ -35,7 +35,7 @@ public:
 	 * @param dt data de inicio emprestimo
 	 * @param dt_e data de fim do emprestimo
 	 **/
-	Emprestimo_old(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt, bool ct,
+	Emprestimo_old(Livro* lv, Funcionario* fc, Leitor* lt, bool ct,
                    std::time_t dt, unsigned long id, std::time_t dt_e = time(0));
 
 	/**

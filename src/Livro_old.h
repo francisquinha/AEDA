@@ -30,7 +30,7 @@ class Livro;
  **/
 class Livro_old: public Livro {
 
-	std::time_t data_fim;
+    std::vector<time_t> data_fim;
 
 public:
 
@@ -45,15 +45,21 @@ public:
      * @param cot cota do livro na biblioteca
      * @param np numero de paginas do livro
      * @param ed numero da edicao do livro
-     * @param dtf lista com as datas de emprestimo de cada exemplar do livro, tudo 0
      * @param ct indica se devemos incrementar o contador de livros
      * @param id codigo de identificacao do livro
      * @param ex numero total de exemplares do livro
-     * @param exd numero de exemplares disponiveis do livro
+     * @param dtf vetor com as datas de remocao de cada exemplar do livro
 	 **/
     Livro_old(int ano, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
-              std::string cot, int np, int ed, bool ct, time_t dtf, unsigned long id, int ex = 1,
-              int exd = 1);
+              std::string cot, int np, int ed, bool ct, unsigned long id, int ex = 1,
+              std::vector<time_t> dtf = {time(0)});
+    
+    /**
+     * @brief Funcao que adiciona uma data de remocao ao vetor data_fim
+     *
+     * @param dtf data de remocao a adicionar
+     **/
+    void adiciona_dtf(time_t dtf);
 
 	/**
 	 * @brief Funcao que imprime os atributos do livro antigo

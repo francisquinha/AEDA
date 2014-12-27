@@ -4,7 +4,7 @@
 
 using namespace std;
 
-long Livro::num_livros {0};
+unsigned long Livro::num_livros {0};
 
 /** @file
  *
@@ -17,7 +17,7 @@ Livro::Livro(int ano, string tit, vector<string> aut, string tem, long isbn, str
              int ed, bool ct, unsigned long id, int ex, int exd,
              vector<unsigned long> id_ep, vector<time_t> dt): Object {id}, ano_edicao {ano},
 titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot}, num_paginas {np}, edicao {ed},
-ID_ep{id_ep}, data_emp {dt} {if (ct) num_livros++;}
+exemplares {ex}, ex_disponiveis(exd), ID_ep{id_ep}, data_emp {dt} {if (ct) num_livros++;}
 
 
 void Livro::set_ID_ep(unsigned long ind, unsigned long id_ep) {
@@ -119,7 +119,8 @@ string Livro::imprime() {
 	stringstream out {};
     stringstream datas {};
     for (vector<time_t>::const_iterator it = data_emp.begin(); it != data_emp.end(); it++) {
-        tm *ldata = localtime(&*it);
+        time_t data {*it};
+        tm *ldata = localtime(&data);
         long year {1900 + ldata->tm_year};
         long month {1 + ldata->tm_mon};
         long day {ldata->tm_mday};
@@ -130,7 +131,7 @@ string Livro::imprime() {
         if (day<10) days = "0" + to_string(day);
         else days = to_string(day);
         string dt {};
-        if (&*it == 0) dt = "0";
+        if (data == 0) dt = "0";
         else dt = years + "/" + months + "/" + days;
         datas << dt << "; ";
     }
@@ -160,7 +161,8 @@ void Livro::escreve(string ficheiro) {
 	stringstream out {};
     stringstream datas {};
     for (vector<time_t>::const_iterator it = data_emp.begin(); it != data_emp.end(); it++) {
-        tm *ldata = localtime(&*it);
+        time_t data {*it};
+        tm *ldata = localtime(&data);
         long year {1900 + ldata->tm_year};
         long month {1 + ldata->tm_mon};
         long day {ldata->tm_mday};
@@ -171,11 +173,12 @@ void Livro::escreve(string ficheiro) {
         if (day<10) days = "0" + to_string(day);
         else days = to_string(day);
         string dt {};
-        if (&*it == 0) dt = "0";
+        if (data == 0) dt = "0";
         else dt = years + "/" + months + "/" + days;
-        datas << dt << "; ";
+        datas << dt << ";";
     }
 	out << get_ID() << endl
+        << ano_edicao << endl
         << titulo << endl;
 	for (vector<string>::const_iterator it = autores.begin(); it != autores.end(); it++) {
 		out << *it << ";";
@@ -184,9 +187,11 @@ void Livro::escreve(string ficheiro) {
         << ISBN << endl
         << cota << endl
         << num_paginas << endl
-        << edicao << endl;
+        << edicao << endl
+        << exemplares << endl
+        << ex_disponiveis << endl;
     for (vector<unsigned long>::const_iterator it = ID_ep.begin(); it != ID_ep.end(); it++) {
-        out << *it << "; ";
+        out << *it << ";";
     }
 	out	<< endl	<< datas.str() << endl;
 	ofstream myfile (ficheiro, ios::app);

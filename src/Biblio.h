@@ -42,7 +42,7 @@ class Biblioteca {
 	std::vector<Leitor*> leitores; /**< @brief vetor com apontadores para os leitores da Biblioteca **/
 	std::vector<Emprestimo*> emprestimos; /**< @brief vetor com apontadores para os emprestimos da Biblioteca **/
 	std::vector<Utilizador*> utilizadores; /**< @brief vetor com apontadores para os utilizadores da Biblioteca **/
-	std::queue<Pedido*> pedidos;
+	std::queue<Pedido*> pedidos; /**< @brief fila de prioridade com os pedidos de emprestimo da Biblioteca **/
 public:
 
 	/**
@@ -156,6 +156,13 @@ public:
 	 **/
 	void adiciona_livro(Livro* lv);
 
+    /**
+     * @brief Funcao para adicionar um novo exemplar de um livro a Biblioteca
+     *
+     * @param id ID do livro ao qual queremos adicionar um exemplar
+     **/
+    void adiciona_exemplar(unsigned long id);
+    
 	/**
 	 * @brief Funcao para adicionar um funcionario antigo a Biblioteca
 	 *
@@ -205,7 +212,7 @@ public:
 	 * @param id_lt identificacao do leitor do emprestimo
 	 * @param id_fc identificacao do funcionario do emprestimo
 	 **/
-	void adiciona_emprestimo_ids(unsigned long id_lv, unsigned long ind, unsigned long id_lt, unsigned long id_fc);
+	void adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_lt, unsigned long id_fc);
 
 	/**
 	 * @brief Funcao para adicionar um novo utilizador a Biblioteca

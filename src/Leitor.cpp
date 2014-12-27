@@ -21,7 +21,8 @@ unsigned long Leitor::num_leitores {0};
 
 Leitor::Leitor(string nom, int tip, long tel, string eml, bool ct, unsigned long id,
                vector<Emprestimo*> ep_lt):
-		 Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt} {if (ct) num_leitores++;}
+Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt}
+    {if (ct) num_leitores++;}
 
 void Leitor::adiciona_emp_leit(Emprestimo* ep) {
 	emprestimos_leitor.push_back(ep);
@@ -71,6 +72,11 @@ void Leitor::set_telefone(long tel) {
 
 void Leitor::set_email(string eml) {
 	email = eml;
+}
+
+time_t Leitor::get_data_ult_emp() {
+    if (emprestimos_leitor.empty()) return 0;
+    return (emprestimos_leitor[emprestimos_leitor.size()-1]->get_data());
 }
 
 string Leitor::imprime() {

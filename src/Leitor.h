@@ -49,7 +49,6 @@ public:
 	 **/
     Leitor(std::string nom, int tip, long tel, std::string eml, bool ct,
            unsigned long id = num_leitores + 1, std::vector<Emprestimo*> ep_lt = {});
-
 	/**
 	 * @brief Destrutor virtual de Leitor
 	 **/
@@ -143,7 +142,14 @@ public:
 	 **/
 	std::vector<Emprestimo*> get_emp_leit();
 
-	/**
+    /**
+     * @brief Funcao para obter data do ultimo emprestimo do leitor
+     *
+     * @return time_t com a data do ultimo emprestimo do leitor
+     **/
+    time_t get_data_ult_emp();
+    
+ 	/**
 	 * @brief Funcao que imprime os emprestimos do leitor
 	 *
 	 * @return string com o resultado da impressao

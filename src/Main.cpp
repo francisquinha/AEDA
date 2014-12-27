@@ -28,7 +28,7 @@ using namespace std;
 int main() {
 	/* criacao de um Utilizador_online falso so para poder invocar o construtor de Menu
 	 * o verdadeiro login sera feito mais tarde, na aplicacao */
-	Utilizador_online* util = new Utilizador_online {999999,999999};
+	Utilizador_online* util = new Utilizador_online {999999, 999999};
 
 	/* criacao de um Menu */
 	Menu m {Menu (util)};
@@ -38,9 +38,8 @@ int main() {
 
 	/* adicao do administrador aos funcionarios*/
 	m.adiciona_funcionario(admin);
-
 	/* caminho para a pasta onde estao os ficheiros e caminhos para cada um dos ficheiros*/
-	string path{"/Users/Angie/Documents/MIEIC/2A1S/AEDA/trabalhos/biblioteca/txt/"};
+	string path{"/Users/Angie/Documents/MIEIC/2A1S/AEDA/XCode/trabalhos/Biblioteca/Files/"};
 	string ficheiro_lvo {path + "Livro_old.txt"};
 	string ficheiro_lv {path + "Livro.txt"};
 	string ficheiro_fco {path + "Funcionario_old.txt"};

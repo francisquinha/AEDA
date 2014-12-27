@@ -1,4 +1,5 @@
 1
+2010
 Porto em Azul e Branco
 Pacheco, Helder;
 Futebol
@@ -7,9 +8,11 @@ Futebol
 192
 1
 1
+0
+2;
+2014/10/16;
 2
-2014/10/16
-2
+1993
 O Evangelho Segundo Jesus Cristo
 Saramago, Jose;
 Romance
@@ -18,9 +21,11 @@ Romance
 445
 13
 1
-1
-2014/10/02
+0
+1;
+2014/10/02;
 4
+2001
 Introduction to automata theory, languages, and computation
 Hopcroft, John E.;Motwani, Rajeev;Ullman, Jeffrey D.;
 Matematica
@@ -28,10 +33,12 @@ Matematica
 519.6 /HOPj/INT 2
 521
 2
-0
-0
-0
+1
+1
+0;
+0;
 5
+2009
 Big C++
 Horstmann, Cay;Budd, Timothy A.;
 Programacao
@@ -40,9 +47,11 @@ Programacao
 1056
 2
 1
-3
-2014/10/23
+0
+3;
+2014/10/23;
 6
+2009
 A Sul da fronteira, a Oeste do Sol
 Murakami, Haruki;
 Romance
@@ -50,10 +59,12 @@ Romance
 82 /MURh/SUL
 241
 1
-0
-0
-0
+2
+2
+0;0;
+0;0;
 7
+2008
 A rapariga que roubava livros
 Zusak, Markus;
 Romance
@@ -61,10 +72,12 @@ Romance
 82 /ZUZm/RAP
 463
 4
-0
-0
-0
+2
+2
+0;0;
+0;0;
 8
+2013
 Como mentir com a estatistica
 Huff, Darrell;
 Matematica
@@ -72,10 +85,12 @@ Matematica
 5 /CA 201
 175
 1
-0
-0
-0
+1
+1
+0;
+0;
 9
+2011
 Casamentos e outros desencontros
 Buescu, Jorge;
 Matematica
@@ -84,9 +99,11 @@ Matematica
 169
 1
 1
-5
-2014/11/01
+0
+5;
+2014/11/01;
 10
+2002
 Think Python
 Downey, Allen B.;
 Programacao
@@ -94,10 +111,12 @@ Programacao
 004.43 PYT /DOWa/THI
 277
 1
-0
-0
-0
+3
+3
+0;0;0;
+0;0;0;
 11
+1999
 Antologia de Pablo Neruda
 Neruda, Pablo;
 Poesia
@@ -105,10 +124,12 @@ Poesia
 82/NERp/ANT
 457
 1
-0
-0
-0
+2
+2
+0;0;
+0;0;
 12
+2012
 Felizmente Ha Luar!
 Monteiro, Luis de Sttau;
 Arte
@@ -116,10 +137,12 @@ Arte
 821.134.3-2/MONL/FEL
 144
 7
+2
 1
-9
-2014/11/07
+9;0;
+2014/11/07;0;
 13
+2014
 Iniciacao ao Desenho
 Sanmiguel, David;
 Arte
@@ -128,9 +151,11 @@ Arte
 128
 3
 1
-8
-2014/11/07
+0
+8;
+2014/11/07;
 14
+2012
 Mecanica dos Fluidos
 Oliveira, Luis Adriano;Lopes, Antonio Gameiro;
 Engenharia
@@ -138,10 +163,12 @@ Engenharia
 532 /OLIL/MEC 3
 792
 4
-1
-7
-2014/11/06
+3
+2
+7;0;0;
+2014/11/06;0;0;
 15
+2005
 Etica para Engenheiros
 Braga, Jorge;Rego, Armenio;
 Engenharia
@@ -149,10 +176,12 @@ Engenharia
 174 /REGa/ETI
 268
 1
-0
-0
-0
+1
+1
+0;
+0;
 16
+2010
 Metodos Numericos
 Pina, Heitor;Lemos, Carlos;
 Engenharia
@@ -160,10 +189,12 @@ Engenharia
 519.6 /PINh/MET
 312
 1
-0
-0
-0
+2
+2
+0;0;
+0;0;
 17
+2014
 Os Desafios da Economia
 M. Solow, Robert;
 Economia
@@ -171,6 +202,7 @@ Economia
 330.1/SOLr/ECO
 248
 2
-0
-0
-0
+1
+1
+0;
+0;
