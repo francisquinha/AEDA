@@ -63,7 +63,7 @@ Susana Costa
 2
 912932342
 susanacosta@fe.up.pt
-2;
+
 12
 Jose Leal
 1
@@ -220,12 +220,6 @@ Marco Marques
 968264009
 marcomarques@fe.up.pt
 
-39
-Filipe Pedro
-2
-938899989
-filipepedro@fe.up.pt
-
 40
 Celia Ferreira
 0
@@ -267,7 +261,7 @@ Lara Lacerda
 1
 918527639
 laralacerda@fe.up.pt
-
+11;
 47
 Nuno Aires
 0
@@ -297,4 +291,10 @@ Margarida Pinto
 2
 967568932
 margaridapinto@fe.up.pt
+
+52
+Emilia Cunha
+2
+914536279
+emiliacunha@fe.up.pt
 

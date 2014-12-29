@@ -30,7 +30,7 @@ ostream& operator<<(ostream &out, Object_nao_existe &object) {
 
 // excecao para quando o livro nao esta disponivel
 ostream& operator<<(ostream &out, Livro_indisponivel &livro) {
-	out << "Livro com ID " << livro.get_ID() << " nao esta disponivel para emprestar. Todos os exemplares foram emprestados." << endl;
+	out << "Livro com ID " << livro.get_ID() << " nao esta disponivel. Todos os exemplares foram emprestados." << endl;
 	return out;
 }
 
@@ -62,7 +62,7 @@ unsigned long Livro_emprestado::get_indice() {
 
 ostream& operator<<(ostream &out, Livro_emprestado &livro) {
 	out << "Exemplar do livro emprestado, tem que devolver emprestimo com ID "
-    << livro.get_ID_ep()[livro.get_indice()] << "." << endl;
+    << livro.get_emp_livro()[livro.get_indice()]->get_ID() << "." << endl;
 	return out;
 }
 

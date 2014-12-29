@@ -80,13 +80,13 @@ public:
      * @param id codigo de identificacao do livro
 	 * @param ex numero total de exemplares do livro
 	 * @param exd numero de exemmplares disponiveis do livro
-     * @param id_ep vetor com os IDs de emprestimo dos exemplares do livro
-	 * @param dt vetor com as datas de emprestimo dos exemplares do livro
+     * @param ep vetor com os apontadores de emprestimo dos exemplares do livro
+	 * @param pd fila de prioridade com os apontadores dos pedidos de emprestimo do livro
 	 **/
     Livro_indisponivel(int ano, std::string tit, std::vector<std::string> aut, std::string tem,
                        long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
-                       int exd, std::vector<unsigned long> id_ep, std::vector<time_t> dt):
-    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt} {};
+                       int exd, std::vector<Emprestimo*> ep, std::priority_queue<Pedido*> pd):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd} {};
 };
 
 /**
@@ -124,11 +124,17 @@ public:
      * @param dt vetor com as datas de emprestimo dos exemplares do livro
      **/
     Exemplar_indisponivel(unsigned long ind, int ano, std::string tit,
-                         std::vector<std::string> aut, std::string tem, long isbn,
-                          std::string cot, int np, int ed, unsigned long id, int ex, int exd,
-                          std::vector<unsigned long> id_ep, std::vector<time_t> dt):
-    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt}, indice {ind} {};
+                          std::vector<std::string> aut, std::string tem,
+                          long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
+                          int exd, std::vector<Emprestimo*> ep,
+                          std::priority_queue<Pedido*> pd):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd}, indice {ind} {};
     
+    /**
+     * @brief Funcao para obter o indice do exemplar
+     *
+     * @return unsigned long com o indice do exemplar.
+     **/
     unsigned long get_indice();
 };
 
@@ -167,11 +173,17 @@ public:
      * @param dt vetor com as datas de emprestimo dos exemplares do livro
      **/
     Exemplar_inexistente(unsigned long ind, int ano, std::string tit,
-                         std::vector<std::string> aut, std::string tem, long isbn,
-                         std::string cot, int np, int ed, unsigned long id, int ex, int exd,
-                         std::vector<unsigned long> id_ep, std::vector<time_t> dt):
-    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt}, indice {ind} {};
+                         std::vector<std::string> aut, std::string tem,
+                         long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
+                         int exd, std::vector<Emprestimo*> ep,
+                         std::priority_queue<Pedido*> pd):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd}, indice {ind} {};
     
+    /**
+     * @brief Funcao para obter o indice do exemplar
+     *
+     * @return unsigned long com o indice do exemplar.
+     **/
     unsigned long get_indice();
 };
 
@@ -214,11 +226,18 @@ public:
      * @param id_ep vetor com os IDs de emprestimo dos exemplares do livro
      * @param dt vetor com as datas de emprestimo dos exemplares do livro
 	 **/
-    Livro_emprestado(unsigned long ind, int ano, std::string tit, std::vector<std::string> aut,
-                     std::string tem, long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
-                     int exd, std::vector<unsigned long> id_ep, std::vector<time_t> dt):
-    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, id_ep, dt}, indice {ind} {};
+    Livro_emprestado(unsigned long ind, int ano, std::string tit,
+                     std::vector<std::string> aut, std::string tem,
+                     long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
+                     int exd, std::vector<Emprestimo*> ep,
+                     std::priority_queue<Pedido*> pd):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd}, indice {ind} {};
     
+    /**
+     * @brief Funcao para obter o indice do exemplar
+     *
+     * @return unsigned long com o indice do exemplar.
+     **/
     unsigned long get_indice();
 };
 

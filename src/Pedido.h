@@ -4,11 +4,13 @@
 
 #include "Livro.h"
 #include "Leitor.h"
+#include "Funcionario.h"
 #include "Object.h"
 #include <ctime>
 
 class Livro;
 class Leitor;
+class Funcionario;
 class Object;
 
 /** @file
@@ -23,11 +25,11 @@ class Object;
  **/
 class Pedido: public Object {
 
-	Livro* livro; /**< @brief apontador para o livro do pedido **/
-	Funcionario* funcionario; /**< @brief apontador para o funcionario que fez o pedido **/
+    Livro* livro; /**< @brief apontador para o livro do pedido **/
+    Funcionario* funcionario; /**< @brief apontador para o funcionario que fez o pedido **/
 	Leitor* leitor; /**< @brief apontador para o leitor do pedido **/
 	std::time_t data; /**< @brief data do pedido **/
-	static long num_pedidos; /**< @brief contador de pedidos atuais na biblioteca **/
+	static unsigned long num_pedidos; /**< @brief contador de pedidos atuais na biblioteca **/
 
 public:
 
@@ -41,39 +43,8 @@ public:
 	 * @param dt data do pedido
 	 * @param ct indica se devemos incrementar o contador de pedidos
 	 **/
-	Pedido(long id, Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt, bool ct);
-
-	/**
-	 * @brief Construtor de Pedido
-	 *
-	 * @param id codigo de identificacao do pedido
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionario
-	 * @param lt apontador para o leitor
-	 * @param ct indica se devemos incrementar o contador de pedidos
-	 **/
-	Pedido(long id, Livro* lv, Funcionario* fc, Leitor* lt, bool ct);
-
-	/**
-	 * @brief Construtor de Pedido
-	 *
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionario
-	 * @param lt apontador para o leitor
-	 * @param ct indica se devemos incrementar o contador de pedidos
-	 **/
-	Pedido(Livro* lv, Funcionario* fc, Leitor* lt, bool ct);
-
-	/**
-	 * @brief Construtor de Pedido
-	 *
-	 * @param lv apontador para o livro
-	 * @param fc apontador para o funcionario
-	 * @param lt apontador para o leitor
-	 * @param dt data do pedido
-	 * @param ct indica se devemos incrementar o contador de pedidos
-	 **/
-	Pedido(Livro* lv, Funcionario* fc, Leitor* lt, std::time_t dt, bool ct);
+	Pedido(Livro* lv, Funcionario* fc, Leitor* lt, bool ct, std::time_t dt = time(0),
+           unsigned long id = num_pedidos + 1);
 
 	/**
 	 * @brief Destrutor virtual de Pedido (isto nao deve ser necessario)

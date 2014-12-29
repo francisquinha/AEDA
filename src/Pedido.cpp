@@ -20,19 +20,12 @@ using namespace std;
  * Se uma funcao relacionada com pedidos em espera nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-long Pedido::num_pedidos {0};
+unsigned long Pedido::num_pedidos {0};
 
-Pedido::Pedido(long id, Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {id},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_pedidos++;}
-Pedido::Pedido(long id, Livro* lv, Funcionario* fc, Leitor* lt, bool ct): Object {id},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {time(0)} {if (ct) num_pedidos++;}
-Pedido::Pedido(Livro* lv, Funcionario* fc, Leitor* lt, bool ct): Object {num_pedidos+1},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {time(0)} {if (ct) num_pedidos++;}
-Pedido::Pedido(Livro* lv, Funcionario* fc, Leitor* lt, time_t dt, bool ct): Object {num_pedidos+1},
-		livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_pedidos++;}
+Pedido::Pedido(Livro* lv, Funcionario* fc, Leitor* lt, bool ct, time_t dt, unsigned long id):Object {id}, livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_pedidos++;}
 
 Livro* Pedido::get_livro() {
-	return livro;
+    return livro;
 }
 
 Leitor* Pedido::get_leitor() {

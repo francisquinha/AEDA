@@ -320,14 +320,31 @@ public:
     void livros_antigos();
 
 	/**
-	 * @brief Permite adicionar um livro a biblioteca
+	 * @brief Permite escolher entre adicionar novo livro ou exemplar a livro existente
 	 *
-	 * Funcao chamada se for escolhida a opcao 5 no menu emprestimos (caminho 3->5 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 5 no menu livros (caminho 3->5 do menu principal).
 	 * Acessivel apenas a utilizadores de niveis 0 e 1.
-	 * Pede para indicar: titulo, autores, tema, ISBN, cota, num. paginas e edicao.
 	 **/
     void livros_adicionar();
 
+    /**
+     * @brief Permite adicionar um livro novo a biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 1 no menu Livros->Adicionar (caminho 3->5->1 do menu principal).
+     * Acessivel apenas a utilizadores de niveis 0 e 1.
+     * Pede para indicar: titulo, autores, tema, ISBN, cota, num. paginas e edicao.
+     **/
+    void livros_adicionar_novo();
+    
+    /**
+     * @brief Permite adicionar um exemplar a um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 2 no menu Livros->Adicionar (caminho 3->5->2 do menu principal).
+     * Acessivel apenas a utilizadores de niveis 0 e 1.
+     * Pede para indicar ID do livro a que queremos adicionar emprestimo.
+     **/
+    void livros_adicionar_exemplar();
+    
 	/**
 	 * @brief Permite remover um livro da biblioteca
 	 *

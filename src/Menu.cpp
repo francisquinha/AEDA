@@ -519,48 +519,35 @@ void Menu::emprestimos_adicionar() {
     	else if (!e_numero(id_lv_s)) cout << endl << "Por favor insira um numero." << endl << endl;
     	else {
     		id_lv = atol (id_lv_s.c_str());
-            cout << "Indice do exemplar: ";
-            string inds {};
-            unsigned long ind{};
-            getline(cin, inds);
-            if (inds == "s") {
+            cout << "ID do leitor: ";
+            string id_lt_s {};
+            unsigned long id_lt{};
+            getline(cin, id_lt_s);
+            if (id_lt_s == "s") {
                 clear_screen();
                 continuar = false;
             }
-            else if (!e_numero(inds)) cout << endl << "Por favor insira um numero."
+            else if (!e_numero(id_lt_s)) cout << endl << "Por favor insira um numero."
                 << endl << endl;
             else {
-                ind = atol (inds.c_str());
-                cout << "ID do leitor: ";
-                string id_lt_s {};
-                unsigned long id_lt{};
-                getline(cin, id_lt_s);
-                if (id_lt_s == "s") {
-                    clear_screen();
-                    continuar = false;
+                id_lt = atol(id_lt_s.c_str());
+                cout << endl;
+                try {
+                    adiciona_emprestimo_ids(id_lv, id_lt, utilizador_online->get_ID());
                 }
-                else if (!e_numero(id_lt_s)) cout << endl << "Por favor insira um numero."
-                    << endl << endl;
-                else {
-                    id_lt = atol(id_lt_s.c_str());
-                    cout << endl;
-                    try {
-                        adiciona_emprestimo_ids(id_lv, id_lt, utilizador_online->get_ID());
-                    }
-                    catch (Object_nao_existe &ob) {
-                        ostringstream ostr{};
-                        ostr << ob;
-                        cout << ostr.str();
-                        cout << "Por favor escolha outro." << endl;
-                    }
-                    catch (Livro_indisponivel &liv) {
-                        ostringstream ostr{};
-                        ostr << liv;
-                        cout << ostr.str();
-                        cout << "Por favor escolha um livro disponivel." << endl;
-                    }
-                    cout << endl;
+                catch (Object_nao_existe &ob) {
+                    ostringstream ostr{};
+                    ostr << ob;
+                    cout << ostr.str();
+                    cout << "Por favor escolha outro." << endl;
                 }
+                catch (Livro_indisponivel &liv) {
+                    ostringstream ostr{};
+                    ostr << liv;
+                    cout << ostr.str();
+                    cout << "Por favor escolha um livro disponivel." << endl;
+                }
+                cout << endl;
     		}
     	}
    	}
@@ -658,6 +645,39 @@ void Menu::livros_antigos() {
 }
 
 void Menu::livros_adicionar() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "ADICIONAR LIVRO" << endl << endl;
+        cout << "1) Novo livro (nunca existiu na biblioteca)" << endl
+             << "2) Exemplar (existe ou ja existiu na biblioteca)" << endl;
+        cout << endl << "Escolha uma opcao [1-2] (s para sair): ";
+        string opcaos {};
+        int opcao{};
+        getline(cin, opcaos);
+        clear_screen();
+        if (opcaos == "s") continuar=false;
+        else if (!e_numero(opcaos)) cout
+            << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+            << endl << endl;
+        else {
+            opcao = atoi(opcaos.c_str());
+            switch (opcao) {
+                case 1:
+                    livros_adicionar_novo();
+                    break;
+                case 2:
+                    livros_adicionar_exemplar();
+                    break;
+                default:
+                    cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+                    << endl << endl;
+                    break;
+            }
+        }
+   	}
+}
+
+void Menu::livros_adicionar_novo() {
 	bool continuar {true};
     while (continuar) {
     	cout << "Adicionar Livro (s para sair)" << endl << endl;
@@ -757,6 +777,36 @@ void Menu::livros_adicionar() {
             	}
     		}
     	}
+   	}
+}
+
+void Menu::livros_adicionar_exemplar() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Adicionar Exemplar (s para sair)" << endl << endl;
+        string ids {};
+        unsigned long id {};
+        cout << "ID do Livro: ";
+        getline (cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar = false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero."
+            << endl << endl;
+        else {
+            id = atol(ids.c_str());
+            try {
+                adiciona_exemplar(id);
+            }
+            catch(Object_nao_existe &ob) {
+                ostringstream ostr{};
+                ostr << ob;
+                cout << ostr.str();
+                cout << "Por favor insira o ID de um livro atual ou antigo." << endl;
+            }
+            cout << endl;
+        }
    	}
 }
 

@@ -2,11 +2,9 @@
 #define SRC_BIBLIOTECA_H_
 
 #include <list>
-#include <queue>
 #include "Administrador.h"
 #include "Supervisor.h"
 #include "Emprestimo_old.h"
-#include "Pedido.h"
 #include "Funcionario_old.h"
 #include "Livro_old.h"
 #include "Leitor_old.h"
@@ -42,7 +40,7 @@ class Biblioteca {
 	std::vector<Leitor*> leitores; /**< @brief vetor com apontadores para os leitores da Biblioteca **/
 	std::vector<Emprestimo*> emprestimos; /**< @brief vetor com apontadores para os emprestimos da Biblioteca **/
 	std::vector<Utilizador*> utilizadores; /**< @brief vetor com apontadores para os utilizadores da Biblioteca **/
-	std::queue<Pedido*> pedidos; /**< @brief fila de prioridade com os pedidos de emprestimo da Biblioteca **/
+    std::vector<Pedido*> pedidos; /**< @brief vetor com os apontadores para todos os pedidos de emprestimo da Biblioteca **/
 public:
 
 	/**

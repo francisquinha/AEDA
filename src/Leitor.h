@@ -1,10 +1,3 @@
-/*
- * Alterar a classe Leitor:
- * - acrescentar data_ult_emp;
- * - adaptar ficheiros txt a data_ult_emp e a tipo de leitor;
- * - alterar/acrescentar funcoes para alterar dados do leitor;
- * - criar outras condicoes para lidar com leitores inativos;
- */
 
 #ifndef SRC_LEITOR_H_
 #define SRC_LEITOR_H_

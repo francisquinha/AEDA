@@ -184,16 +184,31 @@ void Biblioteca::adiciona_livro_old(Livro_old* lv) {
 }
 
 void Biblioteca::adiciona_exemplar(unsigned long id) {
+    Livro_old* lvo {};
+    bool encontrado {false};
+    Livro* lv {};
     for (vector<Livro*>::iterator it = livros.begin(); it != livros.end(); it++) {
+        lvo = dynamic_cast<Livro_old*>(*it);
         if ((*it)->get_ID() == id) {
-            (*it)->inc_exemplares();
-            (*it)->inc_ex_disponiveis();
-            (*it)->inc_ID_ep();
-            (*it)->inc_data_emp();
-            cout << "Exemplar adicionado." << endl;
-            return;
+            encontrado = true;
+            if (lvo == 0) {
+                (*it)->inc_exemplares();
+                (*it)->inc_ex_disponiveis();
+                (*it)->inc_emp_livro();
+                cout << "Exemplar adicionado." << endl;
+                return;
+            }
+            else lv = new Livro{(*it)->get_ano_edicao(), (*it)->get_titulo(),
+                (*it)->get_autores(), (*it)->get_tema(), (*it)->get_ISBN(), (*it)->get_cota(),
+                (*it)->get_num_paginas(), (*it)->get_edicao(), false, id};
         }
     }
+    if (encontrado) {
+        livros.push_back(lv);
+        cout << "Exemplar adicionado." << endl;
+        return;
+    }
+    throw Object_nao_existe(id, "livro");
 }
     
 void Biblioteca::adiciona_funcionario_old(Funcionario_old* fc) {
@@ -277,8 +292,8 @@ bool Biblioteca::remove_livro(unsigned long id, unsigned long ind) {
 	for (vector<Livro*>::iterator it = livros.begin(); it != livros.end(); it++) {
 		lvo = dynamic_cast<Livro_old*>(*it);
 		if ((*it)->get_ID() == id and lvo == 0) {
-            if ((*it)->get_ID_ep().size() > ind >= 0) { /* se existir exemplar com o indice escolhido */
-                if ((*it)->get_ID_ep()[ind] == 0) { /* se o exemplar do livro nao esta emprestado*/
+            if ((*it)->get_exemplares() > ind) { /* se existir exemplar com o indice escolhido */
+                if ((*it)->get_emp_livro()[ind] == NULL) { /* se o exemplar do livro nao esta emprestado*/
                     bool existe_old {false};
                     Livro_old* lvoo {};
                     for (vector<Livro*>::iterator itt = livros.begin(); itt != livros.end(); itt++) {
@@ -297,30 +312,28 @@ bool Biblioteca::remove_livro(unsigned long id, unsigned long ind) {
                             (*it)->get_autores(), (*it)->get_tema(), (*it)->get_ISBN(),
                             (*it)->get_cota(), (*it)->get_num_paginas(), (*it)->get_edicao(), false, id};
                         adiciona_livro_old(lo); /* ao remover um livro adicionamo-lo como Livro_old */
-                        livros.erase(it);
-                        cout << endl << "Livro removido." << endl;
                     }
                     if ((*it)->get_exemplares() > 1) {
                         /* se nao estamos a remover o ultimo exemplar do livro */
                         (*it)->dec_exemplares(); /* diminuimos o numero de exemplares */
                         (*it)->dec_ex_disponiveis(); /* e o numero de exemplares disponiveis */
-                        (*it)->del_ID_ep(ind); /* removemos o indice do exemplar do vetor ID_ep */
-                        (*it)->del_data_emp(ind); /* e do vetor data_emp */
+                        (*it)->del_emp_livro(ind); /* removemos o indice do exemplar do vetor ID_ep */
                     }
                     else livros.erase(it);
                     /* se estamos a remover o ultimo exemplar do livro */
                     /* removemos o registo do livro dos livros atuais */
+                    cout << endl << "Livro removido." << endl;
                     return true;
                 }
                 else throw Livro_emprestado{ind, (*it)->get_ano_edicao(), (*it)->get_titulo(),
                     (*it)->get_autores(), (*it)->get_tema(), (*it)->get_ISBN(), (*it)->get_cota(),
                     (*it)->get_num_paginas(), (*it)->get_edicao(), id, (*it)->get_exemplares(),
-                (*it)->get_ex_disponiveis(), (*it)->get_ID_ep(), (*it)->get_data_emp()};
+                (*it)->get_ex_disponiveis(), (*it)->get_emp_livro(), (*it)->get_pedidos()};
             }
             else throw Exemplar_inexistente{ind, (*it)->get_ano_edicao(), (*it)->get_titulo(),
                 (*it)->get_autores(), (*it)->get_tema(), (*it)->get_ISBN(), (*it)->get_cota(),
                 (*it)->get_num_paginas(), (*it)->get_edicao(), id, (*it)->get_exemplares(),
-                (*it)->get_ex_disponiveis(), (*it)->get_ID_ep(), (*it)->get_data_emp()};
+                (*it)->get_ex_disponiveis(), (*it)->get_emp_livro(), (*it)->get_pedidos()};
 		}
 	}
 	throw Object_nao_existe(id, "livro");
@@ -390,12 +403,11 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
     unsigned long ind = ep->get_indice();
 	Leitor* lt = ep->get_leitor();
 	vector<Emprestimo*> ep_lt = lt->get_emp_leit();
-    vector<unsigned long> id_ep = lv->get_ID_ep();
-    if (id_ep.size() > ind) {
-        if (id_ep[ind] == 0) {
+    vector<Emprestimo*> ep_lv = lv->get_emp_livro();
+    if (lv->get_exemplares() > ind) {
+        if (ep_lv[ind] == NULL) {
             if (ep_lt.size() < 3) {
-                lv->set_ID_ep(ind, ep->get_ID());
-                lv->set_data_emp(ind, ep->get_data());
+                lv->set_emp_livro(ind, ep);
                 lv->dec_ex_disponiveis();
                 lt->adiciona_emp_leit(ep);
                 emprestimos.push_back(ep);
@@ -410,16 +422,16 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
                                          lv->get_autores(), lv->get_tema(), lv->get_ISBN(),
                                          lv->get_cota(), lv->get_num_paginas(), lv->get_edicao(),
                                          lv->get_ID(), lv->get_exemplares(),
-                                         lv->get_ex_disponiveis(), lv->get_ID_ep(),
-                                         lv->get_data_emp());
+                                         lv->get_ex_disponiveis(), lv->get_emp_livro(),
+                                         lv->get_pedidos());
         /* nao podemos emprestar um livro que ja esteja emprestado */
 	}
     else throw Exemplar_inexistente(ind, lv->get_ano_edicao(), lv->get_titulo(),
                                     lv->get_autores(), lv->get_tema(), lv->get_ISBN(),
                                     lv->get_cota(), lv->get_num_paginas(), lv->get_edicao(),
                                     lv->get_ID(), lv->get_exemplares(),
-                                    lv->get_ex_disponiveis(), lv->get_ID_ep(),
-                                    lv->get_data_emp());
+                                    lv->get_ex_disponiveis(), lv->get_emp_livro(),
+                                    lv->get_pedidos());
 }
 
 void Biblioteca::adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_lt, unsigned long id_fc) {
@@ -435,11 +447,11 @@ void Biblioteca::adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_l
     if (livro_encontrado) {
         if (lv->get_ex_disponiveis() > 0) {
             unsigned long ind {0};
-            vector<unsigned long> id_ep {lv->get_ID_ep()};
-            unsigned long id_ep_ind {id_ep[ind]};
-            while (id_ep_ind != 0 and ind < id_ep.size() - 1) {
+            vector<Emprestimo*> ep_lv {lv->get_emp_livro()};
+            Emprestimo* ep_ind {ep_lv[ind]};
+            while (ep_ind != NULL and ind < ep_lv.size() - 1) {
                 ind++;
-                id_ep_ind = id_ep[ind];
+                ep_ind = ep_lv[ind];
             }
             Leitor* lt{};
             vector<Leitor*> leitors = get_leitores();
@@ -475,7 +487,7 @@ void Biblioteca::adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_l
                         ostringstream ostr{};
                         ostr << liv;
                         cout << ostr.str();
-                        cout << "Por favor escolha um livro disponivel." << endl;
+                        cout << "Por favor escolha um exemplar disponivel." << endl;
                     }
                     catch(Maximo_emprestimos &lei ) {
                         ostringstream ostr{};
@@ -493,8 +505,8 @@ void Biblioteca::adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_l
                                       lv->get_autores(), lv->get_tema(), lv->get_ISBN(),
                                       lv->get_cota(), lv->get_num_paginas(), lv->get_edicao(),
                                       lv->get_ID(), lv->get_exemplares(),
-                                      lv->get_ex_disponiveis(), lv->get_ID_ep(),
-                                      lv->get_data_emp());
+                                      lv->get_ex_disponiveis(), lv->get_emp_livro(),
+                                      lv->get_pedidos());
    	}
     else throw Object_nao_existe(id_lv, "livro");
 }
@@ -512,8 +524,7 @@ bool Biblioteca::remove_emprestimo(unsigned long id) {
 				cout << endl << "Devolucao de livro " << dias << " dia(s) em atraso. Deve efetuar o pagamento de "
 						<< (*it)->get_multa() << "euros." << endl;
 			}
-			((*it)->get_livro())->set_ID_ep((*it)->get_indice(), 0);
-			((*it)->get_livro())->set_data_emp((*it)->get_indice(), 0);
+            ((*it)->get_livro())->set_emp_livro((*it)->get_indice(), NULL);
 			((*it)->get_leitor())->remove_emp_leit(id);
 			Emprestimo_old* eo = new Emprestimo_old{(*it)->get_livro(),
                 (*it)->get_funcionario(), (*it)->get_leitor(), false,
@@ -1043,7 +1054,7 @@ void Biblioteca::le_livros(string ficheiro) {
 	ifstream islv(ficheiro);
 	if (!islv) throw Ficheiro_indisponivel(ficheiro);
     string ids {}, anos {}, tit {}, auts {}, tem {}, isbns {}, cot {}, num_pags {}, edis {},
-        exs {}, exds {}, ideps {}, ymds {};
+        exs {}, exds {}, eps {}, pds {};
 	istringstream autss {};
 	while (!islv.eof()) {
 		getline(islv, ids);
@@ -1057,8 +1068,8 @@ void Biblioteca::le_livros(string ficheiro) {
 		getline(islv, edis);
 		getline(islv, exs);
         getline(islv, exds);
-		getline(islv, ideps);
-		getline(islv, ymds);
+		getline(islv, eps);
+		getline(islv, pds);
 		unsigned long id = atol(ids.c_str());
         int ano = atoi(anos.c_str());
 		vector<string> aut {};
@@ -1071,14 +1082,13 @@ void Biblioteca::le_livros(string ficheiro) {
 		int num_pag = atoi(num_pags.c_str());
 		int edi = atoi(edis.c_str());
         int ex = atoi(exs.c_str());
-        vector<unsigned long> id_ep {};
-        vector<time_t> dt {};
+        vector<Emprestimo*> ep {};
         for (int i = 0; i != ex; i++) {
-            id_ep.push_back(0);
-            dt.push_back(0);
+            ep.push_back(NULL);
         }
 		if (ids != "") {
-			Livro* lv = new Livro {ano, tit, aut, tem, isbn, cot, num_pag, edi, true, id, ex, ex, id_ep, dt};
+			Livro* lv = new Livro {ano, tit, aut, tem, isbn, cot, num_pag, edi, true, id, ex,
+                ex, ep};
 			adiciona_livro(lv);
 		}
 	}

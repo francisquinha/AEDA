@@ -1,13 +1,3 @@
-/* 
- * Alterar a classe Livro:
- * - acrescentar exemplares e ex_disponiveis;
- * - retirar emprestado, ID_ep, data_emp;
- * - acrescentar lista (ou vetor) ID_ep e lista (ou vetor) data_emp com referencias aos emprestimos dos varios exemplares;
- * - acrescentar ano_edicao;
- * - acrescentar funcoes para alterar dados do livro;
- * - acrescentar funcao para incrementar exemplares do livro (ou alterar funcao que adiciona livro a biblioteca).
- */
-
 
 #ifndef SRC_LIVRO_H_
 #define SRC_LIVRO_H_
@@ -15,6 +5,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <queue>
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -23,8 +14,12 @@
 #include <cmath>
 
 #include "Object.h"
+#include "Pedido.h"
+#include "Emprestimo.h"
 
 class Object;
+class Pedido;
+class Emprestimo;
 
 /** @file
  *
@@ -48,8 +43,8 @@ class Livro: public Object {
 	int edicao; /**< @brief numero da edicao do livro **/
     int exemplares; /**< @brief numero total de exemplares do livro na biblioteca **/
     int ex_disponiveis; /**< @brief numero de exemplares do livro disponiveis (nao emprestados) **/
-    std::vector<unsigned long> ID_ep; /**< @brief lista com a identificacao do emprestimo de cada exemplar do livro, se existir, 0 caso contrario **/
-    std::vector<std::time_t> data_emp; /**< @brief lista com a data do emprestimo de cada exemplar do livro, se existir, 0 caso contrario **/
+    std::vector<Emprestimo*> emprestimos_livro; /**< @brief vetor com apontadores (eventualmente nulos) para os emprestimos de cada exemplar do livro **/
+    std::priority_queue<Pedido*> pedidos; /**< @brief fila de prioridade com os pedidos de emprestimo do livro **/
 	static unsigned long num_livros; /**< @brief contador de livros na biblioteca (livros distintos, nao exemplares) **/
 
 public:
@@ -69,24 +64,18 @@ public:
      * @param id codigo de identificacao do livro
      * @param ex numero total de exemplares do livro
      * @param exd numero de exemplares disponiveis do livro
-	 * @param id_ep lista com os IDs dos emprestimos de cada exemplar do livro
-	 * @param dt lista com as datas de emprestimo de cada exemplar do livro
+	 * @param ep vetor com os apontadores para os emprestimos de cada exemplar do livro
+     * @param pd fila de prioridade com os pedidos de emprestimo do livro
 	 **/
     Livro(int ano, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
-          std::string cot, int np, int ed, bool ct, unsigned long id = num_livros + 1, int ex = 1,
-          int exd = 1, std::vector<unsigned long> id_ep = {0}, std::vector<time_t> dt = {0});
+          std::string cot, int np, int ed, bool ct, unsigned long id = num_livros + 1,
+          int ex = 1, int exd = 1, std::vector<Emprestimo*> ep = {NULL},
+          std::priority_queue<Pedido*> pd = {});
 
 	/**
 	 * @brief Destrutor virtual de Livro
 	 **/
 	virtual ~Livro() {};
-
-	/**
-	 * @brief Funcao que imprime os atributos do livro
-	 *
-	 * @return string com o resultado da impressao
-	 **/
-	virtual std::string imprime();
     
     /**
      * @brief Funcao para obter o ano de edicao do livro
@@ -179,59 +168,32 @@ public:
     void dec_ex_disponiveis();
 
 	/**
-	 * @brief Funcao para obter a lista de IDs de emprestimos dos exemplares do livro
+	 * @brief Funcao para obter o vetor de apontadores de emprestimos dos exemplares do livro
 	 *
-	 * @return list<long> com os IDs de emprestimos de exemplares do livro
+	 * @return vector<Emprestimo*> com os apontadores de emprestimos de exemplares do livro
 	 **/
-    std::vector<unsigned long> get_ID_ep();
+    std::vector<Emprestimo*> get_emp_livro();
 
 	/**
-	 * @brief Funcao para determinar o ID de emprestimo de um exemplar do livro
+	 * @brief Funcao para determinar o apontador de emprestimo de um exemplar do livro
 	 *
 	 * @param ind indice do exemplar do livro para o qual queremos alterar o ID do emprestimo
-     * @param id_ep ID do emprestimo do exemplar do livro, se existir, 0 caso contrario
+     * @param Emprestimo* ep apontador do emprestimo, se existir, NULL caso contrario
 	 **/
-	void set_ID_ep(unsigned long ind, unsigned long id_ep);
+    void set_emp_livro(unsigned long ind, Emprestimo* ep);
 
     /**
-     * @brief Funcao para incrementar o numero de IDs de emprestimo de exemplares do livro
+     * @brief Funcao para incrementar o tamanho do vetor de emprestimos do livro
      **/
-    void inc_ID_ep();
+    void inc_emp_livro();
 
     /**
-     * @brief Funcao para remover o ID de emprestimo de um exemplare do livro
+     * @brief Funcao para remover o apontador de emprestimo de um exemplare do livro
      *
-     * @param ind indice do exemplar do livro cujo ID queremos remover do vetor
+     * @param ind indice do exemplar do livro cujo apontador queremos remover do vetor
      **/
-    void del_ID_ep(unsigned long ind);
+    void del_emp_livro(unsigned long ind);
     
-	/**
-	 * @brief Funcao para obter a lista de datas de emprestimos de exemplares do livro
-	 *
-	 * @return list<time_t> com as datas de emprestimos de exemplares do livro
-	 **/
-    std::vector<std::time_t> get_data_emp();
-
-	/**
-	 * @brief Funcao para determinar a data de emprestimo de um exemplar do livro
-	 *
-     * @param ind indice do exemplar do livro para o qual queremos alterar a data de emprestimo
-	 * @param dt data de emprestimo do exemplar do livro, se existir, 0 caso contrario
-	 **/
-	void set_data_emp(unsigned long ind, std::time_t dt);
-    
-    /**
-     * @brief Funcao para incrementar o numero de datas de emprestimo de exemplares do livro
-     **/
-    void inc_data_emp();
-    
-    /**
-     * @brief Funcao para remover a data de emprestimo de um exemplare do livro
-     *
-     * @param ind indice do exemplar do livro cuja data queremos remover do vetor
-     **/
-    void del_data_emp(unsigned long ind);
-
 	/**
 	 * @brief Funcao para obter o numero de dias desde o emprestimo de um exemplar do livro
      *
@@ -241,6 +203,20 @@ public:
 	 * Nota: se o livro nao foi emprestado o resultado serao os dias todos desde 1970/01/01.
 	 **/
 	double get_dias_emp(unsigned long ind);
+    
+    /**
+     * @brief Funcao para obter a fila de prioridade de apontadores de pedidos do livro
+     *
+     * @return priority_queue<Pedido*> com os apontadores de pedidos do livro
+     **/
+    std::priority_queue<Pedido*> get_pedidos();
+    
+    /**
+     * @brief Funcao que imprime os atributos do livro
+     *
+     * @return string com o resultado da impressao
+     **/
+    virtual std::string imprime();
 
 	/**
 	 * @brief Funcao que escreve os atributos do livro
