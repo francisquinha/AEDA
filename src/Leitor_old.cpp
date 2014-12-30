@@ -17,9 +17,9 @@ using namespace std;
  * Se uma funcao relacionada com leitores antigos nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Leitor_old::Leitor_old(unsigned long id, string nom, int tip, long tel, string eml, string mrd, bool ct,
+Leitor_old::Leitor_old(unsigned long id, string nom, int tip, long tel, string eml, string mrd, time_t ult, bool ct,
                        time_t dtf):
-		Leitor {nom, tip, tel, eml, mrd, ct, id}, data_fim {dtf} {};
+		Leitor {nom, tip, tel, eml, mrd, ult, ct, id}, data_fim {dtf} {};
 
 string Leitor_old::imprime() const {
 	stringstream out {};
@@ -41,6 +41,7 @@ string Leitor_old::imprime() const {
         << "Telefone: "<< get_telefone() << endl
         << "Email: " << get_email() << endl
         << "Morada: " << get_morada() << endl
+        << "Ultima Requisicao: " << get_ultima_requisicao() << endl
         << "Data Fim: " << dt << endl;
 	return out.str();
 }
@@ -65,6 +66,7 @@ void Leitor_old::escreve(string ficheiro) const {
         << get_telefone() << endl
         << get_email() << endl
         << get_morada() << endl
+        << get_ultima_requisicao() << endl
         << dt << endl;
 	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
