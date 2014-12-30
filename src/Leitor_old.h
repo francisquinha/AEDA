@@ -34,10 +34,11 @@ public:
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param mrd morada do leitor
+	 * @param ult ultima requisicao efetuada pelo leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor_old(unsigned long id, std::string nom, int tip, long tel, std::string eml, std::string mrd, bool ct,
+	Leitor_old(unsigned long id, std::string nom, int tip, long tel, std::string eml, std::string mrd, time_t ult, bool ct,
                std::time_t dtf = time(0));
 
 	/**
