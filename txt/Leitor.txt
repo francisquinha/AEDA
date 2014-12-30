@@ -3,298 +3,349 @@ Ines Cunha
 2
 912233444
 inescunha@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 2
 Maria Fonseca
 1
 962345444
 mariafonseca@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 3
 Ana Moura
 2
 912231234
 anamoura@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 4
 Davide Azevedo
 0
 962234244
 davideazevedo@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 5
 Pedro Nunes
 1
 912212324
 pedronunes@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 6
 Joao Meireles
 1
 962232354
 joaomeireles@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 9;
+
 7
 Alexandre Cunha
 2
 963453442
 alexandrecunha@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 7;
 8
 Andreia Teixeira
 0
 913563455
 andreiateixeira@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 5;
 9
 Margarida Carvalho
 0
 912234242
 margaridacarvalho@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 10
 Daniel Pereira
 2
 932233244
 danielpereira@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 11
 Susana Costa
 2
 912932342
 susanacosta@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 12
 Jose Leal
 1
 918475657
 joseleal@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 13
 Roberto Silva
 0
 928374644
 robertosilva@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 14
 Patricia Ribeiro
 0
 932345994
 patriciaribeiro@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 15
 Diana Goncalves
 0
 922989898
 dianagoncalves@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 16
 Vanessa Oliveira
 0
 962233434
 vanessaoliveira@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 17
 Pedro Almeida
 2
 962253574
 pedroalmeida@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 18
 Lino Amorim
 2
 912865432
 linoamorim@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 19
 Jorge Almeida
 2
 912678990
 jorgealmeida@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 20
 Antonio Vieira
 1
 962256989
 antoniovieira@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 21
 Sandra Vieira
 1
 962254354
 sandravieira@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 22
 Bruno Rocha
 2
 937654324
 brunorocha@fe.up.pt
+Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 
 23
 Viriato Sousa
 1
 928534982
 viriatosousa@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 25
 Edmundo Santos
 0
 910998768
 edmundosantos@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 1;3;8;
 26
 Maria Mendes
 0
 968748347
 mariamendes@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 27
 Catarina Pereira
 0
 939838488
 catarinapereira@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 28
 Luisa Pereira
 1
 928787879
 luisapereira@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 29
 Nuno Cardoso
 2
 969898239
 nunocardoso@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 30
 Rita Rio
 2
 919888388
 ritario@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 31
 Mario Almeida
 0
 932309922
 marioalmeida@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 32
 Rogerio Cunha
 1
 939999982
 rogeriocunha@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 33
 Leonor Moreira
 0
 932233444
 leonormoreira@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 34
 Barbara Furtado
 1
 962233444
 barbarafurtado@fe.up.pt
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 
 35
 Gil Sousa
 2
 962237744
 gilsousa@fe.up.pt
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 
 36
 Manuela Azevedo
 1
 912987689
 manuelaazevedo@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 37
 Joana Franco
 0
 912382999
 joanafranco@fe.up.pt
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 
 38
 Marco Marques
 1
 968264009
 marcomarques@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 40
 Celia Ferreira
 0
 967538921
 celiaferreira@fe.up.pt
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 
 41
 Hortensia Costa
 2
 912316752
 hortensiacosta@fe.up.pt
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 
 42
 Helia Costa
 1
 967834562
 heliacosta@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 43
 Maria Sousa
 2
 935768345
 mariasousa@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 44
 Sergio Dias
 0
 912349876
 sergiodias@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 45
 Isabel Pinto
 2
 935627634
 isabelpinto@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 46
 Lara Lacerda
 1
 918527639
 laralacerda@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 11;
 47
 Nuno Aires
 0
 926736543
 nunoaires@fe.up.pt
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 
 48
 Jose Cardoso
 2
 937865432
 josecardoso@fe.up.pt
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 
 49
 Maria Pereira
 1
 938764352
 mariapereira@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 50
 Alberto Pinto
 1
 91998766
 albertopinto@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 51
 Margarida Pinto
 2
 967568932
 margaridapinto@fe.up.pt
+Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
 
 52
 Emilia Cunha
 2
 914536279
 emiliacunha@fe.up.pt
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 
