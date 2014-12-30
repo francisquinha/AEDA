@@ -19,9 +19,9 @@ unsigned long Leitor::num_leitores {0};
  * Se uma funcao relacionada com leitores nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Leitor::Leitor(string nom, int tip, long tel, string eml, string mrd, bool ct, unsigned long id,
+Leitor::Leitor(string nom, int tip, long tel, string eml, string mrd, time_t ult, bool ct, unsigned long id,
                vector<Emprestimo*> ep_lt):
-Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, morada {mrd}, emprestimos_leitor {ep_lt}
+Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, morada {mrd}, time_t {ult}, emprestimos_leitor {ep_lt}
     {if (ct) num_leitores++;}
 
 void Leitor::adiciona_emp_leit(Emprestimo* ep) {
@@ -62,6 +62,10 @@ string Leitor::get_morada() const {
 	return morada;
 }
 
+string Leitor::get_ultima_requisicao() const {
+	return ultima_requisicao;
+}
+
 void Leitor::set_nome(string nom) {
 	nome = nom;
 }
@@ -79,7 +83,11 @@ void Leitor::set_email(string eml) {
 }
 
 void Leitor::set_morada(string mrd) {
-	email = mrd;
+	morada = mrd;
+}
+
+void Leitor::set_ultima_requisicao(string ult) {
+	ultima_requisicao = ult;
 }
 
 time_t Leitor::get_data_ult_emp() const {
@@ -109,7 +117,8 @@ void Leitor::escreve(string ficheiro) {
 			<< tipo << endl
 			<< telefone << endl
 			<< email << endl
-	        << morada << endl;
+			<< morada << endl
+			<< ultima_requisicao << endl;
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		out << (*it)->get_ID() << ";";
 	}
