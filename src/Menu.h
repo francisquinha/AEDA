@@ -34,7 +34,7 @@ void clear_screen();
  *
  * @return char com a password
  **/
-char* ler_password(const char* texto) ;
+char* ler_password(const char* texto);
 
 /**
  * @brief Classe com o nivel de acesso e o ID do utilizador ligado ao sistema

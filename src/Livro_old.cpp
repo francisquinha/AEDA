@@ -20,7 +20,7 @@ void Livro_old::adiciona_dtf(time_t dtf) {
     data_fim.push_back(dtf);
 }
 
-string Livro_old::imprime() {
+string Livro_old::imprime() const {
     stringstream out {};
     stringstream datas {};
     for (vector<time_t>::const_iterator it = data_fim.begin(); it != data_fim.end(); it++) {
@@ -57,7 +57,7 @@ string Livro_old::imprime() {
 	return out.str();
 }
 
-void Livro_old::escreve(string ficheiro) {
+void Livro_old::escreve(string ficheiro) const {
 	stringstream out {};
     stringstream datas {};
     for (vector<time_t>::const_iterator it = data_fim.begin(); it != data_fim.end(); it++) {

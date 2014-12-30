@@ -24,7 +24,7 @@ Emprestimo_old::Emprestimo_old(Livro* lv, Funcionario* fc, Leitor* lt, bool ct,
                                std::time_t dt, unsigned long id, std::time_t dt_e):
     Emprestimo {lv, 0, fc, lt, ct, dt, id}, data_entrega {dt_e} {}
 
-string Emprestimo_old::imprime() {
+string Emprestimo_old::imprime() const {
 	stringstream out {};
 	time_t dat=get_data();
 	tm *ldata = localtime(&dat);
@@ -60,7 +60,7 @@ string Emprestimo_old::imprime() {
 	return out.str();
 }
 
-void Emprestimo_old::escreve(string ficheiro) {
+void Emprestimo_old::escreve(string ficheiro) const {
 	stringstream out {};
 	time_t dat=get_data();
 	tm *ldata = localtime(&dat);

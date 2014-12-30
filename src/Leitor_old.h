@@ -45,14 +45,14 @@ public:
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	std::string imprime();
+	std::string imprime() const;
 
 	/**
 	 * @brief Funcao que escreve os atributos do leitor antigo num ficheiro
 	 *
 	 * @param ficheiro caminho para o ficheiro que pretendemos usar
 	 **/
-	void escreve(std::string ficheiro);
+	void escreve(std::string ficheiro) const;
 };
 
 #endif /* SRC_LEITOR_OLD_H_ */

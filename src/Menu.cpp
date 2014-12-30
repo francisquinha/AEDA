@@ -545,10 +545,22 @@ void Menu::emprestimos_adicionar() {
                     ostringstream ostr{};
                     ostr << liv;
                     cout << ostr.str();
-                    cout << "Por favor escolha um livro disponivel." << endl;
+                    cout << "Deseja deixar pedido em espera? (s - sim, n - nao)" << endl;
+                    string rpt {};
+                    getline(cin, rpt);
+                    if (rpt == "s") {
+                        try {
+                            adiciona_pedido_ids(id_lv, id_lt, utilizador_online->get_ID());
+                        }
+                        catch (Object_nao_existe &ob) {
+                            ostringstream ostr{};
+                            ostr << ob;
+                            cout << ostr.str();
+                        }
+                    }
                 }
-                cout << endl;
     		}
+            cout << endl;
     	}
    	}
 }
@@ -568,16 +580,61 @@ void Menu::emprestimos_remover() {
     	else if (!e_numero(id_ep_s)) cout << endl << "Por favor insira um numero." << endl << endl;
     	else {
     		id_ep = atol(id_ep_s.c_str());
+            bool exc {false};
+            Emprestimo* ep {};
     		try {
-    			remove_emprestimo(id_ep);
+    			ep = remove_emprestimo(id_ep);
     		}
     		catch(Object_nao_existe &ob) {
-					ostringstream ostr{};
-					ostr << ob;
-					cout << ostr.str();
-    				cout << "Por favor insira o ID de um emprestimo existente." << endl;
+                exc = true;
+                ostringstream ostr{};
+                ostr << ob;
+                cout << ostr.str();
+                cout << "Por favor insira o ID de um emprestimo existente." << endl;
     		}
-    		cout << endl;
+            cout << endl;
+            if (!exc) {
+                priority_queue<Pedido*> lv_pd {(ep->get_livro())->get_pedidos()};
+                if (lv_pd.size()>0) {
+                    Pedido* pd {lv_pd.top()};
+                    cout << "Existe um pedido em espera para este livro: " << endl;
+                    cout << "Leitor" << endl;
+                    cout << (pd->get_leitor())->imprime() << endl;
+                    cout << "Deseja fazer emprestimo? (s - sim, n - nao)" << endl;
+                    string rpt {};
+                    getline(cin, rpt);
+                    if (rpt == "s") {
+                        try {
+                            adiciona_emprestimo_ids(pd->get_livro()->get_ID(), pd->get_leitor()->get_ID(),
+                                                    utilizador_online->get_ID());
+                        }
+                        catch (Object_nao_existe &ob) {
+                            ostringstream ostr {};
+                            ostr << ob;
+                            cout << ostr.str();
+                        }
+                        catch (Livro_indisponivel &liv) {
+                            ostringstream ostr {};
+                            ostr << liv;
+                            cout << ostr.str();
+                        }
+                    }
+                    try {
+                        remove_pedido(pd->get_ID());
+                    }
+                    catch (Object_nao_existe &ob) {
+                        ostringstream ostr {};
+                        ostr << ob;
+                        cout << ostr.str();
+                    }
+                    catch (Pedido_nao_prioritario &pd) {
+                        ostringstream ostr {};
+                        ostr << pd;
+                        cout << ostr.str();
+                    }
+                }
+            }
+            cout << endl;
     	}
     }
 }

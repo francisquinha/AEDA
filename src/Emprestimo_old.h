@@ -43,14 +43,14 @@ public:
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	std::string imprime();
+	std::string imprime() const;
 
 	/**
 	 * @brief Funcao que escreve os atributos do emprestimo antigo num ficheiro
 	 *
 	 * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
 	 **/
-	void escreve(std::string ficheiro);
+	void escreve(std::string ficheiro) const;
 };
 
 #endif /* SRC_EMPRESTIMO_OLD_H_ */

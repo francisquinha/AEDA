@@ -21,7 +21,7 @@ Leitor_old::Leitor_old(unsigned long id, string nom, int tip, long tel, string e
                        time_t dtf):
 		Leitor {nom, tip, tel, eml, mrd, ct, id}, data_fim {dtf} {};
 
-string Leitor_old::imprime() {
+string Leitor_old::imprime() const {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);
 	long year {1900 + ldata->tm_year};
@@ -45,7 +45,7 @@ string Leitor_old::imprime() {
 	return out.str();
 }
 
-void Leitor_old::escreve(string ficheiro) {
+void Leitor_old::escreve(string ficheiro) const {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);
 	long year {1900 + ldata->tm_year};

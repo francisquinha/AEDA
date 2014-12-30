@@ -24,7 +24,7 @@ Pedido_old::Pedido_old(Livro* lv, Funcionario* fc, Leitor* lt, bool ct,
                                std::time_t dt, unsigned long id, std::time_t dt_f):
 Pedido {lv, fc, lt, ct, dt, id}, data_fim {dt_f} {}
 
-string Pedido_old::imprime() {
+string Pedido_old::imprime() const {
     stringstream out {};
     time_t dat=get_data();
     tm *ldata = localtime(&dat);
@@ -60,7 +60,7 @@ string Pedido_old::imprime() {
     return out.str();
 }
 
-void Pedido_old::escreve(string ficheiro) {
+void Pedido_old::escreve(string ficheiro) const {
     stringstream out {};
     time_t dat=get_data();
     tm *ldata = localtime(&dat);

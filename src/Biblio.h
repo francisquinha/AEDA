@@ -302,13 +302,13 @@ public:
 	 *
 	 * @param lond id identificacao do emprestimo que queremos remover
 	 *
-	 * @return true se existe algum emprestimo com o id fornecido
+	 * @return Apontador para o emprestimo removido se existe algum emprestimo com o id fornecido
 	 *
 	 * @exception Object_nao_existe se nao existe nenhum emprestimo com o id fornecido
 	 *
 	 * Nota: remove o primeiro emprestimo com o id indicado.
 	 **/
-	bool remove_emprestimo(unsigned long id);
+	Emprestimo* remove_emprestimo(unsigned long id);
 
 	/**
 	 * @brief Funcao para remover um utilizador da Biblioteca

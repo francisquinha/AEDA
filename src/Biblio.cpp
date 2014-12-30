@@ -345,9 +345,27 @@ bool Biblioteca::remove_livro(unsigned long id, unsigned long ind) {
                         (*it)->dec_ex_disponiveis(); /* e o numero de exemplares disponiveis */
                         (*it)->del_emp_livro(ind); /* removemos o indice do exemplar do vetor ID_ep */
                     }
-                    else livros.erase(it);
-                    /* se estamos a remover o ultimo exemplar do livro */
-                    /* removemos o registo do livro dos livros atuais */
+                    else {
+                        priority_queue<Pedido*> pds {(*it)->get_pedidos()};
+                        while (!pds.empty()) {
+                            try {
+                                remove_pedido(pds.top()->get_ID());
+                            }
+                            catch (Object_nao_existe &ob) {
+                                ostringstream ostr {};
+                                ostr << ob;
+                                cout << ostr.str();
+                            }
+                            catch (Pedido_nao_prioritario &pd) {
+                                ostringstream ostr {};
+                                ostr << pd;
+                                cout << ostr.str();
+                            }
+                        }
+                        livros.erase(it);
+                        /* se estamos a remover o ultimo exemplar do livro */
+                        /* removemos o registo do livro dos livros atuais */
+                    }
                     cout << endl << "Livro removido." << endl;
                     return true;
                 }
@@ -612,7 +630,7 @@ void Biblioteca::adiciona_pedido_ids(unsigned long id_lv, unsigned long id_lt, u
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com os iteradores,
  * porque se apagarmos o ultimo elemento, nunca chegam ao fim.
  * mas como estamos a adicionar um elemento antes de apagar, nao deve haver problema */
-bool Biblioteca::remove_emprestimo(unsigned long id) {
+Emprestimo* Biblioteca::remove_emprestimo(unsigned long id) {
 	Emprestimo_old* epo {};
 	for (vector<Emprestimo*>::iterator it = emprestimos.begin(); it != emprestimos.end(); it++) {
 		epo = dynamic_cast<Emprestimo_old*>(*it);
@@ -630,7 +648,7 @@ bool Biblioteca::remove_emprestimo(unsigned long id) {
 			adiciona_emprestimo_old(eo); /* ao remover um emprestimo adicionamo-lo como Emprestimo_old */
 			emprestimos.erase(it);
 			cout << endl << "Emprestimo removido." << endl;
-			return true;
+			return *it;
 		}
 	}
 	throw Object_nao_existe(id, "emprestimo");

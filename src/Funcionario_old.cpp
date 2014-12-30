@@ -19,7 +19,7 @@ using namespace std;
 
 Funcionario_old::Funcionario_old(unsigned long id, string nom, bool ct, time_t dtf): Funcionario {nom, ct, id}, data_fim {dtf} {};
 
-string Funcionario_old::imprime() {
+string Funcionario_old::imprime() const {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);
 	long year {1900 + ldata->tm_year};
@@ -39,7 +39,7 @@ string Funcionario_old::imprime() {
 	return out.str();
 }
 
-void Funcionario_old::escreve(string ficheiro) {
+void Funcionario_old::escreve(string ficheiro) const {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);
 	long year {1900 + ldata->tm_year};

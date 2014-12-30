@@ -41,14 +41,14 @@ public:
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	std::string imprime();
+	std::string imprime() const;
 
 	/**
 	 * @brief Funcao que escreve os atributos do funcionario antigo num ficheiro
 	 *
 	 * @param ficheiro caminho para o ficheiro onde pretendemos escrever
 	 **/
-	void escreve(std::string ficheiro);
+	void escreve(std::string ficheiro) const;
 
 };
 
