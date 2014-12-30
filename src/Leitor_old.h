@@ -33,10 +33,11 @@ public:
 	 * @param tip tipo do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
+	 * @param mrd morada do leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor_old(unsigned long id, std::string nom, int tip, long tel, std::string eml, bool ct,
+	Leitor_old(unsigned long id, std::string nom, int tip, long tel, std::string eml, std::string mrd, bool ct,
                std::time_t dtf = time(0));
 
 	/**
