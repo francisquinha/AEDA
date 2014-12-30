@@ -18,7 +18,7 @@ using namespace std;
  **/
 
 Leitor_old::Leitor_old(unsigned long id, string nom, int tip, long tel, string eml, bool ct, time_t dtf):
-		Leitor {nom, tip, tel, eml, ct, id}, data_fim {dtf} {};
+		Leitor {nom, tip, tel, eml, mrd, ct, id}, data_fim {dtf} {};
 
 string Leitor_old::imprime() {
 	stringstream out {};
@@ -39,6 +39,7 @@ string Leitor_old::imprime() {
         << "Tipo: " << get_tipo() << endl
         << "Telefone: "<< get_telefone() << endl
         << "Email: " << get_email() << endl
+        << "Morada: " << get_morada() << endl
         << "Data Fim: " << dt << endl;
 	return out.str();
 }
@@ -62,6 +63,7 @@ void Leitor_old::escreve(string ficheiro) {
         << get_tipo() << endl
         << get_telefone() << endl
         << get_email() << endl
+        << get_morada() << endl
         << dt << endl;
 	ofstream myfile (ficheiro, ios::app);
 	if (myfile.is_open()) {
