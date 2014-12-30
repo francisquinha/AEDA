@@ -25,6 +25,7 @@ class Leitor: public Object {
 	long telefone; /**< @brief telefone do leitor **/
 	std::string email; /**< @brief email do leitor **/
 	std::string morada; /**< @brief morada do leitor **/
+	std::time_t ultima_requisicao; /**< @brief ultima requisicao efetuada pelo leitor **/
 	std::vector<Emprestimo*> emprestimos_leitor; /**< @brief vetor com apontadores para os emprestimos do leitor **/
 	static unsigned long num_leitores; /**< @brief contador de leitores na biblioteca **/
 
@@ -39,10 +40,11 @@ public:
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
 	 * @param mrd morada do leitor
+	 * @param ult ultima requisicao efetuada pelo leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-    Leitor(std::string nom, int tip, long tel, std::string eml, std::string mrd, bool ct,
+    Leitor(std::string nom, int tip, long tel, std::string eml, std::string mrd, std::time_t ult, bool ct,
            unsigned long id = num_leitores + 1, std::vector<Emprestimo*> ep_lt = {});
 	/**
 	 * @brief Destrutor virtual de Leitor
@@ -113,6 +115,13 @@ public:
 	std::string get_morada() const;
 
 	/**
+	 * @brief Funcao para obter a ultima requisicao efetuada pelo leitor
+	 *
+	 * @return data da ultima requisicao efetuada pelo leitor
+	 **/
+	std::time_t get_ultima_requisicao() const;
+
+	/**
 	 * @brief Funcao para determinar o email do leitor
 	 *
 	 * @param eml email do leitor
@@ -125,6 +134,13 @@ public:
      * @param mrd morada do leitor
 	 **/
 	void set_morada(std::string mrd);
+	
+	/**
+	 * @brief Funcao para determinar a ultima requisicao efetuada pelo leitor
+	 *
+	 * @param ult ultima requisicao efetuada pelo leitor
+	 **/
+	void set_ultima_requisicao(std::time_t ult);
 
 
 
