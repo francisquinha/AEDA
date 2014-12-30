@@ -107,6 +107,14 @@ priority_queue<Pedido*> Livro::get_pedidos() {
     return pedidos;
 }
 
+void Livro::adiciona_ped_livro(Pedido* pd) {
+    pedidos.push(pd);
+}
+
+void Livro::remove_ped_livro() {
+    pedidos.pop();
+}
+
 string Livro::imprime() {
 	stringstream out {};
 	out << "ID: "<< get_ID() << endl

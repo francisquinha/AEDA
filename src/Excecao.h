@@ -99,6 +99,48 @@ public:
  **/
 std::ostream& operator<<(std::ostream &out, Livro_indisponivel &livro);
 
+/**
+ * @brief Excecao Livro_disponivel
+ *
+ * Sempre que se tenta pedir um livro disponivel esta excecao e utilizada.
+ **/
+class Livro_disponivel: public Livro {
+    
+public:
+    
+    /**
+     * @brief Construtor de Livro_indisponivel
+     *
+     * @param ano ano de edicao do livro
+     * @param tit titulo do livro
+     * @param aut vetor com os nomes dos autores do livro
+     * @param tem tema do livro
+     * @param isbn ISBN do livro
+     * @param cot cota do livro na biblioteca
+     * @param np numero de paginas do livro
+     * @param ed numero da edicao do livro
+     * @param id codigo de identificacao do livro
+     * @param ex numero total de exemplares do livro
+     * @param exd numero de exemmplares disponiveis do livro
+     * @param ep vetor com os apontadores de emprestimo dos exemplares do livro
+     * @param pd fila de prioridade com os apontadores dos pedidos de emprestimo do livro
+     **/
+    Livro_disponivel(int ano, std::string tit, std::vector<std::string> aut, std::string tem,
+                       long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
+                       int exd, std::vector<Emprestimo*> ep, std::priority_queue<Pedido*> pd):
+    Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd} {};
+};
+
+/**
+ * @brief Overload do operador << para imprimir um membro da classe Livro_indisponivel
+ *
+ * @param &out referencia para ostream onde sera colocada a impressao
+ * @param &livro referencia do exemplar inexistente
+ *
+ * @return ostream com a impressao
+ **/
+std::ostream& operator<<(std::ostream &out, Livro_disponivel &livro);
+
 class Exemplar_indisponivel: public Livro {
     
     unsigned long indice; /**< @brief indice do exemplar do livro **/
@@ -301,7 +343,8 @@ public:
 	 * @param eml email do leitor;
 	 * @param ep_lt vetor com os emprestimos do leitor
 	 **/
-	Maximo_emprestimos(unsigned long id, std::string nom, int tip, long tel, std::string eml, std::vector<Emprestimo*> ep_lt):
+	Maximo_emprestimos(unsigned long id, std::string nom, int tip, long tel, std::string eml,
+                       std::vector<Emprestimo*> ep_lt):
 		Leitor {nom, tip, tel, eml, false, id, ep_lt} {};
 };
 
@@ -314,6 +357,35 @@ public:
  * @return ostream com a impressao
  **/
 std::ostream& operator<<(std::ostream &out, Maximo_emprestimos &leitor);
+
+class Pedido_nao_prioritario: public Pedido {
+    
+public:
+    
+    /**
+     * @brief Construtor de Pedido
+     *
+     * @param lv apontador para o livro
+     * @param fc apontador para o funcionario
+     * @param lt apontador para o leitor
+     * @param ct indica se devemos incrementar o contador de pedidos
+     * @param dt data do pedido
+     * @param id codigo de identificacao do pedido
+     **/
+    Pedido_nao_prioritario(Livro* lv, Funcionario* fc, Leitor* lt, bool ct, std::time_t dt,
+                           unsigned long id): Pedido{lv, fc, lt, ct, dt, id} {};
+
+};
+
+/**
+ * @brief Overload do operador << para imprimir um membro da classe Pedido_nao_prioritario.
+ *
+ * @param ostream &out referencia para ostream onde sera colocada a impressao;
+ * @param Pedido_nao_prioritario &ped referencia do pedido nao prioritario.
+ *
+ * @return ostream com a impressao
+ **/
+std::ostream& operator<<(std::ostream &out, Pedido_nao_prioritario &ped);
 
 /**
  * @brief Excecao Ficheiro_indisponivel.

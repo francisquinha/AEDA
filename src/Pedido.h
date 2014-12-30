@@ -36,12 +36,12 @@ public:
 	/**
 	 * @brief Construtor de Pedido
 	 *
-	 * @param id codigo de identificacao do pedido
 	 * @param lv apontador para o livro
 	 * @param fc apontador para o funcionario
 	 * @param lt apontador para o leitor
+     * @param ct indica se devemos incrementar o contador de pedidos
 	 * @param dt data do pedido
-	 * @param ct indica se devemos incrementar o contador de pedidos
+     * @param id codigo de identificacao do pedido
 	 **/
 	Pedido(Livro* lv, Funcionario* fc, Leitor* lt, bool ct, std::time_t dt = time(0),
            unsigned long id = num_pedidos + 1);

@@ -212,6 +212,18 @@ public:
     std::priority_queue<Pedido*> get_pedidos();
     
     /**
+     * @brief Funcao para adicionar um pedido a fila de prioridade do livro
+     *
+     * @param pd apontador para o pedido que queremos adicionar
+     **/
+    void adiciona_ped_livro(Pedido* pd);
+    
+    /**
+     * @brief Funcao para remover o pedido mais prioritario da fila de prioridade do livro
+     **/
+    void remove_ped_livro();
+    
+    /**
      * @brief Funcao que imprime os atributos do livro
      *
      * @return string com o resultado da impressao

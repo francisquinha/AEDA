@@ -30,7 +30,13 @@ ostream& operator<<(ostream &out, Object_nao_existe &object) {
 
 // excecao para quando o livro nao esta disponivel
 ostream& operator<<(ostream &out, Livro_indisponivel &livro) {
-	out << "Livro com ID " << livro.get_ID() << " nao esta disponivel. Todos os exemplares foram emprestados." << endl;
+    out << "Livro com ID " << livro.get_ID() << " nao esta disponivel. Todos os exemplares foram emprestados." << endl;
+    return out;
+}
+
+// excecao para quando o livro esta disponivel
+ostream& operator<<(ostream &out, Livro_disponivel &livro) {
+	out << "Livro com ID " << livro.get_ID() << " esta disponivel para emprestar." << endl;
 	return out;
 }
 
@@ -80,6 +86,12 @@ ostream& operator<<(ostream &out, Emprestimos_por_devolver &leitor) {
 ostream& operator<<(ostream &out, Maximo_emprestimos &leitor) {
 	out << "Leitor ja tem 3 emprestimos feitos." << endl;
 	return out;
+}
+
+// excecao para quando o pedido que vamos remover nao e prioritario
+std::ostream& operator<<(std::ostream &out, Pedido_nao_prioritario &ped) {
+    out << "Pedido com ID " << ped.get_ID() << " nao e o mais prioritario para este livro." << endl;
+    return out;
 }
 
 // excecao para quando o ficheiro nao esta disponivel

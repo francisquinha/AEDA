@@ -151,6 +151,32 @@ vector<Utilizador*>Biblioteca::get_utilizadores() {
 	return utilizadores;
 }
 
+/* com dynamic_cast o apontador po so nao e nulo se (*it) for do tipo Pedido_old */
+vector<Pedido_old*> Biblioteca::get_pedidos_old() {
+    vector<Pedido_old*> ped_old {};
+    Pedido_old* po{};
+    for (vector<Pedido*>::const_iterator it = pedidos.begin(); it != pedidos.end(); it++){
+        po = dynamic_cast<Pedido_old*>(*it);
+        if (po != 0){
+            ped_old.push_back(po);
+        }
+    }
+    return ped_old;
+}
+
+/* com dynamic_cast o apontador po so nao e nulo se (*it) for do tipo Pedido_old */
+vector<Pedido*> Biblioteca::get_pedidos() {
+    vector<Pedido*> ped {};
+    Pedido_old* po{};
+    for (vector<Pedido*>::const_iterator it = pedidos.begin(); it != pedidos.end(); it++){
+        po = dynamic_cast<Pedido_old*>(*it);
+        if (po == 0){
+            ped.push_back(*it);
+        }
+    }
+    return ped;
+}
+
 /* codigo desnecessario
 
 void Biblioteca::set_emprestimos(vector<Emprestimo*> emp) {
@@ -511,6 +537,77 @@ void Biblioteca::adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_l
     else throw Object_nao_existe(id_lv, "livro");
 }
 
+
+void Biblioteca::adiciona_pedido_old(Pedido_old* pd) {
+    pedidos.push_back(pd);
+}
+
+void Biblioteca::adiciona_pedido(Pedido* pd) {
+    Livro* lv = pd->get_livro();
+    Leitor* lt = pd->get_leitor();
+    vector<Emprestimo*> ep_lt = lt->get_emp_leit();
+    vector<Emprestimo*> ep_lv = lv->get_emp_livro();
+    if (lv->get_ex_disponiveis() > 0)
+        throw Livro_disponivel(lv->get_ano_edicao(), lv->get_titulo(), lv->get_autores(),
+                                 lv->get_tema(), lv->get_ISBN(), lv->get_cota(), lv->get_num_paginas(),
+                                 lv->get_edicao(), lv->get_ID(), lv->get_exemplares(),
+                                 lv->get_ex_disponiveis(), lv->get_emp_livro(), lv->get_pedidos());
+    else {
+        lv->adiciona_ped_livro(pd);
+        pedidos.push_back(pd);
+        cout << "Pedido adicionado." << endl;
+    }
+}
+
+void Biblioteca::adiciona_pedido_ids(unsigned long id_lv, unsigned long id_lt, unsigned long id_fc) {
+    Livro* lv{};
+    vector<Livro*> livrs = get_livros();
+    bool livro_encontrado {false};
+    for (vector<Livro*>::const_iterator it = livrs.begin(); it != livrs.end(); it++) {
+        if ((*it)->get_ID() == id_lv) {
+            lv = (*it);
+            livro_encontrado = true;
+        }
+    }
+    if (livro_encontrado) {
+        Leitor* lt{};
+        vector<Leitor*> leitors = get_leitores();
+        bool leitor_encontrado {false};
+        for (vector<Leitor*>::const_iterator it = leitors.begin(); it != leitors.end(); it++) {
+            if ((*it)->get_ID() == id_lt) {
+                lt = (*it);
+                leitor_encontrado = true;
+            }
+        }
+        if (leitor_encontrado) {
+            Funcionario* fc{};
+            bool func_encontrado {false};
+            vector<Funcionario*> funcs = get_funcionarios_todos();
+            for (vector<Funcionario*>::const_iterator it = funcs.begin(); it != funcs.end(); it++) {
+                if ((*it)->get_ID() == id_fc) {
+                    fc = (*it);
+                    func_encontrado=true;
+                }
+            }
+            if (func_encontrado) {
+                Pedido* pd = new Pedido{lv, fc, lt, true};
+                try {
+                    adiciona_pedido(pd);
+                }
+                catch (Livro_disponivel &liv) {
+                    ostringstream ostr{};
+                    ostr << liv;
+                    cout << ostr.str();
+                    cout << "Deve efetuar o emprestimo em vez de fazer um pedido." << endl;
+                }
+            }
+            else throw Object_nao_existe(id_fc, "funcionario");
+        }
+        else throw Object_nao_existe(id_lt, "leitor");
+    }
+    else throw Object_nao_existe(id_lv, "livro");
+}
+
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com os iteradores,
  * porque se apagarmos o ultimo elemento, nunca chegam ao fim.
  * mas como estamos a adicionar um elemento antes de apagar, nao deve haver problema */
@@ -536,6 +633,33 @@ bool Biblioteca::remove_emprestimo(unsigned long id) {
 		}
 	}
 	throw Object_nao_existe(id, "emprestimo");
+}
+
+/* apagar um elemento de um vetor com erase(it) pode dar problemas com os iteradores,
+ * porque se apagarmos o ultimo elemento, nunca chegam ao fim.
+ * mas como estamos a adicionar um elemento antes de apagar, nao deve haver problema */
+bool Biblioteca::remove_pedido(unsigned long id) {
+    Pedido_old* pdo {};
+    for (vector<Pedido*>::iterator it = pedidos.begin(); it != pedidos.end(); it++) {
+        pdo = dynamic_cast<Pedido_old*>(*it);
+        if ((*it)->get_ID() == id and pdo == 0) {
+            Pedido* pdp {((*it)->get_livro())->get_pedidos().top()};
+            if (pdp->get_ID() == id) {
+                ((*it)->get_livro())->remove_ped_livro();
+                Pedido_old* po = new Pedido_old{(*it)->get_livro(),
+                (*it)->get_funcionario(), (*it)->get_leitor(), false,
+                (*it)->get_data(), (*it)->get_ID()};
+                adiciona_pedido_old(po); /* ao remover um pedido adicionamo-lo como Pedido_old */
+                pedidos.erase(it);
+                cout << endl << "Pedido removido." << endl;
+                return true;
+            }
+            else throw Pedido_nao_prioritario((*it)->get_livro(), (*it)->get_funcionario(),
+                                              (*it)->get_leitor(), false, (*it)->get_data(),
+                                              (*it)->get_ID());
+        }
+    }
+    throw Object_nao_existe(id, "emprestimo");
 }
 
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com o iterador,

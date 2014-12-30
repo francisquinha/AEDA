@@ -10,12 +10,13 @@
 #include "Leitor_old.h"
 #include "Login.h"
 #include "Excecao.h"
+#include "Pedido_old.h"
 
 class Livro_old;
 class Leitor_old;
 class Supervisor;
 class Emprestimo_old;
-class Pedido;
+class Pedido_old;
 class Utilizadores;
 class Login;
 
@@ -139,7 +140,21 @@ public:
 	 * @return vector<Utilizador*> com os apontadores para os utilizadores da biblioteca
 	 **/
 	std::vector<Utilizador*> get_utilizadores();
-
+    
+    /**
+     * @brief Funcao para obter os pedidos antigos da Biblioteca
+     *
+     * @return vector<Pedido*> com os apontadores para os pedidos antigos da biblioteca
+     **/
+    std::vector<Pedido_old*> get_pedidos_old();
+    
+    /**
+     * @brief Funcao para obter os pedidos da Biblioteca
+     *
+     * @return vector<Pedido*> com os apontadores para os pedidos da biblioteca
+     **/
+    std::vector<Pedido*> get_pedidos();
+    
 	/**
 	 * @brief Funcao para adicionar um livro antigo a Biblioteca
 	 *
@@ -218,6 +233,29 @@ public:
 	 * @param ut apontador para o novo utilizador
 	 **/
 	void adiciona_utilizador(Utilizador* ut);
+    
+    /**
+     * @brief Funcao para adicionar um novo pedido a Biblioteca
+     *
+     * @param pd apontador para o novo pedido
+     **/
+    void adiciona_pedido(Pedido* pd);
+    
+    /**
+     * @brief Funcao para adicionar um novo pedido a Biblioteca
+     *
+     * @param id_lv identificacao do livro do pedido
+     * @param id_lt identificacao do leitor do pedido
+     * @param id_fc identificacao do funcionario do pedido
+     **/
+    void adiciona_pedido_ids(unsigned long id_lv, unsigned long id_lt, unsigned long id_fc);
+    
+    /**
+     * @brief Funcao para adicionar um pedido antigo a Biblioteca
+     *
+     * @param pd apontador para o pedido antigo
+     **/
+    void adiciona_pedido_old(Pedido_old* pd);
 
 	/**
 	 * @brief Funcao para remover um exemplar de um livro da Biblioteca
@@ -284,6 +322,19 @@ public:
 	 * Nota: remove o primeiro utilizador com o id indicado.
 	 **/
 	bool remove_utilizador(unsigned long id);
+    
+    /**
+     * @brief Funcao para remover um pedido da Biblioteca
+     *
+     * @param lond id identificacao do pedido que queremos remover
+     *
+     * @return true se existe algum pedido com o id fornecido
+     *
+     * @exception Object_nao_existe se nao existe nenhum pedido com o id fornecido
+     *
+     * Nota: remove o primeiro pedido com o id indicado.
+     **/
+    bool remove_pedido(unsigned long id);
 
 	/**
 	 * @brief Funcao para distribuir uniformemente os funcionarios pelos supervisores
@@ -416,9 +467,24 @@ public:
 	 * Nota: nao imprime a password dos utilizadores
 	 **/
 	std::string imprime_utilizadores();
+    
+    /**
+     * @brief Funcao que imprime todos os pedidos antigos da Biblioteca
+     *
+     * @return string com o resultado da impressao
+     **/
+    std::string imprime_pedidos_old();
+    
+    /**
+     * @brief Funcao que imprime todos os pedidos da Biblioteca
+     *
+     * @return string com o resultado da impressao
+     **/
+    std::string imprime_pedidos();
 
 	/**
-	 * @brief Funcao que imprime todos os livros, funcionarios, supervisores, leitores e emprestimos da Biblioteca
+	 * @brief Funcao que imprime todos os livros, funcionarios, supervisores, leitores, emprestimos e
+     * pedidos da Biblioteca
 	 *
 	 * @return string com o resultado da impressao
 	 **/
@@ -436,7 +502,7 @@ public:
 
 	void set_livros(std::vector<Livro*> livr);
 
-	**/
+	*/
 
 	/**
 	 * @brief Funcao para obter os temas dos livros da Biblioteca
@@ -557,9 +623,18 @@ public:
 	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void escreve_utilizadores(std::string ficheiro);
+    
+    /**
+     * @brief Funcao que escreve todos os pedidos da Biblioteca para um ficheiro
+     *
+     * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+     *
+     * @exception Ficheiro_indisponivel se o ficheiro nao existir
+     **/
+    void escreve_pedidos(std::string ficheiro);
 
 	/**
-	 * @brief Funcao que escreve toda a informacao da Biblioteca para 6 ficheiros
+	 * @brief Funcao que escreve toda a informacao da Biblioteca para 12 ficheiros
 	 *
 	 * @param ficheiro_lvo contem o caminho para o ficheiro onde queremos escrever os livros antigos
 	 * @param ficheiro_lv contem o caminho para o ficheiro onde queremos escrever os livros
@@ -571,12 +646,15 @@ public:
 	 * @param ficheiro_epo contem o caminho para o ficheiro onde queremos escrever os emprestimos antigos
 	 * @param ficheiro_ep contem o caminho para o ficheiro onde queremos escrever os emprestimos
 	 * @param ficheiro_ut contem o caminho para o ficheiro onde queremos escrever os utilizadores
+     * @param ficheiro_pdo contem o caminho para o ficheiro onde queremos escrever os pedidos antigos
+     * @param ficheiro_pd contem o caminho para o ficheiro onde queremos escrever os pedidos
 	 *
 	 * @exception Ficheiro_indisponivel se algum ficheiro nao existir
 	 **/
-	void escreve(std::string ficheiro_lvo, std::string ficheiro_lv, std::string ficheiro_fco, std::string ficheiro_fc,
-			std::string ficheiro_sp, std::string ficheiro_lto, std::string ficheiro_lt, std::string ficheiro_epo,
-			std::string ficheiro_ep, std::string ficheiro_ut);
+	void escreve(std::string ficheiro_lvo, std::string ficheiro_lv, std::string ficheiro_fco,
+                 std::string ficheiro_fc, std::string ficheiro_sp, std::string ficheiro_lto,
+                 std::string ficheiro_lt, std::string ficheiro_epo, std::string ficheiro_ep,
+                 std::string ficheiro_ut, std::string ficheiro_pdo, std::string ficheiro_pd);
 
 	/**
 	 * @brief Funcao que le todos os livros antigos de um ficheiro e os adiciona a Biblioteca
@@ -669,9 +747,29 @@ public:
 	 * @exception Ficheiro_indisponivel se o ficheiro nao existir
 	 **/
 	void le_utilizadores(std::string ficheiro);
+    
+    /**
+     * @brief Funcao que le todos os pedidos antigos de um ficheiro e os adiciona a Biblioteca
+     *
+     * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+     *
+     * @exception Ficheiro_indisponivel se o ficheiro nao existir
+     **/
+    void le_pedidos_old(std::string ficheiro);
+    
+    /**
+     * @brief Funcao que le todos os pedidos de um ficheiro e os adiciona a Biblioteca
+     *
+     * @param ficheiro contem o caminho para o ficheiro de onde queremos ler
+     *
+     * @exception Ficheiro_indisponivel se o ficheiro nao existir
+     *
+     * Nota: E atualizada a informacao sobre pedidos nos livros.
+     **/
+    void le_pedidos(std::string ficheiro);
 
 	/**
-	 * @brief Funcao que le toda a informacao de 6 ficheiros e adiciona a Biblioteca
+	 * @brief Funcao que le toda a informacao de 12 ficheiros e adiciona a Biblioteca
 	 *
 	 * @param ficheiro_lvo contem o caminho para o ficheiro onde queremos ler os livros antigos
 	 * @param ficheiro_lv contem o caminho para o ficheiro onde queremos ler os livros
@@ -683,12 +781,15 @@ public:
 	 * @param ficheiro_epo contem o caminho para o ficheiro onde queremos ler os emprestimos antigos
 	 * @param ficheiro_ep contem o caminho para o ficheiro onde queremos ler os emprestimos
 	 * @param ficheiro_ut contem o caminho para o ficheiro onde queremos ler os utilizadores
+     * @param ficheiro_pdo contem o caminho para o ficheiro onde queremos ler os pedidos antigos
+     * @param ficheiro_pd contem o caminho para o ficheiro onde queremos ler os pedidos
 	 *
 	 * @exception Ficheiro_indisponivel se algum ficheiro nao existir
 	 **/
-	void le(std::string ficheiro_lvo, std::string ficheiro_lv, std::string ficheiro_fco, std::string ficheiro_fc,
-			std::string ficheiro_sp, std::string ficheiro_lto, std::string ficheiro_lt, std::string ficheiro_epo,
-			std::string ficheiro_ep, std::string ficheiro_ut);
+    void le(std::string ficheiro_lvo, std::string ficheiro_lv, std::string ficheiro_fco,
+            std::string ficheiro_fc, std::string ficheiro_sp, std::string ficheiro_lto,
+            std::string ficheiro_lt, std::string ficheiro_epo, std::string ficheiro_ep,
+            std::string ficheiro_ut, std::string ficheiro_pdo, std::string ficheiro_pd);
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */
