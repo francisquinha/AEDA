@@ -4,6 +4,7 @@ Ines Cunha
 912233444
 inescunha@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
+0
 
 2
 Maria Fonseca
@@ -39,14 +40,15 @@ Joao Meireles
 962232354
 joaomeireles@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
+2014/11/07
 9;
-
 7
 Alexandre Cunha
 2
 963453442
 alexandrecunha@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
+2014/11/06
 7;
 8
 Andreia Teixeira
@@ -54,6 +56,7 @@ Andreia Teixeira
 913563455
 andreiateixeira@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
+2014/11/01
 5;
 9
 Margarida Carvalho
@@ -306,6 +309,7 @@ Lara Lacerda
 918527639
 laralacerda@fe.up.pt
 Rua Dr. António Bernardino de Almeida, 431 Porto PORTUGAL
+2014/12/27
 11;
 47
 Nuno Aires
