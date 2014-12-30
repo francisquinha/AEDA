@@ -24,6 +24,7 @@ class Leitor: public Object {
 	int tipo; /**< @brief tipo de leitor (0 - estudante, 1 - crianca ate 12 anos, 2 - adulto) **/
 	long telefone; /**< @brief telefone do leitor **/
 	std::string email; /**< @brief email do leitor **/
+	std::string morada; /**< @brief morada do leitor **/
 	std::vector<Emprestimo*> emprestimos_leitor; /**< @brief vetor com apontadores para os emprestimos do leitor **/
 	static unsigned long num_leitores; /**< @brief contador de leitores na biblioteca **/
 
@@ -37,10 +38,11 @@ public:
 	 * @param tip tipo do leitor
 	 * @param tel telefone do leitor
 	 * @param eml email do leitor
+	 * @param mrd morada do leitor
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-    Leitor(std::string nom, int tip, long tel, std::string eml, bool ct,
+    Leitor(std::string nom, int tip, long tel, std::string eml, std::string morada mrd, bool ct,
            unsigned long id = num_leitores + 1, std::vector<Emprestimo*> ep_lt = {});
 	/**
 	 * @brief Destrutor virtual de Leitor
@@ -104,11 +106,27 @@ public:
 	std::string get_email();
 
 	/**
+	 * @brief Funcao para obter a morada do leitor
+	 *
+	 * @return string com a morada do leitor
+	 **/
+	std::string get_morada();
+
+	/**
 	 * @brief Funcao para determinar o email do leitor
 	 *
-	 * @return eml email do leitor
+	 * @param eml email do leitor
 	 **/
 	void set_email(std::string eml);
+
+	/**
+	 * @brief Funcao para determinar a morada do leitor
+	 *
+     * @param mrd morada do leitor
+	 **/
+	void set_morada(std::string mrd);
+
+
 
 	/**
 	 * @brief Funcao para adicionar emprestimo ao leitor
