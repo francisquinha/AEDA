@@ -42,7 +42,7 @@ public:
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-    Leitor(std::string nom, int tip, long tel, std::string eml, std::string morada mrd, bool ct,
+    Leitor(std::string nom, int tip, long tel, std::string eml, std::string mrd, bool ct,
            unsigned long id = num_leitores + 1, std::vector<Emprestimo*> ep_lt = {});
 	/**
 	 * @brief Destrutor virtual de Leitor

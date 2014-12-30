@@ -905,10 +905,19 @@ void Menu::leitores_adicionar() {
 						continuar = false;
 					}
 					else {
-						Leitor* lt = new Leitor{nom, tip, tel, eml, true};
-						cout << endl;
-						adiciona_leitor(lt);
-						cout << endl;
+                        string mrd {};
+                        cout << "Morada: ";
+                        getline (cin, mrd);
+                        if (mrd == "s") {
+                            clear_screen();
+                            continuar = false;
+                        }
+                        else {
+                            Leitor* lt = new Leitor{nom, tip, tel, eml, mrd, true};
+                            cout << endl;
+                            adiciona_leitor(lt);
+                            cout << endl;
+                        }
 					}
 				}
 			}

@@ -406,14 +406,15 @@ bool Biblioteca::remove_leitor(unsigned long id) {
 		lto = dynamic_cast<Leitor_old*>(*it);
 		if ((*it)->get_ID() == id and lto == 0) {
 			if ((*it)->get_emp_leit().size() == 0) {
-				Leitor_old* lo = new Leitor_old{(*it)->get_ID(), (*it)->get_nome(), (*it)->get_tipo(), (*it)->get_telefone(), (*it)->get_email(), false};
+				Leitor_old* lo = new Leitor_old{(*it)->get_ID(), (*it)->get_nome(), (*it)->get_tipo(),
+                    (*it)->get_telefone(), (*it)->get_email(), (*it)->get_morada(), false};
 				adiciona_leitor_old(lo); /* ao remover um leitor adicionamo-lo como Leitor_old */
 				leitores.erase(it);
 				cout << endl << "Leitor removido." << endl;
 				return true;
 			}
 			else { /* nao podemos remover um leitor com emprestimos por devolver */
-				throw Emprestimos_por_devolver(id, (*it)->get_nome(), (*it)->get_tipo(), (*it)->get_telefone(), (*it)->get_email(), (*it)->get_emp_leit());
+				throw Emprestimos_por_devolver(id, (*it)->get_nome(), (*it)->get_tipo(), (*it)->get_telefone(), (*it)->get_email(), (*it)->get_morada(), (*it)->get_emp_leit());
 			}
 		}
 	}
@@ -440,7 +441,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
                 cout << "Emprestimo adicionado." << endl;
             }
             else throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(), lt->get_tipo(),
-                                          lt->get_telefone(), lt->get_email(),
+                                          lt->get_telefone(), lt->get_email(), lt->get_morada(),
                                           lt->get_emp_leit());
             /* nao podemos adicionar mais emprestimos a um leitor que ja tenha 3 */
         }
@@ -917,6 +918,26 @@ string Biblioteca::imprime_utilizadores() {
 	return out.str();
 }
 
+string Biblioteca::imprime_pedidos_old() {
+    stringstream out {};
+    out << "PEDIDOS ANTIGOS" << endl << endl;
+    vector<Pedido_old*> ped_old {get_pedidos_old()};
+    for (vector<Pedido_old*>::const_iterator it = ped_old.begin(); it != ped_old.end(); it++) {
+        out << (*it)->imprime() << endl;
+    }
+    return out.str();
+}
+
+string Biblioteca::imprime_pedidos() {
+    stringstream out {};
+    vector<Pedido*> ped {get_pedidos()};
+    out << "PEDIDOS" << endl << endl;
+    for (vector<Pedido*>::const_iterator it = ped.begin(); it != ped.end(); it++) {
+        out << (*it)->imprime() << endl;
+    }
+    return out.str();
+}
+
 string Biblioteca::imprime() {
 	stringstream out {};
 	out << imprime_livros() << endl
@@ -1026,10 +1047,30 @@ void Biblioteca::escreve_utilizadores(string ficheiro) {
 	}
 }
 
+void Biblioteca::escreve_pedidos_old(string ficheiro) {
+    ofstream myfile(ficheiro);
+    myfile << "";
+    myfile.close();
+    vector<Pedido_old*> ped_old {get_pedidos_old()};
+    for (vector<Pedido_old*>::const_iterator it = ped_old.begin(); it != ped_old.end(); it++) {
+        (*it)->escreve(ficheiro);
+    }
+}
+
+void Biblioteca::escreve_pedidos(string ficheiro) {
+    ofstream myfile(ficheiro);
+    myfile << "";
+    myfile.close();
+    vector<Pedido*> emp {get_pedidos()};
+    for (vector<Pedido*>::const_iterator it = emp.begin(); it != emp.end(); it++) {
+        (*it)->escreve(ficheiro);
+    }
+}
+
 /* e necessario apanhar as possiveis excecoes em caso de os ficheiros nao estarem disponiveis */
-void Biblioteca::escreve(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco,
-		string ficheiro_fc, string ficheiro_sp, string ficheiro_lto, string ficheiro_lt,
-		string ficheiro_epo, string ficheiro_ep, string ficheiro_ut) {
+void Biblioteca::escreve(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco, string ficheiro_fc,
+                         string ficheiro_sp, string ficheiro_lto, string ficheiro_lt, string ficheiro_epo,
+                         string ficheiro_ep, string ficheiro_ut, string ficheiro_pdo, string ficheiro_pd) {
 	try {
 		escreve_livros_old(ficheiro_lvo);
 	}
@@ -1110,6 +1151,23 @@ void Biblioteca::escreve(string ficheiro_lvo, string ficheiro_lv, string ficheir
 		ostr << fic;
 		cout << ostr.str();
 	}
+    try {
+        escreve_pedidos(ficheiro_pd);
+    }
+    catch (Ficheiro_indisponivel &fic) {
+        ostringstream ostr{};
+        ostr << fic;
+        cout << ostr.str();
+    }
+    try {
+        escreve_pedidos_old(ficheiro_pdo);
+    }
+    catch (Ficheiro_indisponivel &fic) {
+        ostringstream ostr{};
+        ostr << fic;
+        cout << ostr.str();
+    }
+
 }
 
 void Biblioteca::le_livros_old(string ficheiro) {
@@ -1311,7 +1369,7 @@ void Biblioteca::le_supervisores(string ficheiro) {
 void Biblioteca::le_leitores_old(string ficheiro) {
 	ifstream islt(ficheiro);
 	if (!islt) throw Ficheiro_indisponivel(ficheiro);
-	string ids {}, nom {}, tels {}, eml {}, ymds {}, years {}, months {}, days {}, tips {};
+    string ids {}, nom {}, tels {}, eml {}, ymds {}, years {}, months {}, days {}, tips {}, mrd {};
     unsigned long id {};
     long tel {};
 	int tip {};
@@ -1324,6 +1382,7 @@ void Biblioteca::le_leitores_old(string ficheiro) {
 		getline(islt, tips);
 		getline(islt, tels);
 		getline(islt, eml);
+        getline(islt, mrd);
 		getline(islt, ymds);
 		id = atol(ids.c_str());
 		tip = atoi(tips.c_str());
@@ -1345,7 +1404,7 @@ void Biblioteca::le_leitores_old(string ficheiro) {
 			dt = mktime (dtinfo);
 		}
 		if (ids != "") {
-			Leitor_old* lto = new Leitor_old {id, nom, tip, tel, eml, true, dt};
+			Leitor_old* lto = new Leitor_old {id, nom, tip, tel, eml, mrd, true, dt};
 			adiciona_leitor_old(lto);
 		}
 	}
@@ -1355,7 +1414,7 @@ void Biblioteca::le_leitores_old(string ficheiro) {
 void Biblioteca::le_leitores(string ficheiro) {
 	ifstream islt(ficheiro);
 	if (!islt) throw Ficheiro_indisponivel(ficheiro);
-	string ids {}, nom {}, tels {}, eml {}, epids {}, tips {};
+    string ids {}, nom {}, tels {}, eml {}, epids {}, tips {}, mrd {};
     unsigned long id {};
     long tel {};
 	int tip{};
@@ -1367,12 +1426,13 @@ void Biblioteca::le_leitores(string ficheiro) {
 		getline(islt, tips);
 		getline(islt, tels);
 		getline(islt, eml);
+        getline(islt, mrd);
 		getline(islt, epids);
 		id = atol(ids.c_str());
 		tip = atoi(tips.c_str());
 		tel = atol(tels.c_str());
 		if (ids != "") {
-			Leitor* lt = new Leitor {nom, tip, tel, eml, true, id, {}};
+			Leitor* lt = new Leitor {nom, tip, tel, eml, mrd, true, id, {}};
 			adiciona_leitor(lt);
 		}
 	}
@@ -1572,12 +1632,178 @@ void Biblioteca::le_utilizadores(string ficheiro) {
 	isut.close();
 }
 
+void Biblioteca::le_pedidos_old(string ficheiro) {
+    ifstream ispd(ficheiro);
+    if (!ispd) throw Ficheiro_indisponivel(ficheiro);
+    string ids {}, lvids {}, fcids {}, ltids {}, ymds {}, years {}, months {}, days {};
+    string ymdse {}, yearse {}, monthse {}, dayse {};
+    unsigned long id {}, lvid {}, fcid {}, ltid {};
+    time_t dt {}, dte{};
+    struct tm* dtinfo {};
+    struct tm* dteinfo {};
+    int year {}, month {}, day {}, yeare {}, monthe {}, daye {};
+    Livro* lv {};
+    Funcionario* fc {};
+    Leitor* lt {};
+    bool encontrado {false};
+    while (!ispd.eof()) {
+        getline(ispd, ids);
+        getline(ispd, lvids);
+        getline(ispd, fcids);
+        getline(ispd, ltids);
+        getline(ispd, ymds);
+        getline(ispd, ymdse);
+        id = atol(ids.c_str());
+        lvid = atol(lvids.c_str());
+        fcid = atol(fcids.c_str());
+        ltid = atol(ltids.c_str());
+        if (ymds == "0") dt=0;
+        else {
+            stringstream ymdss(ymds);
+            getline(ymdss, years, '/');
+            getline(ymdss, months, '/');
+            getline(ymdss, days);
+            year = atoi(years.c_str());
+            month = atoi(months.c_str());
+            day = atoi(days.c_str());
+            time (&dt);
+            dtinfo = localtime ( &dt );
+            dtinfo->tm_year = year - 1900;
+            dtinfo->tm_mon = month - 1;
+            dtinfo->tm_mday = day;
+            dt = mktime (dtinfo);
+        }
+        if (ymdse == "0") dte=0;
+        else {
+            stringstream ymdsse(ymdse);
+            getline(ymdsse, yearse, '/');
+            getline(ymdsse, monthse, '/');
+            getline(ymdsse, dayse);
+            yeare = atoi(yearse.c_str());
+            monthe = atoi(monthse.c_str());
+            daye = atoi(dayse.c_str());
+            time (&dte);
+            dteinfo = localtime ( &dte );
+            dteinfo->tm_year = yeare - 1900;
+            dteinfo->tm_mon = monthe - 1;
+            dteinfo->tm_mday = daye;
+            dte = mktime (dteinfo);
+        }
+        if (ids != "") {
+            encontrado=false;
+            for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++) {
+                if ((*it)->get_ID() == lvid) {
+                    lv = (*it);
+                    encontrado = true;
+                }
+            }
+            if (!encontrado) throw Object_nao_existe(lvid, "livro");
+            encontrado = false;
+            for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
+                if ((*it)->get_ID() == fcid) {
+                    fc = (*it);
+                    encontrado = true;
+                }
+            }
+            if (!encontrado) throw Object_nao_existe(fcid, "funcionario");
+            encontrado=false;
+            for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
+                if ((*it)->get_ID() == ltid) {
+                    lt = (*it);
+                    encontrado = true;
+                }
+            }
+            if (!encontrado) throw Object_nao_existe(ltid, "leitor");
+            Pedido_old* pd = new Pedido_old {lv, fc, lt, true, dt, id, dte};
+            adiciona_pedido_old(pd);
+        }
+    }
+    ispd.close();
+}
+
+void Biblioteca::le_pedidos(string ficheiro) {
+    ifstream ispd(ficheiro);
+    if (!ispd) throw Ficheiro_indisponivel(ficheiro);
+    string ids {}, lvids {}, fcids {}, ltids {}, ymds {}, years {}, months {}, days {};
+    unsigned long id {}, lvid {}, fcid {}, ltid {};
+    time_t dt {};
+    struct tm* dtinfo {};
+    int year {}, month {}, day {};
+    Livro* lv {};
+    Funcionario* fc {};
+    Leitor* lt {};
+    bool encontrado {false};
+    while (!ispd.eof()) {
+        getline(ispd, ids);
+        getline(ispd, lvids);
+        getline(ispd, fcids);
+        getline(ispd, ltids);
+        getline(ispd, ymds);
+        id = atol(ids.c_str());
+        lvid = atol(lvids.c_str());
+        fcid = atol(fcids.c_str());
+        ltid = atol(ltids.c_str());
+        if (ymds == "0") dt=0;
+        else {
+            stringstream ymdss(ymds);
+            getline(ymdss, years, '/');
+            getline(ymdss, months, '/');
+            getline(ymdss, days);
+            year = atoi(years.c_str());
+            month = atoi(months.c_str());
+            day = atoi(days.c_str());
+            time (&dt);
+            dtinfo = localtime ( &dt );
+            dtinfo->tm_year = year - 1900;
+            dtinfo->tm_mon = month - 1;
+            dtinfo->tm_mday = day;
+            dt = mktime (dtinfo);
+        }
+        if (ids != "") {
+            encontrado=false;
+            for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++) {
+                if ((*it)->get_ID() == lvid) {
+                    lv = (*it);
+                    encontrado = true;
+                }
+            }
+            if (!encontrado) throw Object_nao_existe(lvid, "livro");
+            encontrado = false;
+            for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
+                if ((*it)->get_ID() == fcid) {
+                    fc = (*it);
+                    encontrado = true;
+                }
+            }
+            if (!encontrado) throw Object_nao_existe(fcid, "funcionario");
+            encontrado=false;
+            for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
+                if ((*it)->get_ID() == ltid) {
+                    lt = (*it);
+                    encontrado = true;
+                }
+            }
+            if (!encontrado) throw Object_nao_existe(ltid, "leitor");
+            Pedido* pd = new Pedido {lv, fc, lt, true, dt, id};
+            try {
+                adiciona_pedido(pd);
+            }
+            catch (Livro_disponivel &liv) {
+                ostringstream ostr{};
+                ostr << liv;
+                cout << ostr.str();
+            }
+        }
+    }
+    ispd.close();
+}
+
 /* e necessario apanhar as possiveis excecoes de indisponibilidade de algum ficheiro
  * ou de inexistencia de um livro, leitor ou funcionario a que a criacao de um emprestimo
  * (atual ou antigo) tenta aceder */
-void Biblioteca::le(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco,
-		string ficheiro_fc, string ficheiro_sp, string ficheiro_lto, string ficheiro_lt,
-		string ficheiro_epo, string ficheiro_ep, string ficheiro_ut) {
+void Biblioteca::le(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco, string ficheiro_fc,
+                    string ficheiro_sp, string ficheiro_lto, string ficheiro_lt, string ficheiro_epo,
+                    string ficheiro_ep, string ficheiro_ut, string ficheiro_pdo, string ficheiro_pd) {
 	try {
 		le_livros_old(ficheiro_lvo);
 	}
@@ -1668,5 +1894,31 @@ void Biblioteca::le(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco
 		ostr << fic;
 		cout << ostr.str();
 	}
+    try {
+        le_pedidos_old(ficheiro_pdo);
+    }
+    catch (Ficheiro_indisponivel &fic) {
+        ostringstream ostr{};
+        ostr << fic;
+        cout << ostr.str();
+    }
+    catch (Object_nao_existe &obj) {
+        ostringstream ostr{};
+        ostr << obj;
+        cout << ostr.str();
+    }
+    try {
+        le_pedidos(ficheiro_pd);
+    }
+    catch (Ficheiro_indisponivel &fic) {
+        ostringstream ostr{};
+        ostr << fic;
+        cout << ostr.str();
+    }
+    catch (Object_nao_existe &obj) {
+        ostringstream ostr{};
+        ostr << obj;
+        cout << ostr.str();
+    }
 }
 

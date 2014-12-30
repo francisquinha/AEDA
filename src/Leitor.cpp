@@ -93,7 +93,7 @@ string Leitor::imprime() {
 	if (tipo == 0) tipos = "Estudante";
 	else if (tipo == 1) tipos = "Crianca";
 	else tipos = "Adulto";
-	out << "ID: "<< get_ID() << endl<< "Nome: " << nome << endl << "Tipo: " << tipos << endl
+	out << "ID: "<< get_ID() << endl << "Nome: " << nome << endl << "Tipo: " << tipos << endl
 			<< "Telefone: "<< telefone << endl << "Email: " << email << endl << "Morada: " << morada << endl << "ID Emprestimos: ";
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		out << (*it)->get_ID() << "; ";

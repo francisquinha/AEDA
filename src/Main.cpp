@@ -50,10 +50,12 @@ int main() {
 	string ficheiro_epo {path + "Emprestimo_old.txt"};
 	string ficheiro_ep {path + "Emprestimo.txt"};
 	string ficheiro_ut {path + "Utilizador.txt"};
+    string ficheiro_pdo {path + "Pedido_old.txt"};
+    string ficheiro_pd {path + "Pedido.txt"};
 
 	/* leitura dos ficheiros e adicao dos varios objetos a biblioteca */
-	m.le(ficheiro_lvo, ficheiro_lv, ficheiro_fco, ficheiro_fc, ficheiro_sp,
-			ficheiro_lto, ficheiro_lt, ficheiro_epo, ficheiro_ep, ficheiro_ut);
+	m.le(ficheiro_lvo, ficheiro_lv, ficheiro_fco, ficheiro_fc, ficheiro_sp, ficheiro_lto, ficheiro_lt,
+         ficheiro_epo, ficheiro_ep, ficheiro_ut, ficheiro_pdo, ficheiro_pd);
 
 	/* limpeza do ecra */
 	clear_screen();
@@ -63,8 +65,8 @@ int main() {
 
 	/* no final, se sairmos da aplicacao com "s", sao gravadas as alteracoes aos objetos
 	 * nos respetivos ficheiros */
-	m.escreve(ficheiro_lvo, ficheiro_lv, ficheiro_fco, ficheiro_fc, ficheiro_sp,
-			ficheiro_lto, ficheiro_lt, ficheiro_epo, ficheiro_ep, ficheiro_ut);
+	m.escreve(ficheiro_lvo, ficheiro_lv, ficheiro_fco, ficheiro_fc, ficheiro_sp, ficheiro_lto, ficheiro_lt,
+              ficheiro_epo, ficheiro_ep, ficheiro_ut, ficheiro_pdo, ficheiro_pd);
 
 	return 0;
 }

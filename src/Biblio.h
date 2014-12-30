@@ -625,6 +625,15 @@ public:
 	void escreve_utilizadores(std::string ficheiro);
     
     /**
+     * @brief Funcao que escreve todos os pedidos antigos da Biblioteca para um ficheiro
+     *
+     * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
+     *
+     * @exception Ficheiro_indisponivel se o ficheiro nao existir
+     **/
+    void escreve_pedidos_old(std::string ficheiro);
+    
+    /**
      * @brief Funcao que escreve todos os pedidos da Biblioteca para um ficheiro
      *
      * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
