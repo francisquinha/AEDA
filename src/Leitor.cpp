@@ -19,9 +19,9 @@ unsigned long Leitor::num_leitores {0};
  * Se uma funcao relacionada com leitores nao estiver nos ficheiros biblio, esta aqui.
  **/
 
-Leitor::Leitor(string nom, int tip, long tel, string eml, bool ct, unsigned long id,
+Leitor::Leitor(string nom, int tip, long tel, string eml, string mrd, bool ct, unsigned long id,
                vector<Emprestimo*> ep_lt):
-Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, emprestimos_leitor {ep_lt}
+Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, morada {mrd}, emprestimos_leitor {ep_lt}
     {if (ct) num_leitores++;}
 
 void Leitor::adiciona_emp_leit(Emprestimo* ep) {
@@ -58,6 +58,10 @@ string Leitor::get_email() {
 	return email;
 }
 
+string Leitor::get_morada() {
+	return morada;
+}
+
 void Leitor::set_nome(string nom) {
 	nome = nom;
 }
@@ -74,6 +78,10 @@ void Leitor::set_email(string eml) {
 	email = eml;
 }
 
+void Leitor::set_morada(string mrd) {
+	email = mrd;
+}
+
 time_t Leitor::get_data_ult_emp() {
     if (emprestimos_leitor.empty()) return 0;
     return (emprestimos_leitor[emprestimos_leitor.size()-1]->get_data());
@@ -86,7 +94,7 @@ string Leitor::imprime() {
 	else if (tipo == 1) tipos = "Crianca";
 	else tipos = "Adulto";
 	out << "ID: "<< get_ID() << endl<< "Nome: " << nome << endl << "Tipo: " << tipos << endl
-			<< "Telefone: "<< telefone << endl << "Email: " << email << endl << "ID Emprestimos: ";
+			<< "Telefone: "<< telefone << endl << "Email: " << email << endl << "Morada: " << morada << endl << "ID Emprestimos: ";
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		out << (*it)->get_ID() << "; ";
 	}
@@ -100,7 +108,8 @@ void Leitor::escreve(string ficheiro) {
 			<< nome << endl
 			<< tipo << endl
 			<< telefone << endl
-			<< email << endl;
+			<< email << endl
+	        << morada << endl;
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		out << (*it)->get_ID() << ";";
 	}
