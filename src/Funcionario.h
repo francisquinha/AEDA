@@ -49,7 +49,7 @@ public:
 	 *
 	 * @return string com o nome do funcionario
 	 **/
-	std::string get_nome();
+	std::string get_nome() const;
 
 	/**
 	 * @brief Funcao que escreve os atributos do funcionario num ficheiro
@@ -76,7 +76,7 @@ public:
 	 * Nota: Esta funcao retorna um vetor vazio e apenas esta declarada para que seja chamada
 	 * a implementacao na classe supervisor
 	 **/
-	virtual std::vector<Funcionario*> get_func_sup() {
+	virtual std::vector<Funcionario*> get_func_sup() const{
 		std::vector<Funcionario*> v {};
 		return v;
 	};

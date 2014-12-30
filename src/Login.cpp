@@ -16,7 +16,7 @@ using namespace std;
 
 Utilizador::Utilizador(unsigned long id, std::string pass, int acess): Object {id}, password {pass}, acesso {acess} {}
 
-string Utilizador::get_password() {
+string Utilizador::get_password() const {
 	return password;
 }
 
@@ -24,15 +24,15 @@ void Utilizador::set_password(std::string pass) {
 	password = pass;
 }
 
-int Utilizador::get_acesso() {
+int Utilizador::get_acesso() const{
 	return acesso;
 }
 
-void Utilizador::set_acesso(int acess) {
+void Utilizador::set_acesso(int acess)  {
 	acesso = acess;
 }
 
-void Utilizador::escreve(std::string ficheiro) {
+void Utilizador::escreve(std::string ficheiro) const {
 	stringstream out {};
 	out << get_ID() << endl
 			<< password << endl
@@ -45,7 +45,7 @@ void Utilizador::escreve(std::string ficheiro) {
 	else throw Ficheiro_indisponivel(ficheiro);
 }
 
-string Utilizador::imprime() {
+string Utilizador::imprime() const {
 	stringstream out {};
 	out << "ID: " << get_ID() << endl
 			<< "Nivel de acesso: " << acesso << endl;

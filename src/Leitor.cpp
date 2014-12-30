@@ -38,27 +38,27 @@ bool Leitor::remove_emp_leit(unsigned long id) {
 	throw Object_nao_existe(id, "emprestimo");
 }
 
-vector<Emprestimo*> Leitor::get_emp_leit() {
+vector<Emprestimo*> Leitor::get_emp_leit() const {
 	return emprestimos_leitor;
 }
 
-string Leitor::get_nome() {
+string Leitor::get_nome() const {
 	return nome;
 }
 
-int Leitor::get_tipo() {
+int Leitor::get_tipo() const {
 	return tipo;
 }
 
-long Leitor::get_telefone() {
+long Leitor::get_telefone() const {
 	return telefone;
 }
 
-string Leitor::get_email() {
+string Leitor::get_email() const {
 	return email;
 }
 
-string Leitor::get_morada() {
+string Leitor::get_morada() const {
 	return morada;
 }
 
@@ -82,7 +82,7 @@ void Leitor::set_morada(string mrd) {
 	email = mrd;
 }
 
-time_t Leitor::get_data_ult_emp() {
+time_t Leitor::get_data_ult_emp() const {
     if (emprestimos_leitor.empty()) return 0;
     return (emprestimos_leitor[emprestimos_leitor.size()-1]->get_data());
 }
@@ -130,7 +130,7 @@ string Leitor::imprime_emp_leit() {
 	return out.str();
 }
 
-vector<Emprestimo*> Leitor::get_emprestimos_atrasados() {
+vector<Emprestimo*> Leitor::get_emprestimos_atrasados() const {
 	vector<Emprestimo*> atrasados {};
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		if ((*it)->get_atraso() > 0) {

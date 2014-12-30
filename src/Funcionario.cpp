@@ -21,7 +21,7 @@ unsigned long Funcionario::num_funcionarios {0};
 
 Funcionario::Funcionario(string nom, bool ct, unsigned long id): Object {id}, nome {nom} {if (ct) num_funcionarios++;}
 
-string Funcionario::get_nome() {
+string Funcionario::get_nome() const {
 	return nome;
 }
 

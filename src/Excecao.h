@@ -44,7 +44,7 @@ public:
 	 *
 	 * @return string com o tipo de objeto.
 	 **/
-	std::string get_tipo();
+	std::string get_tipo() const;
 };
 
 /**
@@ -177,7 +177,7 @@ public:
      *
      * @return unsigned long com o indice do exemplar.
      **/
-    unsigned long get_indice();
+    unsigned long get_indice() const;
 };
 
 /**
@@ -226,7 +226,7 @@ public:
      *
      * @return unsigned long com o indice do exemplar.
      **/
-    unsigned long get_indice();
+    unsigned long get_indice() const;
 };
 
 /**
@@ -280,7 +280,7 @@ public:
      *
      * @return unsigned long com o indice do exemplar.
      **/
-    unsigned long get_indice();
+    unsigned long get_indice() const;
 };
 
 /**
@@ -411,7 +411,7 @@ public:
 	 *
 	 * @return string com o caminho
 	 **/
-	std::string get_ficheiro();
+	std::string get_ficheiro() const;
 };
 
 /**

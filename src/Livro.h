@@ -82,63 +82,63 @@ public:
      *
      * @return int com o ano de edicao do livro
      **/
-    int get_ano_edicao();
+    int get_ano_edicao() const;
 
 	/**
 	 * @brief Funcao para obter o titulo do livro
 	 *
 	 * @return string com o titulo do livro
 	 **/
-	std::string get_titulo();
+	std::string get_titulo() const;
 
 	/**
 	 * @brief Funcao para obter os autores do livro
 	 *
 	 * @return vector<string> com os nomes dos autores do livro
 	 **/
-	std::vector<std::string> get_autores();
+	std::vector<std::string> get_autores() const;
 
 	/**
 	 * @brief Funcao para obter o tema do livro
 	 *
 	 * @return string com o tema do livro
 	 **/
-	std::string get_tema();
+	std::string get_tema() const;
 
 	/**
 	 * @brief Funcao para obter o ISBN do livro
 	 *
 	 * @return long com o ISBN do livro
 	 **/
-	long get_ISBN();
+	long get_ISBN() const;
 
 	/**
 	 * @brief Funcao para obter a cota do livro
 	 *
 	 * @return string com a cota do livro
 	 **/
-	std::string get_cota();
+	std::string get_cota() const;
 
 	/**
 	 * @brief Funcao para obter o numero de paginas do livro
 	 *
 	 * @return int com o numero de paginas do livro
 	 **/
-	int get_num_paginas();
+	int get_num_paginas() const;
 
 	/**
 	 * @brief Funcao para obter a edicao do livro
 	 *
 	 * @return int com o numero da edicao do livro
 	 **/
-	int get_edicao();
+	int get_edicao() const;
     
     /**
      * @brief Funcao para obter o numero total de exemplares do livro
      *
      * @return int com o numero total de exemplares do livro
      **/
-    int get_exemplares();
+    int get_exemplares() const;
     
     /**
      * @brief Funcao para incrementar o numero total de exemplares do livro
@@ -155,7 +155,7 @@ public:
      *
      * @return int com o numero de exemplares disponiveis do livro
      **/
-    int get_ex_disponiveis();
+    int get_ex_disponiveis() const;
     
     /**
      * @brief Funcao para incrementar o numero de exemplares disponiveis do livro
@@ -172,7 +172,7 @@ public:
 	 *
 	 * @return vector<Emprestimo*> com os apontadores de emprestimos de exemplares do livro
 	 **/
-    std::vector<Emprestimo*> get_emp_livro();
+    std::vector<Emprestimo*> get_emp_livro() const;
 
 	/**
 	 * @brief Funcao para determinar o apontador de emprestimo de um exemplar do livro
@@ -202,14 +202,14 @@ public:
 	 *
 	 * Nota: se o livro nao foi emprestado o resultado serao os dias todos desde 1970/01/01.
 	 **/
-	double get_dias_emp(unsigned long ind);
+	double get_dias_emp(unsigned long ind) const;
     
     /**
      * @brief Funcao para obter a fila de prioridade de apontadores de pedidos do livro
      *
      * @return priority_queue<Pedido*> com os apontadores de pedidos do livro
      **/
-    std::priority_queue<Pedido*> get_pedidos();
+    std::priority_queue<Pedido*> get_pedidos() const;
     
     /**
      * @brief Funcao para adicionar um pedido a fila de prioridade do livro

@@ -14,6 +14,6 @@ using namespace std;
 
 Object::Object(unsigned long id): ID {id} {}
 
-unsigned long Object::get_ID() {
+unsigned long Object::get_ID() const {
 	return ID;
 }

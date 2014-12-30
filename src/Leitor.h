@@ -61,7 +61,7 @@ public:
 	 *
 	 * @return string com o nome do leitor
 	 **/
-	std::string get_nome();
+	std::string get_nome() const;
 
 	/**
 	 * @brief Funcao para determinar o nome do leitor
@@ -75,7 +75,7 @@ public:
 	 *
 	 * @return int com o tipo do leitor
 	 **/
-	int get_tipo();
+	int get_tipo() const;
 
 	/**
 	 * @brief Funcao para determinar o tipo do leitor
@@ -89,7 +89,7 @@ public:
 	 *
 	 * @return long com o telefone do leitor
 	 **/
-	long get_telefone();
+	long get_telefone() const;
 
 	/**
 	 * @brief Funcao para determinar o telefone do leitor
@@ -103,14 +103,14 @@ public:
 	 *
 	 * @return string com o email do leitor
 	 **/
-	std::string get_email();
+	std::string get_email() const;
 
 	/**
 	 * @brief Funcao para obter a morada do leitor
 	 *
 	 * @return string com a morada do leitor
 	 **/
-	std::string get_morada();
+	std::string get_morada() const;
 
 	/**
 	 * @brief Funcao para determinar o email do leitor
@@ -151,14 +151,14 @@ public:
 	 *
 	 * @return vector<Emprestimo*> de apontadores para os emprestimos do leitor
 	 **/
-	std::vector<Emprestimo*> get_emp_leit();
+	std::vector<Emprestimo*> get_emp_leit() const;
 
     /**
      * @brief Funcao para obter data do ultimo emprestimo do leitor
      *
      * @return time_t com a data do ultimo emprestimo do leitor
      **/
-    time_t get_data_ult_emp();
+    time_t get_data_ult_emp() const;
     
  	/**
 	 * @brief Funcao que imprime os emprestimos do leitor
@@ -172,7 +172,7 @@ public:
 	 *
 	 * @return vector<Emprestimo*> de apontadores para os emprestimos atrasados
 	 **/
-	std::vector<Emprestimo*> get_emprestimos_atrasados();
+	std::vector<Emprestimo*> get_emprestimos_atrasados() const;
 
 	/**
 	 * @brief Funcao que escreve os atributos do leitor num ficheiro

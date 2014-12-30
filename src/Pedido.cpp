@@ -24,19 +24,19 @@ unsigned long Pedido::num_pedidos {0};
 
 Pedido::Pedido(Livro* lv, Funcionario* fc, Leitor* lt, bool ct, time_t dt, unsigned long id):Object {id}, livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_pedidos++;}
 
-Livro* Pedido::get_livro() {
+Livro* Pedido::get_livro() const {
     return livro;
 }
 
-Leitor* Pedido::get_leitor() {
+Leitor* Pedido::get_leitor() const {
 	return leitor;
 }
 
-time_t Pedido::get_data() {
+time_t Pedido::get_data() const {
 	return data;
 }
 
-Funcionario* Pedido::get_funcionario() {
+Funcionario* Pedido::get_funcionario() const {
 	return funcionario;
 }
 

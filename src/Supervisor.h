@@ -51,7 +51,7 @@ public:
 	 *
 	 * @return vetor de apontadores para os funcionarios supervisionados
 	 **/
-	std::vector<Funcionario*> get_func_sup();
+	std::vector<Funcionario*> get_func_sup() const;
 
 	/**
 	 * @brief Funcao que imprime os atributor de supervisor

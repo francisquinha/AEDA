@@ -31,7 +31,7 @@ public:
 	 *
 	 * @return long com o id
 	 **/
-	unsigned long get_ID();
+	unsigned long get_ID() const;
 };
 
 #endif /* SRC_OBJECT_H_ */

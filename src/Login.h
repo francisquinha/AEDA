@@ -49,7 +49,7 @@ public:
 	 *
 	 * @return string com a password do utilizador
 	 **/
-	std::string get_password();
+	std::string get_password() const;
 
 	/**
 	 * @brief Funcao para determinar a password do utilizador
@@ -63,7 +63,7 @@ public:
 	 *
 	 * @return int com a nivel de acesso do utilizador
 	 **/
-	int get_acesso();
+	int get_acesso() const;
 
 	/**
 	 * @brief Funcao para determinar o nivel de acesso do utilizador
@@ -77,14 +77,14 @@ public:
 	 *
 	 * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
 	 **/
-	void escreve(std::string ficheiro);
+	void escreve(std::string ficheiro) const;
 
 	/**
 	 * @brief Funcao que imprime os atributos do utilizador exceto a password
 	 *
 	 * @return string contem o resultado da impressao
 	 **/
-	std::string imprime();
+	std::string imprime() const;
 
 };
 

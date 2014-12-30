@@ -25,11 +25,11 @@ void Livro::set_emp_livro(unsigned long ind, Emprestimo* ep) {
     emprestimos_livro[ind] = ep;
 }
 
-int Livro::get_ano_edicao() {
+int Livro::get_ano_edicao() const {
     return ano_edicao;
 }
 
-vector<Emprestimo*> Livro::get_emp_livro() {
+vector<Emprestimo*> Livro::get_emp_livro() const {
 	return emprestimos_livro;
 }
 
@@ -41,7 +41,7 @@ void Livro::del_emp_livro(unsigned long ind) {
     emprestimos_livro.erase(emprestimos_livro.begin() + ind);
 }
 
-double Livro::get_dias_emp(unsigned long ind) {
+double Livro::get_dias_emp(unsigned long ind) const {
     if (exemplares > ind) {
         time_t dt = emprestimos_livro[ind]->get_data();
         time_t hj = std::time(0);
@@ -51,35 +51,35 @@ double Livro::get_dias_emp(unsigned long ind) {
     throw Exemplar_inexistente(ind, ano_edicao, titulo, autores, tema, ISBN, cota, num_paginas, edicao, get_ID(), exemplares, ex_disponiveis, emprestimos_livro, pedidos);
 }
 
-string Livro::get_titulo() {
+string Livro::get_titulo() const {
 	return titulo;
 }
 
-int Livro::get_edicao() {
+int Livro::get_edicao() const {
 	return edicao;
 }
 
-vector<string> Livro::get_autores() {
+vector<string> Livro::get_autores() const {
 	return autores;
 }
 
-string Livro::get_tema() {
+string Livro::get_tema() const {
 	return tema;
 }
 
-int Livro::get_num_paginas() {
+int Livro::get_num_paginas() const {
 	return num_paginas;
 }
 
-long Livro::get_ISBN() {
+long Livro::get_ISBN() const {
 	return ISBN;
 }
 
-string Livro::get_cota() {
+string Livro::get_cota() const{
 	return cota;
 }
 
-int Livro::get_exemplares() {
+int Livro::get_exemplares() const {
     return exemplares;
 }
 
@@ -91,7 +91,7 @@ void Livro::dec_exemplares() {
     exemplares--;
 }
 
-int Livro::get_ex_disponiveis() {
+int Livro::get_ex_disponiveis() const {
     return ex_disponiveis;
 }
 
@@ -103,7 +103,7 @@ void Livro::dec_ex_disponiveis() {
     ex_disponiveis--;
 }
 
-priority_queue<Pedido*> Livro::get_pedidos() {
+priority_queue<Pedido*> Livro::get_pedidos() const {
     return pedidos;
 }
 

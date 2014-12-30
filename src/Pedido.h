@@ -56,28 +56,28 @@ public:
 	 *
 	 * @return apontador para o livro
 	 **/
-	Livro* get_livro();
+	Livro* get_livro() const;
 
 	/**
 	 * @brief Funcao para obter o funcionario responsavel pelo pedido
 	 *
 	 * @return apontador para o funcionario
 	 **/
-	Funcionario* get_funcionario();
+	Funcionario* get_funcionario() const;
 
 	/**
 	 * @brief Funcao para obter o leitor a quem e feito o pedido
 	 *
 	 * @return apontador para o leitor
 	 **/
-	Leitor* get_leitor();
+	Leitor* get_leitor() const;
 
 	/**
 	 * @brief Funcao para obter a data do pedido
 	 *
 	 * @return data do pedido
 	 **/
-	std::time_t get_data();
+	std::time_t get_data() const;
 
 	/**
 	 * @brief Funcao que imprime os atributos do pedido

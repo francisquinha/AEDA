@@ -58,49 +58,49 @@ public:
 	 *
 	 * @return apontador para o livro
 	 **/
-	Livro* get_livro();
+	Livro* get_livro() const;
 
     /**
      * @brief Funcao para obter o indice do exemplar do livro do emprestimo
      *
      * @return unsigned long com o indice do exemplar do livro
      **/
-    unsigned long get_indice();
+    unsigned long get_indice() const;
 
 	/**
 	 * @brief Funcao para obter o funcionario responsavel pelo emprestimo
 	 *
 	 * @return apontador para o funcionario
 	 **/
-	Funcionario* get_funcionario();
+	Funcionario* get_funcionario() const;
 
 	/**
 	 * @brief Funcao para obter o leitor a quem e feito o emprestimo
 	 *
 	 * @return apontador para o leitor
 	 **/
-	Leitor* get_leitor();
+	Leitor* get_leitor() const;
 
 	/**
 	 * @brief Funcao para obter a data do emprestimo
 	 *
 	 * @return data do emprestimo
 	 **/
-	std::time_t get_data();
+	std::time_t get_data() const;
 
 	/**
 	 * @brief Funcao que determina o numero de dias de atraso do emprestimo
 	 *
 	 * @return numero de dias de atraso (numero de dias depois dos 7 permitidos)
 	 **/
-	int get_atraso();
+	int get_atraso() const;
 
 	/**
 	 * @brief Funcao que determina o valor da multa do emprestimo
 	 *
 	 * @return valor da multa.
 	 **/
-	double get_multa();
+	double get_multa() const;
 
 	/**
 	 * @brief Funcao que imprime os atributos do emprestimo

@@ -21,7 +21,7 @@ Supervisor::Supervisor(unsigned long id, string nom, vector<Funcionario*> func_s
                        bool ct = false):
 				Funcionario {nom, ct, id}, funcionarios_sup {func_sup} {}
 
-vector<Funcionario*> Supervisor::get_func_sup() {
+vector<Funcionario*> Supervisor::get_func_sup() const {
 	return funcionarios_sup;
 }
 

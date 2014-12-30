@@ -19,7 +19,7 @@ using namespace std;
  **/
 
 // excecao para quando nao existe Livro, Funcionario, Leitor, Emprestimo
-string Object_nao_existe::get_tipo(){
+string Object_nao_existe::get_tipo() const {
 	return tipo;
 }
 
@@ -41,7 +41,7 @@ ostream& operator<<(ostream &out, Livro_disponivel &livro) {
 }
 
 // excecao para quando o exemplar do livro esta emprestado
-unsigned long Exemplar_indisponivel::get_indice() {
+unsigned long Exemplar_indisponivel::get_indice() const {
     return indice;
 }
 
@@ -51,7 +51,7 @@ ostream& operator<<(ostream &out, Exemplar_indisponivel &livro) {
 }
 
 // excecao para quando o exemplar do livro nao existe
-unsigned long Exemplar_inexistente::get_indice() {
+unsigned long Exemplar_inexistente::get_indice() const {
     return indice;
 }
 
@@ -62,7 +62,7 @@ ostream& operator<<(ostream &out, Exemplar_inexistente &livro) {
 }
 
 // excecao para quando o exemplar do livro que queremos remover esta emprestado
-unsigned long Livro_emprestado::get_indice() {
+unsigned long Livro_emprestado::get_indice() const {
     return indice;
 }
 
@@ -95,7 +95,7 @@ std::ostream& operator<<(std::ostream &out, Pedido_nao_prioritario &ped) {
 }
 
 // excecao para quando o ficheiro nao esta disponivel
-string Ficheiro_indisponivel::get_ficheiro() {
+string Ficheiro_indisponivel::get_ficheiro() const {
 	return ficheiro;
 }
 

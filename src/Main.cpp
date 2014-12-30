@@ -39,7 +39,7 @@ int main() {
 	/* adicao do administrador aos funcionarios*/
 	m.adiciona_funcionario(admin);
 	/* caminho para a pasta onde estao os ficheiros e caminhos para cada um dos ficheiros*/
-	string path{"/Users/Angie/Documents/MIEIC/2A1S/AEDA/XCode/trabalhos/Biblioteca/Files/"};
+	string path{"/Users/mariamiranda/Documents/workspace/biblioteca/txt/"};
 	string ficheiro_lvo {path + "Livro_old.txt"};
 	string ficheiro_lv {path + "Livro.txt"};
 	string ficheiro_fco {path + "Funcionario_old.txt"};

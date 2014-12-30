@@ -26,34 +26,34 @@ Emprestimo::Emprestimo(Livro* lv, unsigned long ind, Funcionario* fc, Leitor* lt
                        time_t dt, unsigned long id): Object {id}, livro {lv}, funcionario {fc},
     leitor {lt}, data {dt}, indice {ind} {if (ct) num_emprestimos++;}
 
-Livro* Emprestimo::get_livro() {
+Livro* Emprestimo::get_livro() const {
 	return livro;
 }
 
-unsigned long Emprestimo::get_indice() {
+unsigned long Emprestimo::get_indice() const {
     return indice;
 }
 
-Leitor* Emprestimo::get_leitor() {
+Leitor* Emprestimo::get_leitor() const {
 	return leitor;
 }
 
-time_t Emprestimo::get_data() {
+time_t Emprestimo::get_data() const {
 	return data;
 }
 
-Funcionario* Emprestimo::get_funcionario() {
+Funcionario* Emprestimo::get_funcionario() const {
 	return funcionario;
 }
 
-int Emprestimo::get_atraso() {
+int Emprestimo::get_atraso() const {
 	time_t hoje = time(0);
 	double tempo_dias {floor(difftime(hoje, data)/86400)};
 	double tempo_extra {max(tempo_dias - 7, 0.0)};
 	return (int) tempo_extra;
 }
 
-double Emprestimo::get_multa() {
+double Emprestimo::get_multa() const {
 	int tempo_extra=get_atraso();
 	int tempo_extra_extra {max(tempo_extra-7, 0)};
 	double divida {tempo_extra * 0.25 + tempo_extra_extra * 0.5};
