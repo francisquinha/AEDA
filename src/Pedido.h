@@ -50,6 +50,8 @@ public:
 	 * @brief Destrutor virtual de Pedido (isto nao deve ser necessario)
 	 **/
 	virtual ~Pedido() {};
+    
+    bool operator <(Pedido pd);
 
 	/**
 	 * @brief Funcao para obter o livro do pedido

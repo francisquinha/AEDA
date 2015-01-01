@@ -331,10 +331,24 @@ public:
      * @return true se existe algum pedido com o id fornecido
      *
      * @exception Object_nao_existe se nao existe nenhum pedido com o id fornecido
+     * @exception Pedido_nao_prioritario se o pedido nao e o primeiro da fila do livro
      *
      * Nota: remove o primeiro pedido com o id indicado.
      **/
     bool remove_pedido(unsigned long id);
+    
+    /**
+     * @brief Funcao para desistir de um pedido da Biblioteca
+     *
+     * @param lond id identificacao do pedido que queremos remover
+     *
+     * @return true se existe algum pedido com o id fornecido
+     *
+     * @exception Object_nao_existe se nao existe nenhum pedido com o id fornecido
+     *
+     * Nota: remove o primeiro pedido com o id indicado.
+     **/
+    bool desiste_pedido(unsigned long id);
 
 	/**
 	 * @brief Funcao para distribuir uniformemente os funcionarios pelos supervisores

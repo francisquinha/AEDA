@@ -25,7 +25,7 @@ class Leitor: public Object {
 	long telefone; /**< @brief telefone do leitor **/
 	std::string email; /**< @brief email do leitor **/
 	std::string morada; /**< @brief morada do leitor **/
-	std::time_t ultima_requisicao; /**< @brief ultima requisicao efetuada pelo leitor **/
+	std::time_t data_ult_emp; /**< @brief ultima requisicao efetuada pelo leitor **/
 	std::vector<Emprestimo*> emprestimos_leitor; /**< @brief vetor com apontadores para os emprestimos do leitor **/
 	static unsigned long num_leitores; /**< @brief contador de leitores na biblioteca **/
 
@@ -114,14 +114,7 @@ public:
 	 **/
 	std::string get_morada() const;
 
-	/**
-	 * @brief Funcao para obter a ultima requisicao efetuada pelo leitor
-	 *
-	 * @return data da ultima requisicao efetuada pelo leitor
-	 **/
-	std::time_t get_ultima_requisicao() const;
-
-	/**
+    /**
 	 * @brief Funcao para determinar o email do leitor
 	 *
 	 * @param eml email do leitor
@@ -135,15 +128,6 @@ public:
 	 **/
 	void set_morada(std::string mrd);
 	
-	/**
-	 * @brief Funcao para determinar a ultima requisicao efetuada pelo leitor
-	 *
-	 * @param ult ultima requisicao efetuada pelo leitor
-	 **/
-	void set_ultima_requisicao(std::time_t ult);
-
-
-
 	/**
 	 * @brief Funcao para adicionar emprestimo ao leitor
 	 *
@@ -175,6 +159,13 @@ public:
      * @return time_t com a data do ultimo emprestimo do leitor
      **/
     time_t get_data_ult_emp() const;
+    
+    /**
+     * @brief Funcao para determinar a data do ultimo emprestimo leitor
+     *
+     * @param ult data do ultimo emprestimo do leitor
+     **/
+    void set_data_ult_emp(std::time_t ult);
     
  	/**
 	 * @brief Funcao que imprime os emprestimos do leitor

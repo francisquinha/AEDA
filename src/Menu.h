@@ -150,12 +150,20 @@ public:
 	 * Todas as opcoes estao disponiveis independentemente do nivel de acesso do utilizador_online.
 	 **/
     void menu_emprestimos();
+    
+    /**
+     * @brief Menu pedidos com as opcoes adicionar, devolver e consultar antigos
+     *
+     * Este menu aparece se for escolhida a opcao 3 no menu principal.
+     * Todas as opcoes estao disponiveis independentemente do nivel de acesso do utilizador_online.
+     **/
+    void menu_pedidos();
 
 	/**
 	 * @brief Menu livros com as opcoes consultar disponiveis, consultar emprestados, consultar por tema,
 	 * consultar antigos, adicionar e remover
 	 *
-	 * Este menu aparece se for escolhida a opcao 3 no menu principal.
+	 * Este menu aparece se for escolhida a opcao 4 no menu principal.
 	 * As opcoes que mostra variam consoante o nivel de acesso do utilizador_online.
 	 * 0 e 1 - Todas;
 	 * 2 - Consultas.
@@ -165,7 +173,7 @@ public:
 	/**
 	 * @brief Menu leitores com as opcoes adicionar, remover, alterar e consultar antigos
 	 *
-	 * Este menu aparece se for escolhida a opcao 4 no menu principal.
+	 * Este menu aparece se for escolhida a opcao 5 no menu principal.
 	 * Todas as opcoes estao disponiveis independentemente do nivel de acesso do utilizador_online.
 	 **/
     void menu_leitores();
@@ -173,7 +181,7 @@ public:
 	/**
 	 * @brief Menu funcionarios com as opcoes adicionar, remover, promover, despromover e consultar antigos
 	 *
-	 * Este menu aparece se for escolhida a opcao 5 no menu principal.
+	 * Este menu aparece se for escolhida a opcao 6 no menu principal.
 	 * So esta disponivel para o utilizador de nivel 0.
 	 **/
     void menu_funcionarios();
@@ -181,7 +189,7 @@ public:
 	/**
 	 * @brief Menu utilizadores com as opcoes adicionar e remover
 	 *
-	 * Este menu aparece se for escolhida a opcao 6 no menu principal.
+	 * Este menu aparece se for escolhida a opcao 7 no menu principal.
 	 * So esta disponivel para o utilizador de nivel 0.
 	 **/
     void menu_utilizadores();
@@ -201,11 +209,19 @@ public:
 	 * Acessivel a todos os utilizadores.
 	 **/
     void consulta_emprestimos();
+    
+    /**
+     * @brief Imprime no ecra todos os pedidos atuais da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 3 no menu consultas (caminho 1->3 do menu principal).
+     * Acessivel a todos os utilizadores.
+     **/
+    void consulta_pedidos();
 
 	/**
 	 * @brief Imprime no ecra todos os emprestimos atuais da biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 3 no menu consultas (caminho 1->3 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 4 no menu consultas (caminho 1->4 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
     void consulta_leitores();
@@ -213,7 +229,7 @@ public:
 	/**
 	 * @brief Imprime no ecra todos os funcionarios atuais da biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 4 no menu consultas (caminho 1->4 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 5 no menu consultas (caminho 1->5 do menu principal).
 	 * Acessivel a utilizadores de niveis 0 e 1.
 	 **/
     void consulta_funcionarios();
@@ -221,7 +237,7 @@ public:
 	/**
 	 * @brief Imprime no ecra todos os supervisores atuais da biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 5 no menu consultas (caminho 1->5 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 6 no menu consultas (caminho 1->6 do menu principal).
 	 * Acessivel a utilizadores de niveis 0 e 1.
 	 **/
     void consulta_supervisores();
@@ -229,7 +245,7 @@ public:
 	/**
 	 * @brief Imprime no ecra todos os utilizadores da biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 6 no menu consultas (caminho 1->6 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 7 no menu consultas (caminho 1->7 do menu principal).
 	 * Acessivel apenas ao utilizador de nivel 0.
 	 **/
     void consulta_utilizadores();
@@ -285,11 +301,39 @@ public:
 	 * Acessivel a todos os utilizadores.
 	 **/
     void emprestimos_antigos();
+    
+    /**
+     * @brief Permite adicionar um pedido a biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 1 no menu pedidos (caminho 3->1 do menu principal).
+     * Acessivel a todos os utilizadores.
+     * Pede para indicar os ID do livro e do leitor. Determina se e possivel adicionar
+     * e se nao for imprime no ecra o motivo.
+     **/
+    void pedidos_adicionar();
+    
+    /**
+     * @brief Permite remover um pedido na biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 2 no menu pedidos (caminho 3->2 do menu principal).
+     * Acessivel a todos os utilizadores.
+     * Pede para indicar o ID do pedido. Determina se e possivel devolver e se nao for
+     * imprime no ecra o motivo.
+     **/
+    void pedidos_desistir();
+    
+    /**
+     * @brief Imprime no ecra todos os pedidos antigos
+     *
+     * Funcao chamada se for escolhida a opcao 3 no menu pedidos (caminho 3->3 do menu principal).
+     * Acessivel a todos os utilizadores.
+     **/
+    void pedidos_antigos();
 
-	/**
+    /**
 	 * @brief Imprime no ecra todos os livros disponiveis
 	 *
-	 * Funcao chamada se for escolhida a opcao 1 no menu livros (caminho 3->1 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 1 no menu livros (caminho 4->1 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
     void livros_disponiveis();
@@ -297,7 +341,7 @@ public:
 	/**
 	 * @brief Imprime no ecra todos os livros emprestados
 	 *
-	 * Funcao chamada se for escolhida a opcao 2 no menu livros (caminho 3->2 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 2 no menu livros (caminho 4->2 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
     void livros_emprestados();
@@ -305,7 +349,7 @@ public:
 	/**
 	 * @brief Imprime no ecra todos os livros de um determinado tema
 	 *
-	 * Funcao chamada se for escolhida a opcao 3 no menu livros (caminho 3->3 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 3 no menu livros (caminho 4->3 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 * Imprime os temas disponiveis para o utilizador escolher.
 	 **/
@@ -314,7 +358,7 @@ public:
 	/**
 	 * @brief Imprime no ecra todos os livros antigos
 	 *
-	 * Funcao chamada se for escolhida a opcao 4 no menu livros (caminho 3->4 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 4 no menu livros (caminho 4->4 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
     void livros_antigos();
@@ -322,7 +366,7 @@ public:
 	/**
 	 * @brief Permite escolher entre adicionar novo livro ou exemplar a livro existente
 	 *
-	 * Funcao chamada se for escolhida a opcao 5 no menu livros (caminho 3->5 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 5 no menu livros (caminho 4->5 do menu principal).
 	 * Acessivel apenas a utilizadores de niveis 0 e 1.
 	 **/
     void livros_adicionar();
@@ -330,7 +374,7 @@ public:
     /**
      * @brief Permite adicionar um livro novo a biblioteca
      *
-     * Funcao chamada se for escolhida a opcao 1 no menu Livros->Adicionar (caminho 3->5->1 do menu principal).
+     * Funcao chamada se for escolhida a opcao 1 no menu Livros->Adicionar (caminho 4->5->1 do menu principal).
      * Acessivel apenas a utilizadores de niveis 0 e 1.
      * Pede para indicar: titulo, autores, tema, ISBN, cota, num. paginas e edicao.
      **/
@@ -339,7 +383,7 @@ public:
     /**
      * @brief Permite adicionar um exemplar a um livro da biblioteca
      *
-     * Funcao chamada se for escolhida a opcao 2 no menu Livros->Adicionar (caminho 3->5->2 do menu principal).
+     * Funcao chamada se for escolhida a opcao 2 no menu Livros->Adicionar (caminho 4->5->2 do menu principal).
      * Acessivel apenas a utilizadores de niveis 0 e 1.
      * Pede para indicar ID do livro a que queremos adicionar emprestimo.
      **/
@@ -348,7 +392,7 @@ public:
 	/**
 	 * @brief Permite remover um livro da biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 6 no menu livros (caminho 3->6 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 6 no menu livros (caminho 4->6 do menu principal).
 	 * Acessivel apenas a utilizadores de niveis 0 e 1.
 	 * Pede para indicar o ID do livro. Determina se e possivel remover e se nao for
 	 * imprime no ecra o motivo.
@@ -358,7 +402,7 @@ public:
 	/**
 	 * @brief Permite adicionar um leitor a biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 1 no menu leitores (caminho 4->1 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 1 no menu leitores (caminho 5->1 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 * Pede para indicar: nome, telefone e email.
 	 **/
@@ -367,7 +411,7 @@ public:
 	/**
 	 * @brief Permite remover um livro da biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 2 no menu leitores (caminho 4->2 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 2 no menu leitores (caminho 5->2 do menu principal).
 	 * Acessivel a todos os utilizadores
 	 * Pede para indicar o ID do leitor. Determina se e possivel remover e se nao for
 	 * imprime no ecra o motivo.
@@ -377,7 +421,7 @@ public:
 	/**
 	 * @brief Permite alterar um leitor da biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 3 no menu leitores (caminho 4->3 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 3 no menu leitores (caminho 5->3 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 * Pede para indicar: nome, telefone e email.
 	 **/
@@ -386,7 +430,7 @@ public:
 	/**
 	 * @brief Imprime no ecra todos os leitores antigos
 	 *
-	 * Funcao chamada se for escolhida a opcao 4 no menu leitores (caminho 4->4 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 4 no menu leitores (caminho 5->4 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
     void leitores_antigos();
@@ -394,7 +438,7 @@ public:
 	/**
 	 * @brief Permite adicionar um funcionario a biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 1 no menu funcionarios (caminho 5->1 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 1 no menu funcionarios (caminho 6->1 do menu principal).
 	 * Acessivel apenas ao administrador.
 	 * Pede para indicar nome.
 	 **/
@@ -403,7 +447,7 @@ public:
 	/**
 	 * @brief Permite remover um funcionario da biblioteca
 	 *
-	 * Funcao chamada se for escolhida a opcao 2 no menu funcionarios (caminho 5->2 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 2 no menu funcionarios (caminho 6->2 do menu principal).
 	 * Acessivel apenas ao administrador.
 	 * Pede para indicar id do funcionario que queremos remover.
 	 **/
@@ -412,7 +456,7 @@ public:
 	/**
 	 * @brief Permite promover um funcionario da biblioteca a supervisor
 	 *
-	 * Funcao chamada se for escolhida a opcao 3 no menu funcionarios (caminho 5->3 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 3 no menu funcionarios (caminho 6->3 do menu principal).
 	 * Acessivel apenas ao administrador.
 	 * Pede para indicar id do funcionario que queremos promover.
 	 **/
@@ -421,7 +465,7 @@ public:
 	/**
 	 * @brief Permite promover um supervisor da biblioteca a funcionario
 	 *
-	 * Funcao chamada se for escolhida a opcao 4 no menu funcionarios (caminho 5->4 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 4 no menu funcionarios (caminho 6->4 do menu principal).
 	 * Acessivel apenas ao administrador.
 	 * Pede para indicar id do funcionario que queremos despromover.
 	 **/
@@ -430,7 +474,7 @@ public:
 	/**
 	 * @brief Imprime no ecra todos os funcionarios antigos
 	 *
-	 * Funcao chamada se for escolhida a opcao 5 no menu leitores (caminho 4->5 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 5 no menu leitores (caminho 6->5 do menu principal).
 	 * Acessivel apenas ao administrador.
 	 **/
     void funcionarios_antigos();
@@ -438,7 +482,7 @@ public:
 	/**
 	 * @brief Permite adicionar um funcionario ao sistema
 	 *
-	 * Funcao chamada se for escolhida a opcao 1 no menu utilizadores (caminho 6->1 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 1 no menu utilizadores (caminho 7->1 do menu principal).
 	 * Acessivel apenas ao administrador.
 	 * Pede para indicar: id, password e nivel de acesso.
 	 **/
@@ -447,7 +491,7 @@ public:
 	/**
 	 * @brief Permite remover um utilizador do sistema
 	 *
-	 * Funcao chamada se for escolhida a opcao 2 no menu utilizadores (caminho 6->2 do menu principal).
+	 * Funcao chamada se for escolhida a opcao 2 no menu utilizadores (caminho 7->2 do menu principal).
 	 * Acessivel apenas ao administrador.
 	 * Pede para indicar id do utilizador que queremos remover.
 	 **/

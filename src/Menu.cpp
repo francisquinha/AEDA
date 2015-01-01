@@ -147,14 +147,15 @@ void Menu::menu_principal() {
             	else cout << "ID do Funcionario: " << utilizador_online->get_ID() << endl << endl;
             	cout << "1) Consultas" << endl
             		 << "2) Emprestimos" << endl
-					 << "3) Livros" << endl
-            		 << "4) Leitores" << endl;
+                     << "3) Pedidos" << endl
+					 << "4) Livros" << endl
+            		 << "5) Leitores" << endl;
             	if (login == 0) {
-            		cout << "5) Funcionarios" << endl
-            			 << "6) Utilizadores" << endl;
+            		cout << "6) Funcionarios" << endl
+            			 << "7) Utilizadores" << endl;
             	}
-            	if (login == 0) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
-            	else cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
+            	if (login == 0) cout << endl << "Escolha uma opcao [1-7] (s para sair): ";
+            	else cout << endl << "Escolha uma opcao [1-5] (s para sair): ";
             	string opcaos {};
             	int opcao{};
                 getline(cin, opcaos);
@@ -175,17 +176,20 @@ void Menu::menu_principal() {
             			menu_emprestimos();
             			break;
             		case 3:
+                        menu_pedidos();
+                        break;
+                    case 4:
             			menu_livros();
             			break;
-            		case 4:
+            		case 5:
             			menu_leitores();
             			break;
-            		case 5:
+            		case 6:
             			if (login == 0) menu_funcionarios();
             			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
             					<< endl << endl;
             			break;
-            		case 6:
+            		case 7:
             			if (login == 0) menu_utilizadores();
             			else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
             					<< endl << endl;
@@ -208,19 +212,20 @@ void Menu::menu_consultas() {
     	cout << "MENU CONSULTAS" << endl << endl;
     	cout << "1) Livros" << endl
     		 << "2) Emprestimos" << endl
-			 << "3) Leitores" << endl;
+             << "3) Pedidos" << endl
+			 << "4) Leitores" << endl;
     	if (login == 1) {
-    		cout << "4) Funcionarios" << endl
-    			 << "5) Supervisores" << endl;
+    		cout << "5) Funcionarios" << endl
+    			 << "6) Supervisores" << endl;
     	}
     	if (login == 0) {
-    		cout << "4) Funcionarios" << endl
-    			 << "5) Supervisores" << endl
-    			 << "6) Utilizadores" << endl;
+    		cout << "5) Funcionarios" << endl
+    			 << "6) Supervisores" << endl
+    			 << "7) Utilizadores" << endl;
     	}
-    	if (login == 0) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
-    	else if (login == 1) cout << endl << "Escolha uma opcao [1-5] (s para sair): ";
-    	else cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
+    	if (login == 0) cout << endl << "Escolha uma opcao [1-7] (s para sair): ";
+    	else if (login == 1) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
+    	else cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
@@ -237,22 +242,25 @@ void Menu::menu_consultas() {
     		case 2:
     			consulta_emprestimos();
     			break;
-    		case 3:
+            case 3:
+                consulta_pedidos();
+                break;
+    		case 4:
     			consulta_leitores();
     			break;
-   			case 4:
+   			case 5:
    				if (login != 2) consulta_funcionarios();
    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
    						<< endl << endl;
    				break;
-   			case 5:
+   			case 6:
    				if (login != 2) consulta_supervisores();
    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
    						<< endl << endl;
    				break;
-   			case 6:
+   			case 7:
    				if (login == 0) consulta_utilizadores();
-   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+   				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para  sair)."
    						<< endl << endl;
    				break;
    			default:
@@ -308,6 +316,41 @@ void Menu::menu_emprestimos() {
    				break;
   			}
    		}
+   	}
+}
+
+void Menu::menu_pedidos() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "MENU PEDIDOS" << endl << endl;
+        cout << "1) Adicionar" << endl
+             << "2) Desistir" << endl
+             << "3) Consultar pedidos antigos" << endl;
+        cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
+        string opcaos {};
+        int opcao{};
+        getline(cin, opcaos);
+        clear_screen();
+        if (opcaos == "s") continuar=false;
+        else if (!e_numero(opcaos)) cout <<
+            "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+        else {
+            opcao = atoi(opcaos.c_str());
+            switch (opcao) {
+                case 1:
+                    pedidos_adicionar();
+                    break;
+                case 2:
+                    pedidos_desistir();
+                    break;
+                case 3:
+                    pedidos_antigos();
+                    break;
+                default:
+                    cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+                    break;
+            }
+        }
    	}
 }
 
@@ -488,6 +531,10 @@ void Menu::consulta_emprestimos() {
 	cout << imprime_emprestimos();
 }
 
+void Menu::consulta_pedidos() {
+    cout << imprime_pedidos();
+}
+
 void Menu::consulta_leitores() {
 	cout << imprime_leitores();
 }
@@ -530,8 +577,8 @@ void Menu::emprestimos_adicionar() {
             else if (!e_numero(id_lt_s)) cout << endl << "Por favor insira um numero."
                 << endl << endl;
             else {
-                id_lt = atol(id_lt_s.c_str());
                 cout << endl;
+                id_lt = atol(id_lt_s.c_str());
                 try {
                     adiciona_emprestimo_ids(id_lv, id_lt, utilizador_online->get_ID());
                 }
@@ -545,10 +592,11 @@ void Menu::emprestimos_adicionar() {
                     ostringstream ostr{};
                     ostr << liv;
                     cout << ostr.str();
-                    cout << "Deseja deixar pedido em espera? (s - sim, n - nao)" << endl;
+                    cout << "Deseja deixar pedido em espera? (s - sim, n - nao)" << endl << endl;
                     string rpt {};
                     getline(cin, rpt);
                     if (rpt == "s") {
+                        cout << endl;
                         try {
                             adiciona_pedido_ids(id_lv, id_lt, utilizador_online->get_ID());
                         }
@@ -597,13 +645,14 @@ void Menu::emprestimos_remover() {
                 priority_queue<Pedido*> lv_pd {(ep->get_livro())->get_pedidos()};
                 if (lv_pd.size()>0) {
                     Pedido* pd {lv_pd.top()};
-                    cout << "Existe um pedido em espera para este livro: " << endl;
-                    cout << "Leitor" << endl;
+                    cout << "Existe um pedido em espera para este livro: " << endl << endl;
+                    cout << "LEITOR" << endl;
                     cout << (pd->get_leitor())->imprime() << endl;
-                    cout << "Deseja fazer emprestimo? (s - sim, n - nao)" << endl;
+                    cout << "Deseja fazer emprestimo? (s - sim, n - nao)" << endl << endl;
                     string rpt {};
                     getline(cin, rpt);
                     if (rpt == "s") {
+                        cout << endl;
                         try {
                             adiciona_emprestimo_ids(pd->get_livro()->get_ID(), pd->get_leitor()->get_ID(),
                                                     utilizador_online->get_ID());
@@ -667,6 +716,105 @@ void Menu::emprestimos_atrasados_livros() {
 
 void Menu::emprestimos_antigos() {
 	cout << imprime_emprestimos_old();
+}
+
+void Menu::pedidos_adicionar() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Adicionar Pedido (s para sair)" << endl << endl;
+        cout << "ID do livro: ";
+        string id_lv_s {};
+        unsigned long id_lv{};
+        getline(cin, id_lv_s);
+        if (id_lv_s == "s") {
+            clear_screen();
+            continuar = false;
+        }
+        else if (!e_numero(id_lv_s)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            id_lv = atol (id_lv_s.c_str());
+            cout << "ID do leitor: ";
+            string id_lt_s {};
+            unsigned long id_lt{};
+            getline(cin, id_lt_s);
+            if (id_lt_s == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else if (!e_numero(id_lt_s)) cout << endl << "Por favor insira um numero."
+                << endl << endl;
+            else {
+                id_lt = atol(id_lt_s.c_str());
+                cout << endl;
+                try {
+                    adiciona_pedido_ids(id_lv, id_lt, utilizador_online->get_ID());
+                }
+                catch (Object_nao_existe &ob) {
+                    ostringstream ostr{};
+                    ostr << ob;
+                    cout << ostr.str();
+                    cout << "Por favor escolha outro." << endl;
+                }
+                catch (Livro_disponivel &liv) {
+                    ostringstream ostr{};
+                    ostr << liv;
+                    cout << ostr.str();
+                    cout << "Deseja fazer o emprestimo? (s - sim, n - nao)" << endl;
+                    string rpt {};
+                    getline(cin, rpt);
+                    if (rpt == "s") {
+                        try {
+                            adiciona_emprestimo_ids(id_lv, id_lt, utilizador_online->get_ID());
+                        }
+                        catch (Object_nao_existe &ob) {
+                            ostringstream ostr{};
+                            ostr << ob;
+                            cout << ostr.str();
+                        }
+                        catch (Livro_indisponivel &liv) {
+                            ostringstream ostr {};
+                            ostr << liv;
+                            cout << ostr.str();
+                        }
+                    }
+                }
+            }
+            cout << endl;
+        }
+   	}
+}
+
+void Menu::pedidos_desistir() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Remover Pedido (s para sair)" << endl << endl;
+        cout << "ID do Pedido: ";
+        string id_pd_s {};
+        unsigned long id_pd{};
+        getline(cin, id_pd_s);
+        if (id_pd_s == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(id_pd_s)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            id_pd = atol(id_pd_s.c_str());
+            try {
+                desiste_pedido(id_pd);
+            }
+            catch(Object_nao_existe &ob) {
+                ostringstream ostr{};
+                ostr << ob;
+                cout << ostr.str();
+                cout << "Por favor insira o ID de um pedido existente." << endl;
+            }
+            cout << endl;
+        }
+    }
+}
+
+void Menu::pedidos_antigos() {
+    cout << imprime_pedidos_old();
 }
 
 void Menu::livros_disponiveis(){
@@ -970,7 +1118,7 @@ void Menu::leitores_adicionar() {
                             continuar = false;
                         }
                         else {
-                            Leitor* lt = new Leitor{nom, tip, tel, eml, mrd, true};
+                            Leitor* lt = new Leitor{nom, tip, tel, eml, mrd, time(0), true};
                             cout << endl;
                             adiciona_leitor(lt);
                             cout << endl;

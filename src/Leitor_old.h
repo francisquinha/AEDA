@@ -38,8 +38,7 @@ public:
 	 * @param ep_lt vetor de apontadores para os emprestimos do leitor
 	 * @param ct indica se devemos incrementar o contador de leitores
 	 **/
-	Leitor_old(unsigned long id, std::string nom, int tip, long tel, std::string eml, std::string mrd, time_t ult, bool ct,
-               std::time_t dtf = time(0));
+	Leitor_old(unsigned long id, std::string nom, int tip, long tel, std::string eml, std::string mrd, time_t ult, bool ct, std::time_t dtf = time(0));
 
 	/**
 	 * @brief Funcao que imprime os atributos do leitor antigo

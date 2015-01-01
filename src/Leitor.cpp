@@ -21,7 +21,7 @@ unsigned long Leitor::num_leitores {0};
 
 Leitor::Leitor(string nom, int tip, long tel, string eml, string mrd, time_t ult, bool ct, unsigned long id,
                vector<Emprestimo*> ep_lt):
-Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, morada {mrd}, time_t {ult}, emprestimos_leitor {ep_lt}
+Object {id}, nome {nom}, tipo{tip}, telefone {tel}, email {eml}, morada {mrd}, data_ult_emp {ult}, emprestimos_leitor {ep_lt}
     {if (ct) num_leitores++;}
 
 void Leitor::adiciona_emp_leit(Emprestimo* ep) {
@@ -62,8 +62,8 @@ string Leitor::get_morada() const {
 	return morada;
 }
 
-string Leitor::get_ultima_requisicao() const {
-	return ultima_requisicao;
+time_t Leitor::get_data_ult_emp() const {
+	return data_ult_emp;
 }
 
 void Leitor::set_nome(string nom) {
@@ -86,13 +86,8 @@ void Leitor::set_morada(string mrd) {
 	morada = mrd;
 }
 
-void Leitor::set_ultima_requisicao(string ult) {
-	ultima_requisicao = ult;
-}
-
-time_t Leitor::get_data_ult_emp() const {
-    if (emprestimos_leitor.empty()) return 0;
-    return (emprestimos_leitor[emprestimos_leitor.size()-1]->get_data());
+void Leitor::set_data_ult_emp(time_t ult) {
+	data_ult_emp = ult;
 }
 
 string Leitor::imprime() {
@@ -101,8 +96,26 @@ string Leitor::imprime() {
 	if (tipo == 0) tipos = "Estudante";
 	else if (tipo == 1) tipos = "Crianca";
 	else tipos = "Adulto";
-	out << "ID: "<< get_ID() << endl << "Nome: " << nome << endl << "Tipo: " << tipos << endl
-			<< "Telefone: "<< telefone << endl << "Email: " << email << endl << "Morada: " << morada << endl << "ID Emprestimos: ";
+    tm *ldata = localtime(&data_ult_emp);
+    long year {1900 + ldata->tm_year};
+    long month {1 + ldata->tm_mon};
+    long day {ldata->tm_mday};
+    string dt {}, months {}, days {};
+    string years {to_string(year)};
+    if (month<10) months = "0" + to_string(month);
+    else months = to_string(month);
+    if (day<10) days = "0" + to_string(day);
+    else days = to_string(day);
+    if (data_ult_emp == 0) dt = "0";
+    else dt = years + "/" + months + "/" + days;
+	out << "ID: "<< get_ID() << endl
+        << "Nome: " << nome << endl
+        << "Tipo: " << tipos << endl
+        << "Telefone: "<< telefone << endl
+        << "Email: " << email << endl
+        << "Morada: " << morada << endl
+        << "Data Ultimo Emprestimo: " << dt << endl
+        << "ID Emprestimos: ";
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		out << (*it)->get_ID() << "; ";
 	}
@@ -112,13 +125,25 @@ string Leitor::imprime() {
 
 void Leitor::escreve(string ficheiro) {
 	stringstream out {};
+    tm *ldata = localtime(&data_ult_emp);
+    long year {1900 + ldata->tm_year};
+    long month {1 + ldata->tm_mon};
+    long day {ldata->tm_mday};
+    string dt {}, months {}, days {};
+    string years {to_string(year)};
+    if (month<10) months = "0" + to_string(month);
+    else months = to_string(month);
+    if (day<10) days = "0" + to_string(day);
+    else days = to_string(day);
+    if (data_ult_emp == 0) dt = "0";
+    else dt = years + "/" + months + "/" + days;
 	out << get_ID() << endl
-			<< nome << endl
-			<< tipo << endl
-			<< telefone << endl
-			<< email << endl
-			<< morada << endl
-			<< ultima_requisicao << endl;
+        << nome << endl
+        << tipo << endl
+        << telefone << endl
+        << email << endl
+        << morada << endl
+        << dt << endl;
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		out << (*it)->get_ID() << ";";
 	}

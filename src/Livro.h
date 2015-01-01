@@ -224,6 +224,11 @@ public:
     void remove_ped_livro();
     
     /**
+     * @brief Funcao para determinar a da fila de prioridade de pedidos do livro
+     **/
+    void set_pedidos(std::priority_queue<Pedido*> pds);
+    
+    /**
      * @brief Funcao que imprime os atributos do livro
      *
      * @return string com o resultado da impressao

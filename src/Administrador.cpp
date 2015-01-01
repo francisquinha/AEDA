@@ -19,7 +19,7 @@ using namespace std;
  * nao incrementa o contador de funcionarios, porque o administrador tem id 0 */
 Administrador::Administrador(unsigned long id, string nom): Funcionario {nom, false, id} {}
 
-void Administrador::escreve(string ficheiro) {}
+void Administrador::escreve(string ficheiro) const {}
 
 
 

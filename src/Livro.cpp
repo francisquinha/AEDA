@@ -115,6 +115,10 @@ void Livro::remove_ped_livro() {
     pedidos.pop();
 }
 
+void Livro::set_pedidos(priority_queue<Pedido*> pds) {
+    pedidos = pds;
+}
+
 string Livro::imprime() {
 	stringstream out {};
 	out << "ID: "<< get_ID() << endl
