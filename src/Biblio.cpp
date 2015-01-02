@@ -460,6 +460,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
                 lv->set_emp_livro(ind, ep);
                 lv->dec_ex_disponiveis();
                 lt->adiciona_emp_leit(ep);
+                lt->set_data_ult_emp(ep->get_data());
                 emprestimos.push_back(ep);
                 remove_inativo(lt->get_ID());
                 cout << "Emprestimo adicionado." << endl;
