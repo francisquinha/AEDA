@@ -346,10 +346,10 @@ bool Biblioteca::remove_livro(unsigned long id, unsigned long ind) {
                         (*it)->del_emp_livro(ind); /* removemos o indice do exemplar do vetor ID_ep */
                     }
                     else {
-                        priority_queue<Pedido*> pds {(*it)->get_pedidos()};
+                        priority_queue<Pedido> pds {(*it)->get_pedidos()};
                         while (!pds.empty()) {
                             try {
-                                remove_pedido(pds.top()->get_ID());
+                                remove_pedido(pds.top().get_ID());
                             }
                             catch (Object_nao_existe &ob) {
                                 ostringstream ostr {};
@@ -576,7 +576,7 @@ void Biblioteca::adiciona_pedido(Pedido* pd) {
                                lv->get_exemplares(), lv->get_ex_disponiveis(),
                                lv->get_emp_livro(), lv->get_pedidos());
     else {
-        lv->adiciona_ped_livro(pd);
+        lv->adiciona_ped_livro(*pd);
         pedidos.push_back(pd);
         cout << "Pedido adicionado." << endl;
     }
@@ -669,8 +669,8 @@ bool Biblioteca::remove_pedido(unsigned long id) {
     for (vector<Pedido*>::iterator it = pedidos.begin(); it != pedidos.end(); it++) {
         pdo = dynamic_cast<Pedido_old*>(*it);
         if ((*it)->get_ID() == id and pdo == 0) {
-            Pedido* pdp {((*it)->get_livro())->get_pedidos().top()};
-            if (pdp->get_ID() == id) {
+            Pedido pdp {((*it)->get_livro())->get_pedidos().top()};
+            if (pdp.get_ID() == id) {
                 ((*it)->get_livro())->remove_ped_livro();
                 Pedido_old* po = new Pedido_old{(*it)->get_livro(),
                 (*it)->get_funcionario(), (*it)->get_leitor(), false,
@@ -696,10 +696,10 @@ bool Biblioteca::desiste_pedido(unsigned long id) {
     for (vector<Pedido*>::iterator it = pedidos.begin(); it != pedidos.end(); it++) {
         pdo = dynamic_cast<Pedido_old*>(*it);
         if ((*it)->get_ID() == id and pdo == 0) {
-            priority_queue<Pedido*> pdl {((*it)->get_livro())->get_pedidos()};
-            priority_queue<Pedido*> pds {};
+            priority_queue<Pedido> pdl {((*it)->get_livro())->get_pedidos()};
+            priority_queue<Pedido> pds {};
             while (!pdl.empty()) {
-                if (pdl.top()->get_ID() != id) pds.push(pdl.top());
+                if (pdl.top().get_ID() != id) pds.push(pdl.top());
                 pdl.pop();
             }
             ((*it)->get_livro())->set_pedidos(pds);

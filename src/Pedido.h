@@ -51,7 +51,7 @@ public:
 	 **/
 	virtual ~Pedido() {};
     
-    bool operator <(Pedido pd);
+    bool operator <(Pedido pd) const;
 
 	/**
 	 * @brief Funcao para obter o livro do pedido

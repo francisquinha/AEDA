@@ -44,7 +44,7 @@ class Livro: public Object {
     int exemplares; /**< @brief numero total de exemplares do livro na biblioteca **/
     int ex_disponiveis; /**< @brief numero de exemplares do livro disponiveis (nao emprestados) **/
     std::vector<Emprestimo*> emprestimos_livro; /**< @brief vetor com apontadores (eventualmente nulos) para os emprestimos de cada exemplar do livro **/
-    std::priority_queue<Pedido*> pedidos; /**< @brief fila de prioridade com os pedidos de emprestimo do livro **/
+    std::priority_queue<Pedido> pedidos; /**< @brief fila de prioridade com os pedidos de emprestimo do livro **/
 	static unsigned long num_livros; /**< @brief contador de livros na biblioteca (livros distintos, nao exemplares) **/
 
 public:
@@ -70,7 +70,7 @@ public:
     Livro(int ano, std::string tit, std::vector<std::string> aut, std::string tem, long isbn,
           std::string cot, int np, int ed, bool ct, unsigned long id = num_livros + 1,
           int ex = 1, int exd = 1, std::vector<Emprestimo*> ep = {NULL},
-          std::priority_queue<Pedido*> pd = {});
+          std::priority_queue<Pedido> pd = {});
 
 	/**
 	 * @brief Destrutor virtual de Livro
@@ -209,14 +209,14 @@ public:
      *
      * @return priority_queue<Pedido*> com os apontadores de pedidos do livro
      **/
-    std::priority_queue<Pedido*> get_pedidos() const;
+    std::priority_queue<Pedido> get_pedidos() const;
     
     /**
      * @brief Funcao para adicionar um pedido a fila de prioridade do livro
      *
      * @param pd apontador para o pedido que queremos adicionar
      **/
-    void adiciona_ped_livro(Pedido* pd);
+    void adiciona_ped_livro(Pedido pd);
     
     /**
      * @brief Funcao para remover o pedido mais prioritario da fila de prioridade do livro
@@ -226,7 +226,7 @@ public:
     /**
      * @brief Funcao para determinar a da fila de prioridade de pedidos do livro
      **/
-    void set_pedidos(std::priority_queue<Pedido*> pds);
+    void set_pedidos(std::priority_queue<Pedido> pds);
     
     /**
      * @brief Funcao que imprime os atributos do livro

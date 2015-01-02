@@ -101,7 +101,7 @@ Matematica
 1
 0
 12;
-3; 2; 
+2; 3; 
 10
 2002
 Think Python
@@ -140,7 +140,7 @@ Arte
 2
 0
 11;10;
-5; 
+5; 10; 
 13
 2014
 Iniciacao ao Desenho
@@ -203,6 +203,6 @@ Economia
 248
 2
 1
-1
-0;
-
+0
+16;
+8; 

@@ -24,7 +24,7 @@ unsigned long Pedido::num_pedidos {0};
 
 Pedido::Pedido(Livro* lv, Funcionario* fc, Leitor* lt, bool ct, time_t dt, unsigned long id):Object {id}, livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_pedidos++;}
 
-bool Pedido::operator <(Pedido pd) {
+bool Pedido::operator <(Pedido pd) const {
     double tempo_dias {floor(difftime(data, pd.get_data())/86400)};
     if (tempo_dias > 0) return true;
     else if (tempo_dias == 0) {

@@ -85,7 +85,7 @@ public:
 	 **/
     Livro_indisponivel(int ano, std::string tit, std::vector<std::string> aut, std::string tem,
                        long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
-                       int exd, std::vector<Emprestimo*> ep, std::priority_queue<Pedido*> pd):
+                       int exd, std::vector<Emprestimo*> ep, std::priority_queue<Pedido> pd):
     Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd} {};
 };
 
@@ -127,7 +127,7 @@ public:
      **/
     Livro_disponivel(int ano, std::string tit, std::vector<std::string> aut, std::string tem,
                        long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
-                       int exd, std::vector<Emprestimo*> ep, std::priority_queue<Pedido*> pd):
+                       int exd, std::vector<Emprestimo*> ep, std::priority_queue<Pedido> pd):
     Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd} {};
 };
 
@@ -169,7 +169,7 @@ public:
                           std::vector<std::string> aut, std::string tem,
                           long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
                           int exd, std::vector<Emprestimo*> ep,
-                          std::priority_queue<Pedido*> pd):
+                          std::priority_queue<Pedido> pd):
     Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd}, indice {ind} {};
     
     /**
@@ -218,7 +218,7 @@ public:
                          std::vector<std::string> aut, std::string tem,
                          long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
                          int exd, std::vector<Emprestimo*> ep,
-                         std::priority_queue<Pedido*> pd):
+                         std::priority_queue<Pedido> pd):
     Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd}, indice {ind} {};
     
     /**
@@ -272,7 +272,7 @@ public:
                      std::vector<std::string> aut, std::string tem,
                      long isbn, std::string cot, int np, int ed, unsigned long id, int ex,
                      int exd, std::vector<Emprestimo*> ep,
-                     std::priority_queue<Pedido*> pd):
+                     std::priority_queue<Pedido> pd):
     Livro {ano, tit, aut, tem, isbn, cot, np, ed, false, id, ex, exd, ep, pd}, indice {ind} {};
     
     /**

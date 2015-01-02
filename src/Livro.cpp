@@ -15,7 +15,7 @@ unsigned long Livro::num_livros {0};
 
 Livro::Livro(int ano, string tit, vector<string> aut, string tem, long isbn, string cot, int np,
              int ed, bool ct, unsigned long id, int ex, int exd,
-             vector<Emprestimo*> ep, priority_queue<Pedido*> pd):
+             vector<Emprestimo*> ep, priority_queue<Pedido> pd):
     Object {id}, ano_edicao {ano}, titulo {tit}, autores {aut}, tema {tem}, ISBN {isbn}, cota {cot},
     num_paginas {np}, edicao {ed}, exemplares {ex}, ex_disponiveis(exd), emprestimos_livro{ep},
     pedidos{pd} {if (ct) num_livros++;}
@@ -103,11 +103,11 @@ void Livro::dec_ex_disponiveis() {
     ex_disponiveis--;
 }
 
-priority_queue<Pedido*> Livro::get_pedidos() const {
+priority_queue<Pedido> Livro::get_pedidos() const {
     return pedidos;
 }
 
-void Livro::adiciona_ped_livro(Pedido* pd) {
+void Livro::adiciona_ped_livro(Pedido pd) {
     pedidos.push(pd);
 }
 
@@ -115,7 +115,7 @@ void Livro::remove_ped_livro() {
     pedidos.pop();
 }
 
-void Livro::set_pedidos(priority_queue<Pedido*> pds) {
+void Livro::set_pedidos(priority_queue<Pedido> pds) {
     pedidos = pds;
 }
 
@@ -141,9 +141,9 @@ string Livro::imprime() {
         else out << (*it)->get_ID() << "; ";
     }
     out << endl << "IDs Pedidos: ";
-    priority_queue<Pedido*> peds {pedidos};
+    priority_queue<Pedido> peds {pedidos};
     while (!peds.empty()) {
-        out << peds.top()->get_ID() << "; ";
+        out << peds.top().get_ID() << "; ";
         peds.pop();
     }
     out << endl;
@@ -170,9 +170,9 @@ void Livro::escreve(string ficheiro) {
         else out << (*it)->get_ID() << ";";
     }
     out << endl;
-    priority_queue<Pedido*> peds {pedidos};
+    priority_queue<Pedido> peds {pedidos};
     while (!peds.empty()) {
-        out << peds.top()->get_ID() << "; ";
+        out << peds.top().get_ID() << "; ";
         peds.pop();
     }
     out << endl;
