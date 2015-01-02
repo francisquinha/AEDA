@@ -428,6 +428,7 @@ bool Biblioteca::remove_leitor(unsigned long id) {
                     (*it)->get_tipo(), (*it)->get_telefone(), (*it)->get_email(),
                     (*it)->get_morada(), (*it)->get_data_ult_emp(), false};
 				adiciona_leitor_old(lo); /* ao remover um leitor adicionamo-lo como Leitor_old */
+                remove_inativo(id);
 				leitores.erase(it);
 				cout << endl << "Leitor removido." << endl;
 				return true;
@@ -460,6 +461,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
                 lv->dec_ex_disponiveis();
                 lt->adiciona_emp_leit(ep);
                 emprestimos.push_back(ep);
+                remove_inativo(lt->get_ID());
                 cout << "Emprestimo adicionado." << endl;
             }
             else throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(), lt->get_tipo(),
