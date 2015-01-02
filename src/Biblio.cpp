@@ -209,7 +209,7 @@ void Biblioteca::adiciona_livro_old(Livro_old* lv) {
 	livros.push_back(lv);
 }
 
-void Biblioteca::adiciona_exemplar(unsigned long id) {
+Livro* Biblioteca::adiciona_exemplar(unsigned long id) {
     Livro_old* lvo {};
     bool encontrado {false};
     Livro* lv {};
@@ -222,7 +222,7 @@ void Biblioteca::adiciona_exemplar(unsigned long id) {
                 (*it)->inc_ex_disponiveis();
                 (*it)->inc_emp_livro();
                 cout << "Exemplar adicionado." << endl;
-                return;
+                return (*it);
             }
             else lv = new Livro{(*it)->get_ano_edicao(), (*it)->get_titulo(),
                 (*it)->get_autores(), (*it)->get_tema(), (*it)->get_ISBN(), (*it)->get_cota(),
@@ -232,7 +232,7 @@ void Biblioteca::adiciona_exemplar(unsigned long id) {
     if (encontrado) {
         livros.push_back(lv);
         cout << "Exemplar adicionado." << endl;
-        return;
+        return lv;
     }
     throw Object_nao_existe(id, "livro");
 }
@@ -558,7 +558,6 @@ void Biblioteca::adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_l
    	}
     else throw Object_nao_existe(id_lv, "livro");
 }
-
 
 void Biblioteca::adiciona_pedido_old(Pedido_old* pd) {
     pedidos.push_back(pd);

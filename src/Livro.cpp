@@ -75,8 +75,40 @@ long Livro::get_ISBN() const {
 	return ISBN;
 }
 
-string Livro::get_cota() const{
+string Livro::get_cota() const {
 	return cota;
+}
+
+void Livro::set_ano_edicao(int ano) {
+    ano_edicao = ano;
+}
+
+void Livro::set_titulo(std::string tit) {
+    titulo = tit;
+}
+
+void Livro::set_autores(std::vector<std::string> aut) {
+    autores = aut;
+}
+
+void Livro::set_tema(std::string tem) {
+    tema = tem;
+}
+
+void Livro::set_ISBN(long isbn) {
+    ISBN = isbn;
+}
+
+void Livro::set_cota(std::string cot) {
+    cota = cot;
+}
+
+void Livro::set_num_paginas(int np) {
+    num_paginas = np;
+}
+
+void Livro::set_edicao(int ed) {
+    edicao = ed;
 }
 
 int Livro::get_exemplares() const {

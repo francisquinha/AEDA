@@ -134,6 +134,62 @@ public:
 	int get_edicao() const;
     
     /**
+     * @brief Funcao para determinar o ano de edicao do livro
+     *
+     * @param ano ano de edicao do livro
+     **/
+    void set_ano_edicao(int ano);
+    
+    /**
+     * @brief Funcao para determinar o titulo do livro
+     *
+     * @param tit titulo do livro
+     **/
+    void set_titulo(std::string tit);
+    
+    /**
+     * @brief Funcao para determinar os autores do livro
+     *
+     * @param aut vetor com os nomes dos autores do livro
+     **/
+    void set_autores(std::vector<std::string> aut);
+    
+    /**
+     * @brief Funcao para determinar o tema do livro
+     *
+     * @param tem tema do livro
+     **/
+    void set_tema(std::string tem);
+    
+    /**
+     * @brief Funcao para determinar o ISBN do livro
+     *
+     * @param isbn ISBN do livro
+     **/
+    void set_ISBN(long isbn);
+    
+    /**
+     * @brief Funcao para determinar a cota do livro
+     *
+     * @param cot cota do livro
+     **/
+    void set_cota(std::string cot);
+    
+    /**
+     * @brief Funcao para determinar o numero de paginas do livro
+     *
+     * @param np numero de paginas do livro
+     **/
+    void set_num_paginas(int np);
+    
+    /**
+     * @brief Funcao para determinar a edicao do livro
+     *
+     * @param int com o numero da edicao do livro
+     **/
+    void set_edicao(int ed);
+    
+    /**
      * @brief Funcao para obter o numero total de exemplares do livro
      *
      * @return int com o numero total de exemplares do livro

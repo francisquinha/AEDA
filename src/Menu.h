@@ -398,6 +398,105 @@ public:
 	 * imprime no ecra o motivo.
 	 **/
     void livros_remover();
+    
+    /**
+     * @brief Permite alterar um leitor da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 7 no menu leitores (caminho 4->7 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para escolher: nome, telefone, email, morada ou tudo.
+     **/
+    void livros_alterar();
+    
+    /**
+     * @brief Permite alterar o ano de edicao de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 1 no menu alterar livros
+     * (caminho 4->7->1 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID e Ano Edicao.
+     **/
+    void livros_alterar_ano();
+    
+    /**
+     * @brief Permite alterar o titulo de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 2 no menu alterar livros
+     * (caminho 4->7->2 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID e Titulo.
+     **/
+    void livros_alterar_titulo();
+    
+    /**
+     * @brief Permite alterar os autores de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 3 no menu alterar livros
+     * (caminho 4->7->3 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID e Autores.
+     **/
+    void livros_alterar_autores();
+    
+    /**
+     * @brief Permite alterar o tema de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 4 no menu alterar livros
+     * (caminho 4->7->4 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID e Tema.
+     **/
+    void livros_alterar_tema();
+    
+    /**
+     * @brief Permite alterar o ISBN de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 5 no menu alterar livros
+     * (caminho 4->7->5 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID e ISBN.
+     **/
+    void livros_alterar_ISBN();
+    
+    /**
+     * @brief Permite alterar a cota de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 6 no menu alterar livros
+     * (caminho 4->7->6 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID e Cota.
+     **/
+    void livros_alterar_cota();
+    
+    /**
+     * @brief Permite alterar o numero de paginas de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 7 no menu alterar livros
+     * (caminho 4->7->7 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID e Num. Paginas.
+     **/
+    void livros_alterar_num_paginas();
+    
+    /**
+     * @brief Permite alterar a edicao de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 8 no menu alterar livros
+     * (caminho 4->7->8 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID e Edicao.
+     **/
+    void livros_alterar_edicao();
+    
+    /**
+     * @brief Permite alterar toda a informacao de um livro da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 9 no menu alterar livros
+     * (caminho 4->7->9 do menu principal).
+     * Acessivel a utilizadores de niveis 0 e 1.
+     * Pede para indicar: ID, Ano Edicao, Titulo, Autores, Tema, ISBN, Cota, Num. Paginas e Edicao
+     **/
+    void livros_alterar_tudo();
 
 	/**
 	 * @brief Permite adicionar um leitor a biblioteca

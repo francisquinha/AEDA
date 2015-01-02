@@ -173,8 +173,12 @@ public:
      * @brief Funcao para adicionar um novo exemplar de um livro a Biblioteca
      *
      * @param id ID do livro ao qual queremos adicionar um exemplar
+     *
+     * @return apontador para o livro ao qual adicionamos um exemplar
+     *
+     * @exception Object_nao_existe se nao existe nenhum livro com o id fornecido
      **/
-    void adiciona_exemplar(unsigned long id);
+    Livro* adiciona_exemplar(unsigned long id);
     
 	/**
 	 * @brief Funcao para adicionar um funcionario antigo a Biblioteca
@@ -227,7 +231,7 @@ public:
 	 **/
 	void adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_lt, unsigned long id_fc);
 
-	/**
+    /**
 	 * @brief Funcao para adicionar um novo utilizador a Biblioteca
 	 *
 	 * @param ut apontador para o novo utilizador

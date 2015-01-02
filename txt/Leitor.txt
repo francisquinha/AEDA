@@ -37,7 +37,7 @@ Pedro Nunes
 pedronunes@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 0
-
+14;
 6
 Joao Meireles
 1
@@ -53,7 +53,7 @@ Alexandre Cunha
 alexandrecunha@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 2014/11/06
-
+7;13;
 8
 Andreia Teixeira
 0
@@ -61,7 +61,7 @@ Andreia Teixeira
 andreiateixeira@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 2014/11/01
-
+11;
 9
 Margarida Carvalho
 0
@@ -125,11 +125,11 @@ Vanessa Oliveira
 vanessaoliveira@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 0
-
+16;
 17
 Pedro Almeida
 2
-937653412
+962253574
 pedroalmeida@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 0
@@ -189,7 +189,7 @@ Edmundo Santos
 edmundosantos@fe.up.pt
 Rua Dr. Antonio Bernardino de Almeida, 431 Porto PORTUGAL
 2014/11/07
-
+1;3;8;
 26
 Maria Mendes
 0
@@ -349,7 +349,7 @@ Lara Lacerda
 laralacerda@fe.up.pt
 Rua Dr. Antonio Bernardino de Almeida, 431 Porto PORTUGAL
 2014/12/27
-
+10;
 47
 Nuno Aires
 0
@@ -357,7 +357,7 @@ Nuno Aires
 nunoaires@fe.up.pt
 Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 0
-
+12;
 48
 Jose Cardoso
 2
@@ -393,8 +393,8 @@ Rua Dr. Antonio Bernardino de Almeida, 431 Porto PORTUGAL
 52
 Emilia Cunha
 2
-925567834
+914536279
 emiliacunha@fe.up.pt
-Rua do Almada, 330, 1F 4050-033 Porto PORTUGAL
+Rua dos Bragas, 223 4050-123 Porto PORTUGAL
 0
 

@@ -365,9 +365,10 @@ void Menu::menu_livros() {
 			 << "4) Antigos" << endl;
     	if (login != 2) {
     		cout << "5) Adicionar" << endl
-    			 << "6) Remover" << endl;
-    	}
-    	if (login != 2) cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
+    			 << "6) Remover" << endl
+                 << "7) Alterar" << endl;
+        }
+    	if (login != 2) cout << endl << "Escolha uma opcao [1-7] (s para sair): ";
     	else cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
     	string opcaos {};
     	int opcao{};
@@ -401,6 +402,10 @@ void Menu::menu_livros() {
    				else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
    						<< endl << endl;
    				break;
+            case 7:
+                if (login != 2) livros_alterar();
+                else cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+                break;
    			default:
    				cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
 				<< endl << endl;
@@ -891,7 +896,7 @@ void Menu::livros_adicionar_novo() {
             clear_screen();
             continuar = false;
         }
-        else if (!e_numero(anos)) cout << endl << "Por favor insira um numero no ano de edicao."
+        else if (!e_numero(anos)) cout << endl << "Por favor insira um numero no Ano Edicao."
             << endl << endl;
         else {
             int ano {atoi (anos.c_str())};
@@ -999,8 +1004,9 @@ void Menu::livros_adicionar_exemplar() {
             << endl << endl;
         else {
             id = atol(ids.c_str());
+            Livro* lv {};
             try {
-                adiciona_exemplar(id);
+                lv = adiciona_exemplar(id);
             }
             catch(Object_nao_existe &ob) {
                 ostringstream ostr{};
@@ -1009,6 +1015,48 @@ void Menu::livros_adicionar_exemplar() {
                 cout << "Por favor insira o ID de um livro atual ou antigo." << endl;
             }
             cout << endl;
+            while (lv->get_pedidos().size()>0 and
+                   lv->get_ex_disponiveis()>0) {
+                Pedido pd {lv->get_pedidos().top()};
+                cout << "Existe um pedido em espera para este livro: " << endl << endl;
+                cout << "LEITOR" << endl;
+                cout << (pd.get_leitor())->imprime() << endl;
+                cout << "Deseja fazer emprestimo? (s - sim, n - nao)" << endl << endl;
+                string rpt {};
+                getline(cin, rpt);
+                if (rpt == "s") {
+                    cout << endl;
+                    try {
+                        adiciona_emprestimo_ids(pd.get_livro()->get_ID(),
+                                                pd.get_leitor()->get_ID(),
+                                                utilizador_online->get_ID());
+                    }
+                    catch (Object_nao_existe &ob) {
+                        ostringstream ostr {};
+                        ostr << ob;
+                        cout << ostr.str();
+                    }
+                    catch (Livro_indisponivel &liv) {
+                        ostringstream ostr {};
+                        ostr << liv;
+                        cout << ostr.str();
+                    }
+                }
+                try {
+                    remove_pedido(pd.get_ID());
+                }
+                catch (Object_nao_existe &ob) {
+                    ostringstream ostr {};
+                    ostr << ob;
+                    cout << ostr.str();
+                }
+                catch (Pedido_nao_prioritario &pd) {
+                    ostringstream ostr {};
+                    ostr << pd;
+                    cout << ostr.str();
+                }
+                cout << endl;
+            }
         }
    	}
 }
@@ -1065,6 +1113,517 @@ void Menu::livros_remover() {
             }
     	}
     }
+}
+
+void Menu::livros_alterar() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "ALTERAR LIVROS" << endl << endl;
+        cout << "1) Ano Edicao" << endl
+        << "2) Titulo" << endl
+        << "3) Autores" << endl
+        << "4) Tema" << endl
+        << "5) ISBN" << endl
+        << "6) Cota" << endl
+        << "7) Num. Paginas" << endl
+        << "8) Edicao" << endl
+        << "9) Tudo" << endl;
+        cout << endl << "Escolha uma opcao [1-9] (s para sair): ";
+        string opcaos {};
+        int opcao{};
+        getline(cin, opcaos);
+        clear_screen();
+        if (opcaos == "s") continuar=false;
+        else if (!e_numero(opcaos)) cout
+            << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+            << endl << endl;
+        else {
+            opcao = atoi(opcaos.c_str());
+            switch (opcao) {
+                case 1:
+                    livros_alterar_ano();
+                    break;
+                case 2:
+                    livros_alterar_titulo();
+                    break;
+                case 3:
+                    livros_alterar_autores();
+                    break;
+                case 4:
+                    livros_alterar_tema();
+                    break;
+                case 5:
+                    livros_alterar_ISBN();
+                    break;
+                case 6:
+                    livros_alterar_cota();
+                    break;
+                case 7:
+                    livros_alterar_num_paginas();
+                    break;
+                case 8:
+                    livros_alterar_edicao();
+                    break;
+                case 9:
+                    livros_alterar_tudo();
+                    break;
+                default:
+                    cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+                    break;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_ano() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Ano Edicao Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string anos {};
+            cout << "Ano Edicao: ";
+            getline (cin, anos);
+            if (anos == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else if (!e_numero(anos)) cout << endl
+                << "Por favor insira um numero no Ano Edicao." << endl << endl;
+            else {
+                int ano = atoi(anos.c_str());
+                vector<Livro*> livrs {get_livros()};
+                bool encontrado{false};
+                for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_ano_edicao(ano);
+                    }
+                }
+                if (encontrado) cout << endl << "Nome do livro alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um livro existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_titulo() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Titulo Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string tit {};
+            cout << "Titulo: ";
+            getline (cin, tit);
+            if (tit == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else {
+                vector<Livro*> livrs {get_livros()};
+                bool encontrado{false};
+                for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_titulo(tit);
+                    }
+                }
+                if (encontrado) cout << endl << "Titulo do livro alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um livro existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_autores() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Autores Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string auts {};
+            cout << "Nome(s) do(s) autor(es) (separados por ;) : ";
+            getline (cin, auts);
+            if (auts == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else {
+                vector<string>aut {};
+                string autor {};
+                stringstream autss(auts);
+                while (getline(autss, autor, ';')) {
+                    aut.push_back(autor);
+                }
+                vector<Livro*> livrs {get_livros()};
+                bool encontrado{false};
+                for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_autores(aut);
+                    }
+                }
+                if (encontrado) cout << endl << "Autores do livro alterados." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um livro existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_tema() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Tema Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string tem {};
+            cout << "Tema: ";
+            getline (cin, tem);
+            if (tem == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else {
+                vector<Livro*> livrs {get_livros()};
+                bool encontrado{false};
+                for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_tema(tem);
+                    }
+                }
+                if (encontrado) cout << endl << "Tema do livro alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um livro existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_ISBN() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar ISBN Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string isbns {};
+            cout << "ISBN: ";
+            getline (cin, isbns);
+            if (isbns == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else if (!e_numero(isbns)) cout << endl
+                << "Por favor insira um numero no ISBN." << endl << endl;
+            else {
+                long isbn = atol(isbns.c_str());
+                vector<Livro*> livrs {get_livros()};
+                bool encontrado{false};
+                for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_ISBN(isbn);
+                    }
+                }
+                if (encontrado) cout << endl << "ISBN do livro alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um livro existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_cota() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Cota Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string cot {};
+            cout << "Cota: ";
+            getline (cin, cot);
+            if (cot == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else {
+                vector<Livro*> livrs {get_livros()};
+                bool encontrado{false};
+                for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_cota(cot);
+                    }
+                }
+                if (encontrado) cout << endl << "Cota do livro alterada." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um livro existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_num_paginas() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Num. Paginas Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string nps {};
+            cout << "Num. Paginas: ";
+            getline (cin, nps);
+            if (nps == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else if (!e_numero(nps)) cout << endl
+                << "Por favor insira um numero no Ano Edicao." << endl << endl;
+            else {
+                int np = atoi(nps.c_str());
+                vector<Livro*> livrs {get_livros()};
+                bool encontrado{false};
+                for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_num_paginas(np);
+                    }
+                }
+                if (encontrado) cout << endl << "Num. Paginas do livro alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um livro existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_edicao() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Edicao Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string eds {};
+            cout << "Edicao: ";
+            getline (cin, eds);
+            if (eds == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else if (!e_numero(eds)) cout << endl
+                << "Por favor insira um numero no Ano Edicao." << endl << endl;
+            else {
+                int ed = atoi(eds.c_str());
+                vector<Livro*> livrs {get_livros()};
+                bool encontrado{false};
+                for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_edicao(ed);
+                    }
+                }
+                if (encontrado) cout << endl << "Edicao do livro alterada." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um livro existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::livros_alterar_tudo() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Livro (s para sair)" << endl << endl;
+        cout << "ID do Livro: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            cout << "Ano Edicao: ";
+            string anos {};
+            getline(cin, anos);
+            if (anos == "s") {
+                clear_screen();
+                continuar=false;
+            }
+            else if (!e_numero(anos)) cout << endl << "Por favor insira um numero no Ano Edicao." << endl << endl;
+            else {
+                int ano = atoi (anos.c_str());
+                string tit {};
+                cout << "Titulo: ";
+                getline (cin, tit);
+                if (tit == "s") {
+                    clear_screen();
+                    continuar = false;
+                }
+                else {
+                    string auts {};
+                    cout << "Nome(s) do(s) autor(es) (separados por ;) : ";
+                    getline (cin, auts);
+                    if (auts == "s") {
+                        clear_screen();
+                        continuar = false;
+                    }
+                    else {
+                        vector<string>aut {};
+                        string autor {};
+                        stringstream autss(auts);
+                        while (getline(autss, autor, ';')) {
+                            aut.push_back(autor);
+                        }
+                        string tem {};
+                        cout << "Tema: ";
+                        getline (cin, tem);
+                        if (tem == "s") {
+                            clear_screen();
+                            continuar = false;
+                        }
+                        else {
+                            string isbns {};
+                            cout << "ISBN : ";
+                            getline (cin, isbns);
+                            if (isbns == "s") {
+                                clear_screen();
+                                continuar = false;
+                            }
+                            else if (!e_numero(isbns)) cout << endl
+                                << "Por favor insira um numero no ISBN." << endl << endl;
+                            else {
+                                long isbn = atol(isbns.c_str());
+                                string cot {};
+                                cout << "Cota: ";
+                                getline (cin, cot);
+                                if (cot == "s") {
+                                    clear_screen();
+                                    continuar = false;
+                                }
+                                else {
+                                    string nps {};
+                                    cout << "Num. Paginas : ";
+                                    getline (cin, nps);
+                                    if (nps == "s") {
+                                        clear_screen();
+                                        continuar = false;
+                                    }
+                                    else if (!e_numero(nps)) cout << endl
+                                        << "Por favor insira um numero no Num. Paginas." << endl << endl;
+                                    else {
+                                        int np = atoi(nps.c_str());
+                                        string eds {};
+                                        cout << "Edicao : ";
+                                        getline (cin, eds);
+                                        if (eds == "s") {
+                                            clear_screen();
+                                            continuar = false;
+                                        }
+                                        else if (!e_numero(eds)) cout << endl
+                                            << "Por favor insira um numero no ISBN." << endl << endl;
+                                        else {
+                                            int ed = atoi(eds.c_str());
+                                            vector<Livro*> livrs {get_livros()};
+                                            bool encontrado{false};
+                                            for (vector<Livro*>::iterator it = livrs.begin();
+                                                 it != livrs.end(); it++) {
+                                                if ((*it)->get_ID() == id) {
+                                                    encontrado = true;
+                                                    (*it)->set_ano_edicao(ano);
+                                                    (*it)->set_titulo(tit);
+                                                    (*it)->set_autores(aut);
+                                                    (*it)->set_tema(tem);
+                                                    (*it)->set_ISBN(isbn);
+                                                    (*it)->set_cota(cot);
+                                                    (*it)->set_num_paginas(np);
+                                                    (*it)->set_edicao(ed);
+                                                }
+                                            }
+                                            if (encontrado) cout << endl << "Livro alterado."
+                                                << endl << endl;
+                                            else cout << endl
+                                                << "Por favor insira o ID de um livro existente."
+                                                << endl << endl;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+   	}
 }
 
 void Menu::leitores_adicionar() {
