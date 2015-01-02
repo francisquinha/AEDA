@@ -919,6 +919,15 @@ string Biblioteca::imprime_supervisores() {
 	return out.str();
 }
 
+string Biblioteca::imprime_leitores_inativos() {
+    stringstream out {};
+    out << "LEITORES INATIVOS" << endl << endl;
+    for (Hash_Leitores::const_iterator it = inativos.begin(); it != inativos.end(); it++) {
+        out << it->imprime() << endl;
+    }
+    return out.str();
+}
+
 string Biblioteca::imprime_leitores_old() {
 	stringstream out {};
 	out << "LEITORES ANTIGOS" << endl << endl;
@@ -2010,4 +2019,21 @@ void Biblioteca::le(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco
         cout << ostr.str();
     }
 }
+
+void Biblioteca::adiciona_inativos() {
+    inativos = {};
+    vector<Leitor*> leitors {get_leitores()};
+    for (vector<Leitor*>::const_iterator it = leitors.begin(); it != leitors.end(); it++) {
+        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+        if (tempo_dias > 365) {
+            inativos.insert(**it);
+        }
+    }
+}
+
+
+
+
+
+
 

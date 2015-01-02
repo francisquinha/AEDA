@@ -90,7 +90,7 @@ void Leitor::set_data_ult_emp(time_t ult) {
 	data_ult_emp = ult;
 }
 
-string Leitor::imprime() {
+string Leitor::imprime() const {
 	stringstream out {};
 	string tipos {};
 	if (tipo == 0) tipos = "Estudante";

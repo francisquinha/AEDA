@@ -2,6 +2,7 @@
 #define SRC_BIBLIOTECA_H_
 
 #include <list>
+#include <unordered_set>
 #include "Administrador.h"
 #include "Supervisor.h"
 #include "Emprestimo_old.h"
@@ -28,6 +29,24 @@ class Login;
  **/
 
 /**
+ * @brief Estrutura usada para criar tabela de dispersao de leitores
+ **/
+struct Leitor_Hash {
+    unsigned long operator() (const Leitor& lt) const {
+        return lt.get_ID();
+    }
+    
+    bool operator() (const Leitor& lt1, const Leitor & lt2) const {
+        return (lt1.get_ID() == lt2.get_ID());
+    }
+};
+
+/**
+ * @brief Tabela de dispersao de leitores
+ **/
+typedef std::unordered_set<Leitor, Leitor_Hash, Leitor_Hash> Hash_Leitores;
+
+/**
  * @brief Classe com a informacao da Biblioteca.
  *
  *	E composta por livros, funcionarios (normais, supervisores ou administrador), leitores, emprestimos e utilizadores.
@@ -42,6 +61,7 @@ class Biblioteca {
 	std::vector<Emprestimo*> emprestimos; /**< @brief vetor com apontadores para os emprestimos da Biblioteca **/
 	std::vector<Utilizador*> utilizadores; /**< @brief vetor com apontadores para os utilizadores da Biblioteca **/
     std::vector<Pedido*> pedidos; /**< @brief vetor com os apontadores para todos os pedidos de emprestimo da Biblioteca **/
+    Hash_Leitores inativos; /**< @brief tabela de dispersao com os leitores inativos da Biblioteca **/
 public:
 
 	/**
@@ -448,6 +468,13 @@ public:
 	 * @return string com o resultado da impressao
 	 **/
 	std::string imprime_supervisores();
+    
+    /**
+     * @brief Funcao que imprime todos os leitores inativos da Biblioteca
+     *
+     * @return string com o resultado da impressao
+     **/
+    std::string imprime_leitores_inativos();
 
 	/**
 	 * @brief Funcao que imprime todos os leitores antigos da Biblioteca
@@ -817,6 +844,14 @@ public:
             std::string ficheiro_fc, std::string ficheiro_sp, std::string ficheiro_lto,
             std::string ficheiro_lt, std::string ficheiro_epo, std::string ficheiro_ep,
             std::string ficheiro_ut, std::string ficheiro_pdo, std::string ficheiro_pd);
+    
+    /**
+     * @brief Funcao que adiciona os leitores inativos a tabela de dispersao da Biblioteca
+     *
+     * Nota: A tabela e criada de novo e depois sao adicionados os leitores inativos.
+     **/
+    void adiciona_inativos();
+    
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */

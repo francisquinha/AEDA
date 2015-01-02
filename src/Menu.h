@@ -587,11 +587,19 @@ public:
     void leitores_alterar_tudo();
     
 	/**
-	 * @brief Imprime no ecra todos os leitores antigos
+	 * @brief Imprime no ecra todos os leitores inativos
 	 *
 	 * Funcao chamada se for escolhida a opcao 4 no menu leitores (caminho 5->4 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
+    void leitores_inativos();
+    
+    /**
+     * @brief Imprime no ecra todos os leitores antigos
+     *
+     * Funcao chamada se for escolhida a opcao 5 no menu leitores (caminho 5->5 do menu principal).
+     * Acessivel a todos os utilizadores.
+     **/
     void leitores_antigos();
 
 	/**

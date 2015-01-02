@@ -56,7 +56,7 @@ public:
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	virtual std::string imprime();
+	virtual std::string imprime() const;
 
 	/**
 	 * @brief Funcao para obter o nome do leitor

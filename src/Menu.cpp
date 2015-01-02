@@ -422,8 +422,9 @@ void Menu::menu_leitores() {
     	cout << "1) Adicionar" << endl
     		 << "2) Remover" << endl
 			 << "3) Alterar" << endl
-		 	 << "4) Antigos" << endl;
-    	cout << endl << "Escolha uma opcao [1-4] (s para sair): ";
+		 	 << "4) Inativos" << endl
+             << "5) Antigos" << endl;
+        cout << endl << "Escolha uma opcao [1-5] (s para sair): ";
     	string opcaos {};
     	int opcao{};
         getline(cin, opcaos);
@@ -443,7 +444,10 @@ void Menu::menu_leitores() {
     		case 3:
     			leitores_alterar();
     			break;
-    		case 4:
+            case 4:
+                leitores_inativos();
+                break;
+    		case 5:
     			leitores_antigos();
     			break;
    			default:
@@ -2051,6 +2055,10 @@ void Menu::leitores_alterar_tudo() {
     		}
     	}
    	}
+}
+
+void Menu::leitores_inativos() {
+    cout << imprime_leitores_inativos();
 }
 
 void Menu::leitores_antigos() {

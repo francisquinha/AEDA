@@ -56,6 +56,9 @@ int main() {
 	/* leitura dos ficheiros e adicao dos varios objetos a biblioteca */
 	m.le(ficheiro_lvo, ficheiro_lv, ficheiro_fco, ficheiro_fc, ficheiro_sp, ficheiro_lto, ficheiro_lt,
          ficheiro_epo, ficheiro_ep, ficheiro_ut, ficheiro_pdo, ficheiro_pd);
+    
+    /* adicao dos leitores inativos a tabela de dispersao da biblioteca */
+    m.adiciona_inativos();
 
 	/* limpeza do ecra */
 	clear_screen();
