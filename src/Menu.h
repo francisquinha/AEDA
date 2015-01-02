@@ -423,10 +423,70 @@ public:
 	 *
 	 * Funcao chamada se for escolhida a opcao 3 no menu leitores (caminho 5->3 do menu principal).
 	 * Acessivel a todos os utilizadores.
-	 * Pede para indicar: nome, telefone e email.
+	 * Pede para escolher: nome, telefone, email, morada ou tudo.
 	 **/
     void leitores_alterar();
-
+    
+    /**
+     * @brief Permite alterar o nome de um leitor da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 1 no menu alterar leitores
+     * (caminho 5->3->1 do menu principal).
+     * Acessivel a todos os utilizadores.
+     * Pede para indicar: ID e nome.
+     **/
+    void leitores_alterar_nome();
+    
+    /**
+     * @brief Permite alterar o tipo de um leitor da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 2 no menu alterar leitores
+     * (caminho 5->3->2 do menu principal).
+     * Acessivel a todos os utilizadores.
+     * Pede para indicar: ID e tipo.
+     **/
+    void leitores_alterar_tipo();
+    
+    /**
+     * @brief Permite alterar o telefone de um leitor da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 3 no menu alterar leitores
+     * (caminho 5->3->3 do menu principal).
+     * Acessivel a todos os utilizadores.
+     * Pede para indicar: ID e telefone.
+     **/
+    void leitores_alterar_telefone();
+    
+    /**
+     * @brief Permite alterar o email de um leitor da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 4 no menu alterar leitores
+     * (caminho 5->3->4 do menu principal).
+     * Acessivel a todos os utilizadores.
+     * Pede para indicar: ID e email.
+     **/
+    void leitores_alterar_email();
+    
+    /**
+     * @brief Permite alterar a morada de um leitor da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 5 no menu alterar leitores
+     * (caminho 5->3->5 do menu principal).
+     * Acessivel a todos os utilizadores.
+     * Pede para indicar: ID e morada.
+     **/
+    void leitores_alterar_morada();
+    
+    /**
+     * @brief Permite alterar toda a informacao de um leitor da biblioteca
+     *
+     * Funcao chamada se for escolhida a opcao 6 no menu alterar leitores
+     * (caminho 5->3->6 do menu principal).
+     * Acessivel a todos os utilizadores.
+     * Pede para indicar: ID, nome, tipo, telefone, email e morada.
+     **/
+    void leitores_alterar_tudo();
+    
 	/**
 	 * @brief Imprime no ecra todos os leitores antigos
 	 *

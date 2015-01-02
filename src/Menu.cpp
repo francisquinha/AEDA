@@ -1164,6 +1164,250 @@ void Menu::leitores_remover() {
 }
 
 void Menu::leitores_alterar() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "ALTERAR LEITORES" << endl << endl;
+        cout << "1) Nome" << endl
+        << "2) Tipo" << endl
+        << "3) Telefone" << endl
+        << "4) Email" << endl
+        << "5) Morada" << endl
+        << "6) Tudo" << endl;
+        cout << endl << "Escolha uma opcao [1-6] (s para sair): ";
+        string opcaos {};
+        int opcao{};
+        getline(cin, opcaos);
+        clear_screen();
+        if (opcaos == "s") continuar=false;
+        else if (!e_numero(opcaos)) cout
+            << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+            << endl << endl;
+        else {
+            opcao = atoi(opcaos.c_str());
+            switch (opcao) {
+                case 1:
+                    leitores_alterar_nome();
+                    break;
+                case 2:
+                    leitores_alterar_tipo();
+                    break;
+                case 3:
+                    leitores_alterar_telefone();
+                    break;
+                case 4:
+                    leitores_alterar_email();
+                    break;
+                case 5:
+                    leitores_alterar_morada();
+                    break;
+                case 6:
+                    leitores_alterar_tudo();
+                    break;
+                default:
+                    cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+                    break;
+            }
+        }
+   	}
+}
+
+void Menu::leitores_alterar_nome() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Nome Leitor (s para sair)" << endl << endl;
+        cout << "ID do Leitor: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string nom {};
+            cout << "Nome: ";
+            getline (cin, nom);
+            if (nom == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else {
+                vector<Leitor*> leitors {get_leitores()};
+                bool encontrado{false};
+                for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_nome(nom);
+                    }
+                }
+                if (encontrado) cout << endl << "Nome do leitor alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um leitor existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::leitores_alterar_tipo() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Tipo Leitor (s para sair)" << endl << endl;
+        cout << "ID do Leitor: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string tips {};
+            cout << "Tipo (0 - Estudante, 1 - Crianca, 2 - Adulto): ";
+            getline (cin, tips);
+            if (tips == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else if (tips != "0" and tips != "1" and tips != "2") cout << endl
+                << "Por favor insira um numero entre 0 e 2 no Tipo." << endl << endl;
+            else {
+                int tip = atoi(tips.c_str());
+                vector<Leitor*> leitors {get_leitores()};
+                bool encontrado{false};
+                for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_tipo(tip);
+                    }
+                }
+                if (encontrado) cout << endl << "Tipo do leitor alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um leitor existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::leitores_alterar_telefone() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Telefone Leitor (s para sair)" << endl << endl;
+        cout << "ID do Leitor: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string tels {};
+            cout << "Telefone : ";
+            getline (cin, tels);
+            if (tels == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else if (!e_numero(tels)) cout << endl
+                << "Por favor insira um numero no telefone." << endl << endl;
+            else {
+                long tel = atol(tels.c_str());
+                vector<Leitor*> leitors {get_leitores()};
+                bool encontrado{false};
+                for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_telefone(tel);
+                    }
+                }
+                if (encontrado) cout << endl << "Telefone do leitor alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um leitor existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::leitores_alterar_email() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Email Leitor (s para sair)" << endl << endl;
+        cout << "ID do Leitor: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string eml {};
+            cout << "Email: ";
+            getline (cin, eml);
+            if (eml == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else {
+                vector<Leitor*> leitors {get_leitores()};
+                bool encontrado{false};
+                for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_email(eml);
+                    }
+                }
+                if (encontrado) cout << endl << "Email do leitor alterado." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um leitor existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::leitores_alterar_morada() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "Alterar Morada Leitor (s para sair)" << endl << endl;
+        cout << "ID do Leitor: ";
+        string ids {};
+        getline(cin, ids);
+        if (ids == "s") {
+            clear_screen();
+            continuar=false;
+        }
+        else if (!e_numero(ids)) cout << endl << "Por favor insira um numero." << endl << endl;
+        else {
+            unsigned long id = atol (ids.c_str());
+            string mrd {};
+            cout << "Morada: ";
+            getline (cin, mrd);
+            if (mrd == "s") {
+                clear_screen();
+                continuar = false;
+            }
+            else {
+                vector<Leitor*> leitors {get_leitores()};
+                bool encontrado{false};
+                for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
+                    if ((*it)->get_ID() == id) {
+                        encontrado = true;
+                        (*it)->set_morada(mrd);
+                    }
+                }
+                if (encontrado) cout << endl << "Morada do leitor alterada." << endl << endl;
+                else cout << endl << "Por favor insira o ID de um leitor existente."
+                    << endl << endl;
+            }
+        }
+   	}
+}
+
+void Menu::leitores_alterar_tudo() {
 	bool continuar {true};
     while (continuar) {
     	cout << "Alterar Leitor (s para sair)" << endl << endl;
@@ -1185,41 +1429,64 @@ void Menu::leitores_alterar() {
     			continuar = false;
     		}
     		else {
-    			string tels {};
-    			cout << "Telefone : ";
-    			getline (cin, tels);
-    			if (tels == "s") {
-    				clear_screen();
-    				continuar = false;
-    			}
-    			else if (!e_numero(tels)) cout << endl
+                string tips {};
+                cout << "Tipo (0 - Estudante, 1 - Crianca, 2 - Adulto): ";
+                getline (cin, tips);
+                if (tips == "s") {
+                    clear_screen();
+                    continuar = false;
+                }
+                else if (tips != "0" and tips != "1" and tips != "2") cout << endl
+                    << "Por favor insira um numero entre 0 e 2 no Tipo." << endl << endl;
+                else {
+                    int tip = atoi(tips.c_str());
+                    string tels {};
+                    cout << "Telefone : ";
+                    getline (cin, tels);
+                    if (tels == "s") {
+                        clear_screen();
+                        continuar = false;
+                    }
+                    else if (!e_numero(tels)) cout << endl
     					<< "Por favor insira um numero no telefone." << endl << endl;
-    			else {
-    				long tel = atol(tels.c_str());
-    				string eml {};
-    				cout << "Email: ";
-    				getline (cin, eml);
-    				if (eml == "s") {
-    					clear_screen();
-    					continuar = false;
-    				}
-    				else {
-    					vector<Leitor*> leitors {get_leitores()};
-    					bool encontrado{false};
-    					for (vector<Leitor*>::const_iterator it = leitors.begin(); it != leitors.end(); it++) {
-    						if ((*it)->get_ID() == id) {
-    							encontrado = true;
-    							(*it)->set_nome(nom);
-    							(*it)->set_telefone(tel);
-    							(*it)->set_email(eml);
-    						}
-    					}
-    					if (encontrado) {
-							cout << endl << "Leitor alterado." << endl << endl;
-    					}
-    					else {
-    	    				cout << endl << "Por favor insira o ID de um leitor existente." << endl << endl;
-    					}
+                    else {
+                        long tel = atol(tels.c_str());
+                        string eml {};
+                        cout << "Email: ";
+                        getline (cin, eml);
+                        if (eml == "s") {
+                            clear_screen();
+                            continuar = false;
+                        }
+                        else {
+                            string mrd {};
+                            cout << "Morada: ";
+                            getline (cin, mrd);
+                            if (mrd == "s") {
+                                clear_screen();
+                                continuar = false;
+                            }
+                            else {
+                                vector<Leitor*> leitors {get_leitores()};
+                                bool encontrado{false};
+                                for (vector<Leitor*>::iterator it = leitors.begin();
+                                     it != leitors.end(); it++) {
+                                    if ((*it)->get_ID() == id) {
+                                        encontrado = true;
+                                        (*it)->set_nome(nom);
+                                        (*it)->set_tipo(tip);
+                                        (*it)->set_telefone(tel);
+                                        (*it)->set_email(eml);
+                                        (*it)->set_morada(mrd);
+                                    }
+                                }
+                                if (encontrado) cout << endl << "Leitor alterado."
+                                    << endl << endl;
+                                else cout << endl
+                                    << "Por favor insira o ID de um leitor existente."
+                                    << endl << endl;
+                            }
+                        }
     				}
             	}
     		}
