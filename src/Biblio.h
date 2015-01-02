@@ -852,6 +852,14 @@ public:
      **/
     void adiciona_inativos();
     
+    /**
+     * @brief Funcao que remove um leitor da tabela de dispersao de leitores inativos
+     *
+     * @param id identificacao do leitor que pretendemos remover
+     *
+     * @return true se encontrar o leitor com o id pretendido e false caso contrario
+     **/
+    bool remove_inativo(unsigned long id);
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */

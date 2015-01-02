@@ -2031,6 +2031,16 @@ void Biblioteca::adiciona_inativos() {
     }
 }
 
+bool Biblioteca::remove_inativo(unsigned long id) {
+    for (Hash_Leitores::const_iterator it = inativos.begin(); it!= inativos.end();) {
+        if (it->get_ID() == id) {
+            it = inativos.erase(it);
+            return true;
+        }
+        else it++;
+    }
+    return false;
+}
 
 
 
