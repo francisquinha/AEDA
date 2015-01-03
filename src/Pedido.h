@@ -51,6 +51,15 @@ public:
 	 **/
 	virtual ~Pedido() {};
     
+    /**
+     * @brief Operador < de Pedido
+     *
+     * Um pedido e menor que outro se for mais recente ou, caso seja do mesmo dia, se for de um 
+     * leitor menos prioritario. Os estudantes sao os leitores mais prioritarios, seguindo-se as
+     * criancas e so depois os adultos.
+     *
+     * @return bool com o resultado da comparacao
+     **/
     bool operator <(const Pedido pd) const;
 
 	/**

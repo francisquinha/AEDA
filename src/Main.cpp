@@ -60,7 +60,10 @@ int main() {
     /* adicao dos leitores inativos a tabela de dispersao da biblioteca */
     m.adiciona_inativos();
 
-	/* limpeza do ecra */
+    /* adicao dos livros disponiveis a BST da biblioteca */
+    m.adiciona_disponiveis();
+
+    /* limpeza do ecra */
 	clear_screen();
 
 	/* invocacao do menu principal */

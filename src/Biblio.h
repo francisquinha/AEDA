@@ -12,6 +12,7 @@
 #include "Login.h"
 #include "Excecao.h"
 #include "Pedido_old.h"
+#include "BST.h"
 
 class Livro_old;
 class Leitor_old;
@@ -78,12 +79,13 @@ class Biblioteca {
 	std::vector<Utilizador*> utilizadores; /**< @brief vetor com apontadores para os utilizadores da Biblioteca **/
     std::vector<Pedido*> pedidos; /**< @brief vetor com os apontadores para todos os pedidos de emprestimo da Biblioteca **/
     Hash_Leitores inativos; /**< @brief tabela de dispersao com os leitores inativos da Biblioteca **/
+    BST<Livro> disponiveis; /**< @brief arvore binaria de pesquisa com os livros disponiveis da Biblioteca **/
 public:
 
 	/**
 	 * @brief Construtor de Biblioteca
 	 **/
-	Biblioteca() {};
+	Biblioteca();
 
 	/**
 	 * @brief Funcao para obter todos os emprestimos atrasados da Biblioteca
@@ -899,6 +901,29 @@ public:
      * @return true se encontrar o leitor com o id pretendido e false caso contrario
      **/
     bool remove_inativo(const unsigned long id);
+
+    /**
+     * @brief Funcao que adiciona os livros disponiveis a BST da Biblioteca
+     *
+     * Nota: A arvore e reinicializada e depois sao adicionados os livros disponiveis.
+     **/
+    void adiciona_disponiveis();
+    
+    /**
+     * @brief Funcao que adiciona um livro a BST de livros disponiveis
+     *
+     * @param lv livro que pretendemos adicionar
+     **/
+    void adiciona_disponivel(Livro lv);
+    
+    /**
+     * @brief Funcao que remove um livro da BST de livros disponiveis
+     *
+     * @param id identificacao do livro que pretendemos remover
+     *
+     * @return true se encontrar o livro com o id pretendido e false caso contrario
+     **/
+    bool remove_disponivel(const unsigned long id);
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */

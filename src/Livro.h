@@ -78,6 +78,17 @@ public:
 	virtual ~Livro() {};
     
     /**
+     * @brief Operador < de Livro
+     *
+     * Um livro e menor do que outro se o seu ano de edicao for menor ou, caso o ano de edicao
+     * seja o mesmo, se o seu titulo for alfabeticamente menor ou, em caso se igualdade de 
+     * titulos, se os autores forem alfabeticamente menores
+     *
+     * @return bool com o resultado da comparacao
+     **/
+    bool operator <(const Livro lv) const;
+    
+    /**
      * @brief Funcao para obter o ano de edicao do livro
      *
      * @return int com o ano de edicao do livro

@@ -5,7 +5,6 @@
 #include <sstream>
 #include <ctime>
 #include <cmath>
-#include <algorithm>
 #include <fstream>
 
 #include "Biblio.h"
@@ -19,6 +18,8 @@ using namespace std;
  *
  * Apos os menus, estas sao as funcoes chamadas pelas varias opcoes da aplicacao.
  **/
+
+Biblioteca::Biblioteca(): disponiveis {Livro(0, "", {}, "", 0, "", 0, 0, false)} {}
 
 /* com dynamic_cast o apontador lo so nao e nulo se (*it) for do tipo Livro_old */
 vector<Livro_old*> Biblioteca::get_livros_old() const{
@@ -463,6 +464,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
                 lt->set_data_ult_emp(ep->get_data());
                 emprestimos.push_back(ep);
                 remove_inativo(lt->get_ID());
+                if (lv->get_ex_disponiveis() == 0) disponiveis.remove(*lv);
                 cout << "Emprestimo adicionado." << endl;
             }
             else throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(), lt->get_tipo(),
@@ -652,6 +654,8 @@ Emprestimo* Biblioteca::remove_emprestimo(const unsigned long id) {
             ((*it)->get_livro())->set_emp_livro((*it)->get_indice(), NULL);
             ((*it)->get_livro())->inc_ex_disponiveis();
 			((*it)->get_leitor())->remove_emp_leit(id);
+            if (((*it)->get_livro())->get_ex_disponiveis() == 1)
+                disponiveis.insert(*((*it)->get_livro()));
 			Emprestimo_old* eo = new Emprestimo_old{(*it)->get_livro(),
                 (*it)->get_funcionario(), (*it)->get_leitor(), false,
                 (*it)->get_data(), (*it)->get_ID()};
@@ -866,6 +870,7 @@ string Biblioteca::imprime_livros_tema(const string tem) const {
 
 string Biblioteca::imprime_livros_disponiveis() const {
 	stringstream out {};
+    /*
 	vector<Livro*> livrs {get_livros_disponiveis()};
 	if (livrs.size() == 0) {
 		out << "Nao existem livros disponiveis." << endl << endl;
@@ -876,6 +881,16 @@ string Biblioteca::imprime_livros_disponiveis() const {
 			out << (*it)->imprime() << endl;
 		}
 	}
+    */
+    if (disponiveis.isEmpty()) {
+        out << "Nao existem livros disponiveis." << endl << endl;
+    }
+    else {
+        out << "LIVROS DISPONIVEIS" << endl << endl;
+        for (BSTItrIn<Livro> it = disponiveis; !it.isAtEnd(); it.advance()) {
+            out << it.retrieve().imprime() << endl;
+        }
+    }
 	return out.str();
 }
 
@@ -2053,6 +2068,13 @@ bool Biblioteca::remove_inativo(const unsigned long id) {
     return false;
 }
 
+void Biblioteca::adiciona_disponiveis() {
+    disponiveis.makeEmpty();
+    vector<Livro*> livrs {get_livros()};
+    for (vector<Livro*>::const_iterator it = livrs.begin(); it != livrs.end(); it++) {
+        if ((*it)->get_ex_disponiveis() > 0) disponiveis.insert(**it);
+    }
+}
 
 
 

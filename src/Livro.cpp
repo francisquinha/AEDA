@@ -20,6 +20,20 @@ Livro::Livro(int ano, string tit, vector<string> aut, string tem, long isbn, str
     num_paginas {np}, edicao {ed}, exemplares {ex}, ex_disponiveis(exd), emprestimos_livro{ep},
     pedidos{pd} {if (ct) num_livros++;}
 
+bool Livro::operator <(const Livro lv) const {
+    if (ano_edicao == lv.get_ano_edicao()) {
+        if (titulo == lv.get_titulo()) {
+            unsigned long k = min(autores.size(), lv.get_autores().size());
+            for (unsigned long i = 0; i < k; i++) {
+                if (autores[i] < lv.get_autores()[i]) return true;
+                else if (autores[i] > lv.get_autores()[i]) return false;
+            }
+            return autores.size() < lv.get_autores().size();
+        }
+        return titulo < lv.get_titulo();
+    }
+    return ano_edicao < lv.get_ano_edicao();
+}
 
 void Livro::set_emp_livro(unsigned long ind, Emprestimo* ep) {
     emprestimos_livro[ind] = ep;
