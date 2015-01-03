@@ -203,6 +203,7 @@ void Biblioteca::set_livros(vector<Livro*> livr) {
 
 void Biblioteca::adiciona_livro(Livro* lv) {
 	livros.push_back(lv);
+    adiciona_disponivel(*lv);
 	cout << "Livro adicionado." << endl;
 }
 
@@ -219,9 +220,11 @@ Livro* Biblioteca::adiciona_exemplar(const unsigned long id) {
         if ((*it)->get_ID() == id) {
             encontrado = true;
             if (lvo == 0) {
+                remove_disponivel(**it);
                 (*it)->inc_exemplares();
                 (*it)->inc_ex_disponiveis();
                 (*it)->inc_emp_livro();
+                if ((*it)->get_ex_disponiveis() > 0 ) adiciona_disponivel(**it);
                 cout << "Exemplar adicionado." << endl;
                 return (*it);
             }
@@ -319,6 +322,7 @@ bool Biblioteca::remove_livro(const unsigned long id, const unsigned long ind) {
 	for (vector<Livro*>::iterator it = livros.begin(); it != livros.end(); it++) {
 		lvo = dynamic_cast<Livro_old*>(*it);
 		if ((*it)->get_ID() == id and lvo == 0) {
+            remove_disponivel(**it);
             if ((*it)->get_exemplares() > ind) { /* se existir exemplar com o indice escolhido */
                 if ((*it)->get_emp_livro()[ind] == NULL) { /* se o exemplar do livro nao esta emprestado*/
                     bool existe_old {false};
@@ -345,6 +349,7 @@ bool Biblioteca::remove_livro(const unsigned long id, const unsigned long ind) {
                         (*it)->dec_exemplares(); /* diminuimos o numero de exemplares */
                         (*it)->dec_ex_disponiveis(); /* e o numero de exemplares disponiveis */
                         (*it)->del_emp_livro(ind); /* removemos o indice do exemplar do vetor ID_ep */
+                        if ((*it)->get_ex_disponiveis() > 0 ) adiciona_disponivel(**it);
                     }
                     else {
                         priority_queue<Pedido> pds {(*it)->get_pedidos()};
@@ -458,13 +463,14 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
     if (lv->get_exemplares() > ind) {
         if (ep_lv[ind] == NULL) {
             if (ep_lt.size() < 3) {
+                remove_disponivel(*lv);
                 lv->set_emp_livro(ind, ep);
                 lv->dec_ex_disponiveis();
                 lt->adiciona_emp_leit(ep);
                 lt->set_data_ult_emp(ep->get_data());
                 emprestimos.push_back(ep);
                 remove_inativo(lt->get_ID());
-                if (lv->get_ex_disponiveis() == 0) disponiveis.remove(*lv);
+                if (lv->get_ex_disponiveis() > 0 ) adiciona_disponivel(*lv);
                 cout << "Emprestimo adicionado." << endl;
             }
             else throw Maximo_emprestimos(lt->get_ID(), lt->get_nome(), lt->get_tipo(),
@@ -646,6 +652,8 @@ Emprestimo* Biblioteca::remove_emprestimo(const unsigned long id) {
 	for (vector<Emprestimo*>::iterator it = emprestimos.begin(); it != emprestimos.end(); it++) {
 		epo = dynamic_cast<Emprestimo_old*>(*it);
 		if ((*it)->get_ID() == id and epo == 0) {
+            remove_disponivel(*((*it)->get_livro()));
+            remove_inativo((*it)->get_leitor()->get_ID());
 			int dias {(*it)->get_atraso()};
 			if (dias > 0) { /* se a devolucao estiver atrasada, temos que cobrar multa */
 				cout << endl << "Devolucao de livro " << dias << " dia(s) em atraso. Deve efetuar o pagamento de "
@@ -654,7 +662,7 @@ Emprestimo* Biblioteca::remove_emprestimo(const unsigned long id) {
             ((*it)->get_livro())->set_emp_livro((*it)->get_indice(), NULL);
             ((*it)->get_livro())->inc_ex_disponiveis();
 			((*it)->get_leitor())->remove_emp_leit(id);
-            if (((*it)->get_livro())->get_ex_disponiveis() == 1)
+            if (((*it)->get_livro())->get_ex_disponiveis() > 0)
                 disponiveis.insert(*((*it)->get_livro()));
 			Emprestimo_old* eo = new Emprestimo_old{(*it)->get_livro(),
                 (*it)->get_funcionario(), (*it)->get_leitor(), false,
@@ -662,6 +670,9 @@ Emprestimo* Biblioteca::remove_emprestimo(const unsigned long id) {
 			adiciona_emprestimo_old(eo); /* ao remover um emprestimo adicionamo-lo como Emprestimo_old */
             Emprestimo* ep = *it;
 			emprestimos.erase(it);
+            double tempo_dias
+                {floor(difftime(time(0), (*it)->get_leitor()->get_data_ult_emp())/86400)};
+            if (tempo_dias > 365) adiciona_inativo(*((*it)->get_leitor()));
 			cout << endl << "Emprestimo removido." << endl;
 			return ep;
 		}
@@ -693,7 +704,7 @@ bool Biblioteca::remove_pedido(const unsigned long id) {
                                               (*it)->get_ID());
         }
     }
-    throw Object_nao_existe(id, "emprestimo");
+    throw Object_nao_existe(id, "pedido");
 }
 
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com os iteradores,
@@ -2055,6 +2066,10 @@ void Biblioteca::adiciona_inativos() {
             inativos.insert(**it);
         }
     }
+}
+
+void Biblioteca::adiciona_inativo(const Leitor& lt) {
+    inativos.insert(lt);
 }
 
 bool Biblioteca::remove_inativo(const unsigned long id) {

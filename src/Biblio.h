@@ -894,6 +894,13 @@ public:
     void adiciona_inativos();
     
     /**
+     * @brief Funcao que adiciona um leitor inativo a tabela de dispersao
+     *
+     * @param lt leitor que pretendemos adicionar
+     **/
+    void adiciona_inativo(const Leitor& lt);
+    
+    /**
      * @brief Funcao que remove um leitor da tabela de dispersao de leitores inativos
      *
      * @param id identificacao do leitor que pretendemos remover
