@@ -56,7 +56,7 @@ public:
 	 *
 	 * @param pass password do utilizador
 	 **/
-	void set_password(std::string pass);
+	void set_password(const std::string pass);
 
 	/**
 	 * @brief Funcao para obter o nivel de acesso do utilizador
@@ -70,14 +70,14 @@ public:
 	 *
 	 * @param acess nivel de acesso do utilizador
 	 **/
-	void set_acesso(int acess);
+	void set_acesso(const int acess);
 
 	/**
 	 * @brief Funcao que escreve os atributos do utilizador
 	 *
 	 * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
 	 **/
-	void escreve(std::string ficheiro) const;
+	void escreve(const std::string ficheiro) const;
 
 	/**
 	 * @brief Funcao que imprime os atributos do utilizador exceto a password

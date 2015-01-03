@@ -21,7 +21,7 @@ using namespace std;
  **/
 
 /* com dynamic_cast o apontador lo so nao e nulo se (*it) for do tipo Livro_old */
-vector<Livro_old*> Biblioteca::get_livros_old() {
+vector<Livro_old*> Biblioteca::get_livros_old() const{
 	vector<Livro_old*> liv_old {};
 	Livro_old* lo{};
 	for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++){
@@ -34,7 +34,7 @@ vector<Livro_old*> Biblioteca::get_livros_old() {
 }
 
 /* com dynamic_cast o apontador lo so nao e nulo se (*it) for do tipo Livro_old */
-vector<Livro*> Biblioteca::get_livros() {
+vector<Livro*> Biblioteca::get_livros() const {
 	vector<Livro*> liv {};
 	Livro_old* lo{};
 	for (vector<Livro*>::const_iterator it = livros.begin(); it != livros.end(); it++){
@@ -47,7 +47,7 @@ vector<Livro*> Biblioteca::get_livros() {
 }
 
 /* com dynamic_cast o apontador eo so nao e nulo se (*it) for do tipo Emprestimo_old */
-vector<Emprestimo_old*> Biblioteca::get_emprestimos_old() {
+vector<Emprestimo_old*> Biblioteca::get_emprestimos_old() const {
 	vector<Emprestimo_old*> emp_old {};
 	Emprestimo_old* eo{};
 	for (vector<Emprestimo*>::const_iterator it = emprestimos.begin(); it != emprestimos.end(); it++){
@@ -60,7 +60,7 @@ vector<Emprestimo_old*> Biblioteca::get_emprestimos_old() {
 }
 
 /* com dynamic_cast o apontador eo so nao e nulo se (*it) for do tipo Emprestimo_old */
-vector<Emprestimo*> Biblioteca::get_emprestimos() {
+vector<Emprestimo*> Biblioteca::get_emprestimos() const{
 	vector<Emprestimo*> emp {};
 	Emprestimo_old* eo{};
 	for (vector<Emprestimo*>::const_iterator it = emprestimos.begin(); it != emprestimos.end(); it++){
@@ -73,7 +73,7 @@ vector<Emprestimo*> Biblioteca::get_emprestimos() {
 }
 
 /* com dynamic_cast o apontador fo so nao e nulo se (*it) for do tipo Funcionario_old */
-vector<Funcionario_old*> Biblioteca::get_funcionarios_old() {
+vector<Funcionario_old*> Biblioteca::get_funcionarios_old() const {
 	vector<Funcionario_old*> fun_old {};
 	Funcionario_old* fo{};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++){
@@ -86,12 +86,12 @@ vector<Funcionario_old*> Biblioteca::get_funcionarios_old() {
 }
 
 /* aqui obtemos os funcionarios todos, independentemente da subclasse */
-vector<Funcionario*>Biblioteca::get_funcionarios_todos() {
+vector<Funcionario*>Biblioteca::get_funcionarios_todos() const {
 	return funcionarios;
 }
 
 /* com dynamic_cast o apontador sp so nao e nulo se (*it) for do tipo Supervisor */
-vector<Funcionario*>Biblioteca::get_supervisores() {
+vector<Funcionario*>Biblioteca::get_supervisores() const {
 	vector<Funcionario*> supervisores {};
 	Supervisor* sp {};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
@@ -105,7 +105,7 @@ vector<Funcionario*>Biblioteca::get_supervisores() {
 
 /* com dynamic_cast os apontadores sp, ad e fo so nao sao nulos se (*it)
  * for do tipo Supervisor, Administrador e Funcionario_old, respectivamente */
-vector<Funcionario*>Biblioteca::get_funcionarios() {
+vector<Funcionario*>Biblioteca::get_funcionarios() const {
 	vector<Funcionario*> funcionarios_n_sup {};
 	Supervisor* sp {};
 	Administrador* ad {};
@@ -122,7 +122,7 @@ vector<Funcionario*>Biblioteca::get_funcionarios() {
 }
 
 /* com dynamic_cast o apontador lo so nao e nulo se (*it) for do tipo Leitor_old */
-vector<Leitor_old*> Biblioteca::get_leitores_old() {
+vector<Leitor_old*> Biblioteca::get_leitores_old() const {
 	vector<Leitor_old*> lei_old {};
 	Leitor_old* lo{};
 	for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++){
@@ -135,7 +135,7 @@ vector<Leitor_old*> Biblioteca::get_leitores_old() {
 }
 
 /* com dynamic_cast o apontador lo so nao e nulo se (*it) for do tipo Leitor_old */
-vector<Leitor*> Biblioteca::get_leitores() {
+vector<Leitor*> Biblioteca::get_leitores() const {
 	vector<Leitor*> lei {};
 	Leitor_old* lo{};
 	for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++){
@@ -147,12 +147,12 @@ vector<Leitor*> Biblioteca::get_leitores() {
 	return lei;
 }
 
-vector<Utilizador*>Biblioteca::get_utilizadores() {
+vector<Utilizador*>Biblioteca::get_utilizadores() const {
 	return utilizadores;
 }
 
 /* com dynamic_cast o apontador po so nao e nulo se (*it) for do tipo Pedido_old */
-vector<Pedido_old*> Biblioteca::get_pedidos_old() {
+vector<Pedido_old*> Biblioteca::get_pedidos_old() const {
     vector<Pedido_old*> ped_old {};
     Pedido_old* po{};
     for (vector<Pedido*>::const_iterator it = pedidos.begin(); it != pedidos.end(); it++){
@@ -165,7 +165,7 @@ vector<Pedido_old*> Biblioteca::get_pedidos_old() {
 }
 
 /* com dynamic_cast o apontador po so nao e nulo se (*it) for do tipo Pedido_old */
-vector<Pedido*> Biblioteca::get_pedidos() {
+vector<Pedido*> Biblioteca::get_pedidos() const {
     vector<Pedido*> ped {};
     Pedido_old* po{};
     for (vector<Pedido*>::const_iterator it = pedidos.begin(); it != pedidos.end(); it++){
@@ -209,7 +209,7 @@ void Biblioteca::adiciona_livro_old(Livro_old* lv) {
 	livros.push_back(lv);
 }
 
-Livro* Biblioteca::adiciona_exemplar(unsigned long id) {
+Livro* Biblioteca::adiciona_exemplar(const unsigned long id) {
     Livro_old* lvo {};
     bool encontrado {false};
     Livro* lv {};
@@ -260,7 +260,7 @@ void Biblioteca::adiciona_utilizador(Utilizador* ut) {
 	cout << "Utilizador adicionado." << endl;
 }
 
-vector<string> Biblioteca::get_temas() {
+vector<string> Biblioteca::get_temas() const {
 	vector<string> tem {};
 	vector<Livro*> livrs {get_livros()};
 	for (vector<Livro*>::const_iterator it = livrs.begin(); it !=  livrs.end(); it++) {
@@ -276,7 +276,7 @@ vector<string> Biblioteca::get_temas() {
 	return tem;
 }
 
-vector<Livro*> Biblioteca::get_livros_tema(string tem) {
+vector<Livro*> Biblioteca::get_livros_tema(const string tem) const {
 	vector<Livro*> lv {};
 	vector<Livro*> livrs {get_livros()};
 	for (vector<Livro*>::const_iterator it = livrs.begin(); it !=  livrs.end(); it++) {
@@ -287,7 +287,7 @@ vector<Livro*> Biblioteca::get_livros_tema(string tem) {
 	return lv;
 }
 
-vector<Livro*> Biblioteca::get_livros_disponiveis() {
+vector<Livro*> Biblioteca::get_livros_disponiveis() const {
 	vector<Livro*> lv {};
 	vector<Livro*> livrs {get_livros()};
 	for (vector<Livro*>::const_iterator it = livrs.begin(); it !=  livrs.end(); it++) {
@@ -298,7 +298,7 @@ vector<Livro*> Biblioteca::get_livros_disponiveis() {
 	return lv;
 }
 
-vector<Livro*> Biblioteca::get_livros_emprestados() {
+vector<Livro*> Biblioteca::get_livros_emprestados() const {
 	vector<Livro*> lv {};
 	vector<Livro*> livrs {get_livros()};
 	for (vector<Livro*>::const_iterator it = livrs.begin(); it !=  livrs.end(); it++) {
@@ -313,7 +313,7 @@ vector<Livro*> Biblioteca::get_livros_emprestados() {
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com o iterador,
  * porque se apagarmos o ultimo elemento, o iterador nunca chega ao fim.
  * mas como estamos a fazer return logo depois, nao deve haver problema. */
-bool Biblioteca::remove_livro(unsigned long id, unsigned long ind) {
+bool Biblioteca::remove_livro(const unsigned long id, const unsigned long ind) {
 	Livro_old* lvo {};
 	for (vector<Livro*>::iterator it = livros.begin(); it != livros.end(); it++) {
 		lvo = dynamic_cast<Livro_old*>(*it);
@@ -401,7 +401,7 @@ void Biblioteca::distribui_funcionarios() {
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com o iterador,
  * porque se apagarmos o ultimo elemento, o iterador nunca chega ao fim.
  * mas como estamos a fazer return logo depois, nao deve haver problema. */
-bool Biblioteca::remove_funcionario(unsigned long id) {
+bool Biblioteca::remove_funcionario(const unsigned long id) {
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 		if ((*it)->get_ID() == id) {
 			Funcionario_old* fo = new Funcionario_old{(*it)->get_ID(), (*it)->get_nome(), false};
@@ -418,7 +418,7 @@ bool Biblioteca::remove_funcionario(unsigned long id) {
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com o iterador,
  * porque se apagarmos o ultimo elemento, o iterador nunca chega ao fim.
  * mas como estamos a fazer return logo depois, nao deve haver problema. */
-bool Biblioteca::remove_leitor(unsigned long id) {
+bool Biblioteca::remove_leitor(const unsigned long id) {
 	Leitor_old* lto {};
 	for (vector<Leitor*>::const_iterator it = leitores.begin(); it != leitores.end(); it++) {
 		lto = dynamic_cast<Leitor_old*>(*it);
@@ -486,7 +486,8 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
                                     lv->get_pedidos());
 }
 
-void Biblioteca::adiciona_emprestimo_ids(unsigned long id_lv, unsigned long id_lt, unsigned long id_fc) {
+void Biblioteca::adiciona_emprestimo_ids(const unsigned long id_lv, const unsigned long id_lt,
+                                         const unsigned long id_fc) {
 	Livro* lv{};
     vector<Livro*> livrs = get_livros();
     bool livro_encontrado {false};
@@ -584,7 +585,8 @@ void Biblioteca::adiciona_pedido(Pedido* pd) {
     }
 }
 
-void Biblioteca::adiciona_pedido_ids(unsigned long id_lv, unsigned long id_lt, unsigned long id_fc) {
+void Biblioteca::adiciona_pedido_ids(const unsigned long id_lv, const unsigned long id_lt,
+                                     const unsigned long id_fc) {
     Livro* lv{};
     vector<Livro*> livrs = get_livros();
     bool livro_encontrado {false};
@@ -637,7 +639,7 @@ void Biblioteca::adiciona_pedido_ids(unsigned long id_lv, unsigned long id_lt, u
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com os iteradores,
  * porque se apagarmos o ultimo elemento, nunca chegam ao fim.
  * mas como estamos a adicionar um elemento antes de apagar, nao deve haver problema */
-Emprestimo* Biblioteca::remove_emprestimo(unsigned long id) {
+Emprestimo* Biblioteca::remove_emprestimo(const unsigned long id) {
 	Emprestimo_old* epo {};
 	for (vector<Emprestimo*>::iterator it = emprestimos.begin(); it != emprestimos.end(); it++) {
 		epo = dynamic_cast<Emprestimo_old*>(*it);
@@ -666,7 +668,7 @@ Emprestimo* Biblioteca::remove_emprestimo(unsigned long id) {
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com os iteradores,
  * porque se apagarmos o ultimo elemento, nunca chegam ao fim.
  * mas como estamos a adicionar um elemento antes de apagar, nao deve haver problema */
-bool Biblioteca::remove_pedido(unsigned long id) {
+bool Biblioteca::remove_pedido(const unsigned long id) {
     Pedido_old* pdo {};
     for (vector<Pedido*>::iterator it = pedidos.begin(); it != pedidos.end(); it++) {
         pdo = dynamic_cast<Pedido_old*>(*it);
@@ -693,7 +695,7 @@ bool Biblioteca::remove_pedido(unsigned long id) {
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com os iteradores,
  * porque se apagarmos o ultimo elemento, nunca chegam ao fim.
  * mas como estamos a adicionar um elemento antes de apagar, nao deve haver problema */
-bool Biblioteca::desiste_pedido(unsigned long id) {
+bool Biblioteca::desiste_pedido(const unsigned long id) {
     Pedido_old* pdo {};
     for (vector<Pedido*>::iterator it = pedidos.begin(); it != pedidos.end(); it++) {
         pdo = dynamic_cast<Pedido_old*>(*it);
@@ -719,7 +721,7 @@ bool Biblioteca::desiste_pedido(unsigned long id) {
 /* apagar um elemento de um vetor com erase(it) pode dar problemas com o iterador,
  * porque se apagarmos o ultimo elemento, o iterador nunca chega ao fim.
  * mas como estamos a fazer return logo depois, nao deve haver problema. */
-bool Biblioteca::remove_utilizador(unsigned long id) {
+bool Biblioteca::remove_utilizador(const unsigned long id) {
 	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it != utilizadores.end(); it++) {
 		if ((*it)->get_ID() == id) {
 			utilizadores.erase(it);
@@ -730,7 +732,7 @@ bool Biblioteca::remove_utilizador(unsigned long id) {
 	throw Object_nao_existe(id, "utilizador");
 }
 
-vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados() {
+vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados() const {
 	vector<Emprestimo*> atrasados {};
 	vector<Emprestimo*> emp {get_emprestimos()};
 	for (vector<Emprestimo*>::const_iterator it = emp.begin(); it != emp.end(); it++) {
@@ -742,7 +744,7 @@ vector<Emprestimo*> Biblioteca::get_emprestimos_atrasados() {
 }
 
 /* impressao de emprestimos atrasados organizador por leitor, para fazer os contactos */
-string Biblioteca::imprime_emprestimos_atrasados() {
+string Biblioteca::imprime_emprestimos_atrasados() const {
 	stringstream out {};
 	vector<Emprestimo*> atrasados {get_emprestimos_atrasados()};
 	vector<Leitor*> lt_atrasados {};
@@ -774,7 +776,7 @@ string Biblioteca::imprime_emprestimos_atrasados() {
 	return out.str();
 }
 
-bool Biblioteca::promove_funcionario_supervisor(unsigned long id) {
+bool Biblioteca::promove_funcionario_supervisor(const unsigned long id) {
 	vector<Funcionario*> func_sup {};
 	Supervisor* spd {};
 	Funcionario_old* fco {};
@@ -802,7 +804,7 @@ bool Biblioteca::promove_funcionario_supervisor(unsigned long id) {
 	throw Object_nao_existe(id, "funcionario");
 }
 
-bool Biblioteca::despromove_supervisor_funcionorario(unsigned long id) {
+bool Biblioteca::despromove_supervisor_funcionorario(const unsigned long id) {
 	Supervisor* sp {};
 	for (vector<Funcionario*>::const_iterator it = funcionarios.begin(); it != funcionarios.end(); it++) {
 		if ((*it)->get_ID() == id) {
@@ -827,7 +829,7 @@ bool Biblioteca::despromove_supervisor_funcionorario(unsigned long id) {
 	throw Object_nao_existe(id, "supervisor");
 }
 
-string Biblioteca::imprime_livros_old() {
+string Biblioteca::imprime_livros_old() const {
 	stringstream out {};
 	vector<Livro_old*> livrs {get_livros_old()};
 	out << "LIVROS ANTIGOS" << endl << endl;
@@ -837,7 +839,7 @@ string Biblioteca::imprime_livros_old() {
 	return out.str();
 }
 
-string Biblioteca::imprime_livros() {
+string Biblioteca::imprime_livros() const {
 	stringstream out {};
 	vector<Livro*> livrs {get_livros()};
 	out << "LIVROS" << endl << endl;
@@ -847,7 +849,7 @@ string Biblioteca::imprime_livros() {
 	return out.str();
 }
 
-string Biblioteca::imprime_livros_tema(string tem) {
+string Biblioteca::imprime_livros_tema(const string tem) const {
 	stringstream out {};
 	vector<Livro*> livrs {get_livros_tema(tem)};
 	if (livrs.size() == 0) {
@@ -862,7 +864,7 @@ string Biblioteca::imprime_livros_tema(string tem) {
 	return out.str();
 }
 
-string Biblioteca::imprime_livros_disponiveis() {
+string Biblioteca::imprime_livros_disponiveis() const {
 	stringstream out {};
 	vector<Livro*> livrs {get_livros_disponiveis()};
 	if (livrs.size() == 0) {
@@ -877,7 +879,7 @@ string Biblioteca::imprime_livros_disponiveis() {
 	return out.str();
 }
 
-string Biblioteca::imprime_livros_emprestados() {
+string Biblioteca::imprime_livros_emprestados() const {
 	stringstream out {};
 	vector<Livro*> livrs {get_livros_emprestados()};
 	if (livrs.size() == 0) {
@@ -892,7 +894,7 @@ string Biblioteca::imprime_livros_emprestados() {
 	return out.str();
 }
 
-string Biblioteca::imprime_funcionarios_old() {
+string Biblioteca::imprime_funcionarios_old() const {
 	stringstream out {};
 	out << "FUNCIONARIOS ANTIGOS" << endl << endl;
 	vector<Funcionario_old*> funcios {get_funcionarios_old()};
@@ -902,7 +904,7 @@ string Biblioteca::imprime_funcionarios_old() {
 	return out.str();
 }
 
-string Biblioteca::imprime_funcionarios() {
+string Biblioteca::imprime_funcionarios() const {
 	stringstream out {};
 	out << "FUNCIONARIOS" << endl << endl;
 	vector<Funcionario*> funcios {get_funcionarios()};
@@ -912,7 +914,7 @@ string Biblioteca::imprime_funcionarios() {
 	return out.str();
 }
 
-string Biblioteca::imprime_supervisores() {
+string Biblioteca::imprime_supervisores() const {
 	stringstream out {};
 	out << "SUPERVISORES" << endl << endl;
 	vector<Funcionario*> supers {get_supervisores()};
@@ -922,7 +924,7 @@ string Biblioteca::imprime_supervisores() {
 	return out.str();
 }
 
-string Biblioteca::imprime_leitores_inativos() {
+string Biblioteca::imprime_leitores_inativos() const {
     stringstream out {};
     out << "LEITORES INATIVOS" << endl << endl;
     for (Hash_Leitores::const_iterator it = inativos.begin(); it != inativos.end(); it++) {
@@ -931,7 +933,7 @@ string Biblioteca::imprime_leitores_inativos() {
     return out.str();
 }
 
-string Biblioteca::imprime_leitores_old() {
+string Biblioteca::imprime_leitores_old() const {
 	stringstream out {};
 	out << "LEITORES ANTIGOS" << endl << endl;
 	vector<Leitor_old*> lei_old {get_leitores_old()};
@@ -941,7 +943,7 @@ string Biblioteca::imprime_leitores_old() {
 	return out.str();
 }
 
-string Biblioteca::imprime_leitores() {
+string Biblioteca::imprime_leitores() const {
 	stringstream out {};
 	out << "LEITORES" << endl << endl;
 	vector<Leitor*> lei {get_leitores()};
@@ -951,7 +953,7 @@ string Biblioteca::imprime_leitores() {
 	return out.str();
 }
 
-string Biblioteca::imprime_emprestimos_old() {
+string Biblioteca::imprime_emprestimos_old() const {
 	stringstream out {};
 	out << "EMPRESTIMOS ANTIGOS" << endl << endl;
 	vector<Emprestimo_old*> emp_old {get_emprestimos_old()};
@@ -961,7 +963,7 @@ string Biblioteca::imprime_emprestimos_old() {
 	return out.str();
 }
 
-string Biblioteca::imprime_emprestimos() {
+string Biblioteca::imprime_emprestimos() const {
 	stringstream out {};
 	vector<Emprestimo*> emp {get_emprestimos()};
 	out << "EMPRESTIMOS" << endl << endl;
@@ -971,7 +973,7 @@ string Biblioteca::imprime_emprestimos() {
 	return out.str();
 }
 
-string Biblioteca::imprime_utilizadores() {
+string Biblioteca::imprime_utilizadores() const {
 	stringstream out {};
 	out << "UTILIZADORES" << endl << endl;
 	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it != utilizadores.end(); it++) {
@@ -980,7 +982,7 @@ string Biblioteca::imprime_utilizadores() {
 	return out.str();
 }
 
-string Biblioteca::imprime_pedidos_old() {
+string Biblioteca::imprime_pedidos_old() const {
     stringstream out {};
     out << "PEDIDOS ANTIGOS" << endl << endl;
     vector<Pedido_old*> ped_old {get_pedidos_old()};
@@ -990,7 +992,7 @@ string Biblioteca::imprime_pedidos_old() {
     return out.str();
 }
 
-string Biblioteca::imprime_pedidos() {
+string Biblioteca::imprime_pedidos() const {
     stringstream out {};
     vector<Pedido*> ped {get_pedidos()};
     out << "PEDIDOS" << endl << endl;
@@ -1000,7 +1002,7 @@ string Biblioteca::imprime_pedidos() {
     return out.str();
 }
 
-string Biblioteca::imprime() {
+string Biblioteca::imprime() const {
 	stringstream out {};
 	out << imprime_livros() << endl
 		<< imprime_funcionarios() << endl
@@ -1010,7 +1012,7 @@ string Biblioteca::imprime() {
 	return out.str();
 }
 
-void Biblioteca::escreve_livros_old(string ficheiro) {
+void Biblioteca::escreve_livros_old(const string ficheiro) const {
 	vector<Livro_old*> livrs {get_livros_old()};
 	ofstream myfile(ficheiro);
 	myfile << "";
@@ -1020,7 +1022,7 @@ void Biblioteca::escreve_livros_old(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_livros(string ficheiro) {
+void Biblioteca::escreve_livros(const string ficheiro) const {
 	vector<Livro*> livrs {get_livros()};
 	ofstream myfile(ficheiro);
 	myfile << "";
@@ -1030,7 +1032,7 @@ void Biblioteca::escreve_livros(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_funcionarios_old(string ficheiro) {
+void Biblioteca::escreve_funcionarios_old(const string ficheiro) const {
 	ofstream file_f(ficheiro);
 	file_f << "";
 	file_f.close();
@@ -1040,7 +1042,7 @@ void Biblioteca::escreve_funcionarios_old(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_funcionarios(string ficheiro) {
+void Biblioteca::escreve_funcionarios(const string ficheiro) const {
 	ofstream file_f(ficheiro);
 	file_f << "";
 	file_f.close();
@@ -1050,7 +1052,7 @@ void Biblioteca::escreve_funcionarios(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_supervisores(string ficheiro) {
+void Biblioteca::escreve_supervisores(const string ficheiro) const {
 	ofstream file_f(ficheiro);
 	file_f << "";
 	file_f.close();
@@ -1060,7 +1062,7 @@ void Biblioteca::escreve_supervisores(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_leitores_old(string ficheiro) {
+void Biblioteca::escreve_leitores_old(const string ficheiro) const {
 	ofstream myfile(ficheiro);
 	myfile << "";
 	myfile.close();
@@ -1070,7 +1072,7 @@ void Biblioteca::escreve_leitores_old(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_leitores(string ficheiro) {
+void Biblioteca::escreve_leitores(const string ficheiro) const {
 	ofstream myfile(ficheiro);
 	myfile << "";
 	myfile.close();
@@ -1080,7 +1082,7 @@ void Biblioteca::escreve_leitores(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_emprestimos_old(string ficheiro) {
+void Biblioteca::escreve_emprestimos_old(const string ficheiro) const {
 	ofstream myfile(ficheiro);
 	myfile << "";
 	myfile.close();
@@ -1090,7 +1092,7 @@ void Biblioteca::escreve_emprestimos_old(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_emprestimos(string ficheiro) {
+void Biblioteca::escreve_emprestimos(const string ficheiro) const {
 	ofstream myfile(ficheiro);
 	myfile << "";
 	myfile.close();
@@ -1100,7 +1102,7 @@ void Biblioteca::escreve_emprestimos(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_utilizadores(string ficheiro) {
+void Biblioteca::escreve_utilizadores(const string ficheiro) const {
 	ofstream myfile(ficheiro);
 	myfile << "";
 	myfile.close();
@@ -1109,7 +1111,7 @@ void Biblioteca::escreve_utilizadores(string ficheiro) {
 	}
 }
 
-void Biblioteca::escreve_pedidos_old(string ficheiro) {
+void Biblioteca::escreve_pedidos_old(const string ficheiro) const {
     ofstream myfile(ficheiro);
     myfile << "";
     myfile.close();
@@ -1119,7 +1121,7 @@ void Biblioteca::escreve_pedidos_old(string ficheiro) {
     }
 }
 
-void Biblioteca::escreve_pedidos(string ficheiro) {
+void Biblioteca::escreve_pedidos(const string ficheiro) const {
     ofstream myfile(ficheiro);
     myfile << "";
     myfile.close();
@@ -1130,9 +1132,12 @@ void Biblioteca::escreve_pedidos(string ficheiro) {
 }
 
 /* e necessario apanhar as possiveis excecoes em caso de os ficheiros nao estarem disponiveis */
-void Biblioteca::escreve(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco, string ficheiro_fc,
-                         string ficheiro_sp, string ficheiro_lto, string ficheiro_lt, string ficheiro_epo,
-                         string ficheiro_ep, string ficheiro_ut, string ficheiro_pdo, string ficheiro_pd) {
+void Biblioteca::escreve(const string ficheiro_lvo, const string ficheiro_lv,
+                         const string ficheiro_fco, const string ficheiro_fc,
+                         const string ficheiro_sp, const string ficheiro_lto,
+                         const string ficheiro_lt, const string ficheiro_epo,
+                         const string ficheiro_ep, const string ficheiro_ut,
+                         const string ficheiro_pdo, const string ficheiro_pd) const {
 	try {
 		escreve_livros_old(ficheiro_lvo);
 	}
@@ -1232,7 +1237,7 @@ void Biblioteca::escreve(string ficheiro_lvo, string ficheiro_lv, string ficheir
 
 }
 
-void Biblioteca::le_livros_old(string ficheiro) {
+void Biblioteca::le_livros_old(const string ficheiro) {
 	ifstream islv(ficheiro);
 	if (!islv) throw Ficheiro_indisponivel(ficheiro);
     string ids {}, anos {}, tit {}, auts {}, tem {}, isbns {}, cot {}, num_pags {}, edis {},
@@ -1294,7 +1299,7 @@ void Biblioteca::le_livros_old(string ficheiro) {
 	islv.close();
 }
 
-void Biblioteca::le_livros(string ficheiro) {
+void Biblioteca::le_livros(const string ficheiro) {
 	ifstream islv(ficheiro);
 	if (!islv) throw Ficheiro_indisponivel(ficheiro);
     string ids {}, anos {}, tit {}, auts {}, tem {}, isbns {}, cot {}, num_pags {}, edis {},
@@ -1339,7 +1344,7 @@ void Biblioteca::le_livros(string ficheiro) {
 	islv.close();
 }
 
-void Biblioteca::le_funcionarios_old(string ficheiro) {
+void Biblioteca::le_funcionarios_old(const string ficheiro) {
 	ifstream isfc(ficheiro);
 	if (!isfc) throw Ficheiro_indisponivel(ficheiro);
 	string ids {}, nom {}, ymds {}, years{}, months{}, days{};
@@ -1376,7 +1381,7 @@ void Biblioteca::le_funcionarios_old(string ficheiro) {
 	isfc.close();
 }
 
-void Biblioteca::le_funcionarios(string ficheiro) {
+void Biblioteca::le_funcionarios(const string ficheiro) {
 	ifstream isfc(ficheiro);
 	if (!isfc) throw Ficheiro_indisponivel(ficheiro);
 	string ids {}, nom {};
@@ -1393,7 +1398,7 @@ void Biblioteca::le_funcionarios(string ficheiro) {
 	isfc.close();
 }
 
-void Biblioteca::le_supervisores(string ficheiro) {
+void Biblioteca::le_supervisores(const string ficheiro) {
 	ifstream issp(ficheiro);
 	if (!issp) throw Ficheiro_indisponivel(ficheiro);
 	string ids {}, nom {}, fsids {};
@@ -1428,7 +1433,7 @@ void Biblioteca::le_supervisores(string ficheiro) {
 	issp.close();
 }
 
-void Biblioteca::le_leitores_old(string ficheiro) {
+void Biblioteca::le_leitores_old(const string ficheiro) {
 	ifstream islt(ficheiro);
 	if (!islt) throw Ficheiro_indisponivel(ficheiro);
     string ids {}, nom {}, tels {}, eml {}, ymds {}, years {}, months {}, days {}, ymdfs {},
@@ -1491,7 +1496,7 @@ void Biblioteca::le_leitores_old(string ficheiro) {
 	islt.close();
 }
 
-void Biblioteca::le_leitores(string ficheiro) {
+void Biblioteca::le_leitores(const string ficheiro) {
 	ifstream islt(ficheiro);
 	if (!islt) throw Ficheiro_indisponivel(ficheiro);
     string ids {}, nom {}, tels {}, eml {}, epids {}, tips {}, mrd {}, ymds {}, years {},
@@ -1540,7 +1545,7 @@ void Biblioteca::le_leitores(string ficheiro) {
 	islt.close();
 }
 
-void Biblioteca::le_emprestimos_old(string ficheiro) {
+void Biblioteca::le_emprestimos_old(const string ficheiro) {
 	ifstream isep(ficheiro);
 	if (!isep) throw Ficheiro_indisponivel(ficheiro);
 	string ids {}, lvids {}, fcids {}, ltids {}, ymds {}, years {}, months {}, days {};
@@ -1629,7 +1634,7 @@ void Biblioteca::le_emprestimos_old(string ficheiro) {
 	isep.close();
 }
 
-void Biblioteca::le_emprestimos(string ficheiro) {
+void Biblioteca::le_emprestimos(const string ficheiro) {
 	ifstream isep(ficheiro);
 	if (!isep) throw Ficheiro_indisponivel(ficheiro);
     string ids {}, lvids {}, fcids {}, ltids {}, ymds {}, years {}, months {}, days {}, inds {};
@@ -1713,7 +1718,7 @@ void Biblioteca::le_emprestimos(string ficheiro) {
 	isep.close();
 }
 
-void Biblioteca::le_utilizadores(string ficheiro) {
+void Biblioteca::le_utilizadores(const string ficheiro) {
 	ifstream isut(ficheiro);
 	if (!isut) throw Ficheiro_indisponivel(ficheiro);
 	string ids {}, pass {}, aces {};
@@ -1733,7 +1738,7 @@ void Biblioteca::le_utilizadores(string ficheiro) {
 	isut.close();
 }
 
-void Biblioteca::le_pedidos_old(string ficheiro) {
+void Biblioteca::le_pedidos_old(const string ficheiro) {
     ifstream ispd(ficheiro);
     if (!ispd) throw Ficheiro_indisponivel(ficheiro);
     string ids {}, lvids {}, fcids {}, ltids {}, ymds {}, years {}, months {}, days {};
@@ -1822,7 +1827,7 @@ void Biblioteca::le_pedidos_old(string ficheiro) {
     ispd.close();
 }
 
-void Biblioteca::le_pedidos(string ficheiro) {
+void Biblioteca::le_pedidos(const string ficheiro) {
     ifstream ispd(ficheiro);
     if (!ispd) throw Ficheiro_indisponivel(ficheiro);
     string ids {}, lvids {}, fcids {}, ltids {}, ymds {}, years {}, months {}, days {};
@@ -1902,9 +1907,12 @@ void Biblioteca::le_pedidos(string ficheiro) {
 /* e necessario apanhar as possiveis excecoes de indisponibilidade de algum ficheiro
  * ou de inexistencia de um livro, leitor ou funcionario a que a criacao de um emprestimo
  * (atual ou antigo) tenta aceder */
-void Biblioteca::le(string ficheiro_lvo, string ficheiro_lv, string ficheiro_fco, string ficheiro_fc,
-                    string ficheiro_sp, string ficheiro_lto, string ficheiro_lt, string ficheiro_epo,
-                    string ficheiro_ep, string ficheiro_ut, string ficheiro_pdo, string ficheiro_pd) {
+void Biblioteca::le(const string ficheiro_lvo, const string ficheiro_lv,
+                    const string ficheiro_fco, const string ficheiro_fc,
+                    const string ficheiro_sp, const string ficheiro_lto,
+                    const string ficheiro_lt, const string ficheiro_epo,
+                    const string ficheiro_ep, const string ficheiro_ut,
+                    const string ficheiro_pdo, const string ficheiro_pd) {
 	try {
 		le_livros_old(ficheiro_lvo);
 	}
@@ -2034,7 +2042,7 @@ void Biblioteca::adiciona_inativos() {
     }
 }
 
-bool Biblioteca::remove_inativo(unsigned long id) {
+bool Biblioteca::remove_inativo(const unsigned long id) {
     for (Hash_Leitores::const_iterator it = inativos.begin(); it!= inativos.end();) {
         if (it->get_ID() == id) {
             it = inativos.erase(it);

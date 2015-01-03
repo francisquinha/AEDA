@@ -38,13 +38,13 @@ char* ler_password(const char* texto) {
 
 Utilizador_online::Utilizador_online(unsigned long id, int ace): Object {id}, acesso {ace} {}
 
-int Utilizador_online::get_acesso() {
+int Utilizador_online::get_acesso() const {
 	return acesso;
 }
 
 Menu::Menu(Utilizador_online* util): utilizador_online {util} {}
 
-bool Menu::e_numero(string num) {
+bool Menu::e_numero(const string num) const {
     for (string::size_type i = 0; i != num.size(); i++) {
         if (!isdigit(num[i]))
             return false; /* existe pelo menos um caracter que nao e um numero */
@@ -56,11 +56,11 @@ void Menu::set_utilizador(Utilizador_online* util) {
 	utilizador_online = util;
 }
 
-Utilizador_online* Menu::get_utilizador() {
+Utilizador_online* Menu::get_utilizador() const {
 	return utilizador_online;
 }
 
-int Menu::efectuar_login(unsigned long id, std::string pass) {
+int Menu::efectuar_login(const unsigned long id, const ::string pass) {
 	vector<Utilizador*> utilizadores {get_utilizadores()};
 	for (vector<Utilizador*>::const_iterator it = utilizadores.begin(); it!= utilizadores.end(); it++) {
 		if ((*it)->get_ID() == id and (*it)->get_password() == pass) {
@@ -205,7 +205,7 @@ void Menu::menu_principal() {
     }
 }
 
-void Menu::menu_consultas() {
+void Menu::menu_consultas() const {
 	int login {utilizador_online->get_acesso()};
 	bool continuar {true};
     while (continuar) {
@@ -532,31 +532,31 @@ void Menu::menu_utilizadores(){
    	}
 }
 
-void Menu::consulta_livros() {
+void Menu::consulta_livros() const {
 	cout << imprime_livros();
 }
 
-void Menu::consulta_emprestimos() {
+void Menu::consulta_emprestimos() const {
 	cout << imprime_emprestimos();
 }
 
-void Menu::consulta_pedidos() {
+void Menu::consulta_pedidos() const {
     cout << imprime_pedidos();
 }
 
-void Menu::consulta_leitores() {
+void Menu::consulta_leitores() const {
 	cout << imprime_leitores();
 }
 
-void Menu::consulta_funcionarios() {
+void Menu::consulta_funcionarios() const {
 	cout << imprime_funcionarios();
 }
 
-void Menu::consulta_supervisores() {
+void Menu::consulta_supervisores() const {
 	cout << imprime_supervisores();
 }
 
-void Menu::consulta_utilizadores() {
+void Menu::consulta_utilizadores() const {
 	cout << imprime_utilizadores();
 }
 
@@ -694,7 +694,7 @@ void Menu::emprestimos_remover() {
     }
 }
 
-void Menu::emprestimos_atrasados() {
+void Menu::emprestimos_atrasados() const {
 	vector<Emprestimo*> emprestimos_atrasados {get_emprestimos_atrasados()};
 	stringstream out {};
 	out << "EMPRESTIMOS ATRASADOS" << endl << endl;
@@ -705,11 +705,11 @@ void Menu::emprestimos_atrasados() {
 	cout << out.str();
 }
 
-void Menu::emprestimos_atrasados_leitores() {
+void Menu::emprestimos_atrasados_leitores() const {
 	cout << imprime_emprestimos_atrasados();
 }
 
-void Menu::emprestimos_atrasados_livros() {
+void Menu::emprestimos_atrasados_livros() const {
 	vector<Emprestimo*> emprestimos_atrasados {get_emprestimos_atrasados()};
 	stringstream out {};
 	out << "LIVROS ATRASADOS" << endl << endl;
@@ -720,7 +720,7 @@ void Menu::emprestimos_atrasados_livros() {
 	cout << out.str();
 }
 
-void Menu::emprestimos_antigos() {
+void Menu::emprestimos_antigos() const {
 	cout << imprime_emprestimos_old();
 }
 
@@ -820,19 +820,19 @@ void Menu::pedidos_desistir() {
     }
 }
 
-void Menu::pedidos_antigos() {
+void Menu::pedidos_antigos() const {
     cout << imprime_pedidos_old();
 }
 
-void Menu::livros_disponiveis(){
+void Menu::livros_disponiveis()const {
 	cout << imprime_livros_disponiveis();
 }
 
-void Menu::livros_emprestados(){
+void Menu::livros_emprestados()const {
 	cout << imprime_livros_emprestados();
 }
 
-void Menu::livros_tema(){
+void Menu::livros_tema() const {
 	cout << "Escolha um tema (s para sair)" << endl << endl;
 	cout << "Temas possiveis: ";
 	vector<string> temas {get_temas()};
@@ -852,7 +852,7 @@ void Menu::livros_tema(){
 	}
 }
 
-void Menu::livros_antigos() {
+void Menu::livros_antigos() const {
 	cout << imprime_livros_old();
 }
 
@@ -2057,11 +2057,11 @@ void Menu::leitores_alterar_tudo() {
    	}
 }
 
-void Menu::leitores_inativos() {
+void Menu::leitores_inativos() const {
     cout << imprime_leitores_inativos();
 }
 
-void Menu::leitores_antigos() {
+void Menu::leitores_antigos() const {
 	cout << imprime_leitores_old();
 }
 
@@ -2172,7 +2172,7 @@ void Menu::funcionarios_despromover() {
     }
 }
 
-void Menu::funcionarios_antigos() {
+void Menu::funcionarios_antigos() const {
 	cout << imprime_funcionarios_old();
 }
 

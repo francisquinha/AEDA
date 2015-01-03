@@ -16,7 +16,7 @@ Livro_old::Livro_old(int ano, string tit, vector<string> aut, string tem, long i
                      std::vector<time_t> dtf):
     Livro {ano, tit, aut, tem, isbn, cot, np, ed, ct, id, ex}, data_fim {dtf} {};
 
-void Livro_old::adiciona_dtf(time_t dtf) {
+void Livro_old::adiciona_dtf(const time_t dtf) {
     data_fim.push_back(dtf);
 }
 
@@ -57,7 +57,7 @@ string Livro_old::imprime() const {
 	return out.str();
 }
 
-void Livro_old::escreve(string ficheiro) const {
+void Livro_old::escreve(const string ficheiro) const {
 	stringstream out {};
     stringstream datas {};
     for (vector<time_t>::const_iterator it = data_fim.begin(); it != data_fim.end(); it++) {

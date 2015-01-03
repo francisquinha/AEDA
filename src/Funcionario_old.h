@@ -48,7 +48,7 @@ public:
 	 *
 	 * @param ficheiro caminho para o ficheiro onde pretendemos escrever
 	 **/
-	void escreve(std::string ficheiro) const;
+	void escreve(const std::string ficheiro) const;
 
 };
 

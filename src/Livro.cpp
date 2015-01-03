@@ -37,7 +37,7 @@ void Livro::inc_emp_livro() {
     emprestimos_livro.push_back(NULL);
 }
 
-void Livro::del_emp_livro(unsigned long ind) {
+void Livro::del_emp_livro(const unsigned long ind) {
     emprestimos_livro.erase(emprestimos_livro.begin() + ind);
 }
 
@@ -79,35 +79,35 @@ string Livro::get_cota() const {
 	return cota;
 }
 
-void Livro::set_ano_edicao(int ano) {
+void Livro::set_ano_edicao(const int ano) {
     ano_edicao = ano;
 }
 
-void Livro::set_titulo(std::string tit) {
+void Livro::set_titulo(const std::string tit) {
     titulo = tit;
 }
 
-void Livro::set_autores(std::vector<std::string> aut) {
+void Livro::set_autores(const std::vector<std::string> aut) {
     autores = aut;
 }
 
-void Livro::set_tema(std::string tem) {
+void Livro::set_tema(const std::string tem) {
     tema = tem;
 }
 
-void Livro::set_ISBN(long isbn) {
+void Livro::set_ISBN(const long isbn) {
     ISBN = isbn;
 }
 
-void Livro::set_cota(std::string cot) {
+void Livro::set_cota(const std::string cot) {
     cota = cot;
 }
 
-void Livro::set_num_paginas(int np) {
+void Livro::set_num_paginas(const int np) {
     num_paginas = np;
 }
 
-void Livro::set_edicao(int ed) {
+void Livro::set_edicao(const int ed) {
     edicao = ed;
 }
 
@@ -151,7 +151,7 @@ void Livro::set_pedidos(priority_queue<Pedido> pds) {
     pedidos = pds;
 }
 
-string Livro::imprime() {
+string Livro::imprime() const {
 	stringstream out {};
 	out << "ID: "<< get_ID() << endl
         << "Ano Edicao: " << ano_edicao << endl
@@ -182,7 +182,7 @@ string Livro::imprime() {
 	return out.str();
 }
 
-void Livro::escreve(string ficheiro) {
+void Livro::escreve(const string ficheiro) const {
 	stringstream out {};
 	out << get_ID() << endl
         << ano_edicao << endl

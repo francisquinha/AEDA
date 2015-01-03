@@ -52,7 +52,7 @@ public:
 	 *
 	 * @param ficheiro caminho para o ficheiro que pretendemos usar
 	 **/
-	void escreve(std::string ficheiro) const;
+	void escreve(const std::string ficheiro) const;
 };
 
 #endif /* SRC_LEITOR_OLD_H_ */

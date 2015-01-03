@@ -60,7 +60,7 @@ string Pedido_old::imprime() const {
     return out.str();
 }
 
-void Pedido_old::escreve(string ficheiro) const {
+void Pedido_old::escreve(const string ficheiro) const {
     stringstream out {};
     time_t dat=get_data();
     tm *ldata = localtime(&dat);

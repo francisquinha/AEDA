@@ -63,7 +63,7 @@ public:
 	 *
 	 * @return string com a password do utilizador
 	 **/
-    int get_acesso();
+    int get_acesso() const;
 };
 
 /**
@@ -83,7 +83,7 @@ class Menu: public Biblioteca {
 	 *
 	 * @return bool true se e numero, false caso contrario
 	 **/
-    bool e_numero(std::string num);
+    bool e_numero(const std::string num) const;
 
 public:
 
@@ -106,7 +106,7 @@ public:
 	 *
 	 * @return Utilizador_online* com o apontador para o utilizador do momento
 	 **/
-	Utilizador_online* get_utilizador();
+	Utilizador_online* get_utilizador() const;
 
 	/**
 	 * @brief Funcao que efetua login de um novo utilizador
@@ -116,7 +116,7 @@ public:
 	 *
 	 * @return int com o nivel de acesso se o id e a pass corresponderem a um utilizador existente, -1 caso contrario
 	 **/
-    int efectuar_login(unsigned long id, std::string pass);
+    int efectuar_login(const unsigned long id, const std::string pass);
 
 	/**
 	 * @brief Menu inicial usado para fazer login
@@ -140,7 +140,7 @@ public:
 	 * Este menu aparece se for escolhida a opcao 1 no menu principal.
 	 * Todas as opcoes estao disponiveis independentemente do nivel de acesso do utilizador_online.
 	 **/
-    void menu_consultas();
+    void menu_consultas() const;
 
 	/**
 	 * @brief Menu emprestimos com as opcoes adicionar, devolver, consultar atrasos, consultar atrasos por leitor,
@@ -200,7 +200,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 1 no menu consultas (caminho 1->1 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void consulta_livros();
+    void consulta_livros() const;
 
 	/**
 	 * @brief Imprime no ecra todos os emprestimos atuais da biblioteca
@@ -208,7 +208,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 2 no menu consultas (caminho 1->2 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void consulta_emprestimos();
+    void consulta_emprestimos() const;
     
     /**
      * @brief Imprime no ecra todos os pedidos atuais da biblioteca
@@ -216,7 +216,7 @@ public:
      * Funcao chamada se for escolhida a opcao 3 no menu consultas (caminho 1->3 do menu principal).
      * Acessivel a todos os utilizadores.
      **/
-    void consulta_pedidos();
+    void consulta_pedidos() const;
 
 	/**
 	 * @brief Imprime no ecra todos os emprestimos atuais da biblioteca
@@ -224,7 +224,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 4 no menu consultas (caminho 1->4 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void consulta_leitores();
+    void consulta_leitores() const;
 
 	/**
 	 * @brief Imprime no ecra todos os funcionarios atuais da biblioteca
@@ -232,7 +232,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 5 no menu consultas (caminho 1->5 do menu principal).
 	 * Acessivel a utilizadores de niveis 0 e 1.
 	 **/
-    void consulta_funcionarios();
+    void consulta_funcionarios() const;
 
 	/**
 	 * @brief Imprime no ecra todos os supervisores atuais da biblioteca
@@ -240,7 +240,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 6 no menu consultas (caminho 1->6 do menu principal).
 	 * Acessivel a utilizadores de niveis 0 e 1.
 	 **/
-    void consulta_supervisores();
+    void consulta_supervisores() const;
 
 	/**
 	 * @brief Imprime no ecra todos os utilizadores da biblioteca
@@ -248,7 +248,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 7 no menu consultas (caminho 1->7 do menu principal).
 	 * Acessivel apenas ao utilizador de nivel 0.
 	 **/
-    void consulta_utilizadores();
+    void consulta_utilizadores() const;
 
 	/**
 	 * @brief Permite adicionar um emprestimo a biblioteca
@@ -276,7 +276,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 3 no menu emprestimos (caminho 2->3 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void emprestimos_atrasados();
+    void emprestimos_atrasados() const;
 
 	/**
 	 * @brief Imprime no ecra todos os emprestimos atrasados organizados por leitor, do qual imprime a informacao
@@ -284,7 +284,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 4 no menu emprestimos (caminho 2->4 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void emprestimos_atrasados_leitores();
+    void emprestimos_atrasados_leitores() const;
 
 	/**
 	 * @brief Imprime no ecra todos os livros de emprestimos atrasados
@@ -292,7 +292,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 5 no menu emprestimos (caminho 2->5 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void emprestimos_atrasados_livros();
+    void emprestimos_atrasados_livros() const;
 
 	/**
 	 * @brief Imprime no ecra todos os emprestimos antigos
@@ -300,7 +300,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 6 no menu emprestimos (caminho 2->6 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void emprestimos_antigos();
+    void emprestimos_antigos() const;
     
     /**
      * @brief Permite adicionar um pedido a biblioteca
@@ -328,7 +328,7 @@ public:
      * Funcao chamada se for escolhida a opcao 3 no menu pedidos (caminho 3->3 do menu principal).
      * Acessivel a todos os utilizadores.
      **/
-    void pedidos_antigos();
+    void pedidos_antigos() const;
 
     /**
 	 * @brief Imprime no ecra todos os livros disponiveis
@@ -336,7 +336,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 1 no menu livros (caminho 4->1 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void livros_disponiveis();
+    void livros_disponiveis() const;
 
 	/**
 	 * @brief Imprime no ecra todos os livros emprestados
@@ -344,7 +344,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 2 no menu livros (caminho 4->2 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void livros_emprestados();
+    void livros_emprestados() const;
 
 	/**
 	 * @brief Imprime no ecra todos os livros de um determinado tema
@@ -353,7 +353,7 @@ public:
 	 * Acessivel a todos os utilizadores.
 	 * Imprime os temas disponiveis para o utilizador escolher.
 	 **/
-    void livros_tema();
+    void livros_tema() const;
 
 	/**
 	 * @brief Imprime no ecra todos os livros antigos
@@ -361,7 +361,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 4 no menu livros (caminho 4->4 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void livros_antigos();
+    void livros_antigos() const;
 
 	/**
 	 * @brief Permite escolher entre adicionar novo livro ou exemplar a livro existente
@@ -592,7 +592,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 4 no menu leitores (caminho 5->4 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void leitores_inativos();
+    void leitores_inativos() const;
     
     /**
      * @brief Imprime no ecra todos os leitores antigos
@@ -600,7 +600,7 @@ public:
      * Funcao chamada se for escolhida a opcao 5 no menu leitores (caminho 5->5 do menu principal).
      * Acessivel a todos os utilizadores.
      **/
-    void leitores_antigos();
+    void leitores_antigos() const;
 
 	/**
 	 * @brief Permite adicionar um funcionario a biblioteca
@@ -644,7 +644,7 @@ public:
 	 * Funcao chamada se for escolhida a opcao 5 no menu leitores (caminho 6->5 do menu principal).
 	 * Acessivel apenas ao administrador.
 	 **/
-    void funcionarios_antigos();
+    void funcionarios_antigos() const;
 
 	/**
 	 * @brief Permite adicionar um funcionario ao sistema

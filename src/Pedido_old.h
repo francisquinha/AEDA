@@ -50,7 +50,7 @@ public:
      *
      * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
      **/
-    void escreve(std::string ficheiro) const;
+    void escreve(const std::string ficheiro) const;
 };
 
 #endif

@@ -60,7 +60,7 @@ string Emprestimo_old::imprime() const {
 	return out.str();
 }
 
-void Emprestimo_old::escreve(string ficheiro) const {
+void Emprestimo_old::escreve(const string ficheiro) const {
 	stringstream out {};
 	time_t dat=get_data();
 	tm *ldata = localtime(&dat);

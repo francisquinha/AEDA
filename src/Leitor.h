@@ -70,7 +70,7 @@ public:
 	 *
 	 * @param nom nome do leitor
 	 **/
-	void set_nome(std::string nom);
+	void set_nome(const std::string nom);
 
 	/**
 	 * @brief Funcao para obter o tipo do leitor
@@ -84,7 +84,7 @@ public:
 	 *
 	 * @param tip tipo do leitor
 	 **/
-	void set_tipo(int tip);
+	void set_tipo(const int tip);
 
 	/**
 	 * @brief Funcao para obter o telefone do leitor
@@ -98,7 +98,7 @@ public:
 	 *
 	 * @param tel telefone do leitor
 	 **/
-	void set_telefone(long tel);
+	void set_telefone(const long tel);
 
 	/**
 	 * @brief Funcao para obter o email do leitor
@@ -119,14 +119,14 @@ public:
 	 *
 	 * @param eml email do leitor
 	 **/
-	void set_email(std::string eml);
+	void set_email(const std::string eml);
 
 	/**
 	 * @brief Funcao para determinar a morada do leitor
 	 *
      * @param mrd morada do leitor
 	 **/
-	void set_morada(std::string mrd);
+	void set_morada(const std::string mrd);
 	
 	/**
 	 * @brief Funcao para adicionar emprestimo ao leitor
@@ -144,7 +144,7 @@ public:
 	 *
 	 * @exception Object_nao_existe se o leitor nao tem nenhum emprestimo com o id fornecido
 	 **/
-	bool remove_emp_leit(unsigned long id);
+	bool remove_emp_leit(const unsigned long id);
 
 	/**
 	 * @brief Funcao para obter emprestimos do leitor
@@ -165,14 +165,14 @@ public:
      *
      * @param ult data do ultimo emprestimo do leitor
      **/
-    void set_data_ult_emp(std::time_t ult);
+    void set_data_ult_emp(const std::time_t ult);
     
  	/**
 	 * @brief Funcao que imprime os emprestimos do leitor
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	std::string imprime_emp_leit();
+	std::string imprime_emp_leit() const;
 
 	/**
 	 * @brief Funcao para obter os emprestimos atrasados do leitor
@@ -186,7 +186,7 @@ public:
 	 *
 	 * @param ficheiro caminho para o ficheiro que pretendemos usar
 	 **/
-	virtual void escreve(std::string ficheiro);
+	virtual void escreve(const std::string ficheiro) const;
 };
 
 #endif /* SRC_LEITOR_H_ */

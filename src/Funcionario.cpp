@@ -25,14 +25,14 @@ string Funcionario::get_nome() const {
 	return nome;
 }
 
-string Funcionario::imprime() {
+string Funcionario::imprime() const {
 	stringstream out {};
 	out << "ID: "<< get_ID() << endl
 			<< "Nome: " << nome << endl;
 	return out.str();
 }
 
-void Funcionario::escreve(string ficheiro) {
+void Funcionario::escreve(const string ficheiro) const {
 	stringstream out {};
 	out << get_ID() << endl
 			<< nome << endl;

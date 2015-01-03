@@ -20,7 +20,7 @@ string Utilizador::get_password() const {
 	return password;
 }
 
-void Utilizador::set_password(std::string pass) {
+void Utilizador::set_password(const std::string pass) {
 	password = pass;
 }
 
@@ -28,11 +28,11 @@ int Utilizador::get_acesso() const{
 	return acesso;
 }
 
-void Utilizador::set_acesso(int acess)  {
+void Utilizador::set_acesso(const int acess)  {
 	acesso = acess;
 }
 
-void Utilizador::escreve(std::string ficheiro) const {
+void Utilizador::escreve(const std::string ficheiro) const {
 	stringstream out {};
 	out << get_ID() << endl
 			<< password << endl

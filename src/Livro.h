@@ -138,56 +138,56 @@ public:
      *
      * @param ano ano de edicao do livro
      **/
-    void set_ano_edicao(int ano);
+    void set_ano_edicao(const int ano);
     
     /**
      * @brief Funcao para determinar o titulo do livro
      *
      * @param tit titulo do livro
      **/
-    void set_titulo(std::string tit);
+    void set_titulo(const std::string tit);
     
     /**
      * @brief Funcao para determinar os autores do livro
      *
      * @param aut vetor com os nomes dos autores do livro
      **/
-    void set_autores(std::vector<std::string> aut);
+    void set_autores(const std::vector<std::string> aut);
     
     /**
      * @brief Funcao para determinar o tema do livro
      *
      * @param tem tema do livro
      **/
-    void set_tema(std::string tem);
+    void set_tema(const std::string tem);
     
     /**
      * @brief Funcao para determinar o ISBN do livro
      *
      * @param isbn ISBN do livro
      **/
-    void set_ISBN(long isbn);
+    void set_ISBN(const long isbn);
     
     /**
      * @brief Funcao para determinar a cota do livro
      *
      * @param cot cota do livro
      **/
-    void set_cota(std::string cot);
+    void set_cota(const std::string cot);
     
     /**
      * @brief Funcao para determinar o numero de paginas do livro
      *
      * @param np numero de paginas do livro
      **/
-    void set_num_paginas(int np);
+    void set_num_paginas(const int np);
     
     /**
      * @brief Funcao para determinar a edicao do livro
      *
      * @param int com o numero da edicao do livro
      **/
-    void set_edicao(int ed);
+    void set_edicao(const int ed);
     
     /**
      * @brief Funcao para obter o numero total de exemplares do livro
@@ -248,7 +248,7 @@ public:
      *
      * @param ind indice do exemplar do livro cujo apontador queremos remover do vetor
      **/
-    void del_emp_livro(unsigned long ind);
+    void del_emp_livro(const unsigned long ind);
     
 	/**
 	 * @brief Funcao para obter o numero de dias desde o emprestimo de um exemplar do livro
@@ -258,7 +258,7 @@ public:
 	 *
 	 * Nota: se o livro nao foi emprestado o resultado serao os dias todos desde 1970/01/01.
 	 **/
-	double get_dias_emp(unsigned long ind) const;
+	double get_dias_emp(const unsigned long ind) const;
     
     /**
      * @brief Funcao para obter a fila de prioridade de apontadores de pedidos do livro
@@ -289,14 +289,14 @@ public:
      *
      * @return string com o resultado da impressao
      **/
-    virtual std::string imprime();
+    virtual std::string imprime() const;
 
 	/**
 	 * @brief Funcao que escreve os atributos do livro
 	 *
 	 * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
 	 **/
-	virtual void escreve(std::string ficheiro);
+	virtual void escreve(const std::string ficheiro) const;
 };
 
 

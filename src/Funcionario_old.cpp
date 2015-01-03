@@ -39,7 +39,7 @@ string Funcionario_old::imprime() const {
 	return out.str();
 }
 
-void Funcionario_old::escreve(string ficheiro) const {
+void Funcionario_old::escreve(const string ficheiro) const {
 	stringstream out {};
 	tm *ldata = localtime(&data_fim);
 	long year {1900 + ldata->tm_year};

@@ -60,7 +60,7 @@ double Emprestimo::get_multa() const {
 	return divida;
 }
 
-string Emprestimo::imprime() {
+string Emprestimo::imprime() const {
 	stringstream out {};
 	tm *ldata = localtime(&data);
 	long year {1900 + ldata->tm_year};
@@ -83,7 +83,7 @@ string Emprestimo::imprime() {
 	return out.str();
 }
 
-void Emprestimo::escreve(string ficheiro) {
+void Emprestimo::escreve(const string ficheiro) const {
 	stringstream out {};
 	tm *ldata = localtime(&data);
 	long year {1900 + ldata->tm_year};

@@ -107,14 +107,14 @@ public:
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	virtual std::string imprime();
+	virtual std::string imprime() const;
 
 	/**
 	 * @brief Funcao que escreve os atributos do emprestimo num ficheiro
 	 *
 	 * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
 	 **/
-	virtual void escreve(std::string ficheiro);
+	virtual void escreve(const std::string ficheiro) const;
 
 };
 

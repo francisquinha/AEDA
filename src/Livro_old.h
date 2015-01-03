@@ -59,7 +59,7 @@ public:
      *
      * @param dtf data de remocao a adicionar
      **/
-    void adiciona_dtf(time_t dtf);
+    void adiciona_dtf(const time_t dtf);
 
 	/**
 	 * @brief Funcao que imprime os atributos do livro antigo
@@ -73,7 +73,7 @@ public:
 	 *
 	 * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
 	 **/
-	void escreve(std::string ficheiro) const;
+	void escreve(const std::string ficheiro) const;
 };
 
 #endif /* SRC_LIVRO_OLD_H_ */

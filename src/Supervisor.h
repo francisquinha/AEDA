@@ -58,14 +58,14 @@ public:
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	std::string imprime();
+	std::string imprime() const;
 
 	/**
 	 * @brief Funcao que escreve os atributor de supervisor num ficheiro
 	 *
 	 * @param ficheiro contem o caminho para o ficheiro onde queremos escrever
 	 **/
-	void escreve(std::string ficheiro);
+	void escreve(const std::string ficheiro) const;
 };
 
 #endif /* SRC_SUPERVISOR_H_ */

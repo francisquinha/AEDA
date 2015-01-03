@@ -42,7 +42,7 @@ public:
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	virtual std::string imprime();
+	virtual std::string imprime() const;
 
 	/**
 	 * @brief Funcao para obter o nome do funcionario
@@ -56,7 +56,7 @@ public:
 	 *
 	 * @param ficheiro caminho para o ficheiro onde pretendemos escrever
 	 **/
-	virtual void escreve(std::string ficheiro);
+	virtual void escreve(std::string ficheiro) const ;
 
 	/**
 	 * @brief Funcao virtual para determinar os funcionarios supervisionados por um supervisor

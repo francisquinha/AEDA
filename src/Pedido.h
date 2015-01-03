@@ -51,7 +51,7 @@ public:
 	 **/
 	virtual ~Pedido() {};
     
-    bool operator <(Pedido pd) const;
+    bool operator <(const Pedido pd) const;
 
 	/**
 	 * @brief Funcao para obter o livro do pedido
@@ -86,14 +86,14 @@ public:
 	 *
 	 * @return string com o resultado da impressao
 	 **/
-	virtual std::string imprime();
+	virtual std::string imprime() const;
 
 	/**
 	 * @brief Funcao que escreve os atributos do pedido num ficheiro
 	 *
 	 * @param ficheiro contem o caminho do ficheiro onde pretendemos escrever
 	 **/
-	virtual void escreve(std::string ficheiro);
+	virtual void escreve(const std::string ficheiro) const;
 };
 
 

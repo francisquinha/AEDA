@@ -28,7 +28,7 @@ void Leitor::adiciona_emp_leit(Emprestimo* ep) {
 	emprestimos_leitor.push_back(ep);
 }
 
-bool Leitor::remove_emp_leit(unsigned long id) {
+bool Leitor::remove_emp_leit(const unsigned long id) {
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end();it++) {
 		if ((*it)->get_ID() == id) {
 			emprestimos_leitor.erase(it);
@@ -66,27 +66,27 @@ time_t Leitor::get_data_ult_emp() const {
 	return data_ult_emp;
 }
 
-void Leitor::set_nome(string nom) {
+void Leitor::set_nome(const string nom) {
 	nome = nom;
 }
 
-void Leitor::set_tipo(int tip) {
+void Leitor::set_tipo(const int tip) {
 	tipo = tip;
 }
 
-void Leitor::set_telefone(long tel) {
+void Leitor::set_telefone(const long tel) {
 	telefone = tel;
 }
 
-void Leitor::set_email(string eml) {
+void Leitor::set_email(const string eml) {
 	email = eml;
 }
 
-void Leitor::set_morada(string mrd) {
+void Leitor::set_morada(const string mrd) {
 	morada = mrd;
 }
 
-void Leitor::set_data_ult_emp(time_t ult) {
+void Leitor::set_data_ult_emp(const time_t ult) {
 	data_ult_emp = ult;
 }
 
@@ -123,7 +123,7 @@ string Leitor::imprime() const {
 	return out.str();
 }
 
-void Leitor::escreve(string ficheiro) {
+void Leitor::escreve(const string ficheiro) const {
 	stringstream out {};
     tm *ldata = localtime(&data_ult_emp);
     long year {1900 + ldata->tm_year};
@@ -156,7 +156,7 @@ void Leitor::escreve(string ficheiro) {
 	else throw Ficheiro_indisponivel(ficheiro);
 }
 
-string Leitor::imprime_emp_leit() {
+string Leitor::imprime_emp_leit() const {
 	stringstream out {};
 	for (vector<Emprestimo*>::const_iterator it = emprestimos_leitor.begin(); it != emprestimos_leitor.end(); it++) {
 		out << (*it)->imprime();

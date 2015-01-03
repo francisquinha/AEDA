@@ -33,7 +33,7 @@ void Supervisor::adiciona_func_sup(Funcionario* fc) {
 	funcionarios_sup.push_back(fc);
 }
 
-string Supervisor::imprime() {
+string Supervisor::imprime() const {
 	stringstream out {};
 	out << "ID: "<< get_ID() << endl
 			<< "Nome: " << get_nome() << endl
@@ -45,7 +45,7 @@ string Supervisor::imprime() {
 	return out.str();
 }
 
-void Supervisor::escreve(string ficheiro) {
+void Supervisor::escreve(const string ficheiro) const {
 	stringstream out {};
 	out << get_ID() << endl
 			<< get_nome() << endl;
