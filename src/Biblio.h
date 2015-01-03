@@ -907,7 +907,7 @@ public:
      *
      * @return true se encontrar o leitor com o id pretendido e false caso contrario
      **/
-    bool remove_inativo(const unsigned long id);
+    bool remove_inativo(const Leitor& lt);
 
     /**
      * @brief Funcao que adiciona os livros disponiveis a BST da Biblioteca

@@ -434,7 +434,7 @@ bool Biblioteca::remove_leitor(const unsigned long id) {
                     (*it)->get_tipo(), (*it)->get_telefone(), (*it)->get_email(),
                     (*it)->get_morada(), (*it)->get_data_ult_emp(), false};
 				adiciona_leitor_old(lo); /* ao remover um leitor adicionamo-lo como Leitor_old */
-                remove_inativo(id);
+                remove_inativo(**it);
 				leitores.erase(it);
 				cout << endl << "Leitor removido." << endl;
 				return true;
@@ -469,7 +469,7 @@ void Biblioteca::adiciona_emprestimo(Emprestimo* ep) {
                 lt->adiciona_emp_leit(ep);
                 lt->set_data_ult_emp(ep->get_data());
                 emprestimos.push_back(ep);
-                remove_inativo(lt->get_ID());
+                remove_inativo(*lt);
                 if (lv->get_ex_disponiveis() > 0 ) adiciona_disponivel(*lv);
                 cout << "Emprestimo adicionado." << endl;
             }
@@ -653,7 +653,7 @@ Emprestimo* Biblioteca::remove_emprestimo(const unsigned long id) {
 		epo = dynamic_cast<Emprestimo_old*>(*it);
 		if ((*it)->get_ID() == id and epo == 0) {
             remove_disponivel(*((*it)->get_livro()));
-            remove_inativo((*it)->get_leitor()->get_ID());
+            remove_inativo(*((*it)->get_leitor()));
 			int dias {(*it)->get_atraso()};
 			if (dias > 0) { /* se a devolucao estiver atrasada, temos que cobrar multa */
 				cout << endl << "Devolucao de livro " << dias << " dia(s) em atraso. Deve efetuar o pagamento de "
@@ -2072,13 +2072,11 @@ void Biblioteca::adiciona_inativo(const Leitor& lt) {
     inativos.insert(lt);
 }
 
-bool Biblioteca::remove_inativo(const unsigned long id) {
-    for (Hash_Leitores::const_iterator it = inativos.begin(); it!= inativos.end();) {
-        if (it->get_ID() == id) {
-            it = inativos.erase(it);
-            return true;
-        }
-        else it++;
+bool Biblioteca::remove_inativo(const Leitor& lt) {
+    Hash_Leitores::const_iterator it = inativos.find(lt);
+    if (it != inativos.end()) {
+        inativos.erase(it);
+        return true;
     }
     return false;
 }

@@ -9,7 +9,7 @@ Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 2
 Maria Fonseca
 1
-962345444
+912314567
 mariafonseca@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 0
@@ -92,8 +92,8 @@ Jose Leal
 918475657
 joseleal@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
-0
-
+2015/01/03
+19;
 13
 Roberto Silva
 0
@@ -125,7 +125,7 @@ Vanessa Oliveira
 vanessaoliveira@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
 2015/01/02
-16;
+
 17
 Pedro Almeida
 2
@@ -140,7 +140,7 @@ Lino Amorim
 912865432
 linoamorim@fe.up.pt
 Rua Dr. Roberto Frias, s/n 4200-465 Porto PORTUGAL
-0
+2015/01/03
 
 19
 Jorge Almeida

@@ -1827,7 +1827,10 @@ void Menu::leitores_alterar_nome() {
                 for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_inativo(**it);
                         (*it)->set_nome(nom);
+                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Nome do leitor alterado." << endl << endl;
@@ -1868,7 +1871,10 @@ void Menu::leitores_alterar_tipo() {
                 for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_inativo(**it);
                         (*it)->set_tipo(tip);
+                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Tipo do leitor alterado." << endl << endl;
@@ -1909,7 +1915,10 @@ void Menu::leitores_alterar_telefone() {
                 for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_inativo(**it);
                         (*it)->set_telefone(tel);
+                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Telefone do leitor alterado." << endl << endl;
@@ -1947,7 +1956,10 @@ void Menu::leitores_alterar_email() {
                 for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_inativo(**it);
                         (*it)->set_email(eml);
+                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Email do leitor alterado." << endl << endl;
@@ -1985,7 +1997,10 @@ void Menu::leitores_alterar_morada() {
                 for (vector<Leitor*>::iterator it = leitors.begin(); it != leitors.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_inativo(**it);
                         (*it)->set_morada(mrd);
+                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Morada do leitor alterada." << endl << endl;
@@ -2062,11 +2077,15 @@ void Menu::leitores_alterar_tudo() {
                                      it != leitors.end(); it++) {
                                     if ((*it)->get_ID() == id) {
                                         encontrado = true;
+                                        remove_inativo(**it);
                                         (*it)->set_nome(nom);
                                         (*it)->set_tipo(tip);
                                         (*it)->set_telefone(tel);
                                         (*it)->set_email(eml);
                                         (*it)->set_morada(mrd);
+                                        double tempo_dias
+                                            {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                                        if (tempo_dias > 365) adiciona_inativo(**it);
                                     }
                                 }
                                 if (encontrado) cout << endl << "Leitor alterado."
