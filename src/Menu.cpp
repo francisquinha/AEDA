@@ -1209,10 +1209,13 @@ void Menu::livros_alterar_ano() {
                 for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_disponivel(**it);
                         (*it)->set_ano_edicao(ano);
+                        if ((*it)->get_ex_disponiveis() > 0)
+                            adiciona_disponivel(**it);
                     }
                 }
-                if (encontrado) cout << endl << "Nome do livro alterado." << endl << endl;
+                if (encontrado) cout << endl << "Ano Edicao do livro alterado." << endl << endl;
                 else cout << endl << "Por favor insira o ID de um livro existente."
                     << endl << endl;
             }
@@ -1247,7 +1250,10 @@ void Menu::livros_alterar_titulo() {
                 for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_disponivel(**it);
                         (*it)->set_titulo(tit);
+                        if ((*it)->get_ex_disponiveis() > 0)
+                            adiciona_disponivel(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Titulo do livro alterado." << endl << endl;
@@ -1291,7 +1297,10 @@ void Menu::livros_alterar_autores() {
                 for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_disponivel(**it);
                         (*it)->set_autores(aut);
+                        if ((*it)->get_ex_disponiveis() > 0)
+                            adiciona_disponivel(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Autores do livro alterados." << endl << endl;
@@ -1329,7 +1338,10 @@ void Menu::livros_alterar_tema() {
                 for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_disponivel(**it);
                         (*it)->set_tema(tem);
+                        if ((*it)->get_ex_disponiveis() > 0)
+                            adiciona_disponivel(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Tema do livro alterado." << endl << endl;
@@ -1370,7 +1382,10 @@ void Menu::livros_alterar_ISBN() {
                 for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_disponivel(**it);
                         (*it)->set_ISBN(isbn);
+                        if ((*it)->get_ex_disponiveis() > 0)
+                            adiciona_disponivel(**it);
                     }
                 }
                 if (encontrado) cout << endl << "ISBN do livro alterado." << endl << endl;
@@ -1408,7 +1423,10 @@ void Menu::livros_alterar_cota() {
                 for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_disponivel(**it);
                         (*it)->set_cota(cot);
+                        if ((*it)->get_ex_disponiveis() > 0)
+                            adiciona_disponivel(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Cota do livro alterada." << endl << endl;
@@ -1449,7 +1467,10 @@ void Menu::livros_alterar_num_paginas() {
                 for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_disponivel(**it);
                         (*it)->set_num_paginas(np);
+                        if ((*it)->get_ex_disponiveis() > 0)
+                            adiciona_disponivel(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Num. Paginas do livro alterado." << endl << endl;
@@ -1490,7 +1511,10 @@ void Menu::livros_alterar_edicao() {
                 for (vector<Livro*>::iterator it = livrs.begin(); it != livrs.end(); it++) {
                     if ((*it)->get_ID() == id) {
                         encontrado = true;
+                        remove_disponivel(**it);
                         (*it)->set_edicao(ed);
+                        if ((*it)->get_ex_disponiveis() > 0)
+                            adiciona_disponivel(**it);
                     }
                 }
                 if (encontrado) cout << endl << "Edicao do livro alterada." << endl << endl;
@@ -1602,6 +1626,7 @@ void Menu::livros_alterar_tudo() {
                                                  it != livrs.end(); it++) {
                                                 if ((*it)->get_ID() == id) {
                                                     encontrado = true;
+                                                    remove_disponivel(**it);
                                                     (*it)->set_ano_edicao(ano);
                                                     (*it)->set_titulo(tit);
                                                     (*it)->set_autores(aut);
@@ -1610,6 +1635,8 @@ void Menu::livros_alterar_tudo() {
                                                     (*it)->set_cota(cot);
                                                     (*it)->set_num_paginas(np);
                                                     (*it)->set_edicao(ed);
+                                                    if ((*it)->get_ex_disponiveis() > 0)
+                                                        adiciona_disponivel(**it);
                                                 }
                                             }
                                             if (encontrado) cout << endl << "Livro alterado."
@@ -1621,7 +1648,6 @@ void Menu::livros_alterar_tudo() {
                                     }
                                 }
                             }
-
                         }
                     }
                 }

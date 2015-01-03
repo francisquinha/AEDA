@@ -2076,7 +2076,12 @@ void Biblioteca::adiciona_disponiveis() {
     }
 }
 
+void Biblioteca::adiciona_disponivel(const Livro& lv) {
+    disponiveis.insert(lv);
+}
 
-
+void Biblioteca::remove_disponivel(const Livro& lv) {
+    disponiveis.remove(lv);
+}
 
 

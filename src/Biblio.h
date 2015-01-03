@@ -914,7 +914,7 @@ public:
      *
      * @param lv livro que pretendemos adicionar
      **/
-    void adiciona_disponivel(Livro lv);
+    void adiciona_disponivel(const Livro& lv);
     
     /**
      * @brief Funcao que remove um livro da BST de livros disponiveis
@@ -923,7 +923,7 @@ public:
      *
      * @return true se encontrar o livro com o id pretendido e false caso contrario
      **/
-    bool remove_disponivel(const unsigned long id);
+    void remove_disponivel(const Livro& lv);
 };
 
 #endif /* SRC_BIBLIOTECA_H_ */
