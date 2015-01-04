@@ -68,7 +68,7 @@ double Livro::get_dias_emp(unsigned long ind) const {
     if (exemplares > ind) {
         time_t dt = emprestimos_livro[ind]->get_data();
         time_t hj = std::time(0);
-        double tempo_dias {floor(difftime(hj,dt)/86400)};
+        double tempo_dias {trunc(difftime(hj,dt)/86400)};
         return tempo_dias;
     }
     throw Exemplar_inexistente(ind, ano_edicao, titulo, autores, tema, ISBN, cota, num_paginas, edicao, get_ID(), exemplares, ex_disponiveis, emprestimos_livro, pedidos);

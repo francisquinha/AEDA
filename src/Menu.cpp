@@ -1889,7 +1889,7 @@ void Menu::leitores_alterar_nome() {
                         encontrado = true;
                         remove_inativo(**it);
                         (*it)->set_nome(nom);
-                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        double tempo_dias {trunc(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
                         if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
@@ -1933,7 +1933,7 @@ void Menu::leitores_alterar_tipo() {
                         encontrado = true;
                         remove_inativo(**it);
                         (*it)->set_tipo(tip);
-                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        double tempo_dias {trunc(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
                         if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
@@ -1977,7 +1977,7 @@ void Menu::leitores_alterar_telefone() {
                         encontrado = true;
                         remove_inativo(**it);
                         (*it)->set_telefone(tel);
-                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        double tempo_dias {trunc(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
                         if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
@@ -2018,7 +2018,7 @@ void Menu::leitores_alterar_email() {
                         encontrado = true;
                         remove_inativo(**it);
                         (*it)->set_email(eml);
-                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        double tempo_dias {trunc(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
                         if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
@@ -2059,7 +2059,7 @@ void Menu::leitores_alterar_morada() {
                         encontrado = true;
                         remove_inativo(**it);
                         (*it)->set_morada(mrd);
-                        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                        double tempo_dias {trunc(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
                         if (tempo_dias > 365) adiciona_inativo(**it);
                     }
                 }
@@ -2144,7 +2144,7 @@ void Menu::leitores_alterar_tudo() {
                                         (*it)->set_email(eml);
                                         (*it)->set_morada(mrd);
                                         double tempo_dias
-                                            {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+                                            {trunc(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
                                         if (tempo_dias > 365) adiciona_inativo(**it);
                                     }
                                 }

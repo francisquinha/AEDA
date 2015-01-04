@@ -25,15 +25,12 @@ unsigned long Pedido::num_pedidos {0};
 Pedido::Pedido(Livro* lv, Funcionario* fc, Leitor* lt, bool ct, time_t dt, unsigned long id):Object {id}, livro {lv}, funcionario {fc}, leitor {lt}, data {dt} {if (ct) num_pedidos++;}
 
 bool Pedido::operator <(const Pedido pd) const {
-    double tempo_dias {floor(difftime(data, pd.get_data())/86400)};
-    if (tempo_dias > 0) return true;
-    else if (tempo_dias == 0) {
-        if (leitor->get_tipo() > (pd.get_leitor())->get_tipo()) return true;
-        else if (leitor->get_tipo() == (pd.get_leitor())->get_tipo())
-            return data > pd.get_data();
-        return false;
+    double tempo_dias {trunc(difftime(data, pd.get_data())/86400)};
+    if (tempo_dias == 0) {
+        if (leitor->get_tipo() == (pd.get_leitor())->get_tipo()) return data > pd.get_data();
+        return leitor->get_tipo() > (pd.get_leitor())->get_tipo();
     }
-    return false;
+    return tempo_dias > 0;
 }
 
 Livro* Pedido::get_livro() const {

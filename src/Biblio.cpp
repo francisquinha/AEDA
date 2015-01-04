@@ -681,7 +681,7 @@ Emprestimo* Biblioteca::remove_emprestimo(const unsigned long id) {
             Emprestimo* ep = *it;
 			emprestimos.erase(it);
             double tempo_dias
-                {floor(difftime(time(0), (*it)->get_leitor()->get_data_ult_emp())/86400)};
+                {trunc(difftime(time(0), (*it)->get_leitor()->get_data_ult_emp())/86400)};
             if (tempo_dias > 365) adiciona_inativo(*((*it)->get_leitor()));
 			cout << endl << "Emprestimo removido." << endl;
 			return ep;
@@ -2071,7 +2071,7 @@ void Biblioteca::adiciona_inativos() {
     inativos = {};
     vector<Leitor*> leitors {get_leitores()};
     for (vector<Leitor*>::const_iterator it = leitors.begin(); it != leitors.end(); it++) {
-        double tempo_dias {floor(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
+        double tempo_dias {trunc(difftime(time(0), (*it)->get_data_ult_emp())/86400)};
         if (tempo_dias > 365) {
             inativos.insert(**it);
         }

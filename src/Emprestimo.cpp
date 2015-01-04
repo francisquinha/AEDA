@@ -48,7 +48,7 @@ Funcionario* Emprestimo::get_funcionario() const {
 
 int Emprestimo::get_atraso() const {
 	time_t hoje = time(0);
-	double tempo_dias {floor(difftime(hoje, data)/86400)};
+	double tempo_dias {trunc(difftime(hoje, data)/86400)};
 	double tempo_extra {max(tempo_dias - 7, 0.0)};
 	return (int) tempo_extra;
 }
