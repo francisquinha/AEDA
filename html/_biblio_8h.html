@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>biblioteca: biblioteca/src/Biblio.h File Reference</title>
+<title>Biblioteca: /Users/Angie/Documents/MIEIC/2A1S/AEDA/XCode/trabalhos/Biblioteca/Biblioteca/Biblio.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">biblioteca
+   <div id="projectname">Biblioteca
    </div>
+   <div id="projectbrief">Sistema de gestao de uma biblioteca</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,12 +80,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_3946b5a0bcd8df2ccee9b16adb0ed493.html">biblioteca</a></li><li class="navelem"><a class="el" href="dir_2727314a5a6164b9b0710849fdd13856.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_a7da3c08f763342eb88a22af443af26c.html">Biblioteca</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">Biblio.h File Reference</div>  </div>
 </div><!--header-->
@@ -92,7 +94,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Header das funcoes da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_administrador_8h_source.html">Administrador.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;list&gt;</code><br />
+<code>#include &lt;unordered_set&gt;</code><br />
+<code>#include &quot;<a class="el" href="_administrador_8h_source.html">Administrador.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_supervisor_8h_source.html">Supervisor.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_emprestimo__old_8h_source.html">Emprestimo_old.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_funcionario__old_8h_source.html">Funcionario_old.h</a>&quot;</code><br />
@@ -100,24 +104,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="_leitor__old_8h_source.html">Leitor_old.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_login_8h_source.html">Login.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_excecao_8h_source.html">Excecao.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_pedido__old_8h_source.html">Pedido_old.h</a>&quot;</code><br />
+<code>#include &quot;BST.h&quot;</code><br />
 </div>
 <p><a href="_biblio_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_leitor___hash.html">Leitor_Hash</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estrutura usada para criar tabela de dispersao de leitores.  <a href="struct_leitor___hash.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_biblioteca.html">Biblioteca</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classe com a informacao da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>.  <a href="class_biblioteca.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a46b0d4574bd66c4c2bbc31f5cc018fe3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46b0d4574bd66c4c2bbc31f5cc018fe3"></a>
+typedef std::unordered_set<br class="typebreak" />
+&lt; <a class="el" href="class_leitor.html">Leitor</a>, <a class="el" href="struct_leitor___hash.html">Leitor_Hash</a>, <br class="typebreak" />
+<a class="el" href="struct_leitor___hash.html">Leitor_Hash</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_biblio_8h.html#a46b0d4574bd66c4c2bbc31f5cc018fe3">Hash_Leitores</a></td></tr>
+<tr class="memdesc:a46b0d4574bd66c4c2bbc31f5cc018fe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tabela de dispersao de leitores. <br /></td></tr>
+<tr class="separator:a46b0d4574bd66c4c2bbc31f5cc018fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header das funcoes da <a class="el" href="class_biblioteca.html" title="Classe com a informacao da Biblioteca. ">Biblioteca</a>. </p>
 <p>Apos os menus, estas sao as funcoes chamadas pelas varias opcoes da aplicacao. </p>
-
-<p>Definition in file <a class="el" href="_biblio_8h_source.html">Biblio.h</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 14:31:18 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jan 4 2015 13:51:30 for Biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

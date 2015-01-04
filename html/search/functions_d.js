@@ -1,14 +1,24 @@
 var searchData=
 [
-  ['set_5facesso',['set_acesso',['../class_utilizador.html#ae0f75c5c5947befd5eab7149bda73299',1,'Utilizador']]],
-  ['set_5fdata_5femp',['set_data_emp',['../class_livro.html#a48faf3b4322686583bac7c49232776bc',1,'Livro']]],
-  ['set_5femail',['set_email',['../class_leitor.html#aee34be7bfab620ef9ab81d9f9c0a8d68',1,'Leitor']]],
-  ['set_5femprestado',['set_emprestado',['../class_livro.html#a49c0417d2a433327b699ec8eb2cd877e',1,'Livro']]],
+  ['set_5facesso',['set_acesso',['../class_utilizador.html#a398ff7700912bb9b496e9eef3a16018c',1,'Utilizador']]],
+  ['set_5fano_5fedicao',['set_ano_edicao',['../class_livro.html#a6e50150ff50a94324013ad0fd7977f23',1,'Livro']]],
+  ['set_5fautores',['set_autores',['../class_livro.html#a0673d19a3e33d020a10d4ebecb2383c2',1,'Livro']]],
+  ['set_5fcota',['set_cota',['../class_livro.html#a66dcae4dc1f32b14a71246e75b4b3177',1,'Livro']]],
+  ['set_5fdata_5fult_5femp',['set_data_ult_emp',['../class_leitor.html#ac5d19b04ea84baf14c36e600e3a5f10c',1,'Leitor']]],
+  ['set_5fedicao',['set_edicao',['../class_livro.html#a0b35e093d5f58cd3012c3865b15b7f59',1,'Livro']]],
+  ['set_5femail',['set_email',['../class_leitor.html#ad9b48a69b65fed7650ba731a1c0084b4',1,'Leitor']]],
+  ['set_5femp_5flivro',['set_emp_livro',['../class_livro.html#a6b252090e8754f3e628e5847a83ac251',1,'Livro']]],
   ['set_5ffunc_5fsup',['set_func_sup',['../class_funcionario.html#a8f474062d0eb403ca70992c7b2511e2d',1,'Funcionario::set_func_sup()'],['../class_supervisor.html#a9b46111a2e1c69cc8730ec566eb5a6d5',1,'Supervisor::set_func_sup()']]],
-  ['set_5fid_5fep',['set_ID_ep',['../class_livro.html#a7fe19c11d6295cfb32ba4c926545e864',1,'Livro']]],
-  ['set_5fnome',['set_nome',['../class_leitor.html#a5dae73f8424a07b3cd8b93ea86794fdd',1,'Leitor']]],
-  ['set_5fpassword',['set_password',['../class_utilizador.html#a2eed83a4cfcea7d1a9d5f5afb487341a',1,'Utilizador']]],
-  ['set_5ftelefone',['set_telefone',['../class_leitor.html#a869d7d5802da589b78267f7d6670ed72',1,'Leitor']]],
+  ['set_5fisbn',['set_ISBN',['../class_livro.html#a721dedae41cef5ff60c0f2dd3211f86c',1,'Livro']]],
+  ['set_5fmorada',['set_morada',['../class_leitor.html#a51f1380be99137635716bad27e009438',1,'Leitor']]],
+  ['set_5fnome',['set_nome',['../class_leitor.html#ac10366c2996edd3faa8406da77aa69cb',1,'Leitor']]],
+  ['set_5fnum_5fpaginas',['set_num_paginas',['../class_livro.html#abee59e86f418bcce2ee12162e49e5b3b',1,'Livro']]],
+  ['set_5fpassword',['set_password',['../class_utilizador.html#a22d4a92301b958ad3482b9c8d4964594',1,'Utilizador']]],
+  ['set_5fpedidos',['set_pedidos',['../class_livro.html#a1ec91f5bf5fcc3013348b1001bd68a8f',1,'Livro']]],
+  ['set_5ftelefone',['set_telefone',['../class_leitor.html#aa2d4792153e436ee966e7bfc46de0154',1,'Leitor']]],
+  ['set_5ftema',['set_tema',['../class_livro.html#a007386f273122179349f55de84312e29',1,'Livro']]],
+  ['set_5ftipo',['set_tipo',['../class_leitor.html#a95cab5747b4387b56789ef7b52c03f1b',1,'Leitor']]],
+  ['set_5ftitulo',['set_titulo',['../class_livro.html#af1fd8651f78f71b200b15ff5d01f191b',1,'Livro']]],
   ['set_5futilizador',['set_utilizador',['../class_menu.html#a553a45123d3000993626c808bde66d31',1,'Menu']]],
-  ['supervisor',['Supervisor',['../class_supervisor.html#ab50f3f8a3e4701ea54f4affa12c474a1',1,'Supervisor']]]
+  ['supervisor',['Supervisor',['../class_supervisor.html#a6d1f50da018e990458a8f6f2f1feafd0',1,'Supervisor']]]
 ];

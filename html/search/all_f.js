@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['_7eemprestimo',['~Emprestimo',['../class_emprestimo.html#a2d3679b6b2a94260a2e780c6c95ac2df',1,'Emprestimo']]],
-  ['_7efuncionario',['~Funcionario',['../class_funcionario.html#a31cffbde6168ea93e5eee484b4221f52',1,'Funcionario']]],
-  ['_7eleitor',['~Leitor',['../class_leitor.html#ab5aba609c8ff10ffcf076e564f30f748',1,'Leitor']]],
-  ['_7elivro',['~Livro',['../class_livro.html#ac8541297cae9e82d94e0de02c79a313f',1,'Livro']]],
-  ['_7eobject_5fnao_5fexiste',['~Object_nao_existe',['../class_object__nao__existe.html#a30570ad7108607e19ea9a427dccfe736',1,'Object_nao_existe']]]
+  ['utilizador',['Utilizador',['../class_utilizador.html',1,'Utilizador'],['../class_utilizador.html#a46c19b61eea48373fa2dc66460c60069',1,'Utilizador::Utilizador()']]],
+  ['utilizador_5fonline',['Utilizador_online',['../class_utilizador__online.html',1,'Utilizador_online'],['../class_utilizador__online.html#abe29f096aa36db5058c1b150d840575d',1,'Utilizador_online::Utilizador_online()']]],
+  ['utilizadores_5fadicionar',['utilizadores_adicionar',['../class_menu.html#a1775071301fd25292869f0c62248e502',1,'Menu']]],
+  ['utilizadores_5fremover',['utilizadores_remover',['../class_menu.html#a7cd32cbebf1bdd0b63fbf1af176803f5',1,'Menu']]]
 ];

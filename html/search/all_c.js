@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['remove_5femp_5fleit',['remove_emp_leit',['../class_leitor.html#afc67b3b42ee93677b844b784c8aa8370',1,'Leitor']]],
-  ['remove_5femprestimo',['remove_emprestimo',['../class_biblioteca.html#a2088051966aed41ff8d041dce130bae3',1,'Biblioteca']]],
-  ['remove_5ffuncionario',['remove_funcionario',['../class_biblioteca.html#ac2b58d7dd336ac761b8dd32a19cbf6b5',1,'Biblioteca']]],
-  ['remove_5fleitor',['remove_leitor',['../class_biblioteca.html#a8b0589802b31f8ce7eacd3e53e05699b',1,'Biblioteca']]],
-  ['remove_5flivro',['remove_livro',['../class_biblioteca.html#a96a04a4546ace7031824b0beb78aa2ea',1,'Biblioteca']]],
-  ['remove_5futilizador',['remove_utilizador',['../class_biblioteca.html#a4ee7ec3ddf802d0f57ad885a2c645f22',1,'Biblioteca']]]
+  ['pedido',['Pedido',['../class_pedido.html',1,'Pedido'],['../class_pedido.html#afc1f644a7d2f9bde49d759b3b952dc3a',1,'Pedido::Pedido()']]],
+  ['pedido_2ecpp',['Pedido.cpp',['../_pedido_8cpp.html',1,'']]],
+  ['pedido_2eh',['Pedido.h',['../_pedido_8h.html',1,'']]],
+  ['pedido_5fnao_5fprioritario',['Pedido_nao_prioritario',['../class_pedido__nao__prioritario.html',1,'Pedido_nao_prioritario'],['../class_pedido__nao__prioritario.html#a6086d01d76c16521eb620b16f272066e',1,'Pedido_nao_prioritario::Pedido_nao_prioritario()']]],
+  ['pedido_5fold',['Pedido_old',['../class_pedido__old.html',1,'Pedido_old'],['../class_pedido__old.html#af0d45b5fb42222e48cdb0403070313be',1,'Pedido_old::Pedido_old()']]],
+  ['pedido_5fold_2ecpp',['Pedido_old.cpp',['../_pedido__old_8cpp.html',1,'']]],
+  ['pedido_5fold_2eh',['Pedido_old.h',['../_pedido__old_8h.html',1,'']]],
+  ['pedidos_5fadicionar',['pedidos_adicionar',['../class_menu.html#a7675e89db164d5b70a7369f4551f8c4d',1,'Menu']]],
+  ['pedidos_5fantigos',['pedidos_antigos',['../class_menu.html#a32e42151d982723b1c98c510932f9324',1,'Menu']]],
+  ['pedidos_5fdesistir',['pedidos_desistir',['../class_menu.html#a25c1d4ad1b7da6cd76d0504ce6a2f3e0',1,'Menu']]],
+  ['promove_5ffuncionario_5fsupervisor',['promove_funcionario_supervisor',['../class_biblioteca.html#a694782cc9a1070f9d9ded66b55bc64b1',1,'Biblioteca']]]
 ];

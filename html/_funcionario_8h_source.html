@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>biblioteca: biblioteca/src/Funcionario.h Source File</title>
+<title>Biblioteca: /Users/Angie/Documents/MIEIC/2A1S/AEDA/XCode/trabalhos/Biblioteca/Biblioteca/Funcionario.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">biblioteca
+   <div id="projectname">Biblioteca
    </div>
+   <div id="projectbrief">Sistema de gestao de uma biblioteca</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_3946b5a0bcd8df2ccee9b16adb0ed493.html">biblioteca</a></li><li class="navelem"><a class="el" href="dir_2727314a5a6164b9b0710849fdd13856.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_a7da3c08f763342eb88a22af443af26c.html">Biblioteca</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,47 +99,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_funcionario.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_funcionario.html">Funcionario</a>: <span class="keyword">public</span> <a class="code" href="class_object.html">Object</a> {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::string nome; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">long</span> num_funcionarios; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> num_funcionarios; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_funcionario.html#a62fdfb7a2534ef69eb9a9431663e261b">Funcionario</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>, std::string nom, <span class="keywordtype">bool</span> ct);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_funcionario.html#a62f575f2f2021261b19772ea7fc57808">Funcionario</a>(std::string nom, <span class="keywordtype">bool</span> ct, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span> = num_funcionarios + 1);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_funcionario.html#a62fdfb7a2534ef69eb9a9431663e261b">Funcionario</a>(std::string nom, <span class="keywordtype">bool</span> ct);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_funcionario.html#a31cffbde6168ea93e5eee484b4221f52">   46</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_funcionario.html#a31cffbde6168ea93e5eee484b4221f52">~Funcionario</a>() {};</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_funcionario.html#ac62274f6360de0fff00b5b04598830ac">imprime</a>();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::string <a class="code" href="class_funcionario.html#a2430745545441152ff96387e5d4bca4e">get_nome</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_funcionario.html#ae230deca81ca430d7adf38bdca075d3f">escreve</a>(std::string ficheiro);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_funcionario.html#a8f474062d0eb403ca70992c7b2511e2d">   77</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_funcionario.html#a8f474062d0eb403ca70992c7b2511e2d">set_func_sup</a>(std::vector&lt;Funcionario*&gt; func_sup) {};</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_funcionario.html#a5f0fb2cd40efcff4b64e580398c1f267">   87</a></span>&#160;    <span class="keyword">virtual</span> std::vector&lt;Funcionario*&gt; <a class="code" href="class_funcionario.html#a5f0fb2cd40efcff4b64e580398c1f267">get_func_sup</a>() {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        std::vector&lt;Funcionario*&gt; v {};</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    };</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_funcionario.html#a0bdcd03d37ff41b48320b58ea5bcf3bb">  100</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_funcionario.html#a0bdcd03d37ff41b48320b58ea5bcf3bb">adiciona_func_sup</a>(<a class="code" href="class_funcionario.html">Funcionario</a>* fc) {};</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_FUNCIONARIO_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_funcionario_html_ac62274f6360de0fff00b5b04598830ac"><div class="ttname"><a href="class_funcionario.html#ac62274f6360de0fff00b5b04598830ac">Funcionario::imprime</a></div><div class="ttdeci">virtual std::string imprime()</div><div class="ttdoc">Funcao que imprime os atributos do funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8cpp_source.html#l00029">Funcionario.cpp:29</a></div></div>
-<div class="ttc" id="class_funcionario_html_a62fdfb7a2534ef69eb9a9431663e261b"><div class="ttname"><a href="class_funcionario.html#a62fdfb7a2534ef69eb9a9431663e261b">Funcionario::Funcionario</a></div><div class="ttdeci">Funcionario(long id, std::string nom, bool ct)</div><div class="ttdoc">Construtor de Funcionario. </div></div>
-<div class="ttc" id="class_funcionario_html_ae230deca81ca430d7adf38bdca075d3f"><div class="ttname"><a href="class_funcionario.html#ae230deca81ca430d7adf38bdca075d3f">Funcionario::escreve</a></div><div class="ttdeci">virtual void escreve(std::string ficheiro)</div><div class="ttdoc">Funcao que escreve os atributos do funcionario num ficheiro. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8cpp_source.html#l00036">Funcionario.cpp:36</a></div></div>
-<div class="ttc" id="class_funcionario_html"><div class="ttname"><a href="class_funcionario.html">Funcionario</a></div><div class="ttdoc">Classe com toda a informacao de Funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8h_source.html#l00019">Funcionario.h:19</a></div></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_funcionario.html#a31cffbde6168ea93e5eee484b4221f52">   38</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_funcionario.html#a31cffbde6168ea93e5eee484b4221f52">~Funcionario</a>() {};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_funcionario.html#acec85e6767f8a95bd35a913297f160cf">imprime</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::string <a class="code" href="class_funcionario.html#a3de424eb30430661d0bddfd09b16fd49">get_nome</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_funcionario.html#a36ed551d8aa715fa3b421a7f25eeea27">escreve</a>(std::string ficheiro) <span class="keyword">const</span> ;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_funcionario.html#a8f474062d0eb403ca70992c7b2511e2d">   69</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_funcionario.html#a8f474062d0eb403ca70992c7b2511e2d">set_func_sup</a>(std::vector&lt;Funcionario*&gt; func_sup) {};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_funcionario.html#ad5fba619e49d37d6485b0584371df4d1">   79</a></span>&#160;    <span class="keyword">virtual</span> std::vector&lt;Funcionario*&gt; <a class="code" href="class_funcionario.html#ad5fba619e49d37d6485b0584371df4d1">get_func_sup</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        std::vector&lt;Funcionario*&gt; v {};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    };</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_funcionario.html#a0bdcd03d37ff41b48320b58ea5bcf3bb">   92</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_funcionario.html#a0bdcd03d37ff41b48320b58ea5bcf3bb">adiciona_func_sup</a>(<a class="code" href="class_funcionario.html">Funcionario</a>* fc) {};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_FUNCIONARIO_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_funcionario_html_ad5fba619e49d37d6485b0584371df4d1"><div class="ttname"><a href="class_funcionario.html#ad5fba619e49d37d6485b0584371df4d1">Funcionario::get_func_sup</a></div><div class="ttdeci">virtual std::vector&lt; Funcionario * &gt; get_func_sup() const </div><div class="ttdoc">Funcao virtual para obter os funcionarios supervisionados por um supervisor. </div><div class="ttdef"><b>Definition:</b> Funcionario.h:79</div></div>
+<div class="ttc" id="class_funcionario_html_a36ed551d8aa715fa3b421a7f25eeea27"><div class="ttname"><a href="class_funcionario.html#a36ed551d8aa715fa3b421a7f25eeea27">Funcionario::escreve</a></div><div class="ttdeci">virtual void escreve(std::string ficheiro) const </div><div class="ttdoc">Funcao que escreve os atributos do funcionario num ficheiro. </div><div class="ttdef"><b>Definition:</b> Funcionario.cpp:35</div></div>
+<div class="ttc" id="class_funcionario_html_acec85e6767f8a95bd35a913297f160cf"><div class="ttname"><a href="class_funcionario.html#acec85e6767f8a95bd35a913297f160cf">Funcionario::imprime</a></div><div class="ttdeci">virtual std::string imprime() const </div><div class="ttdoc">Funcao que imprime os atributos do funcionario. </div><div class="ttdef"><b>Definition:</b> Funcionario.cpp:28</div></div>
+<div class="ttc" id="class_funcionario_html"><div class="ttname"><a href="class_funcionario.html">Funcionario</a></div><div class="ttdoc">Classe com toda a informacao de Funcionario. </div><div class="ttdef"><b>Definition:</b> Funcionario.h:19</div></div>
+<div class="ttc" id="class_funcionario_html_a62f575f2f2021261b19772ea7fc57808"><div class="ttname"><a href="class_funcionario.html#a62f575f2f2021261b19772ea7fc57808">Funcionario::Funcionario</a></div><div class="ttdeci">Funcionario(std::string nom, bool ct, unsigned long id=num_funcionarios+1)</div><div class="ttdoc">Construtor de Funcionario. </div><div class="ttdef"><b>Definition:</b> Funcionario.cpp:22</div></div>
 <div class="ttc" id="_object_8h_html"><div class="ttname"><a href="_object_8h.html">Object.h</a></div><div class="ttdoc">Header da classe Object. </div></div>
-<div class="ttc" id="class_funcionario_html_a2430745545441152ff96387e5d4bca4e"><div class="ttname"><a href="class_funcionario.html#a2430745545441152ff96387e5d4bca4e">Funcionario::get_nome</a></div><div class="ttdeci">std::string get_nome()</div><div class="ttdoc">Funcao para obter o nome do funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8cpp_source.html#l00025">Funcionario.cpp:25</a></div></div>
-<div class="ttc" id="class_funcionario_html_a31cffbde6168ea93e5eee484b4221f52"><div class="ttname"><a href="class_funcionario.html#a31cffbde6168ea93e5eee484b4221f52">Funcionario::~Funcionario</a></div><div class="ttdeci">virtual ~Funcionario()</div><div class="ttdoc">Destrutor virtual de Funcionario. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8h_source.html#l00046">Funcionario.h:46</a></div></div>
-<div class="ttc" id="class_object_html"><div class="ttname"><a href="class_object.html">Object</a></div><div class="ttdoc">Classe com toda o id de qualquer objeto da biblioteca. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00016">Object.h:16</a></div></div>
-<div class="ttc" id="class_funcionario_html_a5f0fb2cd40efcff4b64e580398c1f267"><div class="ttname"><a href="class_funcionario.html#a5f0fb2cd40efcff4b64e580398c1f267">Funcionario::get_func_sup</a></div><div class="ttdeci">virtual std::vector&lt; Funcionario * &gt; get_func_sup()</div><div class="ttdoc">Funcao virtual para obter os funcionarios supervisionados por um supervisor. </div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8h_source.html#l00087">Funcionario.h:87</a></div></div>
-<div class="ttc" id="class_funcionario_html_a8f474062d0eb403ca70992c7b2511e2d"><div class="ttname"><a href="class_funcionario.html#a8f474062d0eb403ca70992c7b2511e2d">Funcionario::set_func_sup</a></div><div class="ttdeci">virtual void set_func_sup(std::vector&lt; Funcionario * &gt; func_sup)</div><div class="ttdoc">Funcao virtual para determinar os funcionarios supervisionados por um supervisor. ...</div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8h_source.html#l00077">Funcionario.h:77</a></div></div>
-<div class="ttc" id="class_funcionario_html_a0bdcd03d37ff41b48320b58ea5bcf3bb"><div class="ttname"><a href="class_funcionario.html#a0bdcd03d37ff41b48320b58ea5bcf3bb">Funcionario::adiciona_func_sup</a></div><div class="ttdeci">virtual void adiciona_func_sup(Funcionario *fc)</div><div class="ttdoc">Funcao virtual para adicionar um funcionario aos os funcionarios supervisionados por um supervisor...</div><div class="ttdef"><b>Definition:</b> <a href="_funcionario_8h_source.html#l00100">Funcionario.h:100</a></div></div>
+<div class="ttc" id="class_funcionario_html_a31cffbde6168ea93e5eee484b4221f52"><div class="ttname"><a href="class_funcionario.html#a31cffbde6168ea93e5eee484b4221f52">Funcionario::~Funcionario</a></div><div class="ttdeci">virtual ~Funcionario()</div><div class="ttdoc">Destrutor virtual de Funcionario. </div><div class="ttdef"><b>Definition:</b> Funcionario.h:38</div></div>
+<div class="ttc" id="class_object_html"><div class="ttname"><a href="class_object.html">Object</a></div><div class="ttdoc">Classe com toda o id de qualquer objeto da biblioteca. </div><div class="ttdef"><b>Definition:</b> Object.h:16</div></div>
+<div class="ttc" id="class_funcionario_html_a3de424eb30430661d0bddfd09b16fd49"><div class="ttname"><a href="class_funcionario.html#a3de424eb30430661d0bddfd09b16fd49">Funcionario::get_nome</a></div><div class="ttdeci">std::string get_nome() const </div><div class="ttdoc">Funcao para obter o nome do funcionario. </div><div class="ttdef"><b>Definition:</b> Funcionario.cpp:24</div></div>
+<div class="ttc" id="class_funcionario_html_a8f474062d0eb403ca70992c7b2511e2d"><div class="ttname"><a href="class_funcionario.html#a8f474062d0eb403ca70992c7b2511e2d">Funcionario::set_func_sup</a></div><div class="ttdeci">virtual void set_func_sup(std::vector&lt; Funcionario * &gt; func_sup)</div><div class="ttdoc">Funcao virtual para determinar os funcionarios supervisionados por um supervisor. ...</div><div class="ttdef"><b>Definition:</b> Funcionario.h:69</div></div>
+<div class="ttc" id="class_funcionario_html_a0bdcd03d37ff41b48320b58ea5bcf3bb"><div class="ttname"><a href="class_funcionario.html#a0bdcd03d37ff41b48320b58ea5bcf3bb">Funcionario::adiciona_func_sup</a></div><div class="ttdeci">virtual void adiciona_func_sup(Funcionario *fc)</div><div class="ttdoc">Funcao virtual para adicionar um funcionario aos os funcionarios supervisionados por um supervisor...</div><div class="ttdef"><b>Definition:</b> Funcionario.h:92</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 14:31:18 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jan 4 2015 13:51:30 for Biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

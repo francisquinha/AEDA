@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>biblioteca: Supervisor Class Reference</title>
+<title>Biblioteca: Supervisor Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">biblioteca
+   <div id="projectname">Biblioteca
    </div>
+   <div id="projectbrief">Sistema de gestao de uma biblioteca</div>
   </td>
  </tr>
  </tbody>
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,59 +107,54 @@ Inheritance diagram for Supervisor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab50f3f8a3e4701ea54f4affa12c474a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#ab50f3f8a3e4701ea54f4affa12c474a1">Supervisor</a> (long id, std::string nom, std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt; func_sup)</td></tr>
-<tr class="memdesc:ab50f3f8a3e4701ea54f4affa12c474a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_funcionario.html" title="Classe com toda a informacao de Funcionario. ">Funcionario</a>.  <a href="#ab50f3f8a3e4701ea54f4affa12c474a1">More...</a><br /></td></tr>
-<tr class="separator:ab50f3f8a3e4701ea54f4affa12c474a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d1f50da018e990458a8f6f2f1feafd0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#a6d1f50da018e990458a8f6f2f1feafd0">Supervisor</a> (unsigned long id, std::string nom, std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt; func_sup, bool ct)</td></tr>
+<tr class="memdesc:a6d1f50da018e990458a8f6f2f1feafd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_supervisor.html" title="Classe com toda a informacao de Supervisor. ">Supervisor</a>.  <a href="#a6d1f50da018e990458a8f6f2f1feafd0">More...</a><br /></td></tr>
+<tr class="separator:a6d1f50da018e990458a8f6f2f1feafd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b83ddf41c986a4cc9dbd0cf53faa120"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#a0b83ddf41c986a4cc9dbd0cf53faa120">adiciona_func_sup</a> (<a class="el" href="class_funcionario.html">Funcionario</a> *fc)</td></tr>
 <tr class="memdesc:a0b83ddf41c986a4cc9dbd0cf53faa120"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para adicionar um funcionario aos supervisionados.  <a href="#a0b83ddf41c986a4cc9dbd0cf53faa120">More...</a><br /></td></tr>
 <tr class="separator:a0b83ddf41c986a4cc9dbd0cf53faa120"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b46111a2e1c69cc8730ec566eb5a6d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#a9b46111a2e1c69cc8730ec566eb5a6d5">set_func_sup</a> (std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt; func_sup)</td></tr>
 <tr class="memdesc:a9b46111a2e1c69cc8730ec566eb5a6d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para determinar os funcionarios supervisionados.  <a href="#a9b46111a2e1c69cc8730ec566eb5a6d5">More...</a><br /></td></tr>
 <tr class="separator:a9b46111a2e1c69cc8730ec566eb5a6d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4134839fe3be98219b4ae8c7e112626c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#a4134839fe3be98219b4ae8c7e112626c">get_func_sup</a> ()</td></tr>
-<tr class="memdesc:a4134839fe3be98219b4ae8c7e112626c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter os funcionarios supervisionados.  <a href="#a4134839fe3be98219b4ae8c7e112626c">More...</a><br /></td></tr>
-<tr class="separator:a4134839fe3be98219b4ae8c7e112626c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeba4de47a3c947f9e9d99f479db60f36"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#aeba4de47a3c947f9e9d99f479db60f36">imprime</a> ()</td></tr>
-<tr class="memdesc:aeba4de47a3c947f9e9d99f479db60f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que imprime os atributor de supervisor.  <a href="#aeba4de47a3c947f9e9d99f479db60f36">More...</a><br /></td></tr>
-<tr class="separator:aeba4de47a3c947f9e9d99f479db60f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa409eff55470c05a8bc2597b619db1d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#aa409eff55470c05a8bc2597b619db1d2">escreve</a> (std::string ficheiro)</td></tr>
-<tr class="memdesc:aa409eff55470c05a8bc2597b619db1d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que escreve os atributor de supervisor num ficheiro.  <a href="#aa409eff55470c05a8bc2597b619db1d2">More...</a><br /></td></tr>
-<tr class="separator:aa409eff55470c05a8bc2597b619db1d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7da9fc474f2c5e439363e435152e2750"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#a7da9fc474f2c5e439363e435152e2750">get_func_sup</a> () const </td></tr>
+<tr class="memdesc:a7da9fc474f2c5e439363e435152e2750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter os funcionarios supervisionados.  <a href="#a7da9fc474f2c5e439363e435152e2750">More...</a><br /></td></tr>
+<tr class="separator:a7da9fc474f2c5e439363e435152e2750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdb4426e01e402734c42fb954bd809e2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#afdb4426e01e402734c42fb954bd809e2">imprime</a> () const </td></tr>
+<tr class="memdesc:afdb4426e01e402734c42fb954bd809e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que imprime os atributor de supervisor.  <a href="#afdb4426e01e402734c42fb954bd809e2">More...</a><br /></td></tr>
+<tr class="separator:afdb4426e01e402734c42fb954bd809e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bde37d25df020738ca1f225d8539bd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_supervisor.html#a4bde37d25df020738ca1f225d8539bd8">escreve</a> (const std::string ficheiro) const </td></tr>
+<tr class="memdesc:a4bde37d25df020738ca1f225d8539bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao que escreve os atributor de supervisor num ficheiro.  <a href="#a4bde37d25df020738ca1f225d8539bd8">More...</a><br /></td></tr>
+<tr class="separator:a4bde37d25df020738ca1f225d8539bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_funcionario"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_funcionario')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_funcionario.html">Funcionario</a></td></tr>
-<tr class="memitem:a62fdfb7a2534ef69eb9a9431663e261b inherit pub_methods_class_funcionario"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_funcionario.html#a62fdfb7a2534ef69eb9a9431663e261b">Funcionario</a> (long id, std::string nom, bool ct)</td></tr>
-<tr class="memdesc:a62fdfb7a2534ef69eb9a9431663e261b inherit pub_methods_class_funcionario"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_funcionario.html" title="Classe com toda a informacao de Funcionario. ">Funcionario</a>.  <a href="#a62fdfb7a2534ef69eb9a9431663e261b">More...</a><br /></td></tr>
-<tr class="separator:a62fdfb7a2534ef69eb9a9431663e261b inherit pub_methods_class_funcionario"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69ccdb913cf0cc0b31d53375d33bbd3c inherit pub_methods_class_funcionario"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_funcionario.html#a69ccdb913cf0cc0b31d53375d33bbd3c">Funcionario</a> (std::string nom, bool ct)</td></tr>
-<tr class="memdesc:a69ccdb913cf0cc0b31d53375d33bbd3c inherit pub_methods_class_funcionario"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_funcionario.html" title="Classe com toda a informacao de Funcionario. ">Funcionario</a>.  <a href="#a69ccdb913cf0cc0b31d53375d33bbd3c">More...</a><br /></td></tr>
-<tr class="separator:a69ccdb913cf0cc0b31d53375d33bbd3c inherit pub_methods_class_funcionario"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62f575f2f2021261b19772ea7fc57808 inherit pub_methods_class_funcionario"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_funcionario.html#a62f575f2f2021261b19772ea7fc57808">Funcionario</a> (std::string nom, bool ct, unsigned long id=num_funcionarios+1)</td></tr>
+<tr class="memdesc:a62f575f2f2021261b19772ea7fc57808 inherit pub_methods_class_funcionario"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_funcionario.html" title="Classe com toda a informacao de Funcionario. ">Funcionario</a>.  <a href="#a62f575f2f2021261b19772ea7fc57808">More...</a><br /></td></tr>
+<tr class="separator:a62f575f2f2021261b19772ea7fc57808 inherit pub_methods_class_funcionario"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31cffbde6168ea93e5eee484b4221f52 inherit pub_methods_class_funcionario"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31cffbde6168ea93e5eee484b4221f52"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_funcionario.html#a31cffbde6168ea93e5eee484b4221f52">~Funcionario</a> ()</td></tr>
 <tr class="memdesc:a31cffbde6168ea93e5eee484b4221f52 inherit pub_methods_class_funcionario"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destrutor virtual de <a class="el" href="class_funcionario.html" title="Classe com toda a informacao de Funcionario. ">Funcionario</a>. <br /></td></tr>
 <tr class="separator:a31cffbde6168ea93e5eee484b4221f52 inherit pub_methods_class_funcionario"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2430745545441152ff96387e5d4bca4e inherit pub_methods_class_funcionario"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_funcionario.html#a2430745545441152ff96387e5d4bca4e">get_nome</a> ()</td></tr>
-<tr class="memdesc:a2430745545441152ff96387e5d4bca4e inherit pub_methods_class_funcionario"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter o nome do funcionario.  <a href="#a2430745545441152ff96387e5d4bca4e">More...</a><br /></td></tr>
-<tr class="separator:a2430745545441152ff96387e5d4bca4e inherit pub_methods_class_funcionario"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3de424eb30430661d0bddfd09b16fd49 inherit pub_methods_class_funcionario"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_funcionario.html#a3de424eb30430661d0bddfd09b16fd49">get_nome</a> () const </td></tr>
+<tr class="memdesc:a3de424eb30430661d0bddfd09b16fd49 inherit pub_methods_class_funcionario"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter o nome do funcionario.  <a href="#a3de424eb30430661d0bddfd09b16fd49">More...</a><br /></td></tr>
+<tr class="separator:a3de424eb30430661d0bddfd09b16fd49 inherit pub_methods_class_funcionario"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_object.html">Object</a></td></tr>
-<tr class="memitem:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a2e1e8cbde22b050bb3442d1a6749f18b">Object</a> (long id)</td></tr>
-<tr class="memdesc:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. ">Object</a>.  <a href="#a2e1e8cbde22b050bb3442d1a6749f18b">More...</a><br /></td></tr>
-<tr class="separator:a2e1e8cbde22b050bb3442d1a6749f18b inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a628958b64857be73b921a4ac6b359b31">get_ID</a> ()</td></tr>
-<tr class="memdesc:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter o id de um objeto.  <a href="#a628958b64857be73b921a4ac6b359b31">More...</a><br /></td></tr>
-<tr class="separator:a628958b64857be73b921a4ac6b359b31 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402298d017778a77d55b225e1a8110d5 inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#a402298d017778a77d55b225e1a8110d5">Object</a> (unsigned long id)</td></tr>
+<tr class="memdesc:a402298d017778a77d55b225e1a8110d5 inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor de <a class="el" href="class_object.html" title="Classe com toda o id de qualquer objeto da biblioteca. ">Object</a>.  <a href="#a402298d017778a77d55b225e1a8110d5">More...</a><br /></td></tr>
+<tr class="separator:a402298d017778a77d55b225e1a8110d5 inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c7ae97881f81498903ae4c968e917c inherit pub_methods_class_object"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_object.html#ad8c7ae97881f81498903ae4c968e917c">get_ID</a> () const </td></tr>
+<tr class="memdesc:ad8c7ae97881f81498903ae4c968e917c inherit pub_methods_class_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcao para obter o id de um objeto.  <a href="#ad8c7ae97881f81498903ae4c968e917c">More...</a><br /></td></tr>
+<tr class="separator:ad8c7ae97881f81498903ae4c968e917c inherit pub_methods_class_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe com toda a informacao de <a class="el" href="class_supervisor.html" title="Classe com toda a informacao de Supervisor. ">Supervisor</a>. </p>
-
-<p>Definition at line <a class="el" href="_supervisor_8h_source.html#l00019">19</a> of file <a class="el" href="_supervisor_8h_source.html">Supervisor.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ab50f3f8a3e4701ea54f4affa12c474a1"></a>
+<a class="anchor" id="a6d1f50da018e990458a8f6f2f1feafd0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Supervisor::Supervisor </td>
           <td>(</td>
-          <td class="paramtype">long&#160;</td>
+          <td class="paramtype">unsigned long&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -171,7 +167,13 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt;&#160;</td>
-          <td class="paramname"><em>func_sup</em>&#160;</td>
+          <td class="paramname"><em>func_sup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>ct</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -181,17 +183,16 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
 </div><div class="memdoc">
 
-<p>Construtor de <a class="el" href="class_funcionario.html" title="Classe com toda a informacao de Funcionario. ">Funcionario</a>. </p>
+<p>Construtor de <a class="el" href="class_supervisor.html" title="Classe com toda a informacao de Supervisor. ">Supervisor</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>codigo de identificacao do funcionario </td></tr>
-    <tr><td class="paramname">nom</td><td>nome do funcionario </td></tr>
+    <tr><td class="paramname">id</td><td>codigo de identificacao do supervisor </td></tr>
+    <tr><td class="paramname">nom</td><td>nome do supervisor </td></tr>
     <tr><td class="paramname">func_sup</td><td>vetor com os apontadores para os funcionarios supervisionados </td></tr>
+    <tr><td class="paramname">ct</td><td>indica se devemos incrementar o numero de funcionarios </td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Definition at line <a class="el" href="_supervisor_8cpp_source.html#l00020">20</a> of file <a class="el" href="_supervisor_8cpp_source.html">Supervisor.cpp</a>.</p>
 
 </div>
 </div>
@@ -228,11 +229,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Reimplemented from <a class="el" href="class_funcionario.html#a0bdcd03d37ff41b48320b58ea5bcf3bb">Funcionario</a>.</p>
 
-<p>Definition at line <a class="el" href="_supervisor_8cpp_source.html#l00031">31</a> of file <a class="el" href="_supervisor_8cpp_source.html">Supervisor.cpp</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="aa409eff55470c05a8bc2597b619db1d2"></a>
+<a class="anchor" id="a4bde37d25df020738ca1f225d8539bd8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -242,9 +241,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="memname">void Supervisor::escreve </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const std::string&#160;</td>
           <td class="paramname"><em>ficheiro</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -262,13 +261,11 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="class_funcionario.html#ae230deca81ca430d7adf38bdca075d3f">Funcionario</a>.</p>
-
-<p>Definition at line <a class="el" href="_supervisor_8cpp_source.html#l00047">47</a> of file <a class="el" href="_supervisor_8cpp_source.html">Supervisor.cpp</a>.</p>
+<p>Reimplemented from <a class="el" href="class_funcionario.html#a36ed551d8aa715fa3b421a7f25eeea27">Funcionario</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4134839fe3be98219b4ae8c7e112626c"></a>
+<a class="anchor" id="a7da9fc474f2c5e439363e435152e2750"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -279,7 +276,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="memname">vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt; Supervisor::get_func_sup </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -292,13 +289,11 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Funcao para obter os funcionarios supervisionados. </p>
 <dl class="section return"><dt>Returns</dt><dd>vetor de apontadores para os funcionarios supervisionados </dd></dl>
 
-<p>Reimplemented from <a class="el" href="class_funcionario.html#a5f0fb2cd40efcff4b64e580398c1f267">Funcionario</a>.</p>
-
-<p>Definition at line <a class="el" href="_supervisor_8cpp_source.html#l00023">23</a> of file <a class="el" href="_supervisor_8cpp_source.html">Supervisor.cpp</a>.</p>
+<p>Reimplemented from <a class="el" href="class_funcionario.html#ad5fba619e49d37d6485b0584371df4d1">Funcionario</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aeba4de47a3c947f9e9d99f479db60f36"></a>
+<a class="anchor" id="afdb4426e01e402734c42fb954bd809e2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -309,7 +304,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="memname">string Supervisor::imprime </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -322,9 +317,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Funcao que imprime os atributor de supervisor. </p>
 <dl class="section return"><dt>Returns</dt><dd>string com o resultado da impressao </dd></dl>
 
-<p>Reimplemented from <a class="el" href="class_funcionario.html#ac62274f6360de0fff00b5b04598830ac">Funcionario</a>.</p>
-
-<p>Definition at line <a class="el" href="_supervisor_8cpp_source.html#l00035">35</a> of file <a class="el" href="_supervisor_8cpp_source.html">Supervisor.cpp</a>.</p>
+<p>Reimplemented from <a class="el" href="class_funcionario.html#acec85e6767f8a95bd35a913297f160cf">Funcionario</a>.</p>
 
 </div>
 </div>
@@ -360,18 +353,16 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Reimplemented from <a class="el" href="class_funcionario.html#a8f474062d0eb403ca70992c7b2511e2d">Funcionario</a>.</p>
 
-<p>Definition at line <a class="el" href="_supervisor_8cpp_source.html#l00027">27</a> of file <a class="el" href="_supervisor_8cpp_source.html">Supervisor.cpp</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>biblioteca/src/<a class="el" href="_supervisor_8h_source.html">Supervisor.h</a></li>
-<li>biblioteca/src/<a class="el" href="_supervisor_8cpp_source.html">Supervisor.cpp</a></li>
+<li>/Users/Angie/Documents/MIEIC/2A1S/AEDA/XCode/trabalhos/Biblioteca/Biblioteca/<a class="el" href="_supervisor_8h_source.html">Supervisor.h</a></li>
+<li>/Users/Angie/Documents/MIEIC/2A1S/AEDA/XCode/trabalhos/Biblioteca/Biblioteca/<a class="el" href="_supervisor_8cpp.html">Supervisor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 14:31:18 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jan 4 2015 13:51:31 for Biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

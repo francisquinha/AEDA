@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>biblioteca: biblioteca/src/Livro.h Source File</title>
+<title>Biblioteca: /Users/Angie/Documents/MIEIC/2A1S/AEDA/XCode/trabalhos/Biblioteca/Biblioteca/Livro.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,8 +22,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">biblioteca
+   <div id="projectname">Biblioteca
    </div>
+   <div id="projectbrief">Sistema de gestao de uma biblioteca</div>
   </td>
  </tr>
  </tbody>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_3946b5a0bcd8df2ccee9b16adb0ed493.html">biblioteca</a></li><li class="navelem"><a class="el" href="dir_2727314a5a6164b9b0710849fdd13856.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_a7da3c08f763342eb88a22af443af26c.html">Biblioteca</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -91,94 +92,167 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef SRC_LIVRO_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define SRC_LIVRO_H_</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_object_8h.html">Object.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span><a class="code" href="class_object.html">Object</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_livro.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_livro.html">Livro</a>: <span class="keyword">public</span> <a class="code" href="class_object.html">Object</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::string titulo; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::vector&lt;std::string&gt; autores;  </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    std::string tema; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">long</span> ISBN; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::string cota; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> num_paginas; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> edicao; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> emprestado; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">long</span> ID_ep; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::time_t data_emp; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">long</span> num_livros; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_object_8h.html">Object.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_pedido_8h.html">Pedido.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_emprestimo_8h.html">Emprestimo.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">class </span><a class="code" href="class_object.html">Object</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">class </span><a class="code" href="class_pedido.html">Pedido</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">class </span><a class="code" href="class_emprestimo.html">Emprestimo</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_livro.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_livro.html">Livro</a>: <span class="keyword">public</span> <a class="code" href="class_object.html">Object</a> {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_livro.html#a5d71395e13a003507fe42979e91217d3">Livro</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>, std::string tit, std::vector&lt;std::string&gt; aut, std::string tem, <span class="keywordtype">long</span> isbn, std::string cot,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordtype">int</span> np, <span class="keywordtype">int</span> ed, <span class="keywordtype">bool</span> ept, <span class="keywordtype">long</span> id_ep, std::time_t dt, <span class="keywordtype">bool</span> ct);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="class_livro.html#a5d71395e13a003507fe42979e91217d3">Livro</a>(std::string tit, std::vector&lt;std::string&gt; aut, std::string tem, <span class="keywordtype">long</span> isbn, std::string cot,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordtype">int</span> np, <span class="keywordtype">int</span> ed, <span class="keywordtype">bool</span> ept, <span class="keywordtype">long</span> id_ep, std::time_t dt, <span class="keywordtype">bool</span> ct);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_livro.html#ac8541297cae9e82d94e0de02c79a313f">   76</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_livro.html#ac8541297cae9e82d94e0de02c79a313f">~Livro</a>() {};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_livro.html#af27a6c0a25008bb5f5f83f1f54a10e06">imprime</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::string <a class="code" href="class_livro.html#a456662e9f6af00ffd72be707098579e9">get_titulo</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="class_livro.html#a0a9c0d200468a8f8bc30373f803db18e">get_autores</a>();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::string <a class="code" href="class_livro.html#a75470b1128aa4e630dcf73fde57a5c70">get_tema</a>();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">long</span> <a class="code" href="class_livro.html#a7ad8d9d29787de93e893cf1f27962584">get_ISBN</a>();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    std::string <a class="code" href="class_livro.html#a15d4fee3b3d6e94010b34a095f15f7af">get_cota</a>();</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_livro.html#a180a5cc0cda0ce62eba7c6081cdcf84f">get_num_paginas</a>();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_livro.html#aea28b92fb61cf269e6e8c2b821f84e20">get_edicao</a>();</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_livro.html#a2f760053889cf84a129dccf0a37a9265">get_emprestado</a>();</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a49c0417d2a433327b699ec8eb2cd877e">set_emprestado</a>(<span class="keywordtype">bool</span> ept);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">long</span> <a class="code" href="class_livro.html#abb80656df3f0c54744a8a2aeb9be75ce">get_ID_ep</a>();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a7fe19c11d6295cfb32ba4c926545e864">set_ID_ep</a>(<span class="keywordtype">long</span> id_ep);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    std::time_t <a class="code" href="class_livro.html#aceb51c3169f94419fe435d83d2bf35f8">get_data_emp</a>();</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a48faf3b4322686583bac7c49232776bc">set_data_emp</a>(std::time_t dt);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_livro.html#adc43fec0cc4e30c05e38cf9fef6082db">get_dias_emp</a>();</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_livro.html#aa51fbbf32a2713d2fbbaec251fe32b30">escreve</a>(std::string ficheiro);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;};</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_LIVRO_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="class_livro_html_a456662e9f6af00ffd72be707098579e9"><div class="ttname"><a href="class_livro.html#a456662e9f6af00ffd72be707098579e9">Livro::get_titulo</a></div><div class="ttdeci">std::string get_titulo()</div><div class="ttdoc">Funcao para obter o titulo do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00063">Livro.cpp:63</a></div></div>
-<div class="ttc" id="class_livro_html_af27a6c0a25008bb5f5f83f1f54a10e06"><div class="ttname"><a href="class_livro.html#af27a6c0a25008bb5f5f83f1f54a10e06">Livro::imprime</a></div><div class="ttdeci">virtual std::string imprime()</div><div class="ttdoc">Funcao que imprime os atributos do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00091">Livro.cpp:91</a></div></div>
-<div class="ttc" id="class_livro_html_aceb51c3169f94419fe435d83d2bf35f8"><div class="ttname"><a href="class_livro.html#aceb51c3169f94419fe435d83d2bf35f8">Livro::get_data_emp</a></div><div class="ttdeci">std::time_t get_data_emp()</div><div class="ttdoc">Funcao para obter a data de emprestimo do livro, caso exista. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00052">Livro.cpp:52</a></div></div>
-<div class="ttc" id="class_livro_html_a15d4fee3b3d6e94010b34a095f15f7af"><div class="ttname"><a href="class_livro.html#a15d4fee3b3d6e94010b34a095f15f7af">Livro::get_cota</a></div><div class="ttdeci">std::string get_cota()</div><div class="ttdoc">Funcao para obter a cota do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00087">Livro.cpp:87</a></div></div>
-<div class="ttc" id="class_livro_html_a7ad8d9d29787de93e893cf1f27962584"><div class="ttname"><a href="class_livro.html#a7ad8d9d29787de93e893cf1f27962584">Livro::get_ISBN</a></div><div class="ttdeci">long get_ISBN()</div><div class="ttdoc">Funcao para obter o ISBN do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00083">Livro.cpp:83</a></div></div>
-<div class="ttc" id="class_livro_html_a49c0417d2a433327b699ec8eb2cd877e"><div class="ttname"><a href="class_livro.html#a49c0417d2a433327b699ec8eb2cd877e">Livro::set_emprestado</a></div><div class="ttdeci">void set_emprestado(bool ept)</div><div class="ttdoc">Funcao para determinar o estado emprestado do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00032">Livro.cpp:32</a></div></div>
-<div class="ttc" id="class_livro_html_abb80656df3f0c54744a8a2aeb9be75ce"><div class="ttname"><a href="class_livro.html#abb80656df3f0c54744a8a2aeb9be75ce">Livro::get_ID_ep</a></div><div class="ttdeci">long get_ID_ep()</div><div class="ttdoc">Funcao para obter o ID do emprestimo do livro, caso exista. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00048">Livro.cpp:48</a></div></div>
-<div class="ttc" id="class_livro_html_aea28b92fb61cf269e6e8c2b821f84e20"><div class="ttname"><a href="class_livro.html#aea28b92fb61cf269e6e8c2b821f84e20">Livro::get_edicao</a></div><div class="ttdeci">int get_edicao()</div><div class="ttdoc">Funcao para obter a edicao do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00067">Livro.cpp:67</a></div></div>
-<div class="ttc" id="class_livro_html_a75470b1128aa4e630dcf73fde57a5c70"><div class="ttname"><a href="class_livro.html#a75470b1128aa4e630dcf73fde57a5c70">Livro::get_tema</a></div><div class="ttdeci">std::string get_tema()</div><div class="ttdoc">Funcao para obter o tema do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00075">Livro.cpp:75</a></div></div>
-<div class="ttc" id="class_livro_html_ac8541297cae9e82d94e0de02c79a313f"><div class="ttname"><a href="class_livro.html#ac8541297cae9e82d94e0de02c79a313f">Livro::~Livro</a></div><div class="ttdeci">virtual ~Livro()</div><div class="ttdoc">Destrutor virtual de Livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8h_source.html#l00076">Livro.h:76</a></div></div>
-<div class="ttc" id="class_livro_html_a5d71395e13a003507fe42979e91217d3"><div class="ttname"><a href="class_livro.html#a5d71395e13a003507fe42979e91217d3">Livro::Livro</a></div><div class="ttdeci">Livro(long id, std::string tit, std::vector&lt; std::string &gt; aut, std::string tem, long isbn, std::string cot, int np, int ed, bool ept, long id_ep, std::time_t dt, bool ct)</div><div class="ttdoc">Construtor de Livro. </div></div>
-<div class="ttc" id="class_livro_html_a180a5cc0cda0ce62eba7c6081cdcf84f"><div class="ttname"><a href="class_livro.html#a180a5cc0cda0ce62eba7c6081cdcf84f">Livro::get_num_paginas</a></div><div class="ttdeci">int get_num_paginas()</div><div class="ttdoc">Funcao para obter o numero de paginas do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00079">Livro.cpp:79</a></div></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> ano_edicao; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::string titulo; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::vector&lt;std::string&gt; autores;  </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::string tema; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">long</span> ISBN; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::string cota; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> num_paginas; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> edicao; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> exemplares; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> ex_disponiveis; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::vector&lt;Emprestimo*&gt; emprestimos_livro; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::priority_queue&lt;Pedido&gt; pedidos; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> num_livros; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="class_livro.html#ad65e2f05736baa8d1d24fdb1f2501d26">Livro</a>(<span class="keywordtype">int</span> ano, std::string tit, std::vector&lt;std::string&gt; aut, std::string tem, <span class="keywordtype">long</span> isbn,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          std::string cot, <span class="keywordtype">int</span> np, <span class="keywordtype">int</span> ed, <span class="keywordtype">bool</span> ct, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span> = num_livros + 1,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          <span class="keywordtype">int</span> ex = 1, <span class="keywordtype">int</span> exd = 1, std::vector&lt;Emprestimo*&gt; ep = {NULL},</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;          std::priority_queue&lt;Pedido&gt; pd = {});</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_livro.html#ac8541297cae9e82d94e0de02c79a313f">   78</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_livro.html#ac8541297cae9e82d94e0de02c79a313f">~Livro</a>() {};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_livro.html#a04d9e02c25de0ddec76e8ed471365eb4">operator &lt;</a>(<span class="keyword">const</span> <a class="code" href="class_livro.html">Livro</a> lv) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_livro.html#abfa10066d6dd28046c2a16b83b74c30c">get_ano_edicao</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::string <a class="code" href="class_livro.html#a8fef7d34ee9e468a258cf91c180c5176">get_titulo</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="class_livro.html#a12c5ce517f75d107078b2754e6a9b163">get_autores</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    std::string <a class="code" href="class_livro.html#a74d5ee8348ed6911e7a3027a7cdf617b">get_tema</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">long</span> <a class="code" href="class_livro.html#ab92238f2154d3c75f4dcc132d4e6c173">get_ISBN</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    std::string <a class="code" href="class_livro.html#a23573fcb8917cbb1773868db4e450d1e">get_cota</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_livro.html#a536f069a11447ac980f70d246bbae029">get_num_paginas</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_livro.html#a96262fb246625d86b6fa30280417297c">get_edicao</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a6e50150ff50a94324013ad0fd7977f23">set_ano_edicao</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> ano);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#af1fd8651f78f71b200b15ff5d01f191b">set_titulo</a>(<span class="keyword">const</span> std::string tit);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a0673d19a3e33d020a10d4ebecb2383c2">set_autores</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; aut);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a007386f273122179349f55de84312e29">set_tema</a>(<span class="keyword">const</span> std::string tem);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a721dedae41cef5ff60c0f2dd3211f86c">set_ISBN</a>(<span class="keyword">const</span> <span class="keywordtype">long</span> isbn);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a66dcae4dc1f32b14a71246e75b4b3177">set_cota</a>(<span class="keyword">const</span> std::string cot);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#abee59e86f418bcce2ee12162e49e5b3b">set_num_paginas</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> np);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a0b35e093d5f58cd3012c3865b15b7f59">set_edicao</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> ed);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_livro.html#a8475ad4233c894cff269ac470121d382">get_exemplares</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#aa5f2b00b7be07b1a9c59263e029d2a6a">inc_exemplares</a>();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a03f48e98255ecf5ada99a86418c794d6">dec_exemplares</a>();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_livro.html#adc9cc0c34f1d234945a7ef7cb5b21cfe">get_ex_disponiveis</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a861d5ad0b6b9cbc67c10e43c503ae6fa">inc_ex_disponiveis</a>();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a2b979b90662f34ae94d5ebf12b497626">dec_ex_disponiveis</a>();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    std::vector&lt;Emprestimo*&gt; <a class="code" href="class_livro.html#a4cb09bfefad806dfd685cc736cdb966a">get_emp_livro</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a6b252090e8754f3e628e5847a83ac251">set_emp_livro</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ind, <a class="code" href="class_emprestimo.html">Emprestimo</a>* ep);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a36f50aa104c07af3baae8657e35ad5f3">inc_emp_livro</a>();</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a858b859766ac487a58b0add34e036501">del_emp_livro</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ind);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_livro.html#a86027a26786a9e3efa77ea4dfb3d4559">get_dias_emp</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ind) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    std::priority_queue&lt;Pedido&gt; <a class="code" href="class_livro.html#a24025c3d27546a18620ba5755389cbda">get_pedidos</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a3ae7b4b4a4dcbb238fffe8dc65093180">adiciona_ped_livro</a>(<a class="code" href="class_pedido.html">Pedido</a> pd);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a8e3c18a92873d983a84f0db94bd20e69">remove_ped_livro</a>();</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a1ec91f5bf5fcc3013348b1001bd68a8f">set_pedidos</a>(std::priority_queue&lt;Pedido&gt; pds);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_livro.html#a43444f343b9fe97c9d893298d9cbf8f4">imprime</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_livro.html#a3bf2e05a7c8633dd7e58df87ecd347f8">escreve</a>(<span class="keyword">const</span> std::string ficheiro) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;};</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_LIVRO_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="class_emprestimo_html"><div class="ttname"><a href="class_emprestimo.html">Emprestimo</a></div><div class="ttdoc">Classe com toda a informacao de Emprestimo. </div><div class="ttdef"><b>Definition:</b> Emprestimo.h:26</div></div>
+<div class="ttc" id="class_livro_html_a86027a26786a9e3efa77ea4dfb3d4559"><div class="ttname"><a href="class_livro.html#a86027a26786a9e3efa77ea4dfb3d4559">Livro::get_dias_emp</a></div><div class="ttdeci">double get_dias_emp(const unsigned long ind) const </div><div class="ttdoc">Funcao para obter o numero de dias desde o emprestimo de um exemplar do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:58</div></div>
+<div class="ttc" id="class_livro_html_a536f069a11447ac980f70d246bbae029"><div class="ttname"><a href="class_livro.html#a536f069a11447ac980f70d246bbae029">Livro::get_num_paginas</a></div><div class="ttdeci">int get_num_paginas() const </div><div class="ttdoc">Funcao para obter o numero de paginas do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:84</div></div>
+<div class="ttc" id="_emprestimo_8h_html"><div class="ttname"><a href="_emprestimo_8h.html">Emprestimo.h</a></div><div class="ttdoc">Header das funcoes de Emprestimo. </div></div>
+<div class="ttc" id="class_livro_html_a04d9e02c25de0ddec76e8ed471365eb4"><div class="ttname"><a href="class_livro.html#a04d9e02c25de0ddec76e8ed471365eb4">Livro::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Livro lv) const </div><div class="ttdoc">Operador < de Livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:23</div></div>
+<div class="ttc" id="class_livro_html_a66dcae4dc1f32b14a71246e75b4b3177"><div class="ttname"><a href="class_livro.html#a66dcae4dc1f32b14a71246e75b4b3177">Livro::set_cota</a></div><div class="ttdeci">void set_cota(const std::string cot)</div><div class="ttdoc">Funcao para determinar a cota do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:116</div></div>
+<div class="ttc" id="class_livro_html_a721dedae41cef5ff60c0f2dd3211f86c"><div class="ttname"><a href="class_livro.html#a721dedae41cef5ff60c0f2dd3211f86c">Livro::set_ISBN</a></div><div class="ttdeci">void set_ISBN(const long isbn)</div><div class="ttdoc">Funcao para determinar o ISBN do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:112</div></div>
+<div class="ttc" id="class_livro_html_a2b979b90662f34ae94d5ebf12b497626"><div class="ttname"><a href="class_livro.html#a2b979b90662f34ae94d5ebf12b497626">Livro::dec_ex_disponiveis</a></div><div class="ttdeci">void dec_ex_disponiveis()</div><div class="ttdoc">Funcao para decrementar o numero de exemplares disponiveis do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:148</div></div>
+<div class="ttc" id="class_livro_html_a1ec91f5bf5fcc3013348b1001bd68a8f"><div class="ttname"><a href="class_livro.html#a1ec91f5bf5fcc3013348b1001bd68a8f">Livro::set_pedidos</a></div><div class="ttdeci">void set_pedidos(std::priority_queue&lt; Pedido &gt; pds)</div><div class="ttdoc">Funcao para determinar a da fila de prioridade de pedidos do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:164</div></div>
+<div class="ttc" id="class_livro_html_a8475ad4233c894cff269ac470121d382"><div class="ttname"><a href="class_livro.html#a8475ad4233c894cff269ac470121d382">Livro::get_exemplares</a></div><div class="ttdeci">int get_exemplares() const </div><div class="ttdoc">Funcao para obter o numero total de exemplares do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:128</div></div>
+<div class="ttc" id="class_livro_html_a74d5ee8348ed6911e7a3027a7cdf617b"><div class="ttname"><a href="class_livro.html#a74d5ee8348ed6911e7a3027a7cdf617b">Livro::get_tema</a></div><div class="ttdeci">std::string get_tema() const </div><div class="ttdoc">Funcao para obter o tema do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:80</div></div>
+<div class="ttc" id="class_livro_html_a8e3c18a92873d983a84f0db94bd20e69"><div class="ttname"><a href="class_livro.html#a8e3c18a92873d983a84f0db94bd20e69">Livro::remove_ped_livro</a></div><div class="ttdeci">void remove_ped_livro()</div><div class="ttdoc">Funcao para remover o pedido mais prioritario da fila de prioridade do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:160</div></div>
+<div class="ttc" id="class_livro_html_a24025c3d27546a18620ba5755389cbda"><div class="ttname"><a href="class_livro.html#a24025c3d27546a18620ba5755389cbda">Livro::get_pedidos</a></div><div class="ttdeci">std::priority_queue&lt; Pedido &gt; get_pedidos() const </div><div class="ttdoc">Funcao para obter a fila de prioridade de apontadores de pedidos do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:152</div></div>
+<div class="ttc" id="class_livro_html_a3ae7b4b4a4dcbb238fffe8dc65093180"><div class="ttname"><a href="class_livro.html#a3ae7b4b4a4dcbb238fffe8dc65093180">Livro::adiciona_ped_livro</a></div><div class="ttdeci">void adiciona_ped_livro(Pedido pd)</div><div class="ttdoc">Funcao para adicionar um pedido a fila de prioridade do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:156</div></div>
+<div class="ttc" id="class_livro_html_a0673d19a3e33d020a10d4ebecb2383c2"><div class="ttname"><a href="class_livro.html#a0673d19a3e33d020a10d4ebecb2383c2">Livro::set_autores</a></div><div class="ttdeci">void set_autores(const std::vector&lt; std::string &gt; aut)</div><div class="ttdoc">Funcao para determinar os autores do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:104</div></div>
+<div class="ttc" id="class_livro_html_adc9cc0c34f1d234945a7ef7cb5b21cfe"><div class="ttname"><a href="class_livro.html#adc9cc0c34f1d234945a7ef7cb5b21cfe">Livro::get_ex_disponiveis</a></div><div class="ttdeci">int get_ex_disponiveis() const </div><div class="ttdoc">Funcao para obter o numero de exemplares disponiveis do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:140</div></div>
+<div class="ttc" id="class_livro_html_a007386f273122179349f55de84312e29"><div class="ttname"><a href="class_livro.html#a007386f273122179349f55de84312e29">Livro::set_tema</a></div><div class="ttdeci">void set_tema(const std::string tem)</div><div class="ttdoc">Funcao para determinar o tema do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:108</div></div>
+<div class="ttc" id="class_livro_html_ac8541297cae9e82d94e0de02c79a313f"><div class="ttname"><a href="class_livro.html#ac8541297cae9e82d94e0de02c79a313f">Livro::~Livro</a></div><div class="ttdeci">virtual ~Livro()</div><div class="ttdoc">Destrutor virtual de Livro. </div><div class="ttdef"><b>Definition:</b> Livro.h:78</div></div>
+<div class="ttc" id="class_livro_html_ab92238f2154d3c75f4dcc132d4e6c173"><div class="ttname"><a href="class_livro.html#ab92238f2154d3c75f4dcc132d4e6c173">Livro::get_ISBN</a></div><div class="ttdeci">long get_ISBN() const </div><div class="ttdoc">Funcao para obter o ISBN do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:88</div></div>
+<div class="ttc" id="class_livro_html_af1fd8651f78f71b200b15ff5d01f191b"><div class="ttname"><a href="class_livro.html#af1fd8651f78f71b200b15ff5d01f191b">Livro::set_titulo</a></div><div class="ttdeci">void set_titulo(const std::string tit)</div><div class="ttdoc">Funcao para determinar o titulo do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:100</div></div>
+<div class="ttc" id="class_livro_html_a4cb09bfefad806dfd685cc736cdb966a"><div class="ttname"><a href="class_livro.html#a4cb09bfefad806dfd685cc736cdb966a">Livro::get_emp_livro</a></div><div class="ttdeci">std::vector&lt; Emprestimo * &gt; get_emp_livro() const </div><div class="ttdoc">Funcao para obter o vetor de apontadores de emprestimos dos exemplares do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:46</div></div>
+<div class="ttc" id="class_livro_html_a23573fcb8917cbb1773868db4e450d1e"><div class="ttname"><a href="class_livro.html#a23573fcb8917cbb1773868db4e450d1e">Livro::get_cota</a></div><div class="ttdeci">std::string get_cota() const </div><div class="ttdoc">Funcao para obter a cota do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:92</div></div>
+<div class="ttc" id="class_livro_html_a03f48e98255ecf5ada99a86418c794d6"><div class="ttname"><a href="class_livro.html#a03f48e98255ecf5ada99a86418c794d6">Livro::dec_exemplares</a></div><div class="ttdeci">void dec_exemplares()</div><div class="ttdoc">Funcao para decrementar o numero total de exemplares do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:136</div></div>
+<div class="ttc" id="class_livro_html_a858b859766ac487a58b0add34e036501"><div class="ttname"><a href="class_livro.html#a858b859766ac487a58b0add34e036501">Livro::del_emp_livro</a></div><div class="ttdeci">void del_emp_livro(const unsigned long ind)</div><div class="ttdoc">Funcao para remover o apontador de emprestimo de um exemplare do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:54</div></div>
+<div class="ttc" id="class_livro_html_aa5f2b00b7be07b1a9c59263e029d2a6a"><div class="ttname"><a href="class_livro.html#aa5f2b00b7be07b1a9c59263e029d2a6a">Livro::inc_exemplares</a></div><div class="ttdeci">void inc_exemplares()</div><div class="ttdoc">Funcao para incrementar o numero total de exemplares do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:132</div></div>
+<div class="ttc" id="class_livro_html_a12c5ce517f75d107078b2754e6a9b163"><div class="ttname"><a href="class_livro.html#a12c5ce517f75d107078b2754e6a9b163">Livro::get_autores</a></div><div class="ttdeci">std::vector&lt; std::string &gt; get_autores() const </div><div class="ttdoc">Funcao para obter os autores do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:76</div></div>
+<div class="ttc" id="class_livro_html_a96262fb246625d86b6fa30280417297c"><div class="ttname"><a href="class_livro.html#a96262fb246625d86b6fa30280417297c">Livro::get_edicao</a></div><div class="ttdeci">int get_edicao() const </div><div class="ttdoc">Funcao para obter a edicao do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:72</div></div>
+<div class="ttc" id="_pedido_8h_html"><div class="ttname"><a href="_pedido_8h.html">Pedido.h</a></div><div class="ttdoc">Header das funcoes de Pedido. </div></div>
 <div class="ttc" id="_object_8h_html"><div class="ttname"><a href="_object_8h.html">Object.h</a></div><div class="ttdoc">Header da classe Object. </div></div>
-<div class="ttc" id="class_livro_html_a7fe19c11d6295cfb32ba4c926545e864"><div class="ttname"><a href="class_livro.html#a7fe19c11d6295cfb32ba4c926545e864">Livro::set_ID_ep</a></div><div class="ttdeci">void set_ID_ep(long id_ep)</div><div class="ttdoc">Funcao para determinar o ID do emprestimo do livro, caso exista. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00036">Livro.cpp:36</a></div></div>
-<div class="ttc" id="class_livro_html_aa51fbbf32a2713d2fbbaec251fe32b30"><div class="ttname"><a href="class_livro.html#aa51fbbf32a2713d2fbbaec251fe32b30">Livro::escreve</a></div><div class="ttdeci">virtual void escreve(std::string ficheiro)</div><div class="ttdoc">Funcao que escreve os atributos do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00123">Livro.cpp:123</a></div></div>
-<div class="ttc" id="class_object_html"><div class="ttname"><a href="class_object.html">Object</a></div><div class="ttdoc">Classe com toda o id de qualquer objeto da biblioteca. </div><div class="ttdef"><b>Definition:</b> <a href="_object_8h_source.html#l00016">Object.h:16</a></div></div>
-<div class="ttc" id="class_livro_html"><div class="ttname"><a href="class_livro.html">Livro</a></div><div class="ttdoc">Classe com toda a informacao de Livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8h_source.html#l00020">Livro.h:20</a></div></div>
-<div class="ttc" id="class_livro_html_a2f760053889cf84a129dccf0a37a9265"><div class="ttname"><a href="class_livro.html#a2f760053889cf84a129dccf0a37a9265">Livro::get_emprestado</a></div><div class="ttdeci">bool get_emprestado()</div><div class="ttdoc">Funcao para obter o estado emprestado do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00044">Livro.cpp:44</a></div></div>
-<div class="ttc" id="class_livro_html_adc43fec0cc4e30c05e38cf9fef6082db"><div class="ttname"><a href="class_livro.html#adc43fec0cc4e30c05e38cf9fef6082db">Livro::get_dias_emp</a></div><div class="ttdeci">double get_dias_emp()</div><div class="ttdoc">Funcao para obter o numero de dias que passou desde o emprestimo do livro, caso exista. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00056">Livro.cpp:56</a></div></div>
-<div class="ttc" id="class_livro_html_a0a9c0d200468a8f8bc30373f803db18e"><div class="ttname"><a href="class_livro.html#a0a9c0d200468a8f8bc30373f803db18e">Livro::get_autores</a></div><div class="ttdeci">std::vector&lt; std::string &gt; get_autores()</div><div class="ttdoc">Funcao para obter os autores do livro. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00071">Livro.cpp:71</a></div></div>
-<div class="ttc" id="class_livro_html_a48faf3b4322686583bac7c49232776bc"><div class="ttname"><a href="class_livro.html#a48faf3b4322686583bac7c49232776bc">Livro::set_data_emp</a></div><div class="ttdeci">void set_data_emp(std::time_t dt)</div><div class="ttdoc">Funcao para determinar a data de emprestimo do livro, caso exista. </div><div class="ttdef"><b>Definition:</b> <a href="_livro_8cpp_source.html#l00040">Livro.cpp:40</a></div></div>
+<div class="ttc" id="class_livro_html_a0b35e093d5f58cd3012c3865b15b7f59"><div class="ttname"><a href="class_livro.html#a0b35e093d5f58cd3012c3865b15b7f59">Livro::set_edicao</a></div><div class="ttdeci">void set_edicao(const int ed)</div><div class="ttdoc">Funcao para determinar a edicao do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:124</div></div>
+<div class="ttc" id="class_livro_html_a8fef7d34ee9e468a258cf91c180c5176"><div class="ttname"><a href="class_livro.html#a8fef7d34ee9e468a258cf91c180c5176">Livro::get_titulo</a></div><div class="ttdeci">std::string get_titulo() const </div><div class="ttdoc">Funcao para obter o titulo do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:68</div></div>
+<div class="ttc" id="class_livro_html_a36f50aa104c07af3baae8657e35ad5f3"><div class="ttname"><a href="class_livro.html#a36f50aa104c07af3baae8657e35ad5f3">Livro::inc_emp_livro</a></div><div class="ttdeci">void inc_emp_livro()</div><div class="ttdoc">Funcao para incrementar o tamanho do vetor de emprestimos do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:50</div></div>
+<div class="ttc" id="class_pedido_html"><div class="ttname"><a href="class_pedido.html">Pedido</a></div><div class="ttdoc">Classe com toda a informacao de Pedido. </div><div class="ttdef"><b>Definition:</b> Pedido.h:26</div></div>
+<div class="ttc" id="class_livro_html_abfa10066d6dd28046c2a16b83b74c30c"><div class="ttname"><a href="class_livro.html#abfa10066d6dd28046c2a16b83b74c30c">Livro::get_ano_edicao</a></div><div class="ttdeci">int get_ano_edicao() const </div><div class="ttdoc">Funcao para obter o ano de edicao do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:42</div></div>
+<div class="ttc" id="class_livro_html_abee59e86f418bcce2ee12162e49e5b3b"><div class="ttname"><a href="class_livro.html#abee59e86f418bcce2ee12162e49e5b3b">Livro::set_num_paginas</a></div><div class="ttdeci">void set_num_paginas(const int np)</div><div class="ttdoc">Funcao para determinar o numero de paginas do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:120</div></div>
+<div class="ttc" id="class_livro_html_a6b252090e8754f3e628e5847a83ac251"><div class="ttname"><a href="class_livro.html#a6b252090e8754f3e628e5847a83ac251">Livro::set_emp_livro</a></div><div class="ttdeci">void set_emp_livro(unsigned long ind, Emprestimo *ep)</div><div class="ttdoc">Funcao para determinar o apontador de emprestimo de um exemplar do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:38</div></div>
+<div class="ttc" id="class_livro_html_a43444f343b9fe97c9d893298d9cbf8f4"><div class="ttname"><a href="class_livro.html#a43444f343b9fe97c9d893298d9cbf8f4">Livro::imprime</a></div><div class="ttdeci">virtual std::string imprime() const </div><div class="ttdoc">Funcao que imprime os atributos do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:168</div></div>
+<div class="ttc" id="class_livro_html_a3bf2e05a7c8633dd7e58df87ecd347f8"><div class="ttname"><a href="class_livro.html#a3bf2e05a7c8633dd7e58df87ecd347f8">Livro::escreve</a></div><div class="ttdeci">virtual void escreve(const std::string ficheiro) const </div><div class="ttdoc">Funcao que escreve os atributos do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:199</div></div>
+<div class="ttc" id="class_livro_html_ad65e2f05736baa8d1d24fdb1f2501d26"><div class="ttname"><a href="class_livro.html#ad65e2f05736baa8d1d24fdb1f2501d26">Livro::Livro</a></div><div class="ttdeci">Livro(int ano, std::string tit, std::vector&lt; std::string &gt; aut, std::string tem, long isbn, std::string cot, int np, int ed, bool ct, unsigned long id=num_livros+1, int ex=1, int exd=1, std::vector&lt; Emprestimo * &gt; ep={NULL}, std::priority_queue&lt; Pedido &gt; pd={})</div><div class="ttdoc">Construtor de Livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:16</div></div>
+<div class="ttc" id="class_object_html"><div class="ttname"><a href="class_object.html">Object</a></div><div class="ttdoc">Classe com toda o id de qualquer objeto da biblioteca. </div><div class="ttdef"><b>Definition:</b> Object.h:16</div></div>
+<div class="ttc" id="class_livro_html_a861d5ad0b6b9cbc67c10e43c503ae6fa"><div class="ttname"><a href="class_livro.html#a861d5ad0b6b9cbc67c10e43c503ae6fa">Livro::inc_ex_disponiveis</a></div><div class="ttdeci">void inc_ex_disponiveis()</div><div class="ttdoc">Funcao para incrementar o numero de exemplares disponiveis do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:144</div></div>
+<div class="ttc" id="class_livro_html"><div class="ttname"><a href="class_livro.html">Livro</a></div><div class="ttdoc">Classe com toda a informacao de Livro. </div><div class="ttdef"><b>Definition:</b> Livro.h:34</div></div>
+<div class="ttc" id="class_livro_html_a6e50150ff50a94324013ad0fd7977f23"><div class="ttname"><a href="class_livro.html#a6e50150ff50a94324013ad0fd7977f23">Livro::set_ano_edicao</a></div><div class="ttdeci">void set_ano_edicao(const int ano)</div><div class="ttdoc">Funcao para determinar o ano de edicao do livro. </div><div class="ttdef"><b>Definition:</b> Livro.cpp:96</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 14:31:18 for biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jan 4 2015 13:51:30 for Biblioteca by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
