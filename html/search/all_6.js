@@ -39,6 +39,7 @@ var searchData=
   ['get_5fmulta',['get_multa',['../class_emprestimo.html#a63fd27b2ee338e43e6f673aa403f4f87',1,'Emprestimo']]],
   ['get_5fnome',['get_nome',['../class_funcionario.html#a3de424eb30430661d0bddfd09b16fd49',1,'Funcionario::get_nome()'],['../class_leitor.html#a0216e8fe3ea8782890c2d3d2c1df8e0b',1,'Leitor::get_nome()']]],
   ['get_5fnum_5fpaginas',['get_num_paginas',['../class_livro.html#a536f069a11447ac980f70d246bbae029',1,'Livro']]],
+  ['get_5fordem',['get_ordem',['../class_biblioteca.html#a1be3abd0b63cd41a2d1440fef97d5c25',1,'Biblioteca']]],
   ['get_5fpassword',['get_password',['../class_utilizador.html#a4163b5fece2949379afd7d13ab330870',1,'Utilizador']]],
   ['get_5fpedidos',['get_pedidos',['../class_biblioteca.html#a02165a79b5a4d38c954f720c1be5778f',1,'Biblioteca::get_pedidos()'],['../class_livro.html#a24025c3d27546a18620ba5755389cbda',1,'Livro::get_pedidos()']]],
   ['get_5fpedidos_5fold',['get_pedidos_old',['../class_biblioteca.html#a5323d4dcb93389903cb82dcf30bab5ac',1,'Biblioteca']]],

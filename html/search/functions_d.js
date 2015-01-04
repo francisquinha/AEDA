@@ -13,6 +13,7 @@ var searchData=
   ['set_5fmorada',['set_morada',['../class_leitor.html#a51f1380be99137635716bad27e009438',1,'Leitor']]],
   ['set_5fnome',['set_nome',['../class_leitor.html#ac10366c2996edd3faa8406da77aa69cb',1,'Leitor']]],
   ['set_5fnum_5fpaginas',['set_num_paginas',['../class_livro.html#abee59e86f418bcce2ee12162e49e5b3b',1,'Livro']]],
+  ['set_5fordem',['set_ordem',['../class_biblioteca.html#abd703547935443ac146a66c5b60b318c',1,'Biblioteca']]],
   ['set_5fpassword',['set_password',['../class_utilizador.html#a22d4a92301b958ad3482b9c8d4964594',1,'Utilizador']]],
   ['set_5fpedidos',['set_pedidos',['../class_livro.html#a1ec91f5bf5fcc3013348b1001bd68a8f',1,'Livro']]],
   ['set_5ftelefone',['set_telefone',['../class_leitor.html#aa2d4792153e436ee966e7bfc46de0154',1,'Leitor']]],
