@@ -331,12 +331,39 @@ public:
     void pedidos_antigos() const;
 
     /**
-	 * @brief Imprime no ecra todos os livros disponiveis
+	 * @brief Permite escolher entre imprimir os livros disponíveis por ano, título ou autores
 	 *
 	 * Funcao chamada se for escolhida a opcao 1 no menu livros (caminho 4->1 do menu principal).
 	 * Acessivel a todos os utilizadores.
 	 **/
-    void livros_disponiveis() const;
+    void livros_disponiveis();
+    
+    /**
+     * @brief Imprime no ecra os livros disponiveis por ano
+     *
+     * Funcao chamada se for escolhida a opcao 1 no menu livros disponiveis 
+     * (caminho 4->1->1 do menu principal).
+     * Acessivel a todos os utilizadores.
+     **/
+    void livros_disponiveis_ano();
+    
+    /**
+     * @brief Imprime no ecra os livros disponiveis por titulo
+     *
+     * Funcao chamada se for escolhida a opcao 2 no menu livros disponiveis
+     * (caminho 4->1->2 do menu principal).
+     * Acessivel a todos os utilizadores.
+     **/
+    void livros_disponiveis_titulo();
+    
+    /**
+     * @brief Imprime no ecra os livros disponiveis por autores
+     *
+     * Funcao chamada se for escolhida a opcao 3 no menu livros disponiveis
+     * (caminho 4->1->3 do menu principal).
+     * Acessivel a todos os utilizadores.
+     **/
+    void livros_disponiveis_autores();
 
 	/**
 	 * @brief Imprime no ecra todos os livros emprestados

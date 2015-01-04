@@ -60,7 +60,7 @@ std::ostream& operator<<(std::ostream &out, Object_nao_existe &object);
 /**
  * @brief Excecao Livro_indisponivel
  *
- * Sempre que se tenta emprestar um livro ja emprestado esta excecao e utilizada.
+ * Sempre que se tenta emprestar um livro sem exemplares disponiveis esta excecao e utilizada.
  **/
 class Livro_indisponivel: public Livro {
 
@@ -141,6 +141,11 @@ public:
  **/
 std::ostream& operator<<(std::ostream &out, Livro_disponivel &livro);
 
+/**
+ * @brief Excecao Exemplar_indisponivel
+ *
+ * Sempre que se tenta emprestar um exemplar ja emprestado esta excecao e utilizada.
+ **/
 class Exemplar_indisponivel: public Livro {
     
     unsigned long indice; /**< @brief indice do exemplar do livro **/
@@ -190,6 +195,11 @@ public:
  **/
 std::ostream& operator<<(std::ostream &out, Exemplar_indisponivel &livro);
 
+/**
+ * @brief Excecao Exemplar_inexistente
+ *
+ * Sempre que se tenta aceder a um exemplar do livro que nao exista esta excesao e utilizada.
+ **/
 class Exemplar_inexistente: public Livro {
    
     unsigned long indice; /**< @brief indice do exemplar do livro **/
@@ -360,12 +370,17 @@ public:
  **/
 std::ostream& operator<<(std::ostream &out, Maximo_emprestimos &leitor);
 
+/**
+ * @brief Excecao Pedido_nao_prioritario
+ *
+ * Sempre que se tenta remover um pedido nao prioritario para emprestimo esta excecao e utilizada.
+ **/
 class Pedido_nao_prioritario: public Pedido {
     
 public:
     
     /**
-     * @brief Construtor de Pedido
+     * @brief Construtor de Pedido_nao_prioritario
      *
      * @param lv apontador para o livro
      * @param fc apontador para o funcionario

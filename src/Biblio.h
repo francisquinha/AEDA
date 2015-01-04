@@ -80,13 +80,28 @@ class Biblioteca {
     std::vector<Pedido*> pedidos; /**< @brief vetor com os apontadores para todos os pedidos de emprestimo da Biblioteca **/
     Hash_Leitores inativos; /**< @brief tabela de dispersao com os leitores inativos da Biblioteca **/
     BST<Livro> disponiveis; /**< @brief arvore binaria de pesquisa com os livros disponiveis da Biblioteca **/
+    static unsigned int ordem; /**< @brief determina a ordem da BST de livros (0 - ano; 1 - titulo; 2 - autores) **/
 public:
 
 	/**
 	 * @brief Construtor de Biblioteca
 	 **/
 	Biblioteca();
-
+    
+    /**
+     * @brief Funcao para determinar a ordem dos livros
+     *
+     * @param ord com a ordem pretendida (0 - ano; 1 - titulo; 2 - autores)
+     **/
+    void set_ordem(const unsigned int ord);
+    
+    /**
+     * @brief Funcao para obter a ordem dos livros
+     *
+     * @return unsigned int com a ordem (0 - ano; 1 - titulo; 2 - autores)
+     **/
+    static unsigned int get_ordem();
+    
 	/**
 	 * @brief Funcao para obter todos os emprestimos atrasados da Biblioteca
 	 *

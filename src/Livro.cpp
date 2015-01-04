@@ -1,8 +1,11 @@
 
 #include "Livro.h"
 #include "Excecao.h"
+#include "Biblio.h"
 
 using namespace std;
+
+class Biblioteca;
 
 unsigned long Livro::num_livros {0};
 
@@ -21,18 +24,24 @@ Livro::Livro(int ano, string tit, vector<string> aut, string tem, long isbn, str
     pedidos{pd} {if (ct) num_livros++;}
 
 bool Livro::operator <(const Livro lv) const {
-    if (ano_edicao == lv.get_ano_edicao()) {
-        if (titulo == lv.get_titulo()) {
-            unsigned long k = min(autores.size(), lv.get_autores().size());
-            for (unsigned long i = 0; i < k; i++) {
-                if (autores[i] < lv.get_autores()[i]) return true;
-                else if (autores[i] > lv.get_autores()[i]) return false;
-            }
-            return autores.size() < lv.get_autores().size();
-        }
+    if (Biblioteca::get_ordem() == 0) {
+        if (ano_edicao == lv.get_ano_edicao()) return get_ID() < lv.get_ID();
+        return ano_edicao < lv.get_ano_edicao();
+    }
+    if (Biblioteca::get_ordem() == 1) {
+        if (titulo == lv.get_titulo()) return get_ID() < lv.get_ID();
         return titulo < lv.get_titulo();
     }
-    return ano_edicao < lv.get_ano_edicao();
+    if (Biblioteca::get_ordem() == 2) {
+        unsigned long k = min(autores.size(), lv.get_autores().size());
+        for (unsigned long i = 0; i < k; i++) {
+            if (autores[i] < lv.get_autores()[i]) return true;
+            else if (autores[i] > lv.get_autores()[i]) return false;
+        }
+        if (autores.size() == lv.get_autores().size()) return get_ID() < lv.get_ID();
+        return autores.size() < lv.get_autores().size();
+    }
+    return false;
 }
 
 void Livro::set_emp_livro(unsigned long ind, Emprestimo* ep) {

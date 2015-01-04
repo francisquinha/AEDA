@@ -12,6 +12,8 @@
 
 using namespace std;
 
+unsigned int Biblioteca::ordem {0};
+
 /** @file
  *
  * @brief Source das funcoes da Biblioteca.
@@ -20,6 +22,14 @@ using namespace std;
  **/
 
 Biblioteca::Biblioteca(): disponiveis {Livro(0, "", {}, "", 0, "", 0, 0, false)} {}
+
+void Biblioteca::set_ordem(const unsigned int ord) {
+    if (ord == 0 or ord == 1 or ord == 2) ordem = ord;
+}
+
+unsigned int Biblioteca::get_ordem() {
+    return ordem;
+}
 
 /* com dynamic_cast o apontador lo so nao e nulo se (*it) for do tipo Livro_old */
 vector<Livro_old*> Biblioteca::get_livros_old() const{

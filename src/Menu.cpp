@@ -824,11 +824,62 @@ void Menu::pedidos_antigos() const {
     cout << imprime_pedidos_old();
 }
 
-void Menu::livros_disponiveis()const {
-	cout << imprime_livros_disponiveis();
+void Menu::livros_disponiveis() {
+    bool continuar {true};
+    while (continuar) {
+        cout << "LIVROS DISPONIVEIS" << endl << endl;
+        cout << "1) Ano Edicao" << endl
+        << "2) Titulo" << endl
+        << "3) Autores" << endl;
+        cout << endl << "Escolha uma opcao [1-3] (s para sair): ";
+        string opcaos {};
+        int opcao{};
+        getline(cin, opcaos);
+        clear_screen();
+        if (opcaos == "s") continuar=false;
+        else if (!e_numero(opcaos)) cout
+            << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)."
+            << endl << endl;
+        else {
+            opcao = atoi(opcaos.c_str());
+            switch (opcao) {
+                case 1:
+                    livros_disponiveis_ano();
+                    break;
+                case 2:
+                    livros_disponiveis_titulo();
+                    break;
+                case 3:
+                    livros_disponiveis_autores();
+                    break;
+
+                default:
+                    cout << "Opcao nao esta disponivel. Por favor escolha outra opcao (s para sair)." << endl << endl;
+                    break;
+            }
+        }
+   	}
 }
 
-void Menu::livros_emprestados()const {
+void Menu::livros_disponiveis_ano() {
+    set_ordem(0);
+    adiciona_disponiveis();
+    cout << imprime_livros_disponiveis();
+}
+
+void Menu::livros_disponiveis_titulo() {
+    set_ordem(1);
+    adiciona_disponiveis();
+    cout << imprime_livros_disponiveis();
+}
+
+void Menu::livros_disponiveis_autores() {
+    set_ordem(2);
+    adiciona_disponiveis();
+    cout << imprime_livros_disponiveis();
+}
+
+void Menu::livros_emprestados() const {
 	cout << imprime_livros_emprestados();
 }
 
