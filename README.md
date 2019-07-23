@@ -1,4 +1,4 @@
 AEDA
 ==========
 
-Biblioteca
+Library project with C++ classes and data structures.
